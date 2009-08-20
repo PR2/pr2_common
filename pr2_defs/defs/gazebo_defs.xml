@@ -1,0 +1,38 @@
+<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
+
+<map name="sensor" flag="gazebo">
+  <verbatim key="mechanism_control_simulation">
+    <!-- PR2_ACTARRAY -->
+    <controller:gazebo_mechanism_control name="gazebo_mechanism_control" plugin="libgazebo_mechanism_control.so">
+      <alwaysOn>true</alwaysOn>
+      <updateRate>1000.0</updateRate>
+      <interface:audio name="gazebo_mechanism_control_dummy_iface" />
+    </controller:gazebo_mechanism_control>
+
+    <!-- battery controls -->
+    <controller:gazebo_battery name="gazebo_battery_controller" plugin="libgazebo_battery.so">
+      <alwaysOn>true</alwaysOn>
+      <updateRate>1.0</updateRate>
+      <timeout>5</timeout>
+      <default_consumption_rate>-10.0</default_consumption_rate> <!-- -5 is the magic number, need to be smaller than that CM -->
+      <diagnostic_rate>1.0</diagnostic_rate>
+      <battery_state_rate>10.0</battery_state_rate> <!-- does nothing for now-->
+      <full_charge_energy>1200000.0</full_charge_energy>
+      <diagnosticTopicName>diagnostic</diagnosticTopicName>
+      <stateTopicName>battery_state</stateTopicName>
+      <selfTestServiceName>self_test</selfTestServiceName>
+      <interface:audio name="battery_dummy_interface" />
+    </controller:gazebo_battery>
+
+    <controller:ros_time name="ros_time" plugin="libros_time.so">
+      <alwaysOn>true</alwaysOn>
+      <updateRate>1000.0</updateRate>
+      <interface:audio name="dummy_ros_time_iface_should_not_be_here"/>
+    </controller:ros_time>
+
+  </verbatim>
+</map>
+
+</robot>

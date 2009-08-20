@@ -1,0 +1,5 @@
+float64 joint_commanded_effort
+float64 joint_applied_effort
+string joint_name
+float64 joint_position
+float64 joint_velocity

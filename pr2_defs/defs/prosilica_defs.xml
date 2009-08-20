@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+<root xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+      xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+      xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
+  
+<macro name="prosilica_cam" params="name parent *origin">
+  <joint name="${name}_fixed_joint" type="fixed" />
+  <link name="${name}_frame">
+    <insert_block name="origin" />
+    <parent name="${parent}" />
+    <joint name="${name}_fixed_joint" />
+
+    <inertial>
+      <mass value="0.01" />
+      <com xyz="0 0 0" />
+      <inertia ixx="0.001"  ixy="0.0"  ixz="0.0"
+               iyy="0.001"  iyz="0.0"
+               izz="0.001" />
+    </inertial>
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <map name="gazebo_material" flag="gazebo">
+        <elem key="material" value="PR2/Blue" />
+      </map>
+      <geometry name="${name}_visual">
+        <box size="0.01 0.01 0.01" />
+      </geometry>
+    </visual>
+
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry name="${name}_collision">
+        <box size="0.01 0.01 0.01" />
+      </geometry>
+    </collision>
+
+    <map name="sensor" flag="gazebo">
+      <verbatim key="sensor_${name}_camera">
+        <sensor:camera name="${name}_sensor">
+          <imageFormat>B8G8R8</imageFormat>
+          <imageSize>2448 2050</imageSize>
+          <hfov>45</hfov>
+          <nearClip>0.1</nearClip>
+          <farClip>100</farClip>
+          <updateRate>20.0</updateRate>
+          <controller:ros_prosilica name="${name}_controller" plugin="libros_prosilica.so">
+            <alwaysOn>true</alwaysOn>
+            <updateRate>20.0</updateRate>
+            <camInfoTopicName>/prosilica/cam_info</camInfoTopicName>
+            <imageTopicName>/prosilica/image</imageTopicName>
+            <imageRectTopicName>/prosilica/image_rect</imageRectTopicName>
+            <camInfoServiceName>/prosilica/cam_info_service</camInfoServiceName>
+            <pollServiceName>/prosilica/poll</pollServiceName>
+            <frameName>hight_def_optical_frame</frameName>
+            <CxPrime>1224.5</CxPrime>
+            <Cx>1224.5</Cx>
+            <Cy>1025.5</Cy>
+            <focal_length>2955</focal_length> <!-- image_width / (2*tan(hfov_radian /2)) -->
+            <distortion_k1>0</distortion_k1>
+            <distortion_k2>0</distortion_k2>
+            <distortion_k3>0</distortion_k3>
+            <distortion_t1>0</distortion_t1>
+            <distortion_t2>0</distortion_t2>
+            <interface:camera name="${name}_iface" />
+          </controller:ros_prosilica>
+        </sensor:camera>
+      </verbatim>
+    </map>
+
+  </link>
+
+  <joint name="${name}_optical_fixed_joint" type="fixed" />
+  <link name="${name}_optical_frame">
+    <parent name="${name}_frame" />
+    <joint name="${name}_optical_fixed_joint" />
+    <origin xyz="${cal_high_def_x}            ${cal_high_def_y}         ${cal_high_def_z}"
+            rpy="${-M_PI/2+cal_high_def_roll} ${0.0+cal_high_def_pitch} ${-M_PI/2+cal_high_def_yaw}" />
+
+    <inertial>
+      <mass value="0.01" />
+      <com xyz="0 0 0" />
+      <inertia ixx="0.001"  ixy="0.0"  ixz="0.0"
+               iyy="0.001"  iyz="0.0"
+               izz="0.001" />
+    </inertial>
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <map name="gazebo_material" flag="gazebo">
+        <elem key="material" value="PR2/Blue" />
+      </map>
+      <geometry name="${name}_optical_visual">
+        <box size="0.01 0.01 0.01" />
+      </geometry>
+    </visual>
+
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry name="${name}_optical_collision">
+        <box size="0.01 0.01 0.01" />
+      </geometry>
+    </collision>
+  </link>
+  
+</macro>
+
+</root>

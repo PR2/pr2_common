@@ -1,0 +1,27 @@
+<package>
+  <description brief="Common ROS Messages">
+
+    Messages that are specific to PR2
+
+  </description>
+  <author>Morgan Quigley/mquigley@cs.stanford.edu, Ken Conley/kwc@willowgarage.com</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://pr.willowgarage.com/wiki/std_msgs</url>
+  <logo>http://www.willowgarage.com/files/willowgarage/robot10.jpg</logo>
+
+  <depend package="deprecated_msgs"/>
+
+  <depend package="std_msgs"/>
+  <depend package="geometry_msgs"/>
+  <depend package="mechanism_msgs" />
+  <depend package="motion_planning_msgs"/>
+
+  <depend package="rosbagmigration"/>
+  
+  <export>
+    <cpp cflags="-I${prefix}/msg/cpp"/>
+    <rosbagmigration rule_file="migration_rules/pr2_msgs.bmr"/>
+  </export>
+</package>
+

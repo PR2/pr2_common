@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<robot name="pr2">
+  
+  <!-- Include file with calibration parameters -->
+  <include filename="$(find pr2_defs)/calibration/prf_cal.xml" />
+  
+  <!-- declare the path where all models/textures/materials are stored -->
+  <resource type="stl_meshes" location="$(find pr2_defs)/meshes"/>
+  <resource type="ogre"       location="$(find pr2_ogre)/Media/models"/>
+
+  <include filename="$(find pr2_defs)/defs/arm_defs.xml" />
+  <include filename="$(find pr2_defs)/defs/gripper_defs.xml" />
+  <include filename="$(find pr2_defs)/defs/head_defs.xml" />
+  <include filename="$(find pr2_defs)/defs/body_defs.xml" />
+  <include filename="$(find pr2_defs)/defs/base_defs.xml" />
+  <include filename="$(find pr2_defs)/defs/prosilica_defs.xml" />
+  <include filename="$(find pr2_defs)/defs/gazebo_defs.xml" />
+  <include filename="$(find pr2_defs)/defs/mono_cam_defs.xml" />
+
+  <pr2_base name="base" >
+    <origin xyz="0 0 0.051" rpy="0 0 0" /> <!-- 5.1cm is the height of the base when wheels contact ground -->
+  </pr2_base>
+
+  <pr2_torso name="torso_lift" parent="base_link">
+    <origin xyz="-0.05 0 0.739675" rpy="0 0 0" />
+  </pr2_torso>
+
+  <pr2_head name="head" parent="torso_lift_link">
+    <!--origin xyz="0 0 0.3815" rpy="0 0 0" /-->
+    <origin xyz="${cal_head_x}    ${cal_head_y}     ${0.3915+cal_head_z}"
+            rpy="${cal_head_roll} ${cal_head_pitch} ${cal_head_yaw}" />
+  </pr2_head>
+
+  <!-- Camera package: double stereo, prosilica -->
+  <pr2_head_sensor_package name="sensor_mount" hd_name="high_def" 
+			   stereo_name="double_stereo" 
+			   parent="head_plate_frame">
+    <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+  </pr2_head_sensor_package>
+    
+  <pr2_tilting_laser name="laser_tilt" parent="torso_lift_link">
+    <!--origin xyz="0.1 0 0.19525" rpy="0 0 0" /-->
+    <origin xyz="0.1 0 0.235" rpy="0 0 0" />
+  </pr2_tilting_laser>
+
+  <pr2_arm side="r" reflect="-1" parent="torso_lift_link">
+    <origin xyz="0 -0.188 0.0" rpy="0 0 0" />
+  </pr2_arm>
+  <pr2_gripper screw_reduction="${2.0/1000.0}" gear_ratio="${29.16}" side="r" parent="r_wrist_roll_link" >
+    <origin xyz="0 0 0" rpy="0 0 0" />
+  </pr2_gripper>
+
+  <!--
+  <pr2_arm side="l" reflect="1" parent="torso_lift_link">
+    <origin xyz="0.0 0.188 0.0" rpy="0 0 0" />
+  </pr2_arm>
+  <pr2_gripper screw_reduction="${2.0/1000.0}" gear_ratio="${29.16}" side="l" parent="l_wrist_roll_link" />
+    <origin xyz="0 0 0" rpy="0 0 0" />
+  </pr2_gripper>
+  -->
+
+  <!-- Forearm Cam (Hand approximated values) -->
+  <mono_cam name="r_forearm_cam" parent="r_forearm_roll_link">
+    <origin xyz=".15 0 .07"
+            rpy="${-M_PI/2} ${-45*M_PI/180} 0" />
+  </mono_cam>
+
+  <!-- Kinematic chains -->
+  <!--chain root="torso_lift_link" tip="l_wrist_roll_link" /-->
+  <chain root="torso_lift_link" tip="r_wrist_roll_link" />
+
+</robot>

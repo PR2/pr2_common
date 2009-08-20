@@ -1,0 +1,13 @@
+8/6/08
+piccoli@willowgarage.com
+
+This folder includes stl modles of the pr2 robot.  
+These files were generated from the Pro Engineering models. 
+A file including the necessary offsets to regenerate the robot is included.
+
+Both low and high resolution models are included.  
+
+1/15/09
+johnhsu@willowgarage.com
+Only high resolution models are present here.
+Low resolution models have been deleted and can be generated using convex_decomposition package.

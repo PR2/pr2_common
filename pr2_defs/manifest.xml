@@ -1,0 +1,19 @@
+<package>
+
+  <description brief="PR2 Robot Definitions">
+    
+    This package contains XML (and xacro macros) descriptions of robot kinematics in the format
+    defined at Willow Garage.
+    
+  </description>
+  <author>Eric Berger, Sachin Chitta, John Hsu</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  
+  <depend package="wg_robot_description_parser" />
+  <depend package="xacro"/>
+  <depend package="convex_decomposition"/>
+  <depend package="ivcon"/>
+  <url>http://pr.willowgarage.com/wiki/RobotDescriptionFormat</url>
+
+</package>

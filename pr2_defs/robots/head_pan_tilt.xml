@@ -1,0 +1,18 @@
+<robot name="head_pan_tilt">
+
+  <include filename="$(find pr2_defs)/defs/head_defs.xml" />
+  <include filename="$(find pr2_defs)/defs/body_defs.xml" />
+
+  <pr2_torso name="torso_lift" parent="world">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+  </pr2_torso>
+
+  <pr2_head_pan name="head_pan" parent="torso_lift_link">
+    <origin xyz="0 0 0.3815" rpy="0 0 0" />
+  </pr2_head_pan>
+
+  <pr2_head_tilt name="head_tilt" parent="head_pan_link">
+    <origin xyz="0.058 0 0" rpy="0 0 0" />
+  </pr2_head_tilt>
+
+</robot>

@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+
+<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
+
+  <property name="M_PI" value="3.1415926535897931" />
+
+ <macro name="pr2_tilting_laser_alpha2_ext" params="name">
+
+    <gazebo reference="${name}_mount_link">
+      <material value="PR2/Red" />
+    </gazebo>
+    <gazebo name="sensor" reference="${name}_link">
+      <sensor:ray name="${name}">
+        <rayCount>640</rayCount>
+        <rangeCount>640</rangeCount>
+        <laserCount>1</laserCount>
+
+        <origin>0.0 0.0 0.0</origin>
+        <displayRays>false</displayRays>
+
+        <minAngle>-80</minAngle>
+        <maxAngle> 80</maxAngle>
+
+        <minRange>0.05</minRange>
+        <maxRange>10.0</maxRange>
+        <resRange>0.01</resRange>
+        <updateRate>20.0</updateRate>
+        <controller:ros_laser name="ros_${name}_controller" plugin="libros_laser.so">
+          <gaussianNoise>0.005</gaussianNoise>
+          <alwaysOn>true</alwaysOn>
+          <updateRate>20.0</updateRate>
+          <topicName>tilt_scan</topicName>
+          <frameName>${name}_link</frameName>
+          <interface:laser name="ros_${name}_iface" />
+        </controller:ros_laser>
+      </sensor:ray>
+    </gazebo>
+
+  </macro>
+
+
+</robot>

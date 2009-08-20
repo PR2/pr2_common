@@ -1,0 +1,100 @@
+<?xml version="1.0"?>
+
+<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
+
+  <macro name="pr2_torso" params="name parent *origin">
+
+    <joint name="${name}_joint" type="prismatic">
+      <!-- KWatts: Max should be 0.31, changed to 0.20 to prevent jamming -->
+      <!-- HW ticket 481, will examine spine to determine failures -->
+      <limit min="0.0" max="0.20" effort="10000"
+             velocity="0.015" k_velocity="400000"
+             safety_length_min="0.005" safety_length_max="0.005" k_position="1000" />
+      <calibration reference_position="0.00536" values="0 0" />
+      <axis xyz="0 0 1" />
+      <joint_properties damping="10.0" />
+    </joint>
+
+    <transmission type="SimpleTransmission" name="${name}_trans">
+      <actuator name="${name}_motor" />
+      <joint name="${name}_joint" />
+      <mechanicalReduction>-52143.33</mechanicalReduction>
+    </transmission>
+
+    <link name="${name}_link">
+      <parent name="${parent}" />
+      <insert_block name="origin" />
+      <joint name="${name}_joint" />
+
+      <inertial>
+        <mass value="36.248046" />
+        <com xyz="-0.1 0 -0.0885" />
+        <inertia ixx="2.771653750257" ixy="0.004284522609" ixz="-0.160418504506"
+                 iyy="2.510019507959" iyz="0.029664468704" izz="0.526432355569" />
+      </inertial>
+
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <map name="gazebo_material" flag="gazebo">
+	  <elem key="material" value="PR2/Grey2" />
+        </map>
+        <geometry name="${name}_visual">
+          <mesh filename="torso.stlb" />
+        </geometry>
+        <map name="${name}_visual_mesh" flag="ogre">
+          <elem key="mesh" value="torso.mesh" />
+        </map>
+      </visual>
+
+      <collision>
+        <origin xyz="-0.1 0 -0.0885" rpy="0 0 0" />
+        <geometry name="${name}_collision">
+          <box size="0.30 0.620 0.823" />
+        </geometry>
+      </collision>
+      <map name="${name}_sensor" flag="gazebo">
+        <verbatim key="${name}_bumper_sensor">
+          <sensor:contact name="${name}_contact_sensor">
+            <geom>${name}_collision</geom>
+            <updateRate>100.0</updateRate>
+            <controller:ros_bumper name="${name}_ros_bumper_controller" plugin="libros_bumper.so">
+              <alwaysOn>true</alwaysOn>
+              <updateRate>100.0</updateRate>
+              <bumperTopicName>${name}_bumper</bumperTopicName>
+              <interface:bumper name="${name}_ros_bumper_iface" />
+            </controller:ros_bumper>
+          </sensor:contact>
+        </verbatim>
+      </map>
+    </link>
+  </macro>
+
+
+  <!--                    Calibration                            -->
+
+  <macro name="torso_calibrator">
+    <controller type="JointCalibrationControllerNode"
+                name="cal_torso_lift" topic="cal_torso">
+      <calibrate joint="torso_lift_joint"
+                 actuator="torso_lift_motor"
+                 transmission="torso_lift_trans"
+                 velocity="-2.0" />
+      <pid p="20000.0" i="10" d="0" iClamp="1000" />
+    </controller>
+  </macro>
+
+<!-- Calibrates the torso by moving to the upper limit -->
+<macro name="torso_limit_calibrator">
+ <controller type="JointLimitCalibrationControllerNode"
+    name="cal_torso_lift" topic="cal_torso">
+   <calibrate joint="torso_lift_joint"
+              actuator="torso_lift_motor"
+              transmission="torso_lift_trans"
+              velocity="2.0" />
+   <pid p="20000" i="25" d="0" iClamp="1000" />
+ </controller>
+</macro>
+
+</robot>

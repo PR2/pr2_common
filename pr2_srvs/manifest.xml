@@ -1,0 +1,19 @@
+<package>
+  <description brief="Common ROS Services">
+
+    Service definitions that are specific to PR2
+
+  </description>
+  <author>Morgan Quigley/mquigley@cs.stanford.edu</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://pr.willowgarage.com/wiki/std_srvs</url>
+  <logo>http://www.willowgarage.com/files/willowgarage/robot10.jpg</logo>
+  <depend package="pr2_msgs"/>
+  <depend package="std_msgs"/>
+  <depend package="deprecated_msgs"/>
+  <export>
+    <cpp cflags="-I${prefix}/srv/cpp"/>
+  </export>
+</package>
+

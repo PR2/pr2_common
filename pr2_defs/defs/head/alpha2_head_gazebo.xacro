@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+
+<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
+
+  <property name="M_PI" value="3.1415926535897931" />
+
+  <!-- Alpha 2.0 head -->
+  <!-- Different calibration values, effort/position limits and 
+       different joint link positions -->
+  <macro name="pr2_head_pan_alpha2_gazebo" params="name">
+    <gazebo reference="${name}_link">
+      <material value="PR2/Blue" />
+    </gazebo>
+  </macro>
+
+  <!-- Reverts to small tilt motor, still has same cal flags and limits -->
+  <macro name="pr2_head_tilt_alpha2_gazebo" params="name">
+    <gazebo reference="${name}_link">
+      <material value="PR2/Green" />
+    </gazebo>
+  </macro>
+
+
+  <macro name="pr2_head_tilt_alpha2a_gazebo" params="name">
+    <!-- Motor must be configured with 148877 motor -->
+    <gazebo reference="${name}_link">
+      <material value="PR2/Green" />
+    </gazebo>
+  </macro>
+
+  <macro name="pr2_head_tilt_alpha2b_gazebo" params="name">
+    <gazebo reference="${name}_link">
+      <material value="PR2/Green" />
+    </gazebo>
+  </macro>
+
+  <macro name="pr2_head_alpha2_gazebo" params="name">
+    <gazebo reference="${name}_plate_frame">
+      <material value="PR2/Blue" />
+    </gazebo>
+  </macro>
+
+
+  <!-- Difference between two heads is motors and gearheads -->
+  <macro name="pr2_head_alpha2a_gazebo" params="name">
+    <gazebo reference="${name}_plate_frame">
+      <material value="PR2/Blue" />
+    </gazebo>
+  </macro>
+
+  <macro name="pr2_head_alpha2b_gazebo" params="name">
+    <gazebo reference="${name}_plate_frame">
+      <material value="PR2/Blue" />
+    </gazebo>
+  </macro>
+
+
+</robot>

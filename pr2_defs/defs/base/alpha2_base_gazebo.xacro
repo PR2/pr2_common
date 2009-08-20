@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
+
+
+  <!-- simplified box collision geometry for hokuyo laser -->
+  <property name="base_laser_x" value="0.275" />
+  <property name="base_laser_y" value="0.0" />
+  <property name="base_laser_z" value="0.252" />
+  <property name="base_laser_size_x" value="0.08" />
+  <property name="base_laser_size_y" value="0.08" />
+  <property name="base_laser_size_z" value="0.03" />
+  <property name="base_laser_collision_offset_z" value="0.03" />
+
+
+  <!--                                                      -->
+  <!-- Alpha 2.0 hardware                                   -->
+  <!--                                                      -->
+  <macro name="pr2_wheel_alpha2_gazebo" params="suffix parent">
+
+    <gazebo reference="${parent}_${suffix}_wheel_link">
+      <sensor:contact name="${parent}_${suffix}_wheel_contact_sensor">
+        <geom>${parent}_${suffix}_wheel_collision</geom>
+        <updateRate>100.0</updateRate>
+        <controller:ros_bumper name="${parent}_${suffix}_wheel_ros_bumper_controller" plugin="libros_bumper.so">
+          <alwaysOn>true</alwaysOn>
+          <updateRate>100.0</updateRate>
+          <bumperTopicName>${parent}_${suffix}_wheel_bumper</bumperTopicName>
+          <interface:bumper name="${parent}_${suffix}_wheel_ros_bumper_iface" />
+        </controller:ros_bumper>
+      </sensor:contact>
+      <mu1 value="100.0" />
+      <mu2 value="100.0" />
+      <kp  value="1000000.0" />
+      <kd  value="1.0" />
+    </gazebo>
+
+  </macro>
+
+  <macro name="pr2_base_alpha2_gazebo" params="name">
+
+    <gazebo reference="${name}_link">
+      <sensor:contact name="${name}_contact_sensor">
+        <geom>${name}_collision</geom>
+        <updateRate>100.0</updateRate>
+        <controller:ros_bumper name="${name}_ros_bumper_controller" plugin="libros_bumper.so">
+          <alwaysOn>true</alwaysOn>
+          <updateRate>100.0</updateRate>
+          <bumperTopicName>${name}_bumper</bumperTopicName>
+          <interface:bumper name="${name}_bumper_iface" />
+        </controller:ros_bumper>
+      </sensor:contact>
+      <material value="PR2/Green" />
+      <controller:ros_p3d name="p3d_base_controller" plugin="libros_p3d.so">
+        <alwaysOn>true</alwaysOn>
+        <updateRate>100.0</updateRate>
+        <bodyName>${name}_link</bodyName>
+        <topicName>${name}_pose_ground_truth</topicName>
+        <gaussianNoise>0.01</gaussianNoise>
+        <frameName>map</frameName>
+        <xyzOffsets>25.7 25.7 0</xyzOffsets> <!-- initialize odometry for fake localization-->
+        <rpyOffsets>0 0 0</rpyOffsets>
+        <interface:position name="p3d_base_position"/>
+      </controller:ros_p3d>
+    </gazebo>
+
+    <!-- base laser -->
+    <gazebo reference="base_laser">
+      <sensor:ray name="base_laser">
+        <rayCount>640</rayCount>
+        <rangeCount>640</rangeCount>
+        <laserCount>1</laserCount>
+        <origin>0.0 0.0 0.0</origin>
+        <displayRays>false</displayRays>
+
+        <minAngle>-100</minAngle> <!-- scans own arms if -135~+135 -->
+        <maxAngle>100</maxAngle>
+
+        <minRange>0.05</minRange>
+        <maxRange>10.0</maxRange>
+        <resRange>0.01</resRange>
+        <updateRate>20.0</updateRate>
+        <controller:ros_laser name="ros_base_laser_controller" plugin="libros_laser.so">
+          <gaussianNoise>0.005</gaussianNoise>
+          <alwaysOn>true</alwaysOn>
+          <updateRate>20.0</updateRate>
+          <topicName>base_scan</topicName>
+          <frameName>base_laser</frameName>
+          <interface:laser name="ros_base_laser_iface" />
+        </controller:ros_laser>
+      </sensor:ray>
+      <material value="PR2/Red" />
+    </gazebo>
+
+  </macro>
+
+
+
+
+
+</robot>

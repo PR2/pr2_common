@@ -1,0 +1,341 @@
+<?xml version="1.0"?>
+
+<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
+
+  <include filename="$(find pr2_defs)/defs/head/alpha2_head_gazebo.xacro" />
+  <include filename="$(find pr2_defs)/defs/head/alpha2_head_transmission.xacro" />
+
+  <property name="M_PI" value="3.1415926535897931" />
+
+
+  <!-- Alpha 2.0 head -->
+  <!-- Different calibration values, effort/position limits and 
+       different joint link positions -->
+  <macro name="pr2_head_pan_alpha2" params="name parent *origin">
+
+    <joint name="${name}_joint" type="revolute">
+      <axis xyz="0 0 1" />
+      <limit lower="-2.92" upper="2.92" effort="2.645" velocity="6" />
+      <safety_controller k_velocity="1.5" soft_lower_limit="${-2.92+0.15}" soft_upper_limit="${2.92-0.15}" k_position="100" />
+      <calibration reference_position="${0.0+cal_head_pan_flag_alpha2}" />
+      <dynamics damping="1.0" />
+      <insert_block name="origin" />
+      <parent link="${parent}"/>
+      <child link="${name}_link"/>
+    </joint>
+    <link name="${name}_link">
+
+
+      <inertial>
+        <mass value="1.611118" />
+        <origin xyz="-0.005717  0.010312 -0.029649" rpy="0 0 0" />
+        <inertia ixx="0.00482611007"   ixy="-0.000144683999"  ixz="0.000110076136"
+                 iyy="0.005218991412"  iyz="-0.000314239509"  izz="0.008618784925" />
+      </inertial>
+
+      <visual name="${name}_visual">
+        <origin xyz="0 0 0.0" rpy="0 0 0 " />
+        <geometry name="${name}_visual_geom">
+          <mesh filename="package://pr2_defs/meshes/head_pan.stl" />
+        </geometry>
+        
+        <material name="Blue" />
+      </visual>
+
+      <collision name="${name}_collision">
+        <origin xyz="-0.005717  0.010312 -0.029649" rpy="0.0 0.0 0.0 " />
+        <geometry name="${name}_collision_geom">
+          <box size="0.188 0.219 0.137" />
+        </geometry>
+      </collision>
+
+    </link>
+
+    <!-- extensions -->
+    <pr2_head_pan_alpha2_gazebo name="${name}" />
+    <pr2_head_pan_alpha2_transmission name="${name}" />
+  </macro>
+
+  <!-- Reverts to small tilt motor, still has same cal flags and limits -->
+  <macro name="pr2_head_tilt_alpha2" params="name parent *origin">
+
+    <joint name="${name}_joint" type="revolute">
+      <axis xyz="0 1 0" />
+      <limit lower="-0.45" upper="1.37" effort="12" velocity="5" />
+      <safety_controller k_velocity="100" soft_lower_limit="${-0.45+0.02}" soft_upper_limit="${1.37-0.02}" k_position="100" />
+      <calibration reference_position="${0.0+cal_head_tilt_flag}" />
+      <dynamics damping="1.0" />
+      <insert_block name="origin" />
+      <parent link="${parent}"/>
+      <child link="${name}_link"/>
+    </joint>
+    <link name="${name}_link">
+
+
+      <inertial>
+        <mass value="1.749727" />
+        <origin xyz="0.041935 0.003569 0.028143" rpy="0 0 0" />
+        <inertia ixx="0.010602303435"  ixy="-0.000408814235"  ixz="0.00198303894"  iyy="0.011874383747"  iyz="0.000197908779"  izz="0.005516790626" />
+      </inertial>
+
+      <visual name="${name}_visual">
+        <origin xyz="0 0 0" rpy="0.0 0.0 0.0 " />
+        <geometry name="${name}_visual_geom">
+          <mesh filename="package://pr2_defs/meshes/head_tilt.stl" />
+        </geometry>
+        
+        <material name="Green" />
+      </visual>
+
+      <collision name="${name}_collision">
+        <origin xyz="0.041935 0.003569 0.028143" rpy="0 0 0" />
+        <geometry name="${name}_collision_geom">
+          <box size="0.064 0.253 0.181" />
+        </geometry>
+      </collision>
+    </link>
+
+    <!-- extensions -->
+    <pr2_head_tilt_alpha2_gazebo name="${name}" />
+    <pr2_head_tilt_alpha2_transmission name="${name}" />
+  </macro>
+
+
+  <macro name="pr2_head_tilt_alpha2a" params="name parent *origin">
+    <!-- Motor must be configured with 148877 motor -->
+    <joint name="${name}_joint" type="revolute">
+      <axis xyz="0 1 0" />
+      <limit lower="-0.45" upper="1.37" effort="12.0" velocity="5" />
+      <safety_controller k_velocity="10" soft_lower_limit="${-0.45+0.02}" soft_upper_limit="${1.37-0.02}" k_position="100" />
+      <calibration reference_position="${0.0+cal_head_tilt_flag_alpha2}" />
+      <dynamics damping="1.0" />
+      <insert_block name="origin" />
+      <parent link="${parent}"/>
+      <child link="${name}_link"/>
+    </joint>
+    <link name="${name}_link">
+
+
+      <inertial>
+        <mass value="1.749727" />
+        <origin xyz="0.041935 0.003569 0.028143" rpy="0 0 0" />
+        <inertia ixx="0.010602303435"  ixy="-0.000408814235"  ixz="0.00198303894"  iyy="0.011874383747"  iyz="0.000197908779"  izz="0.005516790626" />
+      </inertial>
+
+      <visual name="${name}_visual">
+        <origin xyz="0 0 0" rpy="0.0 0.0 0.0" />
+        <geometry name="${name}_visual_geom">
+          <mesh filename="package://pr2_defs/meshes/head_tilt.stl" />
+        </geometry>
+        
+        <material name="Green" />
+      </visual>
+
+      <collision name="${name}_collision">
+        <origin xyz="0.041935 0.003569 0.028143" rpy="0 0 0" />
+        <geometry name="${name}_collision_geom">
+          <box size="0.064 0.253 0.181" />
+        </geometry>
+      </collision>
+    </link>
+
+    <!-- extensions -->
+    <pr2_head_tilt_alpha2a_gazebo name="${name}"/>
+    <pr2_head_tilt_alpha2a_transmission name="${name}"/>
+  </macro>
+
+ <macro name="pr2_head_tilt_alpha2b" params="name parent *origin">
+    <joint name="${name}_joint" type="revolute">
+      <axis xyz="0 1 0" />
+      <limit lower="-0.45" upper="1.37" effort="12.0" velocity="5" />
+      <safety_controller k_velocity="10" soft_lower_limit="${-0.45+0.02}" soft_upper_limit="${1.37-0.02}" k_position="100" />
+      <calibration reference_position="${0.0+cal_head_tilt_flag_alpha2}" />
+      <dynamics damping="1.0" />
+      <insert_block name="origin" />
+      <parent link="${parent}"/>
+      <child link="${name}_link"/>
+    </joint>
+    <link name="${name}_link">
+
+
+      <inertial>
+        <mass value="1.749727" />
+        <origin xyz="0.041935 0.003569 0.028143" rpy="0 0 0" />
+        <inertia ixx="0.010602303435"  ixy="-0.000408814235"  ixz="0.00198303894"
+                 iyy="0.011874383747"  iyz="0.000197908779"
+                 izz="0.005516790626" />
+      </inertial>
+
+      <visual name="${name}_visual">
+        <origin xyz="0 0 0" rpy="0.0 0.0 0.0 " />
+        <geometry name="${name}_visual_geom">
+          <mesh filename="package://pr2_defs/meshes/head_tilt.stl" />
+        </geometry>
+        
+        <material name="Green" />
+      </visual>
+
+      <collision name="${name}_collision">
+        <origin xyz="0.041935 0.003569 0.028143" rpy="0 0 0" />
+        <geometry name="${name}_collision_geom">
+          <box size="0.064 0.253 0.181" />
+        </geometry>
+      </collision>
+    </link>
+
+    <!-- extensions -->
+    <pr2_head_tilt_alpha2b_gazebo name="${name}"/>
+    <pr2_head_tilt_alpha2b_transmission name="${name}"/>
+  </macro>
+
+ <macro name="pr2_head_alpha2" params="name parent *origin">
+    <pr2_head_pan_alpha2 name="${name}_pan" parent="${parent}">
+      <insert_block name="origin" />
+    </pr2_head_pan_alpha2>
+
+    <pr2_head_tilt_alpha2 name="${name}_tilt" parent="${name}_pan_link">
+      <!-- Tilt axis moves forward on Alpha 2.0 head, pan moves back -->
+      <origin xyz="0.068 0 0" rpy="0 0 0" />
+    </pr2_head_tilt_alpha2>
+
+    <!-- Head plate frame -->
+    <joint name="${name}_plate_frame_joint" type="fixed">
+      <origin xyz="0.0232 0 0.0645" rpy="0 0 0" />
+      <parent link="${name}_tilt_link"/>
+      <child link="${name}_plate_frame"/>
+    </joint>
+    <link name="${name}_plate_frame">
+
+      <inertial>
+        <mass value="0.01" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <inertia ixx="0.001"  ixy="0.0"  ixz="0.0"
+                 iyy="0.001"  iyz="0.0"
+                 izz="0.001" />
+      </inertial>
+
+      <visual name="${name}_plate_frame_visual">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry name="${name}_plate_frame_visual_geom">
+          <box size="0.01 0.01 0.01" />
+        </geometry>
+        
+        <material name="Green" />
+      </visual>
+
+      <collision name="${name}_plate_frame_collision">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry name="${name}_plate_frame_collision_geom">
+          <box size="0.01 0.01 0.01" />
+        </geometry>
+      </collision>
+    </link>
+
+    <!-- extensions -->
+    <pr2_head_alpha2_gazebo name="${name}"/>
+  </macro>
+
+
+  <!-- Difference between two heads is motors and gearheads -->
+  <macro name="pr2_head_alpha2a" params="name parent *origin">
+    <pr2_head_pan_alpha2 name="${name}_pan" parent="${parent}">
+      <insert_block name="origin" />
+    </pr2_head_pan_alpha2>
+
+    <pr2_head_tilt_alpha2a name="${name}_tilt" parent="${name}_pan_link">
+      <!-- Head tilt axis moves 1 cm fwd, pan moves 1cm back in A2 -->
+      <origin xyz="0.068 0 0" rpy="0 0 0" />
+    </pr2_head_tilt_alpha2a>
+
+    <!-- Head plate frame -->
+    <joint name="${name}_plate_frame_joint" type="fixed">
+      <origin xyz="0.0232 0 0.0645" rpy="0 0 0" />     
+      <parent link="${name}_tilt_link"/>
+      <child link="${name}_plate_frame"/>
+    </joint>
+    <link name="${name}_plate_frame">
+
+      <inertial>
+        <mass value="0.01" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <inertia ixx="0.001"  ixy="0.0"  ixz="0.0"
+                 iyy="0.001"  iyz="0.0"
+                 izz="0.001" />
+      </inertial>
+
+      <visual name="${name}_plate_frame_visual">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry name="${name}_plate_frame_visual_geom">
+          <box size="0.01 0.01 0.01" />
+        </geometry>
+        
+        <material name="Blue" />
+      </visual>
+
+      <collision name="${name}_plate_frame_collision">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry name="${name}_plate_frame_collision_geom">
+          <box size="0.01 0.01 0.01" />
+        </geometry>
+      </collision>
+    </link>
+
+    <!-- extensions -->
+    <pr2_head_alpha2a_gazebo name="${name}"/>
+    <pr2_head_alpha2a_transmission name="${name}"/>
+    
+  </macro>
+
+ <macro name="pr2_head_alpha2b" params="name parent *origin">
+    <pr2_head_pan_alpha2 name="${name}_pan" parent="${parent}">
+      <insert_block name="origin" />
+    </pr2_head_pan_alpha2>
+
+    <pr2_head_tilt_alpha2b name="${name}_tilt" parent="${name}_pan_link">
+      <!-- Head tilt axis moves 1 cm fwd, pan moves 1cm back in A2 -->
+      <origin xyz="0.068 0 0" rpy="0 0 0" />
+    </pr2_head_tilt_alpha2b>
+
+    <!-- Head plate frame -->
+    <joint name="${name}_plate_frame_joint" type="fixed">
+      <origin xyz="0.0232 0 0.0645" rpy="0 0 0" />     
+      <parent link="${name}_tilt_link"/>
+      <child link="${name}_plate_frame"/>
+    </joint>
+    <link name="${name}_plate_frame">
+
+      <inertial>
+        <mass value="0.01" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <inertia ixx="0.001"  ixy="0.0"  ixz="0.0"
+                 iyy="0.001"  iyz="0.0"
+                 izz="0.001" />
+      </inertial>
+
+      <visual name="${name}_plate_frame_visual">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry name="${name}_plate_frame_visual_geom">
+          <box size="0.01 0.01 0.01" />
+        </geometry>
+        
+        <material name="Blue" />
+      </visual>
+
+      <collision name="${name}_plate_frame_collision">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry name="${name}_plate_frame_collision_geom">
+          <box size="0.01 0.01 0.01" />
+        </geometry>
+      </collision>
+    </link>
+
+    <!-- extensions -->
+    <pr2_head_alpha2b_gazebo name="${name}"/>
+    <pr2_head_alpha2b_transmission name="${name}"/>
+    
+  </macro>
+
+
+</robot>

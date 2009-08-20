@@ -1,0 +1,224 @@
+<?xml version="1.0"?>
+<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
+
+  <include filename="$(find pr2_defs)/defs/base/alpha2_base_gazebo.xacro" />
+  <include filename="$(find pr2_defs)/defs/base/alpha2_base_transmission.xacro" />
+
+  <property name="M_PI" value="3.1415926535897931" />
+
+  <property name="caster_offset_x" value="0.2225" />
+  <property name="caster_offset_y" value="0.2225" />
+  <property name="caster_offset_z" value="0.0282" />
+
+  <property name="caster_wheel_offset_y" value="0.049" /> <!-- from function spreadsheet -->
+  <property name="wheel_length" value="0.03" />  <!-- FIXME -->
+  <property name="wheel_radius" value="0.074792" />   <!-- This is the 'effective' wheel radius. Wheel radius for uncompressed wheel is 0.079.  mp 20080801 -->
+
+  <!-- based on 090224_link_data from function engineering -->
+  <property name="base_cg_x" value="-0.061" />
+  <property name="base_cg_y" value="0.0" />
+  <property name="base_cg_z" value="0.293" />
+  <property name="base_mass" value="116.0" />
+
+  <!-- base appears "raised" from our initial geom def from function -->
+  <property name="base_height_offset" value="0.05" />
+
+  <!-- simplified box collision geometry for base -->
+  <property name="base_size_x" value="0.65" />
+  <property name="base_size_y" value="0.65" />
+  <property name="base_size_z" value="0.23" />
+  <!-- simplified box collision geometry for hokuyo laser -->
+  <property name="base_laser_x" value="0.275" />
+  <property name="base_laser_y" value="0.0" />
+  <property name="base_laser_z" value="0.252" />
+  <property name="base_laser_size_x" value="0.08" />
+  <property name="base_laser_size_y" value="0.08" />
+  <property name="base_laser_size_z" value="0.03" />
+  <property name="base_laser_collision_offset_z" value="0.03" />
+
+  <!--                                                      -->
+  <!-- Alpha 2.0 hardware                                   -->
+  <!--                                                      -->
+  <macro name="pr2_wheel_alpha2" params="suffix parent reflect">
+
+    <joint name="${parent}_${suffix}_wheel_joint" type="continuous">
+      <axis xyz="0 1 0" />
+      <limit effort="100" velocity="100"/>
+      <safety_controller  k_velocity="10" />
+      <dynamics damping="0.0" friction="0.0" />
+      <origin xyz="0 ${reflect*caster_wheel_offset_y} 0" rpy="0 0 0" />
+      <parent link="${parent}_rotation_link"/>
+      <child link="${parent}_${suffix}_wheel_link"/>
+    </joint>
+    <link name="${parent}_${suffix}_wheel_link">
+      <inertial>
+        <mass value="0.44036" /> <!-- check jmh 20081205 -->
+        <origin xyz="0 0 0" />
+        <inertia  ixx="0.012411765597" ixy="-0.000711733678" ixz="0.00050272983"
+                  iyy="0.015218160428" iyz="-0.000004273467" izz="0.011763977943" />
+      </inertial>
+      <visual name="${parent}_${suffix}_wheel_visual">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry name="${parent}_${suffix}_wheel_visual_geom">
+          <mesh filename="package://pr2_defs/meshes/pr2_wheel.stl" />
+        </geometry>
+        
+        <material name="Caster_${suffix}" />
+      </visual>
+      <collision name="${parent}_${suffix}_wheel_collision">
+        <origin xyz="0 0 0" rpy="${M_PI/2} 0 0" />
+        <geometry name="${parent}_${suffix}_wheel_collision_geom">
+          <cylinder radius="${wheel_radius}" length="${wheel_length}" />
+        </geometry>
+      </collision>
+    </link>
+
+    <!-- extensions -->
+    <pr2_wheel_alpha2_gazebo parent="${parent}" suffix="${suffix}" />
+    <pr2_wheel_alpha2_transmission parent="${parent}" suffix="${suffix}" reflect="${reflect}" />
+
+  </macro>
+
+  <macro name="pr2_caster_alpha2" params="suffix parent *origin ref_position">
+
+    <joint name="${suffix}_caster_rotation_joint" type="continuous">
+      <axis xyz="0 0 1" />
+      <limit effort="100" velocity="100"/>
+      <safety_controller  k_velocity="10" />
+      <calibration reference_position="${ref_position}" />
+      <dynamics damping="0.0" friction="0.0" />
+      <insert_block name="origin" />
+      <parent link="${parent}"/>
+      <child link="${suffix}_caster_rotation_link" />
+    </joint>
+    <link name="${suffix}_caster_rotation_link">
+
+      <inertial>
+        <mass value="3.473082"/>
+        <origin xyz="0 0 0.07" />
+        <inertia  ixx="0.012411765597" ixy="-0.000711733678" ixz="0.00050272983"
+                  iyy="0.015218160428" iyz="-0.000004273467" izz="0.011763977943" />
+      </inertial>
+
+      <visual name="${suffix}_caster_rotation_visual">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry name="${suffix}_caster_rotation_visual_geom">
+          <mesh filename="package://pr2_defs/meshes/caster.stl" />
+        </geometry>
+        
+        <material name="Green" />
+      </visual>
+
+      <collision name="${suffix}_caster_rotation_collision">
+        <origin xyz="0 0 0.07" rpy="0.0 0.0 0.0" />
+        <geometry name="${suffix}_caster_rotation_collision_geom">
+          <box size="0.192 0.164 0.013" />
+        </geometry>
+      </collision>
+    </link>
+
+    <!-- Double check these are right for the Alpha 2.0's -->
+    <pr2_wheel_alpha2 parent="${suffix}_caster" suffix="l" reflect="1" />
+    <pr2_wheel_alpha2 parent="${suffix}_caster" suffix="r" reflect="-1" />
+
+    <!-- extensions -->
+    <pr2_caster_alpha2_transmission suffix="${suffix}" />
+
+  </macro>
+
+
+  <macro name="pr2_base_alpha2" params="name *origin">
+
+
+    <joint name="${name}_joint" type="planar">
+      <insert_block name="origin" />
+      <parent link="world"/>
+      <child link="${name}_link" />
+    </joint>
+    <link name="${name}_link">
+
+      <inertial>
+        <mass value="${base_mass}" />
+        <origin xyz="${base_cg_x} ${base_cg_y} ${base_cg_z}" />
+        <inertia ixx="5.652232699207" ixy="-0.009719934438" ixz="1.293988226423"
+                 iyy="5.669473158652" iyz="-0.007379583694" izz="3.683196351726" />
+      </inertial>
+
+      <visual name="${name}_visual">
+        <origin xyz="0 0 ${base_height_offset}" rpy="0 0 0" />
+        <geometry name="${name}_visual_geom">
+          <mesh filename="package://pr2_defs/meshes/base.stl" />
+        </geometry>
+        
+        <material name="Green" />
+      </visual>
+
+      <collision name="${name}_collision">
+        <origin xyz="0 0 ${base_height_offset+base_size_z/2}" rpy="0 0 0" />
+        <geometry name="${name}_collision_geom">
+          <box size="${base_size_x} ${base_size_y} ${base_size_z}" />
+        </geometry>
+      </collision>
+    </link>
+
+
+    <!-- base laser -->
+    <joint name="base_laser_joint" type="fixed">
+      <axis xyz="0 1 0" />
+      <origin xyz="${base_laser_x} ${base_laser_y} ${base_height_offset+base_laser_z}" rpy="0 0 0" />
+      <parent link="${name}_link"/>
+      <child link="base_laser" />
+    </joint>
+    <link name="base_laser" type="laser">
+
+
+      <inertial>
+        <mass value="1.0" />
+        <origin xyz="0 0 0" />
+        <inertia ixx="0.1" ixy="0" ixz="0" iyy="0.1" iyz="0" izz="0.1" />
+      </inertial>
+
+      <visual name="base_lvisual">
+        <origin xyz="0 0 ${base_laser_collision_offset_z}" rpy="0 0 0" />
+        <geometry name="base_laser_visual_geom">
+          <box size="${base_laser_size_x} ${base_laser_size_y} ${base_laser_size_z}"/>
+        </geometry>
+        
+        <material name="Red" />
+      </visual>
+
+      <collision name="base_lcollision">
+        <origin xyz="0 0 ${base_laser_collision_offset_z}" rpy="0 0 0" />
+        <geometry name="base_laser_collision_geom">
+          <box size="${base_laser_size_x} ${base_laser_size_y} ${base_laser_size_z}"/>
+        </geometry>
+      </collision>
+
+    </link>
+
+    <!-- all four caster macros -->
+    <pr2_caster_alpha2 suffix="fl" parent="${name}_link" ref_position="${cal_caster_fl}" >
+      <origin xyz="${caster_offset_x} ${caster_offset_y} ${caster_offset_z}" rpy="0 0 0" />
+    </pr2_caster_alpha2>
+    <pr2_caster_alpha2 suffix="fr" parent="${name}_link" ref_position="${cal_caster_fr}" >
+      <origin xyz="${caster_offset_x} ${-caster_offset_y} ${caster_offset_z}" rpy="0 0 0" />
+    </pr2_caster_alpha2>
+    <pr2_caster_alpha2 suffix="bl" parent="${name}_link" ref_position="${cal_caster_bl}" >
+      <origin xyz="${-caster_offset_x} ${caster_offset_y} ${caster_offset_z}" rpy="0 0 0" />
+    </pr2_caster_alpha2>
+    <pr2_caster_alpha2 suffix="br" parent="${name}_link" ref_position="${cal_caster_br}"  >
+      <origin xyz="${-caster_offset_x} ${-caster_offset_y} ${caster_offset_z}" rpy="0 0 0" />
+    </pr2_caster_alpha2>
+
+    <!-- gazebo extensions -->
+    <pr2_base_alpha2_gazebo name="${name}" />
+
+  </macro>
+
+
+
+
+
+</robot>

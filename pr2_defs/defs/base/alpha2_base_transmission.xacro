@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
+
+  <!--                                                      -->
+  <!-- Alpha 2.0 hardware                                   -->
+  <!--                                                      -->
+  <macro name="pr2_wheel_alpha2_transmission" params="suffix parent reflect">
+    <transmission type="SimpleTransmission" name="${parent}_${suffix}_wheel_trans">
+      <actuator name="${parent}_${suffix}_wheel_motor_alpha2" />
+      <joint name="${parent}_${suffix}_wheel_joint" />
+      <mechanicalReduction>${-1 * reflect * 79.226}</mechanicalReduction>
+    </transmission>
+  </macro>
+
+  <macro name="pr2_caster_alpha2_transmission" params="suffix">
+    <transmission type="SimpleTransmission" name="${suffix}_caster_rotation_trans">
+      <actuator name="${suffix}_caster_rotation_motor_alpha2" />
+      <joint name="${suffix}_caster_rotation_joint" />
+      <mechanicalReduction>79.226</mechanicalReduction>
+    </transmission>
+  </macro>
+
+
+</robot>

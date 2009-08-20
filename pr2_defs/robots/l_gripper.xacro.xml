@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<robot name="pr2"
+       xmlns:xi="http://www.w3.org/2001/XInclude"
+       xmlns:gazebo="http://playerstage.sourceforge.net/gazebo/xmlschema/#gz"
+       xmlns:model="http://playerstage.sourceforge.net/gazebo/xmlschema/#model"
+       xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+       xmlns:body="http://playerstage.sourceforge.net/gazebo/xmlschema/#body"
+       xmlns:geom="http://playerstage.sourceforge.net/gazebo/xmlschema/#geom"
+       xmlns:joint="http://playerstage.sourceforge.net/gazebo/xmlschema/#joint"
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+       xmlns:rendering="http://playerstage.sourceforge.net/gazebo/xmlschema/#rendering"
+       xmlns:renderable="http://playerstage.sourceforge.net/gazebo/xmlschema/#renderable"
+       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+       xmlns:physics="http://playerstage.sourceforge.net/gazebo/xmlschema/#physics">
+
+
+  <!-- declare the path where all models/textures/materials are stored -->
+  <resource type="stl_meshes" location="$(find pr2_defs)/meshes"/>
+  <resource type="ogre"       location="$(find pr2_ogre)/Media/models"/>
+
+  <include filename="$(find pr2_defs)/defs/gripper_defs.xml" />
+  <include filename="$(find pr2_defs)/defs/gazebo_defs.xml" />
+
+  <!-- for new gripper gear_ratio="29.16*22.0/16.0*0.9" screw_reduction="4.0/1000.0" -->
+  <pr2_gripper screw_reduction="${2.0/1000.0}" gear_ratio="${29.16}" side="l" parent="base_link" >
+    <origin xyz="0 0 1" rpy="0 0 0" />
+  </pr2_gripper>
+
+  <!-- Solid Base -->
+  <joint name="base_joint" type="fixed"/> 
+  <link name="base_link">
+    <parent name=" world" />
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <joint name="base_joint" />
+    <inertial>
+      <mass value="1000" />
+      <com xyz="0 0 1" />
+      <inertia ixx="1000"  ixy="0"  ixz="0" iyy="1000" iyz="0" izz="1000" />
+    </inertial> 
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0 " />
+      <map name="gazebo_material" flag="gazebo">
+        <elem key="material">PR2/White</elem>
+      </map>
+      <geometry name="pr2_base_mesh_file">
+        <box scale="0.01 0.01 0.01" />
+      </geometry>
+    </visual> 
+    <collision>
+      <origin xyz="0 0 0" rpy="0.0 0.0 0.0" />
+      <geometry name="base_collision_geom">
+        <box scale="0.01 0.01 0.01" />
+      </geometry>
+    </collision>
+  </link>
+
+  <map name="gazebo_material" flag="gazebo">
+  <verbatim>
+    <!-- ros_p3d for position groundtruth -->
+    <controller:ros_p3d name="p3d_l_gripper_palm_controller" plugin="libros_p3d.so">
+      <alwaysOn>true</alwaysOn>
+      <updateRate>1000.0</updateRate>
+      <bodyName>l_gripper_palm_link</bodyName>
+      <topicName>l_gripper_palm_pose_ground_truth</topicName>
+      <frameName>map</frameName>
+      <interface:position name="p3d_l_gripper_palm_position"/>
+    </controller:ros_p3d>
+  </verbatim>
+  </map>
+
+
+</robot>

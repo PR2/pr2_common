@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<robot name="pr2">
+
+  <!-- Include file with calibration parameters -->
+  <include filename="$(find pr2_defs)/calibration/default_cal.xml" />
+
+  <!-- declare the path where all models/textures/materials are stored -->
+  <resource type="stl_meshes" location="$(find pr2_defs)/meshes"/>
+  <resource type="ogre"       location="$(find pr2_ogre)/Media/models"/>
+
+  <include filename="$(find pr2_defs)/defs/head/head_defs.urdf.xacro" />
+  <include filename="$(find pr2_defs)/defs/body/body_defs.urdf.xacro" />
+  <include filename="$(find pr2_defs)/defs/base/base_defs.urdf.xacro" />
+  <include filename="$(find pr2_defs)/defs/gazebo/gazebo_defs.urdf.xacro" />
+  <include filename="$(find pr2_defs)/defs/materials.urdf.xacro" />
+
+  <pr2_base name="base" >
+    <origin xyz="0 0 0.051" rpy="0 0 0" />
+  </pr2_base>
+
+  <pr2_torso name="torso_lift" parent="base_link">
+    <origin xyz="-0.05 0 0.739675" rpy="0 0 0" />
+  </pr2_torso>
+  
+  <pr2_head name="head" parent="torso_lift_link">
+    <!--origin xyz="0 0 0.3815" rpy="0 0 0" /-->
+    <origin xyz="${cal_head_x}    ${cal_head_y}     ${0.3915+cal_head_z}"
+            rpy="${cal_head_roll} ${cal_head_pitch} ${cal_head_yaw}" />
+  </pr2_head>
+
+  <!-- Camera package: double stereo, prosilica -->
+  <pr2_head_sensor_package name="sensor_mount" hd_name="high_def" 
+			   stereo_name="double_stereo" 
+			   parent="head_plate_frame">
+    <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+  </pr2_head_sensor_package>
+
+  <pr2_tilting_laser name="laser_tilt" parent="torso_lift_link">
+    <origin xyz="0.1 0 0.235" rpy="0 0 0" />
+  </pr2_tilting_laser>
+  
+</robot>

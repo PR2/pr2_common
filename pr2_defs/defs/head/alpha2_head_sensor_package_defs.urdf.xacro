@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+
+<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
+
+  <include filename="$(find pr2_defs)/defs/head/alpha2_head_sensor_package_gazebo.xacro" />
+  <include filename="$(find pr2_defs)/defs/head/alpha2_head_sensor_package_transmission.xacro" />
+
+  <!-- in alpha2 head sensor package, only tilting laser is different, stereo's are the same as alpha1, not repeated -->
+  <macro name="pr2_tilting_laser_alpha2" params="name parent *origin">
+
+    <joint name="${name}_mount_joint" type="revolute">
+      <axis xyz="0 1 0" />
+      <limit lower="-0.785" upper="1.57" effort="0.5292" velocity="10.0" />
+      <safety_controller k_position="100" k_velocity="0.05" soft_lower_limit="${-0.785+0.0}" soft_upper_limit="${1.57-0.0}" />
+      <calibration reference_position="0.0" />
+      <dynamics damping="1.0" />
+      <insert_block name="origin" />
+      <parent link="${parent}"/>
+      <child link="${name}_mount_link"/>
+    </joint>
+    <link name="${name}_mount_link">
+
+      <inertial>
+        <mass value="0.1" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <inertia ixx="0.001" ixy="0" ixz="0" 
+                 iyy="0.001" iyz="0" 
+                 izz="0.001" />
+      </inertial>
+
+      <visual name="${name}_mount_visual">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry name="${name}_mount_visual_geom">
+          <mesh filename="package://pr2_defs/meshes/hok_tilt.stl" />
+        </geometry>
+        
+        <material name="Red" />
+      </visual>
+
+      <collision name="${name}_mount_collision">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry name="${name}_mount_collision_geom" >
+          <box size=".001 .001 .001" />
+        </geometry>
+      </collision>
+    </link>
+
+    <joint name="${name}_joint" type="fixed">
+      <axis xyz="0 1 0" />
+      <origin xyz="0 0 0.03" rpy="0 0 0" />
+      <parent link="${name}_mount_link"/>
+      <child link="${name}_link"/>
+    </joint>
+    <link name="${name}_link" type="laser">
+
+      <inertial>
+        <mass value="0.1" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001" />
+      </inertial>
+
+      <visual name="${name}_visual">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry name="${name}_visual_geom">
+          <box size="0.001 0.001 0.001" />
+        </geometry>
+        
+        <material name="Red" />
+      </visual>
+
+      <collision name="${name}_collision">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry name="${name}_collision_geom" >
+          <box size=".001 .001 .001" />
+        </geometry>
+      </collision>
+    </link>
+
+    <!-- extensions -->
+    <pr2_tilting_laser_alpha2_gazebo name="${name}"/>
+    <pr2_tilting_laser_alpha2_transmission name="${name}"/>
+  </macro>
+
+
+</robot>
