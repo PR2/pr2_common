@@ -1,0 +1,5 @@
+<launch>
+    <!-- send pr2 right arm urdf to param server -->
+    <param name="robot_description" command="$(find xacro)/xacro.py '$(find pr2_defs)/robots/r_arm.xacro.xml'" />
+    <param name="robot_description_new" command="$(find xacro)/xacro.py '$(find pr2_defs)/robots/r_arm.urdf.xacro'" />
+</launch>
