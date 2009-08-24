@@ -5,3 +5,4 @@ genmsg()
 gensrv()
 
 
+rospack_add_pyunit(test/test_pr2_msgs_migration.py)
