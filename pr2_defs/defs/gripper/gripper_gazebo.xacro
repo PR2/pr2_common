@@ -26,7 +26,7 @@
     <gazebo reference="${prefix}_l_finger_link">
       <turnGravityOff>true</turnGravityOff>
       <sensor:contact name="${prefix}_l_finger_contact_sensor">
-        <geom>${prefix}_l_finger_collision</geom>
+        <geom>${prefix}_l_finger_link_geom</geom>
         <updateRate>100.0</updateRate>
         <controller:ros_bumper name="${prefix}_l_finger_ros_bumper_controller" plugin="libros_bumper.so">
           <alwaysOn>true</alwaysOn>
@@ -41,6 +41,8 @@
       <kd value="1.0" />
       <material value="PR2/Grey" />
       <!-- for "${prefix}_l_finger_joint"-->
+    </gazebo>
+    <gazebo reference="${prefix}_l_finger_joint">
       <stopKd value="${finger_stop_kd}" />
       <stopKp value="${finger_stop_kp}" />
       <fudgeFactor value="${finger_fudge_factor}" />
@@ -52,7 +54,7 @@
     <gazebo reference="${prefix}_r_finger_link">
       <turnGravityOff>true</turnGravityOff>
       <sensor:contact name="${prefix}_r_finger_contact_sensor">
-        <geom>${prefix}_r_finger_collision</geom>
+        <geom>${prefix}_r_finger_link_geom</geom>
         <updateRate>100.0</updateRate>
         <controller:ros_bumper name="${prefix}_r_finger_ros_bumper_controller" plugin="libros_bumper.so">
           <alwaysOn>true</alwaysOn>
@@ -66,14 +68,12 @@
       <kp value="1000000.0" />
       <kd value="1.0" />
       <material value="PR2/Grey" />
+    </gazebo>
+    <gazebo reference="${prefix}_r_finger_joint">
       <stopKd value="${finger_stop_kd}" />
       <stopKp value="${finger_stop_kp}" />
       <fudgeFactor value="${finger_fudge_factor}" />
       <provideFeedback value="true"/>
-      <!-- for "${prefix}_r_finger_joint"-->
-      <mimicKp   value="${finger_kp}" />
-      <mimicKd   value="${finger_kd}" />
-      <mimicFMax value="${finger_fm}" />
     </gazebo>
 
     <!-- Finger tip -->
@@ -82,7 +82,7 @@
       <turnGravityOff>true</turnGravityOff>
       <selfCollide value="false" />
       <sensor:contact name="${prefix}_l_finger_tip_contact_sensor">
-        <geom>${prefix}_l_finger_tip_collision</geom>
+        <geom>${prefix}_l_finger_tip_link_geom</geom>
         <updateRate>100.0</updateRate>
         <controller:ros_bumper name="${prefix}_l_finger_tip_ros_bumper_controller" plugin="libros_bumper.so">
           <alwaysOn>true</alwaysOn>
@@ -96,13 +96,12 @@
       <kp  value="10000000.0" />
       <kd  value="1.0" />
       <material value="PR2/Green" />
+    </gazebo>
+    <gazebo reference="${prefix}_l_finger_tip_joint">
       <stopKd value="${finger_stop_kd}" />
       <stopKp value="${finger_stop_kp}" />
       <fudgeFactor value="${finger_fudge_factor}" />
       <provideFeedback value="true"/>
-      <mimicKp   value="${finger_tip_kp}" />
-      <mimicKd   value="${finger_tip_kd}" />
-      <mimicFMax value="${finger_tip_fm}" />
     </gazebo>
 
     <!-- Finger tip -->
@@ -111,7 +110,7 @@
       <turnGravityOff>true</turnGravityOff>
       <selfCollide value="false" />
       <sensor:contact name="${prefix}_r_finger_tip_contact_sensor">
-        <geom>${prefix}_r_finger_tip_collision</geom>
+        <geom>${prefix}_r_finger_tip_link_geom</geom>
         <updateRate>100.0</updateRate>
         <controller:ros_bumper name="${prefix}_r_finger_tip_ros_bumper_controller" plugin="libros_bumper.so">
           <alwaysOn>true</alwaysOn>
@@ -125,13 +124,6 @@
       <kp  value="10000000.0" />
       <kd  value="1.0" />
       <material value="PR2/Green" />
-      <stopKd value="${finger_stop_kd}" />
-      <stopKp value="${finger_stop_kp}" />
-      <fudgeFactor value="${finger_fudge_factor}" />
-      <mimicKp   value="${finger_tip_kp}" />
-      <mimicKd   value="${finger_tip_kd}" />
-      <mimicFMax value="${finger_tip_fm}" />
-      <provideFeedback value="true"/>
       <controller:ros_p3d name="p3d_${prefix}_l_finger_controller" plugin="libros_p3d.so">
         <alwaysOn>true</alwaysOn>
         <updateRate>100.0</updateRate>
@@ -150,6 +142,12 @@
         <interface:position name="f3d_${prefix}_l_finger_force_iface" />
       </controller:ros_f3d>
     </gazebo>
+    <gazebo reference="${prefix}_r_finger_tip_joint">
+      <stopKd value="${finger_stop_kd}" />
+      <stopKp value="${finger_stop_kp}" />
+      <fudgeFactor value="${finger_fudge_factor}" />
+      <provideFeedback value="true"/>
+    </gazebo>
 
   </macro>
 
@@ -160,7 +158,7 @@
     <gazebo reference="${side}_gripper_palm_link">
       <turnGravityOff>true</turnGravityOff>
       <sensor:contact name="${side}_gripper_palm_contact_sensor">
-        <geom>${side}_gripper_palm_collision</geom>
+        <geom>${side}_gripper_palm_link_geom</geom>
         <updateRate>100.0</updateRate>
         <controller:ros_bumper name="${side}_gripper_palm_ros_bumper_controller" plugin="libros_bumper.so">
           <alwaysOn>true</alwaysOn>

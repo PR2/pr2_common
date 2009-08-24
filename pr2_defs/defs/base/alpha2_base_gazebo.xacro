@@ -21,7 +21,7 @@
 
     <gazebo reference="${parent}_${suffix}_wheel_link">
       <sensor:contact name="${parent}_${suffix}_wheel_contact_sensor">
-        <geom>${parent}_${suffix}_wheel_collision</geom>
+        <geom>${parent}_${suffix}_wheel_link_geom</geom>
         <updateRate>100.0</updateRate>
         <controller:ros_bumper name="${parent}_${suffix}_wheel_ros_bumper_controller" plugin="libros_bumper.so">
           <alwaysOn>true</alwaysOn>
@@ -42,7 +42,7 @@
 
     <gazebo reference="${name}_link">
       <sensor:contact name="${name}_contact_sensor">
-        <geom>${name}_collision</geom>
+        <geom>${name}_link_geom</geom>
         <updateRate>100.0</updateRate>
         <controller:ros_bumper name="${name}_ros_bumper_controller" plugin="libros_bumper.so">
           <alwaysOn>true</alwaysOn>

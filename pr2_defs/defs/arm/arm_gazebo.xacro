@@ -8,7 +8,7 @@
     <!-- Shoulder pan -->
     <gazebo reference="${side}_shoulder_pan_link">
       <sensor:contact name="${side}_shoulder_pan_contact_sensor">
-        <geom>${side}_shoulder_pan_collision</geom>
+        <geom>${side}_shoulder_pan_link_geom</geom>
         <updateRate>100.0</updateRate>
         <controller:ros_bumper name="${side}_shoulder_pan_ros_bumper_controller" plugin="libros_bumper.so">
           <alwaysOn>true</alwaysOn>
@@ -19,6 +19,8 @@
       </sensor:contact>
       <material value="PR2/Blue" />
       <turnGravityOff>true</turnGravityOff>
+    </gazebo>
+    <gazebo reference="${side}_shoulder_pan_joint">
       <stopKd value="1.0" />
       <stopKp value="1000000.0" />
     </gazebo>
@@ -26,7 +28,7 @@
     <!-- Shoulder lift -->
     <gazebo reference="${side}_shoulder_lift_link">
       <sensor:contact name="${side}_shoulder_lift_contact_sensor">
-        <geom>${side}_shoulder_lift_collision_geom</geom>
+        <geom>${side}_shoulder_lift_link_geom</geom>
         <updateRate>100.0</updateRate>
         <controller:ros_bumper name="${side}_shoulder_lift_ros_bumper_controller" plugin="libros_bumper.so">
           <alwaysOn>true</alwaysOn>
@@ -36,6 +38,8 @@
         </controller:ros_bumper>
       </sensor:contact>
       <turnGravityOff>true</turnGravityOff>
+    </gazebo>
+    <gazebo reference="${side}_shoulder_lift_joint">
       <stopKd value="1.0" />
       <stopKp value="1000000.0" />
     </gazebo>
@@ -45,6 +49,8 @@
       <mesh value="$(find pr2_ogre)/Media/models/upper_arm_roll.mesh" />
       <material value="PR2/RollLinks" />
       <turnGravityOff>true</turnGravityOff>
+    </gazebo>
+    <gazebo reference="${side}_upper_arm_roll_joint">
       <stopKd value="1.0" />
       <stopKp value="1000000.0" />
       <fudgeFactor value="0.5" />
@@ -61,7 +67,7 @@
 
     <gazebo reference="${side}_upper_arm_link">
       <sensor:contact name="${side}_upper_arm_contact_sensor">
-        <geom>${side}_upper_arm_collision_geom</geom><!-- TODO -->
+        <geom>${side}_upper_arm_link_geom</geom><!-- TODO -->
         <updateRate>100.0</updateRate>
         <controller:ros_bumper name="${side}_upper_arm_ros_bumper_controller" plugin="libros_bumper.so">
           <alwaysOn>true</alwaysOn>
@@ -79,7 +85,7 @@
 
     <gazebo reference="${side}_elbow_flex_link">
       <sensor:contact name="${side}_elbow_flex_contact_sensor">
-        <geom>${side}_elbow_flex_collision_geom</geom>
+        <geom>${side}_elbow_flex_link_geom</geom>
         <updateRate>100.0</updateRate>
         <controller:ros_bumper name="${side}_elbow_flex_ros_bumper_controller" plugin="libros_bumper.so">
           <alwaysOn>true</alwaysOn>
@@ -89,17 +95,21 @@
         </controller:ros_bumper>
       </sensor:contact>
       <material value="PR2/Grey" />
+      <turnGravityOff>true</turnGravityOff>
+    </gazebo>
+    <gazebo reference="${side}_elbow_flex_joint">
       <stopKd value="1.0" />
       <stopKp value="1000000.0" />
-      <turnGravityOff>true</turnGravityOff>
     </gazebo>
 
     <!-- Forearm roll -->
 
     <gazebo reference="${side}_forearm_roll_link">
       <material value="PR2/RollLinks" />
-      <fudgeFactor value="0.5" />
       <turnGravityOff>true</turnGravityOff>
+    </gazebo>
+    <gazebo reference="${side}_forearm_roll_joint">
+      <fudgeFactor value="0.5" />
     </gazebo>
 
   </macro>
@@ -112,7 +122,7 @@
     <gazebo reference="${side}_forearm_link">
       <turnGravityOff>true</turnGravityOff>
       <sensor:contact name="${side}_forearm_contact_sensor">
-        <geom>${side}_forearm_collision</geom>
+        <geom>${side}_forearm_link_geom</geom>
         <updateRate>100.0</updateRate>
         <controller:ros_bumper name="${side}_forearm_ros_bumper_controller" plugin="libros_bumper.so">
           <alwaysOn>true</alwaysOn>
@@ -129,7 +139,7 @@
     <gazebo reference="${side}_wrist_flex_link">
       <turnGravityOff>true</turnGravityOff>
       <sensor:contact name="${side}_wrist_flex_contact_sensor">
-        <geom>${side}_wrist_flex_collision</geom>
+        <geom>${side}_wrist_flex_link_geom</geom>
         <updateRate>100.0</updateRate>
         <controller:ros_bumper name="${side}_wrist_flex_ros_bumper_controller" plugin="libros_bumper.so">
           <alwaysOn>true</alwaysOn>
@@ -139,6 +149,8 @@
         </controller:ros_bumper>
       </sensor:contact>
       <material value="PR2/Grey" />
+    </gazebo>
+    <gazebo reference="${side}_wrist_flex_joint">
       <stopKd value="1.0" />
       <stopKp value="1000000.0" />
     </gazebo>
@@ -148,7 +160,7 @@
     <gazebo reference="${side}_wrist_roll_link">
       <turnGravityOff>true</turnGravityOff>
       <sensor:contact name="${side}_wrist_roll_contact_sensor">
-        <geom>${side}_wrist_roll_collision</geom>
+        <geom>${side}_wrist_roll_link_geom</geom>
         <updateRate>100.0</updateRate>
         <controller:ros_bumper name="${side}_wrist_roll_ros_bumper_controller" plugin="libros_bumper.so">
           <alwaysOn>true</alwaysOn>
@@ -158,6 +170,8 @@
         </controller:ros_bumper>
       </sensor:contact>
       <material value="PR2/RollLinks" />
+    </gazebo>
+    <gazebo reference="${side}_wrist_roll_joint">
       <fudgeFactor value="0.5" />
     </gazebo>
 
