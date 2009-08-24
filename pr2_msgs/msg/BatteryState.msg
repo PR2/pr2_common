@@ -1,5 +1,5 @@
-Header header
-float64 power_consumption ## Watts
-int64 time_remaining ## minutes
-string prediction_method ## how time_remaining is being calculated
-int8  AC_present ## number of packs detecting AC power
+# Each batteries registers
+int32 lastTimeBattery #epoch time
+uint16[48] batReg
+uint16[48] batRegFlag
+int32[48] batRegTime
