@@ -41,30 +41,28 @@
   <link name="torso_lift_link">
     <inertial>
       <mass value="1000" />
-      <com xyz="0 0 0" />
+      <origin xyz="0 0 0" />
       <inertia ixx="1000"  ixy="0"  ixz="0" iyy="1000" iyz="0" izz="1000" />
     </inertial> 
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0 " />
-      <map name="gazebo_material" flag="gazebo">
-        <elem key="material">PR2/White</elem>
-      </map>
       <geometry name="pr2_base_mesh_file">
-        <box scale="0.01 0.01 0.01" />
+        <box size="0.01 0.01 0.01" />
       </geometry>
     </visual> 
     <collision>
       <origin xyz="0 0 0" rpy="0.0 0.0 0.0 " />
       <geometry name="base_collision_geom">
-        <box scale="0.01 0.01 0.01" />
+        <box size="0.01 0.01 0.01" />
       </geometry>
-      <map name="base_collision" flag="gazebo">
-        <elem key="mu1" value="10.0" />
-        <elem key="mu2" value="10.0" />
-        <elem key="kp"  value="10000000.0" />
-        <elem key="kd"  value="1.0" />
-      </map>
     </collision>
   </link>
+  <gazebo reference="base_link">
+    <material>PR2/White</material>
+    <mu1>10.0</mu1>
+    <mu2>10.0</mu2>
+    <kp>10000000.0</kp>
+    <kd>1.0</kd>
+  </gazebo>
 
 </robot>

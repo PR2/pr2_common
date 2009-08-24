@@ -33,7 +33,7 @@
   <!-- Solid Base -->
   <joint name="base_joint" type="planar"> 
     <origin xyz="0 0 1.002" rpy=" 0 0 0" />
-    <parent link=" world" />
+    <parent link="world" />
     <!-- rotation of a local coordinate frame attached to the link with respect to a global coordinate frame -->
     <!-- position of a local coordinate frame attached to the link with respect to the parent link's coordinate frame -->
     <child link="base_link" />
@@ -41,17 +41,14 @@
   <link name="base_link"><!-- link specifying the base of the robot -->
     <inertial>
       <mass value="1000" />
-      <com xyz=" 0 0 0 " /> <!-- position of the center of mass with respect to the link's own anchor in a local coordinate frame -->
+      <origin xyz=" 0 0 0 " /> <!-- position of the center of mass with respect to the link's own anchor in a local coordinate frame -->
       <inertia ixx="1000"  ixy="0"  ixz="0" iyy="1000" iyz="0" izz="1000" />
     </inertial> 
     <visual>
       <origin xyz="0 0 -1" rpy="0 0 0 " /> <!-- location defined with respect to the link origin in a local coordinate frame -->
       <!-- All angles always in radians, yaw about Z axis, pitch about the Y axis and roll about the X axis -->
-      <map name="gazebo_material" flag="gazebo">
-        <elem key="material">PR2/White</elem>
-      </map>
       <geometry name="pr2_base_mesh_file">
-        <mesh scale="20 20 0.01" />
+        <box size="20 20 0.01" />
       </geometry>
     </visual> 
     <collision>
@@ -63,8 +60,10 @@
     </collision>
   </link>
 
-  <map name="gazebo_material" flag="gazebo">
-  <verbatim>
+  <gazebo reference="base_link">
+    <material>PR2/White</material>
+  </gazebo>
+  <gazebo>
     <!-- ros_p3d for position groundtruth -->
     <controller:ros_p3d name="p3d_r_gripper_palm_controller" plugin="libros_p3d.so">
       <alwaysOn>true</alwaysOn>
@@ -74,8 +73,7 @@
       <frameName>map</frameName>
       <interface:position name="p3d_r_gripper_palm_position"/>
     </controller:ros_p3d>
-  </verbatim>
-  </map>
+  </gazebo>
 
 
 </robot>

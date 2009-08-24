@@ -29,35 +29,34 @@
 
   <!-- Solid Base -->
   <joint name="base_joint" type="fixed"> 
-    <parent link=" world" />
+    <parent link="world" />
     <origin xyz="0 0 0" rpy="0 0 0" />
     <child link="base_link" />
   </joint>
   <link name="base_link">
     <inertial>
       <mass value="1000" />
-      <com xyz="0 0 1" />
+      <origin xyz="0 0 1" />
       <inertia ixx="1000"  ixy="0"  ixz="0" iyy="1000" iyz="0" izz="1000" />
     </inertial> 
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0 " />
-      <map name="gazebo_material" flag="gazebo">
-        <elem key="material">PR2/White</elem>
-      </map>
       <geometry name="pr2_base_mesh_file">
-        <box scale="0.01 0.01 0.01" />
+        <box size="0.01 0.01 0.01" />
       </geometry>
     </visual> 
     <collision>
       <origin xyz="0 0 0" rpy="0.0 0.0 0.0" />
       <geometry name="base_collision_geom">
-        <box scale="0.01 0.01 0.01" />
+        <box size="0.01 0.01 0.01" />
       </geometry>
     </collision>
   </link>
 
-  <map name="gazebo_material" flag="gazebo">
-  <verbatim>
+  <gazebo reference="base_link">
+    <material>PR2/White</material>
+  </gazebo>
+  <gazebo>
     <!-- ros_p3d for position groundtruth -->
     <controller:ros_p3d name="p3d_r_gripper_palm_controller" plugin="libros_p3d.so">
       <alwaysOn>true</alwaysOn>
@@ -67,8 +66,7 @@
       <frameName>map</frameName>
       <interface:position name="p3d_r_gripper_palm_position"/>
     </controller:ros_p3d>
-  </verbatim>
-  </map>
+  </gazebo>
 
 
 </robot>
