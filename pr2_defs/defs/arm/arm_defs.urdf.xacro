@@ -90,7 +90,7 @@
              effort="30" velocity="${VELOCITY_LIMIT_SCALE*3.47}" />
              
       <safety_controller k_position="100" k_velocity="10"
-                         soft_lower="${-0.5236+0.17}" soft_upper="${1.3963-0.05}" />
+                         soft_lower_limit="${-0.5236+0.17}" soft_upper_limit="${1.3963-0.05}" />
       <calibration reference_position="${cal_r_shoulder_lift_flag}" />
       <dynamics damping="10.0" />
       <origin xyz="0.1 0 0" rpy="0 0 0" />
