@@ -176,6 +176,8 @@
     <gazebo reference="${side}_gripper_float_link">
       <turnGravityOff>true</turnGravityOff>
       <material value="PR2/White" />
+    </gazebo>
+    <gazebo>
       <joint:slider name="${side}_gripper_l_finger_tip_slider_joint">
           <body1>${side}_gripper_l_finger_tip_link</body1>
           <body2>${side}_gripper_float_link</body2>
