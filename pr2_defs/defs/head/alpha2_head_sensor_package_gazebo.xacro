@@ -11,7 +11,7 @@
     <gazebo reference="${name}_mount_link">
       <material value="PR2/Red" />
     </gazebo>
-    <gazebo name="sensor" reference="${name}_link">
+    <gazebo reference="${name}_link">
       <sensor:ray name="${name}">
         <rayCount>640</rayCount>
         <rangeCount>640</rangeCount>

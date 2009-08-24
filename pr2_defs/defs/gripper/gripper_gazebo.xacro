@@ -124,6 +124,8 @@
       <kp  value="10000000.0" />
       <kd  value="1.0" />
       <material value="PR2/Green" />
+    <gazebo>
+    </gazebo>
       <controller:ros_p3d name="p3d_${prefix}_l_finger_controller" plugin="libros_p3d.so">
         <alwaysOn>true</alwaysOn>
         <updateRate>100.0</updateRate>
@@ -200,7 +202,7 @@
       </joint:slider>
       -->
     </gazebo>
-    <gazebo> <!-- not in a link but in the robot/root element, so no reference attribute -->
+    <gazebo>
       <controller:ros_p3d name="p3d_${side}_gripper_palm_controller" plugin="libros_p3d.so">
         <alwaysOn>true</alwaysOn>
         <updateRate>100.0</updateRate>
