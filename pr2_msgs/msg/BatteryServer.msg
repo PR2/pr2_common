@@ -1,6 +1,7 @@
 Header header
 uint32 MAX_BAT_COUNT=4
 uint32 MAX_BAT_REG=48
+int32 id  # unique ID for each battery server
 # Battery System Stats
 int32 lastTimeSystem #epoch time
 uint16 timeLeft      # in minutes
