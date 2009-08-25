@@ -3,9 +3,8 @@ cmake_minimum_required(VERSION 2.4.6)
 include($ENV{ROS_ROOT}/core/rosbuild/rosbuild.cmake)
 rospack(pr2_defs)
 
-rospack_add_gtest(test_pr2_update test/test_pr2_update.cpp)
-rospack_add_gtest(test_prf_update test/test_prf_update.cpp)
-rospack_add_gtest(test_prg_update test/test_prg_update.cpp)
+rospack_add_gtest(test_urdf test/test_urdf.cpp)
+rospack_add_gtest(test_old_urdf test/test_old_urdf.cpp)
 
 find_ros_package(pr2_defs)
 

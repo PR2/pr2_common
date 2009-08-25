@@ -11,6 +11,7 @@
   <review status="unreviewed" notes=""/>
   
   <depend package="wg_robot_description_parser" />
+  <depend package="urdf" />
   <depend package="xacro"/>
   <depend package="convex_decomposition"/>
   <depend package="ivcon"/>
