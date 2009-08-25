@@ -26,6 +26,7 @@
           <interface:bumper name="${parent}_${suffix}_wheel_ros_bumper_iface" />
         </controller:ros_bumper>
       </sensor:contact>
+      <material value="PR2/wheel_${suffix}" />
       <mu1 value="100.0" />
       <mu2 value="100.0" />
       <kp  value="1000000.0" />
