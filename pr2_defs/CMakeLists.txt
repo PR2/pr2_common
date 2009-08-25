@@ -4,7 +4,6 @@ include($ENV{ROS_ROOT}/core/rosbuild/rosbuild.cmake)
 rospack(pr2_defs)
 
 rospack_add_gtest(test_urdf test/test_urdf.cpp)
-rospack_add_gtest(test_old_urdf test/test_old_urdf.cpp)
 
 find_ros_package(pr2_defs)
 
