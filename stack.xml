@@ -1,0 +1,14 @@
+<stack name="pr2_common" version="0.1.0">
+  <description brief="pr2_common">
+     pr2-specific messages, services, robot definition, and other data
+  </description>
+  <author>Eric Berger</author>
+  <license>BSD</license>  
+  <review status="unreviewed" notes=""/>
+  <url>http://pr.willowgarage.com/wiki/pr2_common</url>
+  <depend stack="ros"/> <!-- std_msgs, rosbagmigration --> 
+  <depend stack="robot_model"/> <!-- convex_decomposition, ivcon --> 
+  <depend stack="common"/> <!-- xacro --> 
+  <depend stack="mechanism"/> <!-- mechanism_msgs --> 
+  <depend stack="common_msgs"/> <!-- geometry_msgs --> 
+</stack>
