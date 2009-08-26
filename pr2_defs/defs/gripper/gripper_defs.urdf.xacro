@@ -74,7 +74,7 @@
       <origin xyz="0.07691 -0.01 0" rpy="0 0 0" />
       <pr2_finger_limits reflect="1" />
       <dynamics damping="${finger_damping}" />
-      <mimic name="${prefix}_l_finger_joint" mult="1" offset="0"/>
+      <mimic joint="${prefix}_l_finger_joint" multiplier="1" offset="0"/>
       <parent link="${parent}"/>
       <child link="${prefix}_r_finger_link"/>
     </joint>
@@ -115,7 +115,7 @@
       <origin xyz="0.09137 0.00495 0" rpy="0 0 0" />
       <pr2_finger_limits reflect="1" />
       <dynamics damping="${finger_tip_damping}" />
-      <mimic name="${prefix}_l_finger_joint" mult="1" offset="0"/>
+      <mimic joint="${prefix}_l_finger_joint" multiplier="1" offset="0"/>
       <parent link="${prefix}_l_finger_link"/>
       <child link="${prefix}_l_finger_tip_link"/>
     </joint>
@@ -153,7 +153,7 @@
       <origin xyz="${0.09137} ${-0.00495} 0" rpy="0 0 0" />
       <pr2_finger_limits reflect="1" />
       <dynamics damping="${finger_tip_damping}" />
-      <mimic name="${prefix}_l_finger_joint" mult="1" offset="0"/>
+      <mimic joint="${prefix}_l_finger_joint" multiplier="1" offset="0"/>
       <parent link="${prefix}_r_finger_link"/>
       <child link="${prefix}_r_finger_tip_link"/>
     </joint>

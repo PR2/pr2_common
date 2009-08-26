@@ -29,10 +29,10 @@
   <property name="base_laser_x" value="0.275" />
   <property name="base_laser_y" value="0.0" />
   <property name="base_laser_z" value="0.252" />
-  <property name="base_laser_size_x" value="0.08" />
-  <property name="base_laser_size_y" value="0.08" />
+  <property name="base_laser_size_x" value="0.06" />
+  <property name="base_laser_size_y" value="0.06" />
   <property name="base_laser_size_z" value="0.03" />
-  <property name="base_laser_collision_offset_z" value="0.03" />
+  <property name="base_laser_collision_offset_z" value="0.02" />
 
   <macro name="pr2_wheel" params="suffix parent reflect">
 
