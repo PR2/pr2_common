@@ -6,7 +6,7 @@
 <macro name="prosilica_cam_gazebo" params="name">
   <gazebo reference="${name}_frame">
     <sensor:camera name="${name}_sensor">
-      <imageFormat>B8G8R8</imageFormat>
+      <imageFormat>R8G8B8</imageFormat>
       <imageSize>2448 2050</imageSize>
       <hfov>45</hfov>
       <nearClip>0.1</nearClip>
