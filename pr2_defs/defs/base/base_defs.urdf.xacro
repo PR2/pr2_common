@@ -193,32 +193,6 @@
     </link>
 
 
-    <!-- modeling plug on base holder magnet location -->
-    <joint name="plug_magnet_joint" type="fixed">
-      <origin xyz="0.18 0 ${base_height_offset+0.235}" rpy="0 0 0" />
-      <parent link="${name}_link"/>
-      <child link="plug_magnet"/>
-    </joint>
-    <link name="plug_magnet" type="laser">
-      <inertial>
-        <mass value="0.1" />
-        <origin xyz="0 0 0.0" />
-        <inertia ixx="0.1" ixy="0" ixz="0" iyy="0.1" iyz="0" izz="0.1" />
-      </inertial>
-      <visual name="plug_mavisual">
-        <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry name="plug_magnet_visual_geom">
-          <box size="0.001 0.001 0.001"/>
-        </geometry>
-      </visual>
-      <collision name="plug_macollision">
-        <origin xyz="0 0 0.0" rpy="0 0 0" />
-        <geometry name="plug_magnet_collision_geom">
-          <box size=".001 .001 .001" />
-        </geometry>
-      </collision>
-    </link>
-
     <pr2_caster suffix="fl" parent="${name}_link">
       <origin xyz="${caster_offset_x} ${caster_offset_y} ${caster_offset_z}" rpy="0 0 0" />
     </pr2_caster>
@@ -235,9 +209,110 @@
     <!-- gazebo extensions -->
     <pr2_base_gazebo name="${name}" />
 
+    <!-- modeling plug on base holder magnet location -->
+    <pr2_plug_holder name="${name}"/>
+
   </macro>
 
 
+  <macro name="pr2_plug_holder" params="name">
+    <joint name="plug_holder_1_joint" type="fixed">
+      <origin xyz="0.18 0 ${base_height_offset+0.235}" rpy="0 0 0" />
+      <parent link="${name}_link"/>
+      <child link="plug_holder_1"/>
+    </joint>
+    <link name="plug_holder_1">
+      <inertial>
+        <mass value="0.1" />
+        <origin xyz="0 0 0.0" />
+        <inertia ixx="0.1" ixy="0" ixz="0" iyy="0.1" iyz="0" izz="0.1" />
+      </inertial>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <box size="0.001 0.001 0.001"/>
+        </geometry>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0.0" rpy="0 0 0" />
+        <geometry>
+          <box size=".001 .001 .001" />
+        </geometry>
+      </collision>
+    </link>
+    <joint name="plug_holder_2_joint" type="fixed">
+      <origin xyz="0.21 0 ${base_height_offset+0.235}" rpy="0 0 0" />
+      <parent link="${name}_link"/>
+      <child link="plug_holder_2"/>
+    </joint>
+    <link name="plug_holder_2">
+      <inertial>
+        <mass value="0.1" />
+        <origin xyz="0 0 0.0" />
+        <inertia ixx="0.1" ixy="0" ixz="0" iyy="0.1" iyz="0" izz="0.1" />
+      </inertial>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <box size="0.001 0.001 0.001"/>
+        </geometry>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0.0" rpy="0 0 0" />
+        <geometry>
+          <box size=".001 .001 .001" />
+        </geometry>
+      </collision>
+    </link>
+    <joint name="plug_holder_3_joint" type="fixed">
+      <origin xyz="0.20 -.04 ${base_height_offset+0.235}" rpy="0 0 0" />
+      <parent link="${name}_link"/>
+      <child link="plug_holder_3"/>
+    </joint>
+    <link name="plug_holder_3">
+      <inertial>
+        <mass value="0.1" />
+        <origin xyz="0 0 0.0" />
+        <inertia ixx="0.1" ixy="0" ixz="0" iyy="0.1" iyz="0" izz="0.1" />
+      </inertial>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <box size="0.001 0.001 0.001"/>
+        </geometry>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0.0" rpy="0 0 0" />
+        <geometry>
+          <box size=".001 .001 .001" />
+        </geometry>
+      </collision>
+    </link>
+    <joint name="plug_holder_4_joint" type="fixed">
+      <origin xyz="0.20 0.04 ${base_height_offset+0.235}" rpy="0 0 0" />
+      <parent link="${name}_link"/>
+      <child link="plug_holder_4"/>
+    </joint>
+    <link name="plug_holder_4">
+      <inertial>
+        <mass value="0.1" />
+        <origin xyz="0 0 0.0" />
+        <inertia ixx="0.1" ixy="0" ixz="0" iyy="0.1" iyz="0" izz="0.1" />
+      </inertial>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <box size="0.001 0.001 0.001"/>
+        </geometry>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0.0" rpy="0 0 0" />
+        <geometry>
+          <box size=".001 .001 .001" />
+        </geometry>
+      </collision>
+    </link>
+  </macro>
 
 
 </robot>

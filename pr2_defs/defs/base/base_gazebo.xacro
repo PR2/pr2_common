@@ -66,16 +66,16 @@
         <rpyOffsets>0 0 0</rpyOffsets>
         <interface:position name="p3d_base_position"/>
       </controller:ros_p3d>
-      <controller:ros_p3d name="p3d_plug_magnet_controller" plugin="libros_p3d.so">
+      <controller:ros_p3d name="p3d_plug_holder_1_controller" plugin="libros_p3d.so">
         <alwaysOn>true</alwaysOn>
         <updateRate>100.0</updateRate>
-        <bodyName>plug_magnet</bodyName>
-        <topicName>plug_magnet_pose_ground_truth</topicName>
+        <bodyName>plug_holder_1</bodyName>
+        <topicName>plug_holder_1_pose_ground_truth</topicName>
         <gaussianNoise>0.01</gaussianNoise>
         <frameName>map</frameName>
         <xyzOffsets>0 0 0</xyzOffsets> <!-- initialize odometry for fake localization-->
         <rpyOffsets>0 0 0</rpyOffsets>
-        <interface:position name="p3d_plug_magnet_position"/>
+        <interface:position name="p3d_plug_holder_1_position"/>
       </controller:ros_p3d>
     </gazebo>
 
@@ -110,7 +110,16 @@
 
     <!-- modeling plug on base holder magnet location -->
 
-    <gazebo reference="plug_magnet">
+    <gazebo reference="plug_holder_1">
+      <material value="PR2/Red" />
+    </gazebo>
+    <gazebo reference="plug_holder_2">
+      <material value="PR2/Red" />
+    </gazebo>
+    <gazebo reference="plug_holder_3">
+      <material value="PR2/Red" />
+    </gazebo>
+    <gazebo reference="plug_holder_4">
       <material value="PR2/Red" />
     </gazebo>
 
