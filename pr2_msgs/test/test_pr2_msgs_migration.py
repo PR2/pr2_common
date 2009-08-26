@@ -78,6 +78,24 @@ class TestPR2MsgsMigration(unittest.TestCase):
     self.do_test('laser_scanner_signal', self.get_old_laser_scanner_signal, self.get_new_laser_scanner_signal)
 
 
+########### BatteryState ###############
+
+  def get_old_battery_state(self):
+    battery_state_classes = self.load_saved_classes('BatteryState.saved')
+
+    battery_state = battery_state_classes['robot_msgs/BatteryState']
+
+    return battery_state(None, 1.23, 4.56, 7.89)
+
+  def get_new_battery_state(self):
+    from pr2_msgs.msg import BatteryState
+
+    return BatteryState(None, 1.23, 4.56, 7.89)
+
+  def test_battery_state(self):
+    self.do_test('battery_state', self.get_old_battery_state, self.get_new_battery_state)
+
+
 ########### Helper functions ###########
 
 
