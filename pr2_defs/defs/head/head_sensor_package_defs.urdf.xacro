@@ -201,6 +201,10 @@
     <!-- extensions -->
     <double_stereo_camera_gazebo name="${name}" />
     
+    <!-- extensions -->
+    <stereo_camera_gazebo_wide name="wide_stereo" />
+    <stereo_camera_gazebo_narrow name="narrow_stereo" />
+
   </macro>
 
   <macro name="stereo_camera" params="name parent *origin">
@@ -336,8 +340,6 @@
       
     </link>
 
-    <!-- extensions -->
-    <stereo_camera_gazebo name="${name}" />
   </macro>
 
 </robot>
