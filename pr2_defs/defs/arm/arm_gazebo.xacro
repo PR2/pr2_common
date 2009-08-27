@@ -46,7 +46,6 @@
 
     <!-- Upperarm roll: internal fixed attchment point for upper arm -->
     <gazebo reference="${side}_upper_arm_roll_link">
-      <mesh value="$(find pr2_ogre)/Media/models/upper_arm_roll.mesh" />
       <material value="PR2/RollLinks" />
       <turnGravityOff>true</turnGravityOff>
     </gazebo>
