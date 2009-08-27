@@ -1,3 +1,9 @@
+int8 STATE_NOPOWER=0
+int8 STATE_STANDBY=1
+int8 STATE_PUMPINT=2
+int8 STATE_ON=3
+int8 STATE_DISABLED=4
+
 Header header
 string name
 # Circuit States:
