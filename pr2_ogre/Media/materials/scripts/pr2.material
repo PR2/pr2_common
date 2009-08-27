@@ -228,6 +228,20 @@ material PR2/Shiny
   }
 }
 
+material PR2/Handle
+{
+  technique
+  {
+    pass
+    {
+      texture_unit
+      {
+        texture handle_texture.jpg
+      }
+    }
+  }
+}
+
 material PR2/Plug
 {
   technique
