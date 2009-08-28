@@ -239,7 +239,7 @@
       <sensor:camera name="${name}_r_sensor">
         <imageSize>640 480</imageSize>
         <imageFormat>L8</imageFormat>
-        <hfov>90</hfov>
+        <hfov>45</hfov>
         <nearClip>0.1</nearClip>
         <farClip>100</farClip>
         <updateRate>20.0</updateRate>
@@ -267,7 +267,7 @@
         <CxPrime>320</CxPrime>
         <Cx>320</Cx>
         <Cy>240</Cy>
-        <focal_length>320</focal_length> <!-- image_width / (2*tan(hfov_radian /2)) -->
+        <focal_length>772.55</focal_length> <!-- image_width / (2*tan(hfov_radian /2)) -->
         <distortion_k1>0</distortion_k1>
         <distortion_k2>0</distortion_k2>
         <distortion_k3>0</distortion_k3>
