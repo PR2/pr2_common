@@ -80,7 +80,7 @@
 
     <gazebo reference="${prefix}_l_finger_tip_link">
       <turnGravityOff>true</turnGravityOff>
-      <selfCollide value="true" />
+      <selfCollide value="false" />
       <sensor:contact name="${prefix}_l_finger_tip_contact_sensor">
         <geom>${prefix}_l_finger_tip_link_geom</geom>
         <updateRate>100.0</updateRate>
@@ -108,7 +108,7 @@
 
     <gazebo reference="${prefix}_r_finger_tip_link">
       <turnGravityOff>true</turnGravityOff>
-      <selfCollide value="true" />
+      <selfCollide value="false" />
       <sensor:contact name="${prefix}_r_finger_tip_contact_sensor">
         <geom>${prefix}_r_finger_tip_link_geom</geom>
         <updateRate>100.0</updateRate>
