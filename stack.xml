@@ -9,6 +9,6 @@
   <depend stack="ros"/> <!-- std_msgs, rosbagmigration --> 
   <depend stack="robot_model"/> <!-- convex_decomposition, ivcon --> 
   <depend stack="common"/> <!-- xacro --> 
-  <depend stack="mechanism"/> <!-- mechanism_msgs --> 
+  <depend stack="pr2_mechanism"/> <!-- mechanism_msgs --> 
   <depend stack="common_msgs"/> <!-- geometry_msgs --> 
 </stack>
