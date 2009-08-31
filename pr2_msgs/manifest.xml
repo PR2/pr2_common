@@ -12,7 +12,6 @@
 
   <depend package="std_msgs"/>
   <depend package="geometry_msgs"/>
-  <depend package="pr2_mechanism_msgs" />
 
   <depend package="rostest"/>
   <depend package="rosbagmigration"/>
