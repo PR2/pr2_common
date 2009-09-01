@@ -3,7 +3,7 @@
        xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
   <macro name="mono_cam_gazebo" params="name">
-    <gazebo reference="${name}_optical_frame">
+    <gazebo reference="${name}_frame">
       <sensor:camera name="${name}_sensor">
         <imageSize>640 480</imageSize>
         <imageFormat>L8</imageFormat>
