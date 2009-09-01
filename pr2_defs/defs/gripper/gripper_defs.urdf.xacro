@@ -140,7 +140,7 @@
       <collision name="${prefix}_l_finger_tip_collision">
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry name="${prefix}_l_finger_tip_collision_geom">
-          <mesh filename="package://pr2_defs/meshes/convex/finger_tip_l_convex.stlb" />
+          <mesh filename="package://pr2_defs/meshes/finger_tip_pad2_l.stlb" />
         </geometry>
         <verbose value="Yes" />
       </collision>
@@ -178,7 +178,7 @@
       <collision name="${prefix}_r_finger_tip_collision">
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry name="${prefix}_r_finger_tip_collision_geom">
-          <mesh filename="package://pr2_defs/meshes/convex/finger_tip_r_convex.stlb" />
+          <mesh filename="package://pr2_defs/meshes/finger_tip_pad2_r.stlb" />
         </geometry>
         <verbose value="Yes" />
       </collision>
@@ -265,22 +265,20 @@
       <child link="${side}_gripper_tool_frame"/>
     </joint>
     <link name="${side}_gripper_tool_frame">
-
       <!-- TODO: all that follows is made-up and useless, but the old parser crashes without it -->
       <inertial>
-        <mass value="0" />
+        <mass value="0.01" />
         <origin xyz="0 0 0" rpy="0 0 0" />
-        <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" />
+        <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001" />
       </inertial>
-      <visual name="${side}_gripper_tool_visual">
+      <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry name="${side}_gripper_tool_visual_geom">
           <box size="0.001 0.001 0.001" />
         </geometry>
-        
         <material name="Grey" />
       </visual>
-      <collision name="${side}_gripper_tool_collision">
+      <collision>
         <origin xyz="-0.1 0 0" rpy="0 0 0" /> <!-- move it out of the way -->
         <geometry name="${side}_gripper_tool_collision_geom">
           <box size="0.001 0.001 0.001" />

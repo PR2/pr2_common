@@ -80,7 +80,7 @@
 
     <gazebo reference="${prefix}_l_finger_tip_link">
       <turnGravityOff>true</turnGravityOff>
-      <selfCollide value="false" />
+      <selfCollide value="true" />
       <sensor:contact name="${prefix}_l_finger_tip_contact_sensor">
         <geom>${prefix}_l_finger_tip_link_geom</geom>
         <updateRate>100.0</updateRate>
@@ -95,7 +95,7 @@
       <mu2 value="${finger_tip_mu}" />
       <kp  value="10000000.0" />
       <kd  value="1.0" />
-      <material value="PR2/Green" />
+      <material value="PR2/Red" />
     </gazebo>
     <gazebo reference="${prefix}_l_finger_tip_joint">
       <stopKd value="${finger_stop_kd}" />
@@ -108,7 +108,7 @@
 
     <gazebo reference="${prefix}_r_finger_tip_link">
       <turnGravityOff>true</turnGravityOff>
-      <selfCollide value="false" />
+      <selfCollide value="true" />
       <sensor:contact name="${prefix}_r_finger_tip_contact_sensor">
         <geom>${prefix}_r_finger_tip_link_geom</geom>
         <updateRate>100.0</updateRate>
@@ -123,7 +123,7 @@
       <mu2 value="${finger_tip_mu}" />
       <kp  value="10000000.0" />
       <kd  value="1.0" />
-      <material value="PR2/Green" />
+      <material value="PR2/Red" />
     </gazebo>
     <gazebo>
       <controller:ros_p3d name="p3d_${prefix}_l_finger_controller" plugin="libros_p3d.so">
@@ -216,9 +216,20 @@
         <frameName>map</frameName>
         <interface:position name="p3d_${side}_gripper_palm_position_iface" />
       </controller:ros_p3d>
+      <controller:ros_p3d name="p3d_${side}_gripper_tool_frame" plugin="libros_p3d.so">
+        <alwaysOn>true</alwaysOn>
+        <updateRate>100.0</updateRate>
+        <bodyName>${side}_gripper_tool_frame</bodyName>
+        <topicName>${side}_gripper_tool_frame_pose_ground_truth</topicName>
+        <xyzOffsets>0 0 0</xyzOffsets>
+        <rpyOffsets>0 0 0</rpyOffsets>
+        <gaussianNoise>0.0</gaussianNoise>
+        <frameName>/map</frameName>
+        <interface:position name="p3d_${side}_gripper_tool_frame_position_iface" />
+      </controller:ros_p3d>
     </gazebo>
 
-    <gazebo reference="${side}_gripper_tool_link">
+    <gazebo reference="${side}_gripper_tool_frame">
       <turnGravityOff>true</turnGravityOff>
       <material value="PR2/Grey" />
     </gazebo>
