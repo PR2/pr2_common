@@ -22,6 +22,9 @@
       <turnGravityOff>true</turnGravityOff>
       <material>PR2/Blue</material>
     </gazebo>
+    <gazebo reference="${name}_optical_frame">
+      <turnGravityOff>true</turnGravityOff>
+    </gazebo>
   </macro>
 
 </robot>
