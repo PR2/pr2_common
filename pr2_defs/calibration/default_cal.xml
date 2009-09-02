@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 
-<root>
+<robot>
 
   <!-- Gear Ratio Corrections: Divide transmission reductions by these factors (Nominally 1)-->
   <property name="cal_r_shoulder_pan_gearing"   value="1.0" />
@@ -49,4 +49,4 @@
   <property name="cal_high_def_pitch" value="0.0" />
   <property name="cal_high_def_yaw" value="0.0" />
       
-</root>
+</robot>

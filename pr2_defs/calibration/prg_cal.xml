@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 
-<root>
+<robot>
   <!-- *************************************************************** -->
   <!-- * Calibration values for the PR2-Frodo robot at Willow Garage * -->
   <!-- *************************************************************** -->
@@ -42,5 +42,4 @@
   <property name="cal_l_shoulder_pan_flag" value="0.000000" />
   <property name="cal_l_wrist_roll_flag" value="0.0" />
   
-
-</root>
+</robot>
