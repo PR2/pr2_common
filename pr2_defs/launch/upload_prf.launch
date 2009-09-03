@@ -1,6 +1,6 @@
 <launch>
     <!-- send prf urdf to param server -->
-    <param name="robot_description" command="$(find xacro)/xacro.py '$(find pr2_defs)/robots/prf.xacro.xml'" />
-    <param name="robot_description_new" command="$(find xacro)/xacro.py '$(find pr2_defs)/robots/prf.urdf.xacro'" />
+    <param name="robot_description_old" command="$(find xacro)/xacro.py '$(find pr2_defs)/robots/prf.xacro.xml'" />
+    <param name="robot_description" command="$(find xacro)/xacro.py '$(find pr2_defs)/robots/prf.urdf.xacro'" />
 </launch>
 

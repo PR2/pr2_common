@@ -1,6 +1,6 @@
 <launch>
     <!-- send r_gripper urdf to param server -->
-    <param name="robot_description" command="$(find xacro)/xacro.py '$(find pr2_defs)/robots/r_gripper.xacro.xml'" />
-    <param name="robot_description_new" command="$(find xacro)/xacro.py '$(find pr2_defs)/robots/r_gripper.urdf.xacro'" />
+    <param name="robot_description_old" command="$(find xacro)/xacro.py '$(find pr2_defs)/robots/r_gripper.xacro.xml'" />
+    <param name="robot_description" command="$(find xacro)/xacro.py '$(find pr2_defs)/robots/r_gripper.urdf.xacro'" />
 </launch>
 
