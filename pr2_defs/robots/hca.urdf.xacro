@@ -49,11 +49,11 @@
             rpy="${cal_head_roll} ${cal_head_pitch} ${cal_head_yaw}" />
   </pr2_head_alpha2b>
 
-  <pr2_tilting_laser_alpha2 name="laser_tilt" parent="base_link">
+  <pr2_tilting_laser name="laser_tilt" parent="base_link">
     <!-- Was 0.11m forward of head pan, now 125 mm on head carts -->
     <!-- 66.5mm above head tilt plate -->
     <origin xyz="${0.125 + 0.13} 0 ${0.0665 + .53}" rpy="0 0 0" />
-  </pr2_tilting_laser_alpha2>
+  </pr2_tilting_laser>
 
   <!-- Camera package: double stereo, prosilica -->
   <pr2_head_sensor_package name="sensor_mount" hd_name="high_def" 
