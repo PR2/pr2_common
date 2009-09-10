@@ -19,13 +19,13 @@
   <property name="stereo_ry" value="0.00" />
   <property name="stereo_rz" value="0.00" />
 
-  <macro name="pr2_tilting_laser" params="name parent *origin">
+  <macro name="pr2_tilting_laser" params="name parent laser_calib_ref *origin">
 
     <joint name="${name}_mount_joint" type="revolute">
       <axis xyz="0 1 0" />
       <limit lower="-0.785" upper="1.57" effort="0.5292" velocity="10.0" />
       <safety_controller k_position="100" k_velocity="0.05" soft_lower_limit="${-0.785+0.0}" soft_upper_limit="${1.57-0.0}" />
-      <calibration reference_position="-0.35" />
+      <calibration reference_position="${laser_calib_ref}" />
       <dynamics damping="0.008" />
       <insert_block name="origin" />
       <parent link="${parent}"/>

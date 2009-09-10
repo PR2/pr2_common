@@ -40,7 +40,7 @@
   </pr2_head_alpha2>
 
   <!-- Alpha 2.0 laser tilt installed 4/3/09 -->
-  <pr2_tilting_laser name="laser_tilt" parent="torso_lift_link">
+  <pr2_tilting_laser name="laser_tilt" parent="torso_lift_link" laser_calib_ref="0.0" >
     <!--origin xyz="0.1 0 0.19525" rpy="0 0 0" /-->
     <origin xyz="0.1 0 0.235" rpy="0 0 0" />
   </pr2_tilting_laser>
