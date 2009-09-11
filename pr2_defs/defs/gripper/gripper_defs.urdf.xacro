@@ -297,7 +297,7 @@
     <joint name="${side}_gripper_joint" type="prismatic">
       <axis xyz="0 0 1" />
       <limit effort="100.0" velocity="0.2" lower="0.0" upper="0.09" />
-      <safety_controller k_velocity="500.0" k_position="20.0" soft_lower_limit="${0.0+0.0}" soft_upper_limit="${0.09-0.001}" />
+      <safety_controller k_velocity="500.0" k_position="20.0" soft_lower_limit="${0.0-0.01}" soft_upper_limit="${0.09-0.001}" />
     </joint>
 
     <!-- extensions -->
