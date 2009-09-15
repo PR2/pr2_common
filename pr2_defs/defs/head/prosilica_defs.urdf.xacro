@@ -21,18 +21,18 @@
                  izz="0.001" />
       </inertial>
 
-      <visual name="${name}_visual">
+      <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry name="${name}_visual_geom">
+        <geometry>
           <box size="0.01 0.01 0.01" />
         </geometry>
         
         <material name="Blue" />
       </visual>
 
-      <collision name="${name}_collision">
+      <collision>
         <origin xyz="0 0 0" rpy="0 0 0"/>
-        <geometry name="${name}_collision_geom">
+        <geometry>
           <box size="0.01 0.01 0.01" />
         </geometry>
       </collision>
@@ -56,18 +56,18 @@
                  izz="0.001" />
       </inertial>
 
-      <visual name="${name}_optical_visual">
+      <visual>
         <origin xyz="0 0 0" rpy="0 0 0"/>
-        <geometry name="${name}_optical_visual_geom">
+        <geometry>
           <box size="0.01 0.01 0.01" />
         </geometry>
         
         <material name="Blue" />
       </visual>
 
-      <collision name="${name}_optical_collision">
+      <collision>
         <origin xyz="0 0 0" rpy="0 0 0"/>
-        <geometry name="${name}_optical_collision_geom">
+        <geometry>
           <box size="0.01 0.01 0.01" />
         </geometry>
       </collision>
