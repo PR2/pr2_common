@@ -55,7 +55,7 @@
   <pr2_arm side="l" reflect="1" parent="torso_lift_link">
     <origin xyz="0.0 0.188 0.0" rpy="0 0 0" />
   </pr2_arm>
-  <pr2_gripper screw_reduction="${2.0/1000.0}" gear_ratio="${29.16}" side="l" parent="l_wrist_roll_link" />
+  <pr2_gripper screw_reduction="${2.0/1000.0}" gear_ratio="${29.16}" side="l" parent="l_wrist_roll_link" >
     <origin xyz="0 0 0" rpy="0 0 0" />
   </pr2_gripper>
   -->
