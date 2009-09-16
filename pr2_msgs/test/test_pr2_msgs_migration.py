@@ -52,6 +52,8 @@ import rospy
 
 import math
 
+migrator = rosbagmigration.MessageMigrator()
+
 def repack(x):
   return struct.unpack('<f',struct.pack('<f',x))[0]
 
@@ -80,24 +82,25 @@ class TestPR2MsgsMigration(unittest.TestCase):
 
 ########### BatteryState ###############
 
-  def get_old_battery_state(self):
-    battery_state_classes = self.load_saved_classes('BatteryState.saved')
+# The BatteryState message can no longer be migrated.
 
-    battery_state = battery_state_classes['robot_msgs/BatteryState']
-
-    return battery_state(None, 1.23, 4.56, 7.89)
-
-  def get_new_battery_state(self):
-    from pr2_msgs.msg import BatteryState
-
-    return BatteryState(None, 1.23, 4.56, 7.89)
-
-  def test_battery_state(self):
-    self.do_test('battery_state', self.get_old_battery_state, self.get_new_battery_state)
+#  def get_old_battery_state(self):
+#    battery_state_classes = self.load_saved_classes('BatteryState.saved')
+#
+#    battery_state = battery_state_classes['robot_msgs/BatteryState']
+#
+#    return battery_state(None, 1.23, 4.56, 7.89)
+#
+#  def get_new_battery_state(self):
+#    from pr2_msgs.msg import BatteryState
+#
+#    return BatteryState(None, 1.23, 4.56, 7.89)
+#
+#  def test_battery_state(self):
+#    self.do_test('battery_state', self.get_old_battery_state, self.get_new_battery_state)
 
 
 ########### Helper functions ###########
-
 
   def setUp(self):
     self.pkg_dir = roslib.packages.get_pkg_dir("pr2_msgs")
@@ -133,9 +136,9 @@ class TestPR2MsgsMigration(unittest.TestCase):
     bag.close()
 
     # Check and migrate
-    res = rosbagmigration.checkbag(oldbag, [])
-    self.assertTrue(res is None or res == [], 'Bag not ready to be migrated')
-    res = rosbagmigration.fixbag(oldbag, newbag, [])
+    res = rosbagmigration.checkbag(migrator, oldbag)
+    self.assertTrue(not False in [m[1] == [] for m in res], 'Bag not ready to be migrated')
+    res = rosbagmigration.fixbag(migrator, oldbag, newbag)
     self.assertTrue(res, 'Bag not converted successfully')
 
     # Pull the first message out of the bag
