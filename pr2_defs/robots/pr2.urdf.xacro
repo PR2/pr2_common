@@ -7,7 +7,9 @@
   <!-- declare the path where all models/textures/materials are stored -->
   <resource type="stl_meshes" location="$(find pr2_defs)/meshes"/>
   <resource type="ogre"       location="$(find pr2_ogre)/Media/models"/>
-
+  
+  <!-- The following included files set up definitions of parts of the robot body
+       See arm_defs.urdf.xacro for one with some explanatory comments. -->
   <include filename="$(find pr2_defs)/defs/arm/arm_defs.urdf.xacro" />
   <include filename="$(find pr2_defs)/defs/gripper/gripper_defs.urdf.xacro" />
   <include filename="$(find pr2_defs)/defs/head/head_defs.urdf.xacro" />
@@ -17,6 +19,15 @@
   <include filename="$(find pr2_defs)/defs/gazebo/gazebo_defs.urdf.xacro" />
   <include filename="$(find pr2_defs)/defs/materials.urdf.xacro" />
 
+  <!-- Now we can start using the macros included above to define the actual PR2 -->
+
+  <!-- The first use of a macro.  This one was defined in base_defs.urdf.xacro above.
+       A macro like this will expand to a set of link and joint definitions, and to additional
+       Gazebo-related extensions (sensor plugins, etc).  The macro takes an argument, name, 
+       that equals "base", and uses it to generate names for its component links and joints 
+       (e.g., base_link).  The included origin block is also an argument to the macro.  By convention, 
+       the origin block defines where the component is w.r.t its parent (in this case the parent 
+       is the world frame). For more, see http://www.ros.org/wiki/xacro -->
   <pr2_base name="base" >
     <origin xyz="0 0 0.051" rpy="0 0 0" /> <!-- 5.1cm is the height of the base when wheels contact ground -->
   </pr2_base>
@@ -25,8 +36,9 @@
     <origin xyz="-0.05 0 0.739675" rpy="0 0 0" />
   </pr2_torso>
 
+  <!-- The xacro preprocesser will replace the parameters below, such as ${cal_head_x}, with
+       numerical values that were specified in default_cal.xml which was included above -->
   <pr2_head name="head" parent="torso_lift_link">
-    <!--origin xyz="0 0 0.3815" rpy="0 0 0" /-->
     <origin xyz="${cal_head_x}    ${cal_head_y}     ${0.3915+cal_head_z}"
             rpy="${cal_head_roll} ${cal_head_pitch} ${cal_head_yaw}" />
   </pr2_head>
@@ -37,9 +49,8 @@
 			   parent="head_plate_frame">
     <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
   </pr2_head_sensor_package>
-    
+
   <pr2_tilting_laser name="laser_tilt" parent="torso_lift_link" laser_calib_ref="-0.35">
-    <!--origin xyz="0.1 0 0.19525" rpy="0 0 0" /-->
     <origin xyz="0.1 0 0.235" rpy="0 0 0" />
   </pr2_tilting_laser>
 
@@ -67,7 +78,7 @@
             rpy="${-M_PI/2} ${-45*M_PI/180} 0" />
   </mono_cam>
 
-  <!-- Kinematic chains -->
+  <!-- Kinematic chains (a deprecated feature) -->
   <chain root="torso_lift_link" tip="l_wrist_roll_link" />
   <chain root="torso_lift_link" tip="r_wrist_roll_link" />
 

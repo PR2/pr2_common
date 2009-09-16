@@ -1,8 +1,12 @@
 <?xml version="1.0"?>
+
+<!-- XML namespaces -->
 <robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
        xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
 
+  <!-- Things that are needed only for Gazebo (not the physical robot).  These include
+       sensor and controller plugin specifications -->
   <include filename="$(find pr2_defs)/defs/arm/arm_gazebo.xacro" />
   <include filename="$(find pr2_defs)/defs/arm/arm_transmission.xacro" />
 
@@ -32,6 +36,12 @@
   <property name="ual_iyy"  value= "0.07473694455" />
   <property name="ual_iyz"  value="-0.00019953729" />
   <property name="ual_izz"  value= "0.07601594191" />
+
+
+  <!-- We'll first define submacros for the arms subcomponents, and then define pr2_arm itself -->
+
+
+  <!-- ============================   Shoulder   ============================ -->
 
   <macro name="pr2_shoulder" params="side parent reflect *origin">
 
@@ -408,8 +418,13 @@
   </macro>
 
 
+  <!-- ============================   Arm   ============================ -->
+
+  <!-- Now we can finally define the arm itself. -->
 
   <macro name="pr2_arm" params="side parent reflect *origin">
+    <!-- This is a common convention, to use a reflect parameter that equals +-1 to distinguish left from right -->
+
     <pr2_shoulder side="${side}" reflect="${reflect}" parent="${parent}">
       <insert_block name="origin" />
     </pr2_shoulder>
