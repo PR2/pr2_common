@@ -1,3 +1,3 @@
 Header header
-int16[] data0
-int16[] data1
+int16[] l_finger_tip
+int16[] r_finger_tip
