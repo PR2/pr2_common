@@ -26,11 +26,11 @@
         <minRange>0.05</minRange>
         <maxRange>10.0</maxRange>
         <resRange>0.01</resRange>
-        <updateRate>20.0</updateRate>
+        <updateRate>40.0</updateRate>
         <controller:ros_laser name="ros_${name}_controller" plugin="libros_laser.so">
           <gaussianNoise>0.005</gaussianNoise>
           <alwaysOn>true</alwaysOn>
-          <updateRate>20.0</updateRate>
+          <updateRate>40.0</updateRate>
           <topicName>tilt_scan</topicName>
           <frameName>${name}_link</frameName>
           <interface:laser name="ros_${name}_iface" />
