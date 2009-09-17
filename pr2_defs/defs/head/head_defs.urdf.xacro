@@ -66,7 +66,7 @@
       <limit lower="-0.55" upper="1.047" effort="12.21" velocity="100" />
       <safety_controller k_velocity="1.5" soft_lower_limit="${-0.55+0.02}" soft_upper_limit="${1.047-0.002}" k_position="100" />
       <calibration reference_position="${-0.195+cal_head_tilt_flag}" />
-      <dynamics damping="1.0" />
+      <dynamics damping="20.0" />
       <insert_block name="origin" />
       <parent link="${parent}"/>
       <child link="${name}_link"/>
