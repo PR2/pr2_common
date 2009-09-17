@@ -10,7 +10,7 @@
     <transmission type="SimpleTransmission" name="${parent}_${suffix}_wheel_trans">
       <actuator name="${parent}_${suffix}_wheel_motor_alpha2" />
       <joint name="${parent}_${suffix}_wheel_joint" />
-      <mechanicalReduction>${-1 * reflect * 79.226}</mechanicalReduction>
+      <mechanicalReduction>${-1 * reflect * 624/35 * 80/18}</mechanicalReduction>
     </transmission>
   </macro>
 
@@ -18,7 +18,7 @@
     <transmission type="SimpleTransmission" name="${suffix}_caster_rotation_trans">
       <actuator name="${suffix}_caster_rotation_motor_alpha2" />
       <joint name="${suffix}_caster_rotation_joint" />
-      <mechanicalReduction>79.226</mechanicalReduction>
+      <mechanicalReduction>${624/35 * 80/18}</mechanicalReduction>
     </transmission>
   </macro>
 
