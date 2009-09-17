@@ -1,5 +1,3 @@
-
-
 Header header
 
 # signal == 0 => Half profile complete
