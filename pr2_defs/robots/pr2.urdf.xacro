@@ -17,6 +17,7 @@
   <include filename="$(find pr2_defs)/defs/base/base_defs.urdf.xacro" />
   <include filename="$(find pr2_defs)/defs/head/prosilica_defs.urdf.xacro" />
   <include filename="$(find pr2_defs)/defs/gazebo/gazebo_defs.urdf.xacro" />
+  <include filename="$(find pr2_defs)/defs/arm/mono_cam_defs.urdf.xacro" />
   <include filename="$(find pr2_defs)/defs/materials.urdf.xacro" />
 
   <!-- Now we can start using the macros included above to define the actual PR2 -->
