@@ -13,6 +13,10 @@
   <property name="base_laser_size_z" value="0.03" />
   <property name="base_laser_collision_offset_z" value="0.03" />
 
+
+  <!--                                                      -->
+  <!-- Alpha 2.0 hardware                                   -->
+  <!--                                                      -->
   <macro name="pr2_wheel_gazebo" params="suffix parent">
 
     <gazebo reference="${parent}_${suffix}_wheel_link">
@@ -26,7 +30,6 @@
           <interface:bumper name="${parent}_${suffix}_wheel_ros_bumper_iface" />
         </controller:ros_bumper>
       </sensor:contact>
-      <material value="PR2/wheel_${suffix}" />
       <mu1 value="100.0" />
       <mu2 value="100.0" />
       <kp  value="1000000.0" />
@@ -48,10 +51,6 @@
           <interface:bumper name="${name}_bumper_iface" />
         </controller:ros_bumper>
       </sensor:contact>
-      <mu1 value="0.0" />
-      <mu2 value="0.0" />
-      <kp  value="1000000.0" />
-      <kd  value="1.0" />
       <material value="PR2/Green" />
     </gazebo>
     <gazebo>
@@ -66,21 +65,9 @@
         <rpyOffsets>0 0 0</rpyOffsets>
         <interface:position name="p3d_base_position"/>
       </controller:ros_p3d>
-      <controller:ros_p3d name="p3d_plug_holder_controller" plugin="libros_p3d.so">
-        <alwaysOn>true</alwaysOn>
-        <updateRate>100.0</updateRate>
-        <bodyName>plug_holder</bodyName>
-        <topicName>plug_holder_pose_ground_truth</topicName>
-        <gaussianNoise>0.01</gaussianNoise>
-        <frameName>map</frameName>
-        <xyzOffsets>0 0 0</xyzOffsets> <!-- initialize odometry for fake localization-->
-        <rpyOffsets>0 0 0</rpyOffsets>
-        <interface:position name="p3d_plug_holder_position"/>
-      </controller:ros_p3d>
     </gazebo>
 
     <!-- base laser -->
-
     <gazebo reference="base_laser">
       <sensor:ray name="base_laser">
         <rayCount>640</rayCount>
@@ -108,23 +95,8 @@
       <material value="PR2/Red" />
     </gazebo>
 
-    <!-- modeling plug on base holder magnet location -->
-
-    <gazebo reference="plug_holder">
-      <material value="PR2/Red" />
-    </gazebo>
-    <gazebo reference="plug_holder_2">
-      <material value="PR2/Red" />
-    </gazebo>
-    <gazebo reference="plug_holder_3">
-      <material value="PR2/Red" />
-    </gazebo>
-    <gazebo reference="plug_holder_4">
-      <material value="PR2/Red" />
-    </gazebo>
-
-
   </macro>
+
 
 
 
