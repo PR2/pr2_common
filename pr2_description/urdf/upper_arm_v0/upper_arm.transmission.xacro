@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
+
+  <!-- ============================   Upper Arm   ============================ -->
+
+
+  <macro name="pr2_upper_arm_transmission" params="side">
+
+    <!-- Elbow flex -->
+
+    <transmission type="SimpleTransmission" name="${side}_elbow_flex_trans">
+      <actuator name="${side}_elbow_flex_motor" />
+      <joint name="${side}_elbow_flex_joint" />
+      <mechanicalReduction>-36.17</mechanicalReduction>
+    </transmission>
+
+    <!-- Forearm roll -->
+
+    <transmission type="SimpleTransmission" name="${side}_forearm_roll_trans">
+      <actuator name="${side}_forearm_roll_motor" />
+      <joint name="${side}_forearm_roll_joint" />
+      <mechanicalReduction>${576/25*55/14}</mechanicalReduction>
+    </transmission>
+
+  </macro>
+
+
+

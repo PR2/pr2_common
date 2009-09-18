@@ -1,0 +1,336 @@
+<?xml version="1.0"?>
+<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+       xmlns:joint="http://playerstage.sourceforge.net/gazebo/xmlschema/#slider"
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
+
+  <include filename="$(find pr2_defs)/defs/gripper/gripper_gazebo.xacro" />
+  <include filename="$(find pr2_defs)/defs/gripper/gripper_transmission.xacro" />
+
+  <property name="M_PI" value="3.1415926535897931" />
+
+  <property name="gripper_upper_angle" value="0.548" />
+  <property name="gripper_lower_angle" value="0.00" />
+
+  <property name="finger_damping"             value="0.2" />
+  <property name="finger_tip_damping"         value="0.01" />
+
+  <property name="finger_joint_effort_limit"  value="100.0" />
+
+  <macro name="pr2_finger_limits" params="reflect">
+    <limit effort="${finger_joint_effort_limit}" velocity="0.5"
+           lower="${gripper_lower_angle}" upper="${gripper_upper_angle}" />
+    <safety_controller k_velocity="100.0" k_position="100.0"
+                       soft_lower_limit="${gripper_lower_angle+0.0}" soft_upper_limit="${gripper_upper_angle-0.0}" />
+  </macro>
+
+  <macro name="pr2_finger" params="prefix parent">
+
+    <!-- Finger proximal digit -->
+    <joint name="${prefix}_l_finger_joint" type="revolute">
+      <axis xyz="0 0 1" />
+
+      <pr2_finger_limits reflect="1" />
+
+      <dynamics damping="${finger_damping}" />
+      <origin xyz="0.07691 0.01 0" rpy="0 0 0" />
+      <parent link="${parent}"/>
+      <child link="${prefix}_l_finger_link"/>
+    </joint>
+    <link name="${prefix}_l_finger_link">
+
+
+      <inertial>
+        <mass value="0.17126" />
+        <origin xyz="${0.03598} 0.01730 -0.00164" rpy="0 0 0" />
+        <inertia  ixx= "0.00007756198"
+                  ixy= "0.00000149095"
+                  ixz="-0.00000983385"
+                  iyy= "0.00019708305"
+                  iyz="-0.00000306125"
+                  izz= "0.00018105446" />
+      </inertial>
+      <visual name="${prefix}_l_finger_visual">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry name="${prefix}_l_finger_visual_geom">
+          <mesh filename="package://pr2_defs/meshes/upper_finger_l.stl" />
+        </geometry>
+        
+        <material name="Grey" />
+      </visual>
+      <collision name="${prefix}_l_finger_collision">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry name="${prefix}_l_finger_collision_geom">
+          <mesh filename="package://pr2_defs/meshes/convex/upper_finger_l_convex.stlb" />
+        </geometry>
+        <verbose value="Yes" />
+      </collision>
+    </link>
+
+    <!-- Finger proximal digit -->
+
+    <joint name="${prefix}_r_finger_joint" type="revolute">
+      <axis xyz="0 0 -1" />
+      <origin xyz="0.07691 -0.01 0" rpy="0 0 0" />
+      <pr2_finger_limits reflect="1" />
+      <dynamics damping="${finger_damping}" />
+      <mimic joint="${prefix}_l_finger_joint" multiplier="1" offset="0"/>
+      <parent link="${parent}"/>
+      <child link="${prefix}_r_finger_link"/>
+    </joint>
+    <link name="${prefix}_r_finger_link">
+
+
+      <inertial>
+        <mass value="0.17389" />
+        <origin xyz="${0.03576} -0.01736 -0.00095" rpy="0 0 0" />
+        <inertia  ixx= "0.00007738410"
+                  ixy="-0.00000209309"
+                  ixz="-0.00000836228"
+                  iyy= "0.00019847383"
+                  iyz= "0.00000246110"
+                  izz= "0.00018106988" />
+      </inertial>
+      <visual name="${prefix}_r_finger_visual">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry name="${prefix}_r_finger_visual_geom">
+          <mesh filename="package://pr2_defs/meshes/upper_finger_r.stl" />
+        </geometry>
+        
+        <material name="Grey" />
+      </visual>
+      <collision name="${prefix}_r_finger_collision">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry name="${prefix}_r_finger_collision_geom">
+          <mesh filename="package://pr2_defs/meshes/convex/upper_finger_r_convex.stlb" />
+        </geometry>
+        <verbose value="Yes" />
+      </collision>
+    </link>
+
+    <!-- Finger tip -->
+
+    <joint name="${prefix}_l_finger_tip_joint" type="revolute">
+      <axis xyz="0 0 -1" />
+      <origin xyz="0.09137 0.00495 0" rpy="0 0 0" />
+      <pr2_finger_limits reflect="1" />
+      <dynamics damping="${finger_tip_damping}" />
+      <mimic joint="${prefix}_l_finger_joint" multiplier="1" offset="0"/>
+      <parent link="${prefix}_l_finger_link"/>
+      <child link="${prefix}_l_finger_tip_link"/>
+    </joint>
+    <link name="${prefix}_l_finger_tip_link">
+
+
+      <inertial>
+        <mass value="0.04419" />
+        <origin xyz="0.00423 0.00284 0.0" rpy="0 0 0" />
+        <inertia  ixx="0.00000837047" ixy="0.00000583632" ixz="0.0"
+                  iyy="0.00000987067" iyz="0.0"
+                  izz="0.00001541768" />
+      </inertial>
+      <visual name="${prefix}_l_finger_tip_visual">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry name="${prefix}_l_finger_tip_visual_geom">
+          <mesh filename="package://pr2_defs/meshes/finger_tip_l.stl" />
+        </geometry>
+        
+        <material name="Green" />
+      </visual>
+      <collision name="${prefix}_l_finger_tip_collision">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry name="${prefix}_l_finger_tip_collision_geom">
+          <mesh filename="package://pr2_defs/meshes/finger_tip_pad2_l.stl" />
+        </geometry>
+        <verbose value="Yes" />
+      </collision>
+    </link>
+
+    <!-- Finger tip -->
+
+    <joint name="${prefix}_r_finger_tip_joint" type="revolute">
+      <axis xyz="0 0 1" />
+      <origin xyz="${0.09137} ${-0.00495} 0" rpy="0 0 0" />
+      <pr2_finger_limits reflect="1" />
+      <dynamics damping="${finger_tip_damping}" />
+      <mimic joint="${prefix}_l_finger_joint" multiplier="1" offset="0"/>
+      <parent link="${prefix}_r_finger_link"/>
+      <child link="${prefix}_r_finger_tip_link"/>
+    </joint>
+    <link name="${prefix}_r_finger_tip_link">
+
+
+      <inertial>
+        <mass value="0.04419" />
+        <origin xyz="${0.00423} ${-0.00284} ${0.0}" rpy="0 0 0" />
+        <inertia  ixx="0.00000837047" ixy="-0.00000583632" ixz="0.0"
+                  iyy="0.00000987067" iyz="0.0"
+                  izz="0.00001541768" />
+      </inertial>
+      <visual name="${prefix}_r_finger_tip_visual">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry name="${prefix}_r_finger_tip_visual_geom">
+          <mesh filename="package://pr2_defs/meshes/finger_tip_r.stl" />
+        </geometry>
+        
+        <material name="Green" />
+      </visual>
+      <collision name="${prefix}_r_finger_tip_collision">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry name="${prefix}_r_finger_tip_collision_geom">
+          <mesh filename="package://pr2_defs/meshes/finger_tip_pad2_r.stl" />
+        </geometry>
+        <verbose value="Yes" />
+      </collision>
+    </link>
+
+    <!-- extensions -->
+    <pr2_finger_gazebo prefix="${prefix}" />
+  </macro>
+
+
+
+  <macro name="pr2_gripper" params="side parent *origin gear_ratio screw_reduction">
+
+    <joint name="${side}_gripper_palm_joint" type="fixed">
+      <insert_block name="origin"/>
+      <parent link="${parent}"/>
+      <child link="${side}_gripper_palm_link"/>
+    </joint>
+    <link name="${side}_gripper_palm_link">
+      <inertial>
+        <mass value="0.58007" />
+        <origin xyz="0.06623 0.00053 -0.00119" rpy="0 0 0" />
+        <inertia  ixx="0.00035223921" ixy="-0.00001580476" ixz="-0.00000091750"
+                  iyy="0.00067741312" iyz="-0.00000059554"
+                  izz="0.00086563316" />
+      </inertial>
+
+      <visual name="${side}_gripper_palm_visual">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry name="${side}_gripper_palm_visual_geom">
+          <mesh filename="package://pr2_defs/meshes/gripper_palm.stl" />
+        </geometry>
+        
+        <material name="Red" />
+      </visual>
+      <collision name="${side}_gripper_palm_collision">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry name="${side}_gripper_palm_collision_geom">
+          <mesh filename="package://pr2_defs/meshes/convex/gripper_palm_convex.stlb" />
+        </geometry>
+        <verbose value="Yes" />
+      </collision>
+    </link>
+
+    <joint name="${side}_gripper_motor_accelerometer_joint" type="fixed">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <parent link="${side}_gripper_palm_link"/>
+      <child link="${side}_gripper_motor_accelerometer_link"/>
+    </joint>
+    <link name="${side}_gripper_motor_accelerometer_link">
+      <inertial>
+        <mass value="0.001" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <inertia  ixx="0.001" ixy="0.0" ixz="0.0"
+                  iyy="0.001" iyz="0.0"
+                  izz="0.001" />
+      </inertial>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <box size="0.001 0.001 0.001" />
+        </geometry>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <box size="0.001 0.001 0.001" />
+        </geometry>
+      </collision>
+    </link>
+
+    <!-- floating link for simulating gripper constraints -->
+    <joint name="${side}_gripper_float_joint" type="prismatic">
+      <limit lower="-0.05" upper="0.001" velocity="10" effort="10" />
+      <safety_controller soft_lower_limit="${-0.05+0.0}" soft_upper_limit="${0.001-0.0}" />
+      <axis xyz="1 0 0" />
+      <dynamics damping="10.0" />
+      <origin xyz="0.05 0 0" rpy="0 0 0" />
+      <parent link="${side}_gripper_palm_link"/>
+      <child link="${side}_gripper_float_link"/>
+    </joint>
+    <link name="${side}_gripper_float_link">
+
+      <inertial>
+        <mass value="0.01" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <inertia  ixx="0.0001" ixy="0" ixz="0"
+                  iyy="0.0001" iyz="0"
+                  izz="0.0001" />
+      </inertial>
+      <visual name="${side}_gripper_float_visual">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry name="${side}_gripper_float_visual_geom">
+          <box size="0.001 0.001 0.001" />
+        </geometry>
+        
+        <material name="White" />
+      </visual>
+      <collision name="${side}_gripper_float_collision">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry name="${side}_gripper_float_collision_geom">
+          <box size="0.001 0.001 0.001" />
+        </geometry>
+        <verbose value="Yes" />
+      </collision>
+    </link>
+
+    <joint name="${side}_gripper_tool_joint" type="fixed">
+      <origin xyz="0.18 0 0" rpy="0 0 0" />
+      <parent link="${side}_gripper_palm_link"/>
+      <child link="${side}_gripper_tool_frame"/>
+    </joint>
+    <link name="${side}_gripper_tool_frame">
+      <!-- TODO: all that follows is made-up and useless, but the old parser crashes without it -->
+      <inertial>
+        <mass value="0.01" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001" />
+      </inertial>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry name="${side}_gripper_tool_visual_geom">
+          <box size="0.001 0.001 0.001" />
+        </geometry>
+        <material name="Grey" />
+      </visual>
+      <collision>
+        <origin xyz="-0.1 0 0" rpy="0 0 0" /> <!-- move it out of the way -->
+        <geometry name="${side}_gripper_tool_collision_geom">
+          <box size="0.001 0.001 0.001" />
+        </geometry>
+      </collision>
+    </link>
+
+    <!-- pr2 fingers macro -->
+    <pr2_finger prefix="${side}_gripper" parent="${side}_gripper_palm_link" />
+
+    <!-- fictitous joint that represents the gripper gap -->
+    <!-- effort is the linear force at the gripper gap
+         velocity limit is the linear velocity limit at the gripper gap
+         try and introduce a very stiff spring
+    -->
+    <joint name="${side}_gripper_joint" type="prismatic">
+      <axis xyz="0 0 1" />
+      <limit effort="100.0" velocity="0.2" lower="0.0" upper="0.09" />
+      <safety_controller k_velocity="500.0" k_position="20.0" soft_lower_limit="${0.0-0.01}" soft_upper_limit="${0.09-0.001}" />
+    </joint>
+
+    <!-- extensions -->
+    <pr2_gripper_gazebo side="${side}" />
+    <pr2_gripper_transmission side="${side}" />
+
+  </macro>
+
+</robot>

@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+       xmlns:joint="http://playerstage.sourceforge.net/gazebo/xmlschema/#slider"
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
+
+  <macro name="pr2_gripper_transmission" params="side">
+    <!-- [lr]_gripper_joint is a fictitious joint, used by transmission for controller gap   -->
+    <!-- [lr]_gripper_joint is not attached to any link                                      -->
+    <!-- [lr]_gripper_joint position is the gap_size                                         -->
+    <!-- [lr]_gripper_joint velocity is the gap linear velocity                              -->
+    <!-- [lr]_gripper_joint effort   is the gap linear force                                 -->
+    <!-- Please refer to function engineering spreadsheet 090224_link_data.xls for           -->
+    <!-- the transmission function.                                                          -->
+    <!-- Please refer to mechanism_model/src/pr2_gripper_transmission.cpp for implementation.-->
+    <!-- gazebo_mimic_pid is for sim only.                                                   -->
+    <transmission type="PR2GripperTransmission" name="${side}_gripper_trans" >
+      <actuator       name="${side}_gripper_motor" />
+      <gap_joint      name="${side}_gripper_joint" screw_reduction="${screw_reduction}" gear_ratio="${gear_ratio}" mechanical_reduction="1.0" />
+      <passive_joint  name="${side}_gripper_l_finger_joint"     />
+      <passive_joint  name="${side}_gripper_r_finger_joint"     />
+      <passive_joint  name="${side}_gripper_r_finger_tip_joint" />
+      <passive_joint  name="${side}_gripper_l_finger_tip_joint" />
+    </transmission>
+
+  </macro>
+
+
+</robot>

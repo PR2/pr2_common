@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
+
+  <macro name="pr2_shoulder_transmission" params="side">
+
+    <!-- Shoulder pan -->
+    <transmission type="SimpleTransmission" name="${side}_shoulder_pan_trans">
+      <actuator name="${side}_shoulder_pan_motor" />
+      <joint name="${side}_shoulder_pan_joint" />
+      <mechanicalReduction>${63.16/cal_r_shoulder_pan_gearing}</mechanicalReduction>
+    </transmission>
+
+    <!-- Shoulder lift -->
+    <transmission type="SimpleTransmission" name="${side}_shoulder_lift_trans">
+      <actuator name="${side}_shoulder_lift_motor" />
+      <joint name="${side}_shoulder_lift_joint" />
+      <mechanicalReduction>${61.89/cal_r_shoulder_lift_gearing}</mechanicalReduction>
+    </transmission>
+
+    <!-- Upperarm roll: internal fixed attchment point for upper arm -->
+    <transmission type="SimpleTransmission" name="${side}_upper_arm_roll_trans">
+      <actuator name="${side}_upper_arm_roll_motor" />
+      <joint name="${side}_upper_arm_roll_joint" />
+      <mechanicalReduction>${32.65/cal_r_upper_arm_roll_gearing}</mechanicalReduction>
+    </transmission>
+
+  </macro>
+</robot>
