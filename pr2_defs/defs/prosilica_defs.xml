@@ -47,11 +47,11 @@
           <controller:ros_prosilica name="${name}_controller" plugin="libros_prosilica.so">
             <alwaysOn>true</alwaysOn>
             <updateRate>20.0</updateRate>
-            <camInfoTopicName>/prosilica/cam_info</camInfoTopicName>
-            <imageTopicName>/prosilica/image</imageTopicName>
-            <imageRectTopicName>/prosilica/image_rect</imageRectTopicName>
-            <camInfoServiceName>/prosilica/cam_info_service</camInfoServiceName>
-            <pollServiceName>/prosilica/poll</pollServiceName>
+            <camInfoTopicName>prosilica/cam_info</camInfoTopicName>
+            <imageTopicName>prosilica/image</imageTopicName>
+            <imageRectTopicName>prosilica/image_rect</imageRectTopicName>
+            <camInfoServiceName>prosilica/cam_info_service</camInfoServiceName>
+            <pollServiceName>prosilica/poll</pollServiceName>
             <frameName>hight_def_optical_frame</frameName>
             <CxPrime>1224.5</CxPrime>
             <Cx>1224.5</Cx>
