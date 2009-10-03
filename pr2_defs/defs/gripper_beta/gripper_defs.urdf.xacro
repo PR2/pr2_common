@@ -190,7 +190,7 @@
 
 
 
-  <macro name="pr2_gripper" params="side parent *origin gear_ratio screw_reduction theta0 phi0 t0 L0 a b r">
+  <macro name="pr2_gripper" params="side parent *origin gear_ratio screw_reduction theta0 phi0 t0 L0 h a b r">
 
     <joint name="${side}_gripper_palm_joint" type="fixed">
       <insert_block name="origin"/>
