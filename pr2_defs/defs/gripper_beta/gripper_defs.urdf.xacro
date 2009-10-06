@@ -4,8 +4,8 @@
        xmlns:joint="http://playerstage.sourceforge.net/gazebo/xmlschema/#slider"
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
 
-  <include filename="$(find pr2_defs)/defs/gripper/gripper_gazebo.xacro" />
-  <include filename="$(find pr2_defs)/defs/gripper/gripper_transmission.xacro" />
+  <include filename="$(find pr2_defs)/defs/gripper_beta/gripper_gazebo.xacro" />
+  <include filename="$(find pr2_defs)/defs/gripper_beta/gripper_transmission.xacro" />
 
   <property name="M_PI" value="3.1415926535897931" />
 
@@ -329,7 +329,17 @@
 
     <!-- extensions -->
     <pr2_gripper_gazebo side="${side}" />
-    <pr2_gripper_transmission side="${side}" />
+    <pr2_gripper_transmission side="${side}"
+        screw_reduction="${screw_reduction}"
+        gear_ratio="${gear_ratio}"
+        theta0="${theta0}"
+        phi0="${phi0}"
+        t0="${t0}"
+        L0="${L0}"
+        h="${h}"
+        a="${a}"
+        b="${b}"
+        r="${r}" />
 
   </macro>
 

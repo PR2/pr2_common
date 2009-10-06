@@ -4,7 +4,7 @@
        xmlns:joint="http://playerstage.sourceforge.net/gazebo/xmlschema/#slider"
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
 
-  <macro name="pr2_gripper_transmission" params="side">
+  <macro name="pr2_gripper_transmission" params="side screw_reduction gear_ratio theta0 phi0 t0 L0 h a b r">
     <!-- [lr]_gripper_joint is a fictitious joint, used by transmission for controller gap   -->
     <!-- [lr]_gripper_joint is not attached to any link                                      -->
     <!-- [lr]_gripper_joint position is the gap_size                                         -->
