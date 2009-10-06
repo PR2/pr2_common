@@ -55,7 +55,7 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://pr2_defs/meshes/pr2_wheel.stl" />
+          <mesh filename="package://pr2_defs/meshes/pr2_wheel.stl" scale="0.65 1.0 0.65"/>
         </geometry>
 
         <material name="Caster_${suffix}" />
@@ -146,7 +146,7 @@
       <visual>
         <origin xyz="0 0 ${base_height_offset}" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://pr2_defs/meshes/base.stl" scale="0.65 1.0 0.65"/>
+          <mesh filename="package://pr2_defs/meshes/base.stl"/>
         </geometry>
         
         <material name="Green" />
