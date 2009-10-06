@@ -6,6 +6,7 @@ int8 STATE_DISABLED=4
 
 Header header
 string name
+uint32 serial_num
 # Circuit States:
 #  STATE_NOPOWER, STATE_STANDBY, STATE_PUMPING, STATE_ON, STATE_DISABLED
 float64 input_voltage
