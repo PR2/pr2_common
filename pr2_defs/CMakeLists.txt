@@ -1,18 +1,18 @@
 
 cmake_minimum_required(VERSION 2.4.6)
 include($ENV{ROS_ROOT}/core/rosbuild/rosbuild.cmake)
-rospack(pr2_defs)
+rosbuild_init()
 
-rospack_add_gtest(test_urdf test/test_urdf.cpp)
+rosbuild_add_gtest(test_urdf test/test_urdf.cpp)
 
-find_ros_package(pr2_defs)
+rosbuild_find_ros_package(pr2_defs)
 
 file(GLOB def_files ${CMAKE_CURRENT_SOURCE_DIR}/defs/*.xml)
 
 # xacro file generation
-find_ros_package(xacro)
-find_ros_package(ivcon)
-find_ros_package(convex_decomposition)
+rosbuild_find_ros_package(xacro)
+rosbuild_find_ros_package(ivcon)
+rosbuild_find_ros_package(convex_decomposition)
 
 set(pr2_robot_files "")
 
@@ -30,11 +30,15 @@ foreach(it ${robot_urdf_files})
   set(expanded_file "${basepath}/${basename}.urdf")
   message("    produce expanded file :",${expanded_file})
 
+  # After next common release, replace add_custom_command() with
+  # xacro_add_xacro_file()
+  #
   add_custom_command(
     OUTPUT ${expanded_file}
     COMMAND ${xacro_PACKAGE_PATH}/xacro.py
     ARGS ${it} > ${expanded_file}
     DEPENDS ${it} ${urdf_def_files})
+  #xacro_add_xacro_file(${it} ${expanded_file})
 
   set(pr2_robot_files ${pr2_robot_files} ${expanded_file})
 endforeach(it)
@@ -53,11 +57,15 @@ foreach(it ${robot_xacro_files})
   set(expanded_file "${basepath}/${basename}.expanded.xml")
   message("    produce expanded file :",${expanded_file})
 
+  # After next common release, replace add_custom_command() with
+  # xacro_add_xacro_file()
+  #
   add_custom_command(
     OUTPUT ${expanded_file}
     COMMAND ${xacro_PACKAGE_PATH}/xacro.py
     ARGS ${it} > ${expanded_file}
     DEPENDS ${it} ${def_files})
+  #xacro_add_xacro_file(${it} ${expanded_file})
 
   set(pr2_robot_files ${pr2_robot_files} ${expanded_file})
 endforeach(it)
