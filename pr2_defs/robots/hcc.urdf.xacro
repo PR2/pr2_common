@@ -29,13 +29,13 @@
     <visual>
       <!-- 1.06m above ground -->
       <origin xyz="0 0 0" rpy="0 0 0 " />
-      <geometry name="unit_box">
+      <geometry>
 	<box size=".6 0.45 1.06" />
       </geometry>
     </visual> 
     <collision>
       <origin xyz="0 0 0" rpy="0.0 0.0 0.0 " />
-      <geometry name="box_link_collision_geom">
+      <geometry>
         <box size="0.6 0.45 1.06" />
       </geometry>
     </collision>
