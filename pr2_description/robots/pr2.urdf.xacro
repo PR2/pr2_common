@@ -1,34 +1,37 @@
 <?xml version="1.0"?>
-<robot name="pr2">
-  
-  <!-- Include file with calibration parameters -->
-  <include filename="$(find pr2_description)/calibration/default_cal.xml" />
+<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+       xmlns:xacro="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+       name="pr2" >
   
   <!-- The following included files set up definitions of parts of the robot body -->
+  <!-- misc common stuff? -->
+  <include filename="$(find pr2_description)/urdf/common.xacro" />
   <!-- PR2 gripper -->
-  <include filename="$(find pr2_description)/urdf/shoulder_v0/shoulder_defs.urdf.xacro" />
-  <include filename="$(find pr2_description)/urdf/upper_arm_v0/upper_arm_defs.urdf.xacro" />
-  <include filename="$(find pr2_description)/urdf/forearm_v0/forearm_defs.urdf.xacro" />
+  <include filename="$(find pr2_description)/urdf/shoulder_v0/shoulder.urdf.xacro" />
+  <include filename="$(find pr2_description)/urdf/upper_arm_v0/upper_arm.urdf.xacro" />
+  <include filename="$(find pr2_description)/urdf/forearm_v0/forearm.urdf.xacro" />
   <!-- PR2 gripper -->
-  <include filename="$(find pr2_description)/urdf/gripper_v0/gripper_defs.urdf.xacro" />
+  <include filename="$(find pr2_description)/urdf/gripper_v0/gripper.urdf.xacro" />
   <!-- PR2 head -->
-  <include filename="$(find pr2_description)/urdf/head_v0/head_defs.urdf.xacro" />
+  <include filename="$(find pr2_description)/urdf/head_v0/head.urdf.xacro" />
   <!-- PR2 tilting laser mount -->
-  <include filename="$(find pr2_description)/urdf/tilting_laser_v0/tilting_laser_defs.urdf.xacro" />
+  <include filename="$(find pr2_description)/urdf/tilting_laser_v0/tilting_laser.urdf.xacro" />
   <!-- PR2 torso -->
-  <include filename="$(find pr2_description)/urdf/torso_v0/torso_defs.urdf.xacro" />
+  <include filename="$(find pr2_description)/urdf/torso_v0/torso.urdf.xacro" />
   <!-- PR2 base -->
-  <include filename="$(find pr2_description)/urdf/base_v0/base_defs.urdf.xacro" />
+  <include filename="$(find pr2_description)/urdf/base_v0/base.urdf.xacro" />
   <!-- Head sensors -->
   <include filename="$(find pr2_description)/urdf/sensors/head_sensor_package.urdf.xacro" />
   <!-- generic simulator_gazebo plugins for starting mechanism control, ros time, ros battery -->
-  <include filename="$(find pr2_description)/gazebo/gazebo_defs.urdf.xacro" />
+  <include filename="$(find pr2_description)/gazebo/gazebo.urdf.xacro" />
   <!-- materials for visualization -->
   <include filename="$(find pr2_description)/urdf/materials.urdf.xacro" />
 
   <!-- Now we can start using the macros included above to define the actual PR2 -->
 
-  <!-- The first use of a macro.  This one was defined in base_defs.urdf.xacro above.
+  <!-- The first use of a macro.  This one was defined in base.urdf.xacro above.
        A macro like this will expand to a set of link and joint definitions, and to additional
        Gazebo-related extensions (sensor plugins, etc).  The macro takes an argument, name, 
        that equals "base", and uses it to generate names for its component links and joints 

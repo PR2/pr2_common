@@ -3,12 +3,13 @@
 <!-- XML namespaces -->
 <robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
        xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
-       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+       xmlns:xacro="http://ros.org/wiki/xacro">
 
   <!-- Things that are needed only for Gazebo (not the physical robot).  These include
        sensor and controller plugin specifications -->
-  <include filename="$(find pr2_description)/urdf/forearm_V0/forearm.gazebo.xacro" />
-  <include filename="$(find pr2_description)/urdf/forearm_V0/forearm.transmission.xacro" />
+  <include filename="$(find pr2_description)/urdf/forearm_v0/forearm.gazebo.xacro" />
+  <include filename="$(find pr2_description)/urdf/forearm_v0/forearm.transmission.xacro" />
   <include filename="$(find pr2_description)/urdf/common.xacro" />
 
   <!-- ============================   Forearm   ============================ -->

@@ -2,7 +2,8 @@
 <robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
        xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
        xmlns:joint="http://playerstage.sourceforge.net/gazebo/xmlschema/#slider"
-       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+       xmlns:xacro="http://ros.org/wiki/xacro">
 
   <property name="finger_stop_kd"             value="1.0" />
   <property name="finger_stop_kp"             value="10000000.0" />
