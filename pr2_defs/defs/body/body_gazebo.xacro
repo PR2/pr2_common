@@ -4,7 +4,7 @@
        xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
 
-  <macro name="pr2_torso_ext" params="name">
+  <macro name="pr2_torso_gazebo" params="name">
 
     <gazebo reference="${name}_link">
       <sensor:contact name="${name}_contact_sensor">
@@ -18,6 +18,19 @@
         </controller:ros_bumper>
       </sensor:contact>
       <material value="PR2/Grey2" />
+    </gazebo>
+    <gazebo>
+      <controller:ros_imu name="imu_base_controller" plugin="libros_imu.so">
+        <alwaysOn>true</alwaysOn>
+        <updateRate>100.0</updateRate>
+        <bodyName>${name}_link</bodyName>
+        <topicName>imu_data</topicName>
+        <gaussianNoise>0.01</gaussianNoise>
+        <frameName>map</frameName>
+        <xyzOffsets>0 0 0</xyzOffsets> 
+        <rpyOffsets>0 0 0</rpyOffsets>
+        <interface:position name="imu_base_position"/>
+      </controller:ros_imu>
     </gazebo>
 
   </macro>
