@@ -4,15 +4,16 @@
        xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
 
-  <macro name="pr2_tilting_laser_transmission" params="name">
+  <xacro:macro name="pr2_torso_transmission" params="name">
 
-    <transmission type="SimpleTransmission" name="${name}_mount_trans">
-      <actuator name="${name}_mount_motor" />
-      <joint name="${name}_mount_joint" />
-      <mechanicalReduction>6.0</mechanicalReduction>
+    <transmission type="SimpleTransmission" name="${name}_trans">
+      <actuator name="${name}_motor" />
+      <joint name="${name}_joint" />
+      <mechanicalReduction>-52143.33</mechanicalReduction>
     </transmission>
 
-  </macro>
+  </xacro:macro>
+
 
 
 </robot>

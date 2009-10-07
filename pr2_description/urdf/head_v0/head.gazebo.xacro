@@ -4,29 +4,29 @@
        xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
 
-  <macro name="pr2_head_pan_gazebo" params="name">
+  <xacro:macro name="pr2_head_pan_gazebo" params="name">
 
     <gazebo reference="${name}_link">
       <material value="PR2/Blue" />
     </gazebo>
-  </macro>
+  </xacro:macro>
 
 
 
-  <macro name="pr2_head_tilt_gazebo" params="name">
+  <xacro:macro name="pr2_head_tilt_gazebo" params="name">
 
     <gazebo reference="${name}_link">
       <material value="PR2/Green" />
     </gazebo>
-  </macro>
+  </xacro:macro>
 
 
 
-  <macro name="pr2_head_gazebo" params="name">
+  <xacro:macro name="pr2_head_gazebo" params="name">
     <gazebo reference="${name}_plate_frame">
       <material value="PR2/Blue" />
     </gazebo>
-  </macro>
+  </xacro:macro>
 
 
 

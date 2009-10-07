@@ -3,7 +3,7 @@
        xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
 
-  <macro name="pr2_shoulder_transmission" params="side">
+  <xacro:macro name="pr2_shoulder_transmission" params="side">
 
     <!-- Shoulder pan -->
     <transmission type="SimpleTransmission" name="${side}_shoulder_pan_trans">
@@ -26,5 +26,5 @@
       <mechanicalReduction>${32.65/cal_r_upper_arm_roll_gearing}</mechanicalReduction>
     </transmission>
 
-  </macro>
+  </xacro:macro>
 </robot>

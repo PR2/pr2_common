@@ -3,7 +3,7 @@
        xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
 
-  <macro name="pr2_forearm_gazebo" params="side">
+  <xacro:macro name="pr2_forearm_gazebo" params="side">
 
     <gazebo reference="${side}_forearm_link">
       <turnGravityOff>true</turnGravityOff>
@@ -61,7 +61,7 @@
       <fudgeFactor value="0.5" />
     </gazebo>
 
-  </macro>
+  </xacro:macro>
 
 </robot>
                                                

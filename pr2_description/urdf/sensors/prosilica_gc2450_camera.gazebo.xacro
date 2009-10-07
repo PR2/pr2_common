@@ -3,7 +3,7 @@
       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
   
-<macro name="prosilica_cam_gazebo" params="name">
+<xacro:macro name="prosilica_cam_gazebo" params="name">
   <gazebo reference="${name}_frame">
     <sensor:camera name="${name}_sensor">
       <imageFormat>R8G8B8</imageFormat>
@@ -40,6 +40,6 @@
     <material value="PR2/Blue" />
   </gazebo>
   
-</macro>
+</xacro:macro>
 
 </root>

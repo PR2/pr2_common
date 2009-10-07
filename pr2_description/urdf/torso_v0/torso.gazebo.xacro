@@ -4,7 +4,7 @@
        xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
 
-  <macro name="pr2_torso_ext" params="name">
+  <xacro:macro name="pr2_torso_ext" params="name">
 
     <gazebo reference="${name}_link">
       <sensor:contact name="${name}_contact_sensor">
@@ -20,7 +20,7 @@
       <material value="PR2/Grey2" />
     </gazebo>
 
-  </macro>
+  </xacro:macro>
 
 
 

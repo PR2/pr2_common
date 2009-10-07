@@ -4,15 +4,12 @@
        xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
 
-  <include filename="$(find pr2_defs)/defs/head/head_sensor_package_defs.urdf.xacro" />
-  <include filename="$(find pr2_defs)/defs/head/head_gazebo.xacro" />
-  <include filename="$(find pr2_defs)/defs/head/head_transmission.xacro" />
+  <include filename="$(find pr2_description)/urdf/head_v0/head.gazebo.xacro" />
+  <include filename="$(find pr2_description)/urdf/head_v0/head.transmission.xacro" />
 
   <property name="M_PI" value="3.1415926535897931" />
 
-
-
-  <macro name="pr2_head_pan" params="name parent *origin">
+  <xacro:macro name="pr2_head_pan" params="name parent *origin">
 
     <joint name="${name}_joint" type="revolute">
       <axis xyz="0 0 1" />
@@ -53,13 +50,13 @@
     </link>
 
     <!-- extensions -->
-    <pr2_head_pan_gazebo name="${name}" />
-    <pr2_head_pan_transmission name="${name}" />
-  </macro>
+    <xacro:pr2_head_pan_gazebo name="${name}" />
+    <xacro:pr2_head_pan_transmission name="${name}" />
+  </xacro:macro>
 
 
 
-  <macro name="pr2_head_tilt" params="name parent *origin">
+  <xacro:macro name="pr2_head_tilt" params="name parent *origin">
 
     <joint name="${name}_joint" type="revolute">
       <axis xyz="0 1 0" />
@@ -100,20 +97,20 @@
     </link>
 
     <!-- extensions -->
-    <pr2_head_tilt_gazebo name="${name}" />
-    <pr2_head_tilt_transmission name="${name}" />
-  </macro>
+    <xacro:pr2_head_tilt_gazebo name="${name}" />
+    <xacro:pr2_head_tilt_transmission name="${name}" />
+  </xacro:macro>
 
 
 
-  <macro name="pr2_head" params="name parent *origin">
-    <pr2_head_pan name="${name}_pan" parent="${parent}">
+  <xacro:macro name="pr2_head" params="name parent *origin">
+    <xacro:pr2_head_pan name="${name}_pan" parent="${parent}">
       <insert_block name="origin" />
-    </pr2_head_pan>
+    </xacro:pr2_head_pan>
 
-    <pr2_head_tilt name="${name}_tilt" parent="${name}_pan_link">
+    <xacro:pr2_head_tilt name="${name}_tilt" parent="${name}_pan_link">
       <origin xyz="0.058 0 0" rpy="0 0 0" />
-    </pr2_head_tilt>
+    </xacro:pr2_head_tilt>
 
     <!-- Head plate frame -->
     <joint name="${name}_plate_frame_joint" type="fixed">
@@ -149,9 +146,9 @@
     </link>
 
     <!-- extensions -->
-    <pr2_head_gazebo name="${name}" />
+    <xacro:pr2_head_gazebo name="${name}" />
     
-  </macro>
+  </xacro:macro>
 
 
 </robot>

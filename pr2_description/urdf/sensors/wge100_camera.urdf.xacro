@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <robot>
   
-  <include filename="$(find pr2_description)/urdf/sensors/wge100_gazebo.xacro" />
-  <macro name="wge100_camera" params="name parent *origin">
+  <include filename="$(find pr2_description)/urdf/sensors/wge100.gazebo.xacro" />
+  <xacro:macro name="wge100_camera" params="name parent *origin">
 
     <joint name="${name}_frame_joint" type="fixed">
       <insert_block name="origin" />
@@ -66,8 +66,8 @@
     </link>
 
     <!-- extensions -->
-    <mono_cam_gazebo name="${name}" />
+    <xacro:wge100_camera_gazebo name="${name}" />
 
-  </macro>
+  </xacro:macro>
 
 </robot>

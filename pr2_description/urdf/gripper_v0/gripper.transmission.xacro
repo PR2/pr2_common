@@ -4,7 +4,7 @@
        xmlns:joint="http://playerstage.sourceforge.net/gazebo/xmlschema/#slider"
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
 
-  <macro name="pr2_gripper_transmission" params="side">
+  <xacro:macro name="pr2_gripper_transmission" params="side">
     <!-- [lr]_gripper_joint is a fictitious joint, used by transmission for controller gap   -->
     <!-- [lr]_gripper_joint is not attached to any link                                      -->
     <!-- [lr]_gripper_joint position is the gap_size                                         -->
@@ -23,7 +23,7 @@
       <passive_joint  name="${side}_gripper_l_finger_tip_joint" />
     </transmission>
 
-  </macro>
+  </xacro:macro>
 
 
 </robot>

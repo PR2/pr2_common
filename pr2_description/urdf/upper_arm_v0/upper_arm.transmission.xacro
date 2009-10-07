@@ -6,7 +6,7 @@
   <!-- ============================   Upper Arm   ============================ -->
 
 
-  <macro name="pr2_upper_arm_transmission" params="side">
+  <xacro:macro name="pr2_upper_arm_transmission" params="side">
 
     <!-- Elbow flex -->
 
@@ -24,7 +24,7 @@
       <mechanicalReduction>${576/25*55/14}</mechanicalReduction>
     </transmission>
 
-  </macro>
+  </xacro:macro>
 
 
 

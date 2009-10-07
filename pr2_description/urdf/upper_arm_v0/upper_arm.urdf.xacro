@@ -35,7 +35,7 @@
 
   <!-- ============================   Upper Arm   ============================ -->
 
-  <macro name="pr2_upper_arm" params="side parent reflect">
+  <xacro:macro name="pr2_upper_arm" params="side parent reflect">
 
     <joint name="${side}_upper_arm_joint" type="fixed">
       <origin xyz="0 0 0" rpy="0 0 0" />
@@ -154,5 +154,9 @@
       </collision>
     </link>
 
-  </macro>
+    <!-- extensions-->
+    <xacro:pr2_upper_arm_gazebo side="${side}" />
+    <xacro:pr2_upper_arm_transmission side="${side}" />
+
+  </xacro:macro>
 

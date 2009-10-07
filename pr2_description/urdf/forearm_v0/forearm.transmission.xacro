@@ -3,7 +3,7 @@
        xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
 
-  <macro name="pr2_forearm_transmission" params="side">
+  <xacro:macro name="pr2_forearm_transmission" params="side">
 
     <!-- Wrist flex , Wrist roll -->
 
@@ -14,6 +14,6 @@
       <rollJoint name="${side}_wrist_roll_joint" mechanicalReduction="${624/35*54/16}"  />
     </transmission>
 
-  </macro>
+  </xacro:macro>
 </robot>
 

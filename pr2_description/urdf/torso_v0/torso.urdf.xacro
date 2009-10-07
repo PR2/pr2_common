@@ -4,10 +4,10 @@
        xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
 
-  <include filename="$(find pr2_defs)/defs/body/body_gazebo.xacro" />
-  <include filename="$(find pr2_defs)/defs/body/body_transmission.xacro" />
+  <include filename="$(find pr2_description)/urdf/torso_v0/tosro.gazebo.xacro" />
+  <include filename="$(find pr2_description)/urdf/torso_v0/tosro.transmission.xacro" />
 
-  <macro name="pr2_torso" params="name parent *origin">
+  <xacro:macro name="pr2_torso" params="name parent *origin">
 
 
     <joint name="${name}_joint" type="prismatic">
@@ -49,10 +49,10 @@
     </link>
 
     <!-- extensions -->
-    <pr2_torso_gazebo name="${name}" />
-    <pr2_torso_transmission name="${name}" />
+    <xacro:pr2_torso_gazebo name="${name}" />
+    <xacro:pr2_torso_transmission name="${name}" />
 
-  </macro>
+  </xacro:macro>
 
 
 </robot>

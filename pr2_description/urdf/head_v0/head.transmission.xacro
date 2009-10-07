@@ -5,7 +5,7 @@
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
 
 
-  <macro name="pr2_head_pan_transmission" params="name">
+  <xacro:macro name="pr2_head_pan_transmission" params="name">
 
     <transmission type="SimpleTransmission" name="${name}_trans">
       <actuator name="${name}_motor" />
@@ -13,11 +13,11 @@
       <mechanicalReduction>6.0</mechanicalReduction>
     </transmission>
 
-  </macro>
+  </xacro:macro>
 
 
 
-  <macro name="pr2_head_tilt_transmission" params="name">
+  <xacro:macro name="pr2_head_tilt_transmission" params="name">
 
     <transmission type="SimpleTransmission" name="${name}_trans">
       <actuator name="${name}_motor" />
@@ -25,7 +25,7 @@
       <mechanicalReduction>6.0</mechanicalReduction>
     </transmission>
 
-  </macro>
+  </xacro:macro>
 
 
 

@@ -3,7 +3,7 @@
        xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
 
-  <macro name="pr2_upper_arm_gazebo" params="side">
+  <xacro:macro name="pr2_upper_arm_gazebo" params="side">
 
     <gazebo reference="${side}_upper_arm_link">
       <sensor:contact name="${side}_upper_arm_contact_sensor">
@@ -52,5 +52,5 @@
       <fudgeFactor value="0.5" />
     </gazebo>
 
-  </macro>
+  </xacro:macro>
 </robot>

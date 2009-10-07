@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
+
+  <property name="M_PI" value="3.1415926535897931" />
+
+
+  <!-- Made by Kevin for A2 sensor package -->
+  <!-- Origin is center mount screw on sensor plate mount -->
+  <!-- When mounted properly, should have same origin as head plate frame -->
+  <macro name="pr2_head_sensor_package_gazebo" params="name">
+    <gazebo reference="${name}_sensor_link">
+      <material value="PR2/Blue" />
+    </gazebo>
+  </macro>
+
+</robot>

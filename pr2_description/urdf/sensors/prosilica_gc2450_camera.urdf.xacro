@@ -3,9 +3,9 @@
       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
   
-  <include filename="$(find pr2_defs)/defs/head/prosilica_gazebo.xacro" />
+  <include filename="$(find pr2_description)/urdf/sensors/prosilica_gc2450_camera.gazebo.xacro" />
 
-  <macro name="prosilica_cam" params="name parent *origin">
+  <xacro:macro name="prosilica_cam" params="name parent *origin">
     <joint name="${name}_frame_joint" type="fixed">
       <insert_block name="origin" />
       <parent link="${parent}"/>
@@ -74,7 +74,7 @@
     </link>
 
     <!-- extensions -->
-    <prosilica_cam_gazebo name="${name}"/>
-  </macro>
+    <xacro:prosilica_cam_gazebo name="${name}"/>
+  </xacro:macro>
 
 </root>

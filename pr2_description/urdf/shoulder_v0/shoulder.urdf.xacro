@@ -16,7 +16,7 @@
 
  <!-- ============================   Shoulder   ============================ -->
 
-  <macro name="pr2_shoulder" params="side parent reflect *origin">
+  <xacro:macro name="pr2_shoulder" params="side parent reflect *origin">
 
     <!-- Shoulder pan -->
     <joint name="${side}_shoulder_pan_joint" type="revolute">
@@ -147,6 +147,10 @@
       </collision>
     </link>
 
-  </macro>
+    <!-- extensions -->
+    <xacro:pr2_shoulder_gazebo side="${side}" />
+    <xacro:pr2_shoulder_transmission side="${side}" />
+
+  </xacro:macro>
 
 </robot>

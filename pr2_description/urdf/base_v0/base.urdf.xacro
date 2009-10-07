@@ -4,7 +4,7 @@
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
 
   <include filename="$(find pr2_description)/urdf/base_v0/base.gazebo.xacro" />
-  <include filename="$(find pr2_description)/urdf/base/base.transmission.xacro" />
+  <include filename="$(find pr2_description)/urdf/base_v0/base.transmission.xacro" />
 
   <property name="M_PI" value="3.1415926535897931" />
 
@@ -36,12 +36,11 @@
   <property name="base_laser_size_x" value="0.08" />
   <property name="base_laser_size_y" value="0.08" />
   <property name="base_laser_size_z" value="0.03" />
-  <property name="base_laser_collision_offset_z" value="0.03" />
 
   <!--                                                      -->
   <!-- Alpha 2.0 hardware                                   -->
   <!--                                                      -->
-  <macro name="pr2_wheel" params="suffix parent reflect">
+  <xacro:macro name="pr2_wheel" params="suffix parent reflect">
 
     <joint name="${parent}_${suffix}_wheel_joint" type="continuous">
       <axis xyz="0 1 0" />
@@ -76,12 +75,12 @@
     </link>
 
     <!-- extensions -->
-    <pr2_wheel_gazebo parent="${parent}" suffix="${suffix}" />
-    <pr2_wheel_transmission parent="${parent}" suffix="${suffix}" reflect="${reflect}" />
+    <xacro:pr2_wheel_gazebo parent="${parent}" suffix="${suffix}" />
+    <xacro:pr2_wheel_transmission parent="${parent}" suffix="${suffix}" reflect="${reflect}" />
 
-  </macro>
+  </xacro:macro>
 
-  <macro name="pr2_caster" params="suffix parent *origin ref_position">
+  <xacro:macro name="pr2_caster" params="suffix parent *origin ref_position">
 
     <joint name="${suffix}_caster_rotation_joint" type="continuous">
       <axis xyz="0 0 1" />
@@ -120,16 +119,16 @@
     </link>
 
     <!-- Double check these are right for the Alpha 2.0's -->
-    <pr2_wheel_alpha2 parent="${suffix}_caster" suffix="l" reflect="1" />
-    <pr2_wheel_alpha2 parent="${suffix}_caster" suffix="r" reflect="-1" />
+    <xacro:pr2_wheel_alpha2 parent="${suffix}_caster" suffix="l" reflect="1" />
+    <xacro:pr2_wheel_alpha2 parent="${suffix}_caster" suffix="r" reflect="-1" />
 
     <!-- extensions -->
-    <pr2_caster_alpha2_transmission suffix="${suffix}" />
+    <xacro:pr2_caster_alpha2_transmission suffix="${suffix}" />
 
-  </macro>
+  </xacro:macro>
 
 
-  <macro name="pr2_base" params="name *origin">
+  <xacro:macro name="pr2_base" params="name *origin">
 
 
     <joint name="${name}_joint" type="planar">
@@ -165,57 +164,28 @@
 
 
     <!-- base laser -->
-    <joint name="base_laser_joint" type="fixed">
-      <axis xyz="0 1 0" />
+    <xacro:hokuyo_lx30_laser name="${name}_laser" parent="${name}" ros_topic="base_scan" >
       <origin xyz="${base_laser_x} ${base_laser_y} ${base_height_offset+base_laser_z}" rpy="0 0 0" />
-      <parent link="${name}_link"/>
-      <child link="base_laser" />
-    </joint>
-    <link name="base_laser" type="laser">
-
-
-      <inertial>
-        <mass value="1.0" />
-        <origin xyz="0 0 0" />
-        <inertia ixx="0.1" ixy="0" ixz="0" iyy="0.1" iyz="0" izz="0.1" />
-      </inertial>
-
-      <visual name="base_lvisual">
-        <origin xyz="0 0 ${base_laser_collision_offset_z}" rpy="0 0 0" />
-        <geometry name="base_laser_visual_geom">
-          <box size="${base_laser_size_x} ${base_laser_size_y} ${base_laser_size_z}"/>
-        </geometry>
-        
-        <material name="Red" />
-      </visual>
-
-      <collision name="base_lcollision">
-        <origin xyz="0 0 ${base_laser_collision_offset_z}" rpy="0 0 0" />
-        <geometry name="base_laser_collision_geom">
-          <box size="${base_laser_size_x} ${base_laser_size_y} ${base_laser_size_z}"/>
-        </geometry>
-      </collision>
-
-    </link>
+    </xacro:hokuyo_lx30_laser>
 
     <!-- all four caster macros -->
-    <pr2_caster suffix="fl" parent="${name}_link" ref_position="${cal_caster_fl}" >
+    <xacro:pr2_caster suffix="fl" parent="${name}_link" ref_position="${cal_caster_fl}" >
       <origin xyz="${caster_offset_x} ${caster_offset_y} ${caster_offset_z}" rpy="0 0 0" />
-    </pr2_caster>
-    <pr2_caster suffix="fr" parent="${name}_link" ref_position="${cal_caster_fr}" >
+    </xacro:pr2_caster>
+    <xacro:pr2_caster suffix="fr" parent="${name}_link" ref_position="${cal_caster_fr}" >
       <origin xyz="${caster_offset_x} ${-caster_offset_y} ${caster_offset_z}" rpy="0 0 0" />
-    </pr2_caster>
-    <pr2_caster suffix="bl" parent="${name}_link" ref_position="${cal_caster_bl}" >
+    </xacro:pr2_caster>
+    <xacro:pr2_caster suffix="bl" parent="${name}_link" ref_position="${cal_caster_bl}" >
       <origin xyz="${-caster_offset_x} ${caster_offset_y} ${caster_offset_z}" rpy="0 0 0" />
-    </pr2_caster>
-    <pr2_caster suffix="br" parent="${name}_link" ref_position="${cal_caster_br}"  >
+    </xacro:pr2_caster>
+    <xacro:pr2_caster suffix="br" parent="${name}_link" ref_position="${cal_caster_br}"  >
       <origin xyz="${-caster_offset_x} ${-caster_offset_y} ${caster_offset_z}" rpy="0 0 0" />
-    </pr2_caster>
+    </xacro:pr2_caster>
 
     <!-- gazebo extensions -->
-    <pr2_base_gazebo name="${name}" />
+    <xacro:pr2_base_gazebo name="${name}" />
 
-  </macro>
+  </xacro:macro>
 
 
 
