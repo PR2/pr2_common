@@ -45,20 +45,20 @@ int runExternalProcess(const std::string &executable, const std::string &args)
 TEST(URDF, CorrectFormat)
 {
     int result = 0;
-    result = result || runExternalProcess("`rospack find urdf`/bin/parse_test", "`rospack find pr2_defs`/robots/laser_tilt.urdf");
-    result = result || runExternalProcess("`rospack find urdf`/bin/parse_test", "`rospack find pr2_defs`/robots/r_gripper.urdf");
-    result = result || runExternalProcess("`rospack find urdf`/bin/parse_test", "`rospack find pr2_defs`/robots/l_gripper.urdf");
-    result = result || runExternalProcess("`rospack find urdf`/bin/parse_test", "`rospack find pr2_defs`/robots/r_forearm_gripper.urdf");
-    result = result || runExternalProcess("`rospack find urdf`/bin/parse_test", "`rospack find pr2_defs`/robots/hca.urdf");
-    result = result || runExternalProcess("`rospack find urdf`/bin/parse_test", "`rospack find pr2_defs`/robots/hcb.urdf");
-    result = result || runExternalProcess("`rospack find urdf`/bin/parse_test", "`rospack find pr2_defs`/robots/l_arm.urdf");
-    result = result || runExternalProcess("`rospack find urdf`/bin/parse_test", "`rospack find pr2_defs`/robots/r_arm.urdf");
-    result = result || runExternalProcess("`rospack find urdf`/bin/parse_test", "`rospack find pr2_defs`/robots/hcc.urdf");
-    result = result || runExternalProcess("`rospack find urdf`/bin/parse_test", "`rospack find pr2_defs`/robots/prototype1.urdf");
-    result = result || runExternalProcess("`rospack find urdf`/bin/parse_test", "`rospack find pr2_defs`/robots/prg.urdf");
-    result = result || runExternalProcess("`rospack find urdf`/bin/parse_test", "`rospack find pr2_defs`/robots/prf.urdf");
-    result = result || runExternalProcess("`rospack find urdf`/bin/parse_test", "`rospack find pr2_defs`/robots/pre.urdf");
-    result = result || runExternalProcess("`rospack find urdf`/bin/parse_test", "`rospack find pr2_defs`/robots/pr2.urdf");
+    result = result || runExternalProcess("`rospack find urdf`/bin/urdf_check", "`rospack find pr2_defs`/robots/laser_tilt.urdf");
+    result = result || runExternalProcess("`rospack find urdf`/bin/urdf_check", "`rospack find pr2_defs`/robots/r_gripper.urdf");
+    result = result || runExternalProcess("`rospack find urdf`/bin/urdf_check", "`rospack find pr2_defs`/robots/l_gripper.urdf");
+    result = result || runExternalProcess("`rospack find urdf`/bin/urdf_check", "`rospack find pr2_defs`/robots/r_forearm_gripper.urdf");
+    result = result || runExternalProcess("`rospack find urdf`/bin/urdf_check", "`rospack find pr2_defs`/robots/hca.urdf");
+    result = result || runExternalProcess("`rospack find urdf`/bin/urdf_check", "`rospack find pr2_defs`/robots/hcb.urdf");
+    result = result || runExternalProcess("`rospack find urdf`/bin/urdf_check", "`rospack find pr2_defs`/robots/l_arm.urdf");
+    result = result || runExternalProcess("`rospack find urdf`/bin/urdf_check", "`rospack find pr2_defs`/robots/r_arm.urdf");
+    result = result || runExternalProcess("`rospack find urdf`/bin/urdf_check", "`rospack find pr2_defs`/robots/hcc.urdf");
+    result = result || runExternalProcess("`rospack find urdf`/bin/urdf_check", "`rospack find pr2_defs`/robots/prototype1.urdf");
+    result = result || runExternalProcess("`rospack find urdf`/bin/urdf_check", "`rospack find pr2_defs`/robots/prg.urdf");
+    result = result || runExternalProcess("`rospack find urdf`/bin/urdf_check", "`rospack find pr2_defs`/robots/prf.urdf");
+    result = result || runExternalProcess("`rospack find urdf`/bin/urdf_check", "`rospack find pr2_defs`/robots/pre.urdf");
+    result = result || runExternalProcess("`rospack find urdf`/bin/urdf_check", "`rospack find pr2_defs`/robots/pr2.urdf");
 
     EXPECT_TRUE(result == 0);
 }
