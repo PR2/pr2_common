@@ -16,8 +16,7 @@ rosbuild_find_ros_package(convex_decomposition)
 
 set(pr2_robot_files "")
 
-#TODO: following files are needed by openrave
-# iterate through all the robot/*.xacro.xml files and generate *.mesh and *.iv files
+# use xacro to expand macros and create .urdf
 file(GLOB urdf_def_files ${CMAKE_CURRENT_SOURCE_DIR}/defs/*/*.xacro)
 file(GLOB robot_urdf_files ${CMAKE_CURRENT_SOURCE_DIR}/robots/*.urdf.xacro)
 
@@ -44,8 +43,8 @@ foreach(it ${robot_urdf_files})
 endforeach(it)
 
 
-#TODO: following files are needed by openrave
-# iterate through all the robot/*.xacro.xml files and generate *.mesh and *.iv files
+# OLD URDF format: use xacro to expand macros and create .expand.xml
+# deprecate as soon as no one depends on this anymore
 file(GLOB robot_xacro_files ${CMAKE_CURRENT_SOURCE_DIR}/robots/*.xacro.xml)
 
 foreach(it ${robot_xacro_files})
@@ -71,13 +70,9 @@ foreach(it ${robot_xacro_files})
 endforeach(it)
 
 
-
-
-
-
-
-#iv files
-# iterate through all the stl files and generate *.mesh and *.iv files
+# iterate through all the stl files to:
+#  1. convert to *.iv files
+#  2. generate convex decomposed .stl
 file(GLOB pr2_stl_files ${CMAKE_CURRENT_SOURCE_DIR}/meshes/*.stl)
 set(pr2_gen_files "")
 
