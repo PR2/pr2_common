@@ -37,16 +37,70 @@
 #include <gtest/gtest.h>
 #include <cstdlib>
 
+#include <dirent.h> 
+#include <sys/types.h> 
+#include <sys/param.h> 
+#include <sys/stat.h> 
+#include <unistd.h> 
+#include <stdio.h> 
+#include <string.h> 
+
+#include <iostream>
+
 int runExternalProcess(const std::string &executable, const std::string &args)
 {
+    printf("executing: %s\n",(executable + " " + args).c_str());
     return system((executable + " " + args).c_str());
+}
+
+int walker( char *result, int& test_result)
+{
+  DIR           *d;
+  struct dirent *dir;
+  d = opendir( "robots" );
+  if( d == NULL )
+  {
+    return 1;
+  }
+  while( ( dir = readdir( d ) ) )
+  {
+    if( strcmp( dir->d_name, "." ) == 0 || 
+        strcmp( dir->d_name, ".." ) == 0 )
+    {
+      continue;
+    }
+    if( dir->d_type != DT_DIR )
+    {
+      std::string dir_name = dir->d_name;
+      if (dir_name.find(std::string(".xacro.xml")) == dir_name.size()-10)
+      {
+        char pwd[MAXPATHLEN];
+        getcwd( pwd, MAXPATHLEN );
+        runExternalProcess("python `rospack find xacro`/xacro.py", std::string(pwd)+"/robots/"+dir_name+" > `rospack find pr2_defs`/test/tmp.expanded.xml" );
+        test_result = test_result || runExternalProcess("`rospack find wg_robot_description_parser`/parse", "`rospack find pr2_defs`/test/tmp.expanded.xml");
+        //break;
+      }
+    }
+  }
+  closedir( d );
+  return *result == 0;
 }
 
 TEST(URDF, CorrectFormat)
 {
-    int result = runExternalProcess("`rospack find wg_robot_description_parser`/parse", "`rospack find pr2_defs`/robots/pr2.expanded.xml");
+  int test_result = 0;
 
-    EXPECT_TRUE(result == 0);
+  char buf[MAXPATHLEN] = { 0 };
+  if( walker( buf, test_result ) == 0 )
+  {
+    printf( "Found: %s\n", buf );
+  }
+  else
+  {
+    puts( "Not found" );
+  }
+
+  EXPECT_TRUE(test_result == 0);
 }
 
 int main(int argc, char **argv)

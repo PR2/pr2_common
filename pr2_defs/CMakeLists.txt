@@ -9,66 +9,9 @@ rosbuild_find_ros_package(pr2_defs)
 
 file(GLOB def_files ${CMAKE_CURRENT_SOURCE_DIR}/defs/*.xml)
 
-# xacro file generation
-rosbuild_find_ros_package(xacro)
+# mesh file generations
 rosbuild_find_ros_package(ivcon)
 rosbuild_find_ros_package(convex_decomposition)
-
-set(pr2_robot_files "")
-
-# use xacro to expand macros and create .urdf
-file(GLOB urdf_def_files ${CMAKE_CURRENT_SOURCE_DIR}/defs/*/*.xacro)
-file(GLOB robot_urdf_files ${CMAKE_CURRENT_SOURCE_DIR}/robots/*.urdf.xacro)
-
-foreach(it ${robot_urdf_files})
-  get_filename_component(basepath ${it} PATH)
-  get_filename_component(basename ${it} NAME_WE)
-
-  message(" processing robot urdf file :",${basepath}," : ",${basename})
-
-  set(expanded_file "${basepath}/${basename}.urdf")
-  message("    produce expanded file :",${expanded_file})
-
-  # After next common release, replace add_custom_command() with
-  # xacro_add_xacro_file()
-  #
-  add_custom_command(
-    OUTPUT ${expanded_file}
-    COMMAND ${xacro_PACKAGE_PATH}/xacro.py
-    ARGS ${it} > ${expanded_file}
-    DEPENDS ${it} ${urdf_def_files})
-  #xacro_add_xacro_file(${it} ${expanded_file})
-
-  set(pr2_robot_files ${pr2_robot_files} ${expanded_file})
-endforeach(it)
-
-
-# OLD URDF format: use xacro to expand macros and create .expand.xml
-# deprecate as soon as no one depends on this anymore
-file(GLOB robot_xacro_files ${CMAKE_CURRENT_SOURCE_DIR}/robots/*.xacro.xml)
-
-foreach(it ${robot_xacro_files})
-  get_filename_component(basepath ${it} PATH)
-  get_filename_component(basename ${it} NAME_WE)
-
-  message(" processing robot xacro file :",${basepath}," : ",${basename})
-
-  set(expanded_file "${basepath}/${basename}.expanded.xml")
-  message("    produce expanded file :",${expanded_file})
-
-  # After next common release, replace add_custom_command() with
-  # xacro_add_xacro_file()
-  #
-  add_custom_command(
-    OUTPUT ${expanded_file}
-    COMMAND ${xacro_PACKAGE_PATH}/xacro.py
-    ARGS ${it} > ${expanded_file}
-    DEPENDS ${it} ${def_files})
-  #xacro_add_xacro_file(${it} ${expanded_file})
-
-  set(pr2_robot_files ${pr2_robot_files} ${expanded_file})
-endforeach(it)
-
 
 # iterate through all the stl files to:
 #  1. convert to *.iv files
@@ -148,6 +91,6 @@ foreach(it ${pr2_stl_files})
 
 endforeach(it)
 
-add_custom_target(media_files ALL DEPENDS ${pr2urdf} ${pr2robot_expanded} ${prfrobot_expanded} ${prgrobot_expanded} ${pr2prototype1_expanded} ${pr2larm_expanded} ${pr2rarm_expanded} ${pr2lgripper_expanded} ${pr2rgripper_expanded} ${pr2_gen_files} ${pr2_robot_files})
+add_custom_target(media_files ALL DEPENDS ${pr2urdf} ${pr2robot_expanded} ${prfrobot_expanded} ${prgrobot_expanded} ${pr2prototype1_expanded} ${pr2larm_expanded} ${pr2rarm_expanded} ${pr2lgripper_expanded} ${pr2rgripper_expanded} ${pr2_gen_files} )
 
 #TODO; stop bin and lib from being generated
