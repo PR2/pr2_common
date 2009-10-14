@@ -62,7 +62,7 @@
       <visual name="${parent}_${suffix}_wheel_visual">
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry name="${parent}_${suffix}_wheel_visual_geom">
-          <mesh filename="package://pre_description/meshes/base_v0/pr2_wheel.stl" />
+          <mesh filename="package://pr2_defs/meshes/pr2_wheel.stl" />
         </geometry>
         
         <material name="Caster_${suffix}" />
@@ -105,7 +105,7 @@
       <visual name="${suffix}_caster_rotation_visual">
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry name="${suffix}_caster_rotation_visual_geom">
-          <mesh filename="package://pr2_description/meshes/base_v0/caster.stl" />
+          <mesh filename="package://pr2_defs/meshes/caster.stl" />
         </geometry>
         
         <material name="Green" />
@@ -149,7 +149,7 @@
       <visual name="${name}_visual">
         <origin xyz="0 0 ${base_height_offset}" rpy="0 0 0" />
         <geometry name="${name}_visual_geom">
-          <mesh filename="package://pr2_description/meshes/base_v0/base.stl" />
+          <mesh filename="package://pr2_defs/meshes/base.stl" />
         </geometry>
         
         <material name="Green" />
