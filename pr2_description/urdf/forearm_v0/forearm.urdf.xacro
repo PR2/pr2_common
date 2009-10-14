@@ -34,7 +34,7 @@
       <visual name="${side}_forearm_visual">
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry name="${side}_forearm_visual_geom">
-          <mesh filename="package://pr2_defs/meshes/forearm.stl" />
+          <mesh filename="package://pr2_description/meshes/forearm_v0/forearm.stl" />
         </geometry>
 
         <material name="Blue" />
@@ -43,7 +43,7 @@
       <collision name="${side}_forearm_collision">
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry name="${side}_forearm_collision_geom">
-          <mesh filename="package://pr2_defs/meshes/convex/forearm_convex.stlb" />
+          <mesh filename="package://pr2_description/meshes/forearm_v0/convex/forearm_convex.stlb" />
         </geometry>
       </collision>
     </link>
@@ -73,7 +73,7 @@
       <visual name="${side}_wrist_flex_visual">
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry name="${side}_wrist_flex_visual_geom">
-          <mesh filename="package://pr2_defs/meshes/wrist_flex.stl" />
+          <mesh filename="package://pr2_description/meshes/forearm_v0/wrist_flex.stl" />
         </geometry>
 
         <material name="Grey" />
@@ -82,7 +82,7 @@
       <collision name="${side}_wrist_flex_collision">
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry name="${side}_wrist_flex_collision_geom">
-          <mesh filename="package://pr2_defs/meshes/convex/wrist_flex_convex.stlb" />
+          <mesh filename="package://pr2_description/meshes/forearm_v0/convex/wrist_flex_convex.stlb" />
         </geometry>
       </collision>
     </link>
@@ -110,7 +110,7 @@
       <visual name="${side}_wrist_roll_visual">
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry name="${side}_wrist_roll_visual_geom">
-          <mesh filename="package://pr2_defs/meshes/wrist_roll.stl" />
+          <mesh filename="package://pr2_description/meshes/forearm_v0/wrist_roll.stl" />
         </geometry>
 
         <material name="RollLinks" />

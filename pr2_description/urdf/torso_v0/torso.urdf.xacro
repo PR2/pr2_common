@@ -35,16 +35,17 @@
       <visual name="${name}_visual">
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry name="${name}_visual_geom">
-          <mesh filename="package://pr2_defs/meshes/torso.stl" />
+          <mesh filename="package://pr2_description/meshes/torso_v0/torso.stl" />
         </geometry>
         
         <material name="Grey2" />
       </visual>
 
       <collision name="${name}_collision">
-        <origin xyz="-0.1 0 -0.0885" rpy="0 0 0" />
+        <origin xyz="0 0 0.16" rpy="0 0 0" />
         <geometry name="${name}_collision_geom">
-          <box size="0.30 0.620 0.823" />
+          <!-- arbitrarily chosen collision box by JH, torso collision is not important for now -->
+          <box size="0.30 0.620 0.02" />
         </geometry>
       </collision>
     </link>

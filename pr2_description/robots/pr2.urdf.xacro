@@ -68,8 +68,8 @@
   <xacro:pr2_shoulder side="r" reflect="-1" parent="torso_lift_link">
     <origin xyz="0.0 -0.188 0.0" rpy="0 0 0" />
   </xacro:pr2_shoulder>
-  <xacro:pr2_upper_arm side="r" reflect="-1" parent="torso_lift_link"/>
-  <xacro:pr2_forearm side="r" reflect="-1" parent="torso_lift_link"/>
+  <xacro:pr2_upper_arm side="r" reflect="-1" parent="r_upper_arm_roll_link"/>
+  <xacro:pr2_forearm side="r" reflect="-1" parent="r_forearm_roll_link"/>
 
   <xacro:pr2_gripper screw_reduction="${2.0/1000.0}" gear_ratio="${29.16}" side="r" parent="r_wrist_roll_link" >
     <origin xyz="0 0 0" rpy="0 0 0" />
@@ -78,8 +78,8 @@
   <xacro:pr2_shoulder side="l" reflect="1" parent="torso_lift_link">
     <origin xyz="0.0 0.188 0.0" rpy="0 0 0" />
   </xacro:pr2_shoulder>
-  <xacro:pr2_upper_arm side="l" reflect="1" parent="torso_lift_link"/>
-  <xacro:pr2_forearm side="l" reflect="1" parent="torso_lift_link"/>
+  <xacro:pr2_upper_arm side="l" reflect="1" parent="l_upper_arm_roll_link"/>
+  <xacro:pr2_forearm side="l" reflect="1" parent="l_forearm_roll_link"/>
 
   <xacro:pr2_gripper screw_reduction="${2.0/1000.0}" gear_ratio="${29.16}" side="l" parent="l_wrist_roll_link" >
     <origin xyz="0 0 0" rpy="0 0 0" />

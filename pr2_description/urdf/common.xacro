@@ -32,8 +32,8 @@
   <property name="cal_head_pan_flag"  value="0.0" />
   <property name="cal_head_tilt_flag" value="0.0" />
 
-  <property name="cal_head_pan_flag_alpha2" value="0.0"/>
-  <property name="cal_head_tilt_flag_alpha2" value="0.0"/>
+  <property name="cal_head_pan_flag" value="0.0"/>
+  <property name="cal_head_tilt_flag" value="0.0"/>
   
   <!-- Casters -->
   <property name="cal_caster_fl" value="0.0" />

@@ -60,7 +60,7 @@
       <visual name="{side}_upper_arm_visual">
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry name="${side}_upper_arm_visual_geom">
-          <mesh filename="package://pr2_defs/meshes/upper_arm.stl" />
+          <mesh filename="package://pr2_description/meshes/upper_arm_v0/upper_arm.stl" />
         </geometry>
 
         <material name="Green" />
@@ -69,7 +69,7 @@
       <collision name="${side}_upper_arm_collision">
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry name="${side}_upper_arm_collision_geom">
-          <mesh filename="package://pr2_defs/meshes/convex/upper_arm_convex.stlb" />
+          <mesh filename="package://pr2_description/meshes/upper_arm_v0/convex/upper_arm_convex.stlb" />
         </geometry>
       </collision>
 
@@ -101,7 +101,7 @@
       <visual name="${side}_elbow_flex_visual">
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry name="${side}_elbow_flex_visual_geom">
-          <mesh filename="package://pr2_defs/meshes/elbow_flex.stl" />
+          <mesh filename="package://pr2_description/meshes/upper_arm_v0/elbow_flex.stl" />
         </geometry>
 
         <material name="Grey" />
@@ -110,27 +110,24 @@
       <collision name="${side}_elbow_flex_collision">
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry name="${side}_elbow_flex_collision_geom">
-          <mesh filename="package://pr2_defs/meshes/convex/elbow_flex_convex.stlb" />
+          <mesh filename="package://pr2_description/meshes/upper_arm_v0/convex/elbow_flex_convex.stlb" />
         </geometry>
       </collision>
     </link>
 
-<!-- forearm roll -->
-
+    <!-- forearm_roll_link is a fictitious link internal to elbow_flex_link, provides an attachment point for the actual forearm -->
     <joint name="${side}_forearm_roll_joint" type="continuous">
       <axis xyz="-1 0 0" />
-
       <limit effort="30" velocity="${VELOCITY_LIMIT_SCALE*6}" />
       <safety_controller k_velocity="1" />
       <calibration reference_position="${cal_r_forearm_roll_flag}" />
-
       <dynamics damping="0.1" />
       <origin xyz="0 0 0" rpy="0 0 0" />
       <parent link="${side}_elbow_flex_link"/>
       <child link="${side}_forearm_roll_link"/>
     </joint>
+    <!-- TODO: inertial tag should be optional -->
     <link name="${side}_forearm_roll_link">
-
       <inertial>
         <!-- dummy masses, to be removed -->
         <mass value="0.1" />
@@ -139,15 +136,17 @@
                   iyy="0.01" iyz="0.00"
                   izz="0.01" />
       </inertial>
-      <visual name="${side}_forearm_roll_visual"><!-- TODO: need a mesh for this -->
+      <visual name="${side}_forearm_roll_visual">
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry name="${side}_forearm_roll_visual_geom">
-          <mesh filename="package://pr2_defs/meshes/forearm_roll.stl" />
+          <mesh filename="package://pr2_description/meshes/upper_arm_v0/forearm_roll.stl" />
         </geometry>
 
         <material name="RollLinks" />
       </visual>
-      <collision name="${side}_forearm_roll_collision"> <!-- TODO: collision tag should be optional -->
+      <!-- TODO: collision tag should be optional -->
+      <collision name="${side}_forearm_roll_collision">
+        <!-- dummy geom, to be removed -->
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry name="${side}_forearm_roll_collision_geom">
           <box size="0.1 0.1 0.1" />

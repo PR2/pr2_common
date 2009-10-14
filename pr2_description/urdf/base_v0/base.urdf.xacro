@@ -7,29 +7,31 @@
   <include filename="$(find pr2_description)/urdf/base_v0/base.gazebo.xacro" />
   <include filename="$(find pr2_description)/urdf/base_v0/base.transmission.xacro" />
 
+  <!-- DATA SOURCES -->
+  <!-- all link offsets, CG, limits are obtained from Function Engineering spreadsheet 090224_link_data.xls unless stated otherwise -->
+  <!-- all link geometry sizes are obtained from Function provided CAD model unless stated otherwise -->
+  <!-- all simplified collision geometry are hand approximated from CAD model, sometimes from respective bounding boxes -->
+
   <property name="M_PI" value="3.1415926535897931" />
 
   <property name="caster_offset_x" value="0.2225" />
   <property name="caster_offset_y" value="0.2225" />
   <property name="caster_offset_z" value="0.0282" />
 
-  <property name="caster_wheel_offset_y" value="0.049" /> <!-- from function spreadsheet -->
-  <property name="wheel_length" value="0.03" />  <!-- FIXME -->
+  <property name="caster_wheel_offset_y" value="0.049" />
+  <property name="wheel_length" value="0.034" />
   <property name="wheel_radius" value="0.074792" />   <!-- This is the 'effective' wheel radius. Wheel radius for uncompressed wheel is 0.079.  mp 20080801 -->
 
-  <!-- based on 090224_link_data from function engineering -->
   <property name="base_cg_x" value="-0.061" />
   <property name="base_cg_y" value="0.0" />
   <property name="base_cg_z" value="0.293" />
   <property name="base_mass" value="116.0" />
 
-  <!-- base appears "raised" from our initial geom def from function -->
-  <property name="base_height_offset" value="0.05" />
-
   <!-- simplified box collision geometry for base -->
   <property name="base_size_x" value="0.65" />
   <property name="base_size_y" value="0.65" />
   <property name="base_size_z" value="0.23" />
+
   <!-- simplified box collision geometry for hokuyo laser -->
   <property name="base_laser_x" value="0.275" />
   <property name="base_laser_y" value="0.0" />
@@ -54,7 +56,7 @@
     </joint>
     <link name="${parent}_${suffix}_wheel_link">
       <inertial>
-        <mass value="0.44036" /> <!-- check jmh 20081205 -->
+        <mass value="0.44036" />
         <origin xyz="0 0 0" />
         <inertia  ixx="0.012411765597" ixy="-0.000711733678" ixz="0.00050272983"
                   iyy="0.015218160428" iyz="-0.000004273467" izz="0.011763977943" />
@@ -62,13 +64,13 @@
       <visual name="${parent}_${suffix}_wheel_visual">
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry name="${parent}_${suffix}_wheel_visual_geom">
-          <mesh filename="package://pr2_defs/meshes/pr2_wheel.stl" />
+          <mesh filename="package://pr2_description/meshes/base_v0/pr2_wheel.stl" />
         </geometry>
         
         <material name="Caster_${suffix}" />
       </visual>
       <collision name="${parent}_${suffix}_wheel_collision">
-        <origin xyz="0 0 0" rpy="${M_PI/2} 0 0" />
+        <origin xyz="0 0 0" rpy="${M_PI/2} 0 0" /> <!-- rotation because cyl. geom primitive has symmetry axis in +x direction -->
         <geometry name="${parent}_${suffix}_wheel_collision_geom">
           <cylinder radius="${wheel_radius}" length="${wheel_length}" />
         </geometry>
@@ -105,7 +107,7 @@
       <visual name="${suffix}_caster_rotation_visual">
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry name="${suffix}_caster_rotation_visual_geom">
-          <mesh filename="package://pr2_defs/meshes/caster.stl" />
+          <mesh filename="package://pr2_description/meshes/base_v0/caster.stl" />
         </geometry>
         
         <material name="Green" />
@@ -120,18 +122,17 @@
     </link>
 
     <!-- Double check these are right for the Alpha 2.0's -->
-    <xacro:pr2_wheel_alpha2 parent="${suffix}_caster" suffix="l" reflect="1" />
-    <xacro:pr2_wheel_alpha2 parent="${suffix}_caster" suffix="r" reflect="-1" />
+    <xacro:pr2_wheel parent="${suffix}_caster" suffix="l" reflect="1" />
+    <xacro:pr2_wheel parent="${suffix}_caster" suffix="r" reflect="-1" />
 
     <!-- extensions -->
-    <xacro:pr2_caster_alpha2_transmission suffix="${suffix}" />
+    <xacro:pr2_caster_transmission suffix="${suffix}" />
 
   </xacro:macro>
 
 
+  <!-- The xacro macro xacro:pr2_base contains: base, casters and wheels -->
   <xacro:macro name="pr2_base" params="name *origin">
-
-
     <joint name="${name}_joint" type="planar">
       <insert_block name="origin" />
       <parent link="world"/>
@@ -147,16 +148,16 @@
       </inertial>
 
       <visual name="${name}_visual">
-        <origin xyz="0 0 ${base_height_offset}" rpy="0 0 0" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry name="${name}_visual_geom">
-          <mesh filename="package://pr2_defs/meshes/base.stl" />
+          <mesh filename="package://pr2_description/meshes/base_v0/base.stl" />
         </geometry>
         
         <material name="Green" />
       </visual>
 
       <collision name="${name}_collision">
-        <origin xyz="0 0 ${base_height_offset+base_size_z/2}" rpy="0 0 0" />
+        <origin xyz="0 0 ${base_size_z/2}" rpy="0 0 0" />
         <geometry name="${name}_collision_geom">
           <box size="${base_size_x} ${base_size_y} ${base_size_z}" />
         </geometry>
@@ -166,7 +167,7 @@
 
     <!-- base laser -->
     <xacro:hokuyo_lx30_laser name="${name}_laser" parent="${name}" ros_topic="base_scan" >
-      <origin xyz="${base_laser_x} ${base_laser_y} ${base_height_offset+base_laser_z}" rpy="0 0 0" />
+      <origin xyz="${base_laser_x} ${base_laser_y} ${base_laser_z}" rpy="0 0 0" />
     </xacro:hokuyo_lx30_laser>
 
     <!-- all four caster macros -->

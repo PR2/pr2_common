@@ -10,16 +10,6 @@
   <!--                                                      -->
   <xacro:macro name="pr2_wheel_gazebo" params="suffix parent">
     <gazebo reference="${parent}_${suffix}_wheel_link">
-      <sensor:contact name="${parent}_${suffix}_wheel_contact_sensor">
-        <geom>${parent}_${suffix}_wheel_link_geom</geom>
-        <updateRate>100.0</updateRate>
-        <controller:ros_bumper name="${parent}_${suffix}_wheel_ros_bumper_controller" plugin="libros_bumper.so">
-          <alwaysOn>true</alwaysOn>
-          <updateRate>100.0</updateRate>
-          <bumperTopicName>${parent}_${suffix}_wheel_bumper</bumperTopicName>
-          <interface:bumper name="${parent}_${suffix}_wheel_ros_bumper_iface" />
-        </controller:ros_bumper>
-      </sensor:contact>
       <mu1 value="100.0" />
       <mu2 value="100.0" />
       <kp  value="1000000.0" />

@@ -52,7 +52,7 @@
       <visual name="${side}_shoulder_pan_visual">
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry name="${side}_shoulder_pan_visual_geom">
-          <mesh filename="package://pr2_defs/meshes/shoulder_yaw.stl" />
+          <mesh filename="package://pr2_description/meshes/shoulder_v0/shoulder_yaw.stl" />
         </geometry>
         <material name="Blue" />
       </visual>
@@ -60,7 +60,7 @@
       <collision name="${side}_shoulder_pan_collision">
         <origin xyz="0.0 0 0.0" rpy="0 0 0" />
         <geometry name="${side}_shoulder_pan_collision_geom">
-          <mesh filename="package://pr2_defs/meshes/convex/shoulder_yaw_convex.stlb" />
+          <mesh filename="package://pr2_description/meshes/shoulder_v0/convex/shoulder_yaw_convex.stlb" />
         </geometry>
       </collision>
     </link>
@@ -94,7 +94,7 @@
       <visual name="${side}_shoulder_lift_visual">
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry name="${side}_shoulder_lift_visual_geom">
-          <mesh filename="package://pr2_defs/meshes/shoulder_lift.stl" />
+          <mesh filename="package://pr2_description/meshes/shoulder_v0/shoulder_lift.stl" />
         </geometry>
         <material name="Grey" />
       </visual>
@@ -102,7 +102,7 @@
       <collision name="${side}_shoulder_lift_collision">
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry name="${side}_shoulder_lift_collision_geom">
-          <mesh filename="package://pr2_defs/meshes/convex/shoulder_lift_convex.stlb" />
+          <mesh filename="package://pr2_description/meshes/shoulder_v0/convex/shoulder_lift_convex.stlb" />
         </geometry>
       </collision>
     </link>
@@ -134,7 +134,7 @@
         <!-- TODO: This component doesn't actually have a mesh -->
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry name="${side}_upper_arm_roll_visual_geom">
-          <mesh filename="package://pr2_defs/meshes/upper_arm_roll.stl" />
+          <mesh filename="package://pr2_description/shoulder_v0/meshes/upper_arm_roll.stl" />
         </geometry>
 
         <material name="RollLinks" />

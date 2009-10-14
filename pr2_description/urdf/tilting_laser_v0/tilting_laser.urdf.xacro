@@ -34,7 +34,7 @@
       <visual name="${name}_mount_visual">
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry name="${name}_mount_visual_geom">
-          <mesh filename="package://pr2_defs/meshes/hok_tilt.stl" />
+          <mesh filename="package://pr2_description/meshes/tilting_laser_v0/hok_tilt.stl" />
         </geometry>
         
         <material name="Red" />
