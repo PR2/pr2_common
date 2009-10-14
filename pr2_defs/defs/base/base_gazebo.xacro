@@ -91,8 +91,8 @@
         <origin>0.0 0.0 0.0</origin>
         <displayRays>false</displayRays>
 
-        <minAngle>-100</minAngle> <!-- scans own arms if -135~+135 -->
-        <maxAngle>100</maxAngle>
+        <minAngle>-135</minAngle>
+        <maxAngle>135</maxAngle>
 
         <minRange>0.05</minRange>
         <maxRange>10.0</maxRange>
