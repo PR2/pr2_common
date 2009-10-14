@@ -18,13 +18,11 @@
   <property name="base_cg_z" value="0.293" />
   <property name="base_mass" value="116.0" />
 
-  <!-- base appears "raised" from our initial geom def from function -->
-  <property name="base_height_offset" value="0.05" />
-
   <!-- simplified box collision geometry for base -->
   <property name="base_size_x" value="0.65" />
   <property name="base_size_y" value="0.65" />
   <property name="base_size_z" value="0.23" />
+  <property name="base_collision_size_z" value="0.04" />
   <!-- simplified box collision geometry for hokuyo laser -->
   <property name="base_laser_x" value="0.275" />
   <property name="base_laser_y" value="0.0" />
@@ -32,7 +30,7 @@
   <property name="base_laser_size_x" value="0.06" />
   <property name="base_laser_size_y" value="0.06" />
   <property name="base_laser_size_z" value="0.03" />
-  <property name="base_laser_collision_offset_z" value="0.02" />
+  <property name="base_laser_collision_offset_z" value="0.023" />
 
   <macro name="pr2_wheel" params="suffix parent reflect">
 
@@ -55,7 +53,7 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://pr2_defs/meshes/pr2_wheel.stl" scale="0.65 1.0 0.65"/>
+          <mesh filename="package://pr2_defs/meshes/pr2_wheel.stl" />
         </geometry>
 
         <material name="Caster_${suffix}" />
@@ -144,25 +142,26 @@
       </inertial>
 
       <visual>
-        <origin xyz="0 0 ${base_height_offset}" rpy="0 0 0" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
           <mesh filename="package://pr2_defs/meshes/base.stl"/>
         </geometry>
-        
         <material name="Green" />
       </visual>
 
       <collision>
-        <origin xyz="0 0 ${base_height_offset+base_size_z/2}" rpy="0 0 0" />
+        <!-- represent base collision with a simple rectangular model, positioned by base_size_z s.t. top
+             surface of the collision box matches the top surface of the PR2 base -->
+        <origin xyz="0 0 ${base_size_z-base_collision_size_z/2}" rpy="0 0 0" />
         <geometry>
-          <box size="${base_size_x} ${base_size_y} ${base_size_z}" />
+          <box size="${base_size_x} ${base_size_y} ${base_collision_size_z}" />
         </geometry>
       </collision>
     </link>
 
     <!-- base laser -->
     <joint name="base_laser_joint" type="fixed">
-      <origin xyz="${base_laser_x} ${base_laser_y} ${base_height_offset+base_laser_z}" rpy="0 0 0" />
+      <origin xyz="${base_laser_x} ${base_laser_y} ${base_laser_z}" rpy="0 0 0" />
       <parent link="${name}_link"/>
       <child link="base_laser"/>
     </joint>
@@ -217,7 +216,7 @@
 
   <macro name="pr2_plug_holder" params="name">
     <joint name="plug_holder_joint" type="fixed">
-      <origin xyz="0.18 0 ${base_height_offset+base_size_z - 0.001/2}" rpy="0 0 0" />
+      <origin xyz="0.18 0 ${base_size_z+0.001/2}" rpy="0 0 0" />
       <parent link="${name}_link"/>
       <child link="plug_holder"/>
     </joint>

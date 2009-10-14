@@ -11,6 +11,7 @@
 
   <property name="gripper_upper_angle" value="0.548" />
   <property name="gripper_lower_angle" value="0.00" />
+  <property name="gripper_margin"      value="0.0" />
 
   <property name="finger_damping"             value="0.2" />
   <property name="finger_tip_damping"         value="0.01" />
@@ -21,7 +22,7 @@
     <limit effort="${finger_joint_effort_limit}" velocity="0.5"
            lower="${gripper_lower_angle}" upper="${gripper_upper_angle}" />
     <safety_controller k_velocity="100.0" k_position="100.0"
-                       soft_lower_limit="${gripper_lower_angle+0.0}" soft_upper_limit="${gripper_upper_angle-0.0}" />
+                       soft_lower_limit="${gripper_lower_angle+gripper_margin}" soft_upper_limit="${gripper_upper_angle-gripper_margin}" />
   </macro>
 
   <macro name="pr2_finger" params="prefix parent">

@@ -5,16 +5,14 @@
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
 
   <property name="finger_stop_kd"             value="1.0" />
-  <property name="finger_stop_kp"             value="10000000.0" />
+  <property name="finger_stop_kp"             value="1000000.0" />
   <property name="finger_fudge_factor"        value="1.0" />
 
-  <property name="finger_kp"                  value="0.0" />
-  <property name="finger_kd"                  value="0.0" />
-  <property name="finger_fm"                  value="0.0" />
+  <property name="finger_kp"                  value="1000000.0" />
+  <property name="finger_kd"                  value="1.0" />
 
-  <property name="finger_tip_kp"              value="0.0" />
-  <property name="finger_tip_kd"              value="0.0" />
-  <property name="finger_tip_fm"              value="0.0" />
+  <property name="finger_tip_kp"              value="1000000.0" />
+  <property name="finger_tip_kd"              value="1.0" />
 
   <property name="finger_tip_mu"              value="500.0" />
   <property name="finger_mu"                  value="500.0" />
@@ -37,8 +35,8 @@
       </sensor:contact>
       <mu1 value="${finger_mu}" />
       <mu2 value="${finger_mu}" />
-      <kp value="1000000.0" />
-      <kd value="1.0" />
+      <kp value="${finger_kp}" />
+      <kd value="${finger_kd}" />
       <material value="PR2/Grey" />
       <!-- for "${prefix}_l_finger_joint"-->
     </gazebo>
@@ -65,8 +63,8 @@
       </sensor:contact>
       <mu1 value="${finger_mu}" />
       <mu2 value="${finger_mu}" />
-      <kp value="1000000.0" />
-      <kd value="1.0" />
+      <kp value="${finger_kp}" />
+      <kd value="${finger_kd}" />
       <material value="PR2/Grey" />
     </gazebo>
     <gazebo reference="${prefix}_r_finger_joint">
@@ -80,7 +78,7 @@
 
     <gazebo reference="${prefix}_l_finger_tip_link">
       <turnGravityOff>true</turnGravityOff>
-      <selfCollide value="true" />
+      <selfCollide value="false" />
       <sensor:contact name="${prefix}_l_finger_tip_contact_sensor">
         <geom>${prefix}_l_finger_tip_link_geom</geom>
         <updateRate>100.0</updateRate>
@@ -93,8 +91,8 @@
       </sensor:contact>
       <mu1 value="${finger_tip_mu}" />
       <mu2 value="${finger_tip_mu}" />
-      <kp  value="10000000.0" />
-      <kd  value="1.0" />
+      <kp value="${finger_tip_kp}" />
+      <kd value="${finger_tip_kd}" />
       <material value="PR2/Red" />
     </gazebo>
     <gazebo reference="${prefix}_l_finger_tip_joint">
@@ -108,7 +106,7 @@
 
     <gazebo reference="${prefix}_r_finger_tip_link">
       <turnGravityOff>true</turnGravityOff>
-      <selfCollide value="true" />
+      <selfCollide value="false" />
       <sensor:contact name="${prefix}_r_finger_tip_contact_sensor">
         <geom>${prefix}_r_finger_tip_link_geom</geom>
         <updateRate>100.0</updateRate>
@@ -121,8 +119,8 @@
       </sensor:contact>
       <mu1 value="${finger_tip_mu}" />
       <mu2 value="${finger_tip_mu}" />
-      <kp  value="10000000.0" />
-      <kd  value="1.0" />
+      <kp value="${finger_tip_kp}" />
+      <kd value="${finger_tip_kd}" />
       <material value="PR2/Red" />
     </gazebo>
     <gazebo>
