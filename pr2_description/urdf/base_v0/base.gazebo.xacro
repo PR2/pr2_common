@@ -19,6 +19,7 @@
 
   <xacro:macro name="pr2_base_gazebo" params="name">
     <gazebo reference="${name}_link">
+      <selfCollide>true</selfCollide>
       <sensor:contact name="${name}_contact_sensor">
         <geom>${name}_link_geom</geom>
         <updateRate>100.0</updateRate>

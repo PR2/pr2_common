@@ -31,17 +31,19 @@
   <property name="base_size_x" value="0.65" />
   <property name="base_size_y" value="0.65" />
   <property name="base_size_z" value="0.23" />
+  <property name="base_collision_size_z" value="0.04" />
 
   <!-- simplified box collision geometry for hokuyo laser -->
   <property name="base_laser_x" value="0.275" />
   <property name="base_laser_y" value="0.0" />
   <property name="base_laser_z" value="0.252" />
-  <property name="base_laser_size_x" value="0.08" />
-  <property name="base_laser_size_y" value="0.08" />
+  <property name="base_laser_size_x" value="0.06" />
+  <property name="base_laser_size_y" value="0.06" />
   <property name="base_laser_size_z" value="0.03" />
+  <property name="base_laser_collision_offset_z" value="0.023" />
 
   <!--                                                      -->
-  <!-- Alpha 2.0 hardware                                   -->
+  <!--           wheel                                      -->
   <!--                                                      -->
   <xacro:macro name="pr2_wheel" params="suffix parent reflect">
 
@@ -61,17 +63,17 @@
         <inertia  ixx="0.012411765597" ixy="-0.000711733678" ixz="0.00050272983"
                   iyy="0.015218160428" iyz="-0.000004273467" izz="0.011763977943" />
       </inertial>
-      <visual name="${parent}_${suffix}_wheel_visual">
+      <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry name="${parent}_${suffix}_wheel_visual_geom">
+        <geometry>
           <mesh filename="package://pr2_description/meshes/base_v0/pr2_wheel.stl" />
         </geometry>
         
         <material name="Caster_${suffix}" />
       </visual>
-      <collision name="${parent}_${suffix}_wheel_collision">
+      <collision>
         <origin xyz="0 0 0" rpy="${M_PI/2} 0 0" /> <!-- rotation because cyl. geom primitive has symmetry axis in +x direction -->
-        <geometry name="${parent}_${suffix}_wheel_collision_geom">
+        <geometry>
           <cylinder radius="${wheel_radius}" length="${wheel_length}" />
         </geometry>
       </collision>
@@ -104,24 +106,24 @@
                   iyy="0.015218160428" iyz="-0.000004273467" izz="0.011763977943" />
       </inertial>
 
-      <visual name="${suffix}_caster_rotation_visual">
+      <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry name="${suffix}_caster_rotation_visual_geom">
+        <geometry>
           <mesh filename="package://pr2_description/meshes/base_v0/caster.stl" />
         </geometry>
         
         <material name="Green" />
       </visual>
 
-      <collision name="${suffix}_caster_rotation_collision">
+      <collision>
         <origin xyz="0 0 0.07" rpy="0.0 0.0 0.0" />
-        <geometry name="${suffix}_caster_rotation_collision_geom">
+        <geometry>
           <box size="0.192 0.164 0.013" />
         </geometry>
       </collision>
     </link>
 
-    <!-- Double check these are right for the Alpha 2.0's -->
+    <!-- wheel macros -->
     <xacro:pr2_wheel parent="${suffix}_caster" suffix="l" reflect="1" />
     <xacro:pr2_wheel parent="${suffix}_caster" suffix="r" reflect="-1" />
 
@@ -147,19 +149,21 @@
                  iyy="5.669473158652" iyz="-0.007379583694" izz="3.683196351726" />
       </inertial>
 
-      <visual name="${name}_visual">
+      <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry name="${name}_visual_geom">
+        <geometry>
           <mesh filename="package://pr2_description/meshes/base_v0/base.stl" />
         </geometry>
         
         <material name="Green" />
       </visual>
 
-      <collision name="${name}_collision">
-        <origin xyz="0 0 ${base_size_z/2}" rpy="0 0 0" />
-        <geometry name="${name}_collision_geom">
-          <box size="${base_size_x} ${base_size_y} ${base_size_z}" />
+      <collision>
+        <!-- represent base collision with a simple rectangular model, positioned by base_size_z s.t. top
+             surface of the collision box matches the top surface of the PR2 base -->
+        <origin xyz="0 0 ${base_size_z-base_collision_size_z/2}" rpy="0 0 0" />
+        <geometry>
+          <box size="${base_size_x} ${base_size_y} ${base_collision_size_z}" />
         </geometry>
       </collision>
     </link>
