@@ -8,7 +8,7 @@
   <include filename="$(find pr2_description)/urdf/torso_v0/torso.gazebo.xacro" />
   <include filename="$(find pr2_description)/urdf/torso_v0/torso.transmission.xacro" />
 
-  <xacro:macro name="pr2_torso" params="name parent *origin">
+  <xacro:macro name="pr2_torso_v0" params="name parent *origin">
 
 
     <joint name="${name}_joint" type="prismatic">
@@ -51,8 +51,8 @@
     </link>
 
     <!-- extensions -->
-    <xacro:pr2_torso_gazebo name="${name}" />
-    <xacro:pr2_torso_transmission name="${name}" />
+    <xacro:pr2_torso_gazebo_v0 name="${name}" />
+    <xacro:pr2_torso_transmission_v0 name="${name}" />
 
   </xacro:macro>
 

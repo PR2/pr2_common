@@ -36,7 +36,7 @@
 
   <!-- ============================   Upper Arm   ============================ -->
 
-  <xacro:macro name="pr2_upper_arm" params="side parent reflect">
+  <xacro:macro name="pr2_upper_arm_v0" params="side parent reflect">
 
     <joint name="${side}_upper_arm_joint" type="fixed">
       <origin xyz="0 0 0" rpy="0 0 0" />
@@ -155,8 +155,8 @@
     </link>
 
     <!-- extensions-->
-    <xacro:pr2_upper_arm_gazebo side="${side}" />
-    <xacro:pr2_upper_arm_transmission side="${side}" />
+    <xacro:pr2_upper_arm_gazebo_v0 side="${side}" />
+    <xacro:pr2_upper_arm_transmission_v0 side="${side}" />
 
   </xacro:macro>
 </robot>

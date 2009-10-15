@@ -6,7 +6,7 @@
        xmlns:xacro="http://ros.org/wiki/xacro">
 
   <!-- this macro is used for creating wide and narrow double stereo camera in simulation -->
-  <xacro:macro name="stereo_camera_gazebo" params="name focal_length hfov">
+  <xacro:macro name="stereo_camera_gazebo_v0" params="name focal_length hfov">
     
     <gazebo reference="${name}_link">
       <material value="PR2/Blue" />
@@ -16,53 +16,13 @@
       <material value="PR2/Blue" />
     </gazebo>
 
-    <gazebo reference="${name}_l_stereo_camera_frame">
-      <sensor:camera name="${name}_l_sensor">
-        <imageSize>640 480</imageSize>
-        <imageFormat>L8</imageFormat>
-        <!-- 90 for wide and 45 for narrow stereo camera-->
-        <hfov>${hfov}</hfov>
-        <nearClip>0.1</nearClip>
-        <farClip>100</farClip>
-        <updateRate>20.0</updateRate>
-        <controller:ros_camera name="${name}_l_controller" plugin="libros_camera.so">
-          <alwaysOn>true</alwaysOn>
-          <updateRate>20.0</updateRate>
-          <topicName>${name}/left_image</topicName>
-          <frameName>${name}_l_stereo_camera_frame</frameName>
-          <interface:camera name="${name}_l_iface" />
-        </controller:ros_camera>
-      </sensor:camera>
-      <material value="PR2/Blue" />
-    </gazebo>
-
-    <gazebo reference="${name}_r_stereo_camera_frame">
-      <sensor:camera name="${name}_r_sensor">
-        <imageSize>640 480</imageSize>
-        <imageFormat>L8</imageFormat>
-        <hfov>${hfov}</hfov>
-        <nearClip>0.1</nearClip>
-        <farClip>100</farClip>
-        <updateRate>20.0</updateRate>
-        <controller:ros_camera name="${name}_r_controller" plugin="libros_camera.so">
-          <alwaysOn>true</alwaysOn>
-          <updateRate>20.0</updateRate>
-          <topicName>${name}/right_image</topicName>
-          <frameName>${name}_r_stereo_camera_frame</frameName>
-          <interface:camera name="${name}_r_iface" />
-        </controller:ros_camera>
-      </sensor:camera>
-      <material value="PR2/Blue" />
-    </gazebo>
-
-
     <!-- stereo plugin that produces a raw_stereo message -->
-    <gazebo> <!-- this is not attached to any link!!!, there no reference -->
+    <gazebo> <!-- this is not attached to any link, there no reference -->
       <controller:ros_stereo_camera name="${name}_controller" plugin="libros_stereo_camera.so">
         <alwaysOn>true</alwaysOn>
         <updateRate>20.0</updateRate>
-        <leftCamera>${name}_l_sensor</leftCamera>
-        <rightCamera>${name}_r_sensor</rightCamera>
+        <leftCamera>${name}_l_stereo_camera_sensor</leftCamera>
+        <rightCamera>${name}_r_stereo_camera_sensor</rightCamera>
         <topicName>${name}/raw_stereo</topicName>
         <frameName>${name}_optical_frame</frameName>
         <CxPrime>320</CxPrime>

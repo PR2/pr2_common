@@ -7,7 +7,7 @@
   <!-- ============================   Upper Arm   ============================ -->
 
 
-  <xacro:macro name="pr2_upper_arm_transmission" params="side">
+  <xacro:macro name="pr2_upper_arm_transmission_v0" params="side">
 
     <!-- Elbow flex -->
 

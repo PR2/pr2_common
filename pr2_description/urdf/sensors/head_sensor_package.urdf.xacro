@@ -16,7 +16,7 @@
   <!-- Made by Kevin for A2 sensor package -->
   <!-- Origin is center mount screw on sensor plate mount -->
   <!-- When mounted properly, should have same origin as head plate frame -->
-  <xacro:macro name="pr2_head_sensor_package" params="name hd_name stereo_name parent *origin">
+  <xacro:macro name="pr2_head_sensor_package_v0" params="name hd_name stereo_name parent *origin">
     <joint name="${name}_frame_joint" type="fixed">
       <insert_block name="origin" />
       <parent link="${parent}"/>
@@ -51,19 +51,19 @@
     </link>
 
     <!-- Prosilica Camera -->
-    <xacro:prosilica_cam name="${hd_name}" parent="${name}_link" >
+    <xacro:prosilica_cam_v0 name="${hd_name}" parent="${name}_link" >
       <!-- Center of camera is 109mm right of center screw, 35mm up -->
       <!-- Camera is slightly recessed from front, where is camera origin? Lens? -->
       <origin xyz="0 -0.109 0.035" rpy="0 0 0" />        
-    </xacro:prosilica_cam>
+    </xacro:prosilica_cam_v0>
 
     <!-- construct wide and narrow double stereo camera -->
-    <xacro:double_stereo_camera name="${stereo_name}" parent="${name}_link" >
+    <xacro:double_stereo_camera_v0 name="${stereo_name}" parent="${name}_link" >
       <origin xyz="0.0 0.0 0.003" rpy="0 0 0" />
-    </xacro:double_stereo_camera>
+    </xacro:double_stereo_camera_v0>
 
     <!-- extensions -->
-    <xacro:pr2_head_sensor_package_gazebo name="${name}" />
+    <xacro:pr2_head_sensor_package_gazebo_v0 name="${name}" />
 
   </xacro:macro>
 

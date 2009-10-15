@@ -8,7 +8,7 @@
   <!--                                                      -->
   <!-- Alpha 2.0 hardware                                   -->
   <!--                                                      -->
-  <xacro:macro name="pr2_wheel_gazebo" params="suffix parent">
+  <xacro:macro name="pr2_wheel_gazebo_v0" params="suffix parent">
     <gazebo reference="${parent}_${suffix}_wheel_link">
       <mu1 value="100.0" />
       <mu2 value="100.0" />
@@ -17,7 +17,7 @@
     </gazebo>
   </xacro:macro>
 
-  <xacro:macro name="pr2_base_gazebo" params="name">
+  <xacro:macro name="pr2_base_gazebo_v0" params="name">
     <gazebo reference="${name}_link">
       <selfCollide>true</selfCollide>
       <sensor:contact name="${name}_contact_sensor">

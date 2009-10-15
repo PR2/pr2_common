@@ -6,7 +6,7 @@
        xmlns:xacro="http://ros.org/wiki/xacro">
 
 
-  <xacro:macro name="pr2_head_pan_transmission" params="name">
+  <xacro:macro name="pr2_head_pan_transmission_v0" params="name">
 
     <transmission type="SimpleTransmission" name="${name}_trans">
       <actuator name="${name}_motor" />
@@ -18,7 +18,7 @@
 
 
 
-  <xacro:macro name="pr2_head_tilt_transmission" params="name">
+  <xacro:macro name="pr2_head_tilt_transmission_v0" params="name">
 
     <transmission type="SimpleTransmission" name="${name}_trans">
       <actuator name="${name}_motor" />

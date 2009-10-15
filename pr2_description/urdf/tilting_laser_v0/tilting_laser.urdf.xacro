@@ -9,7 +9,7 @@
   <include filename="$(find pr2_description)/urdf/tilting_laser_v0/tilting_laser.transmission.xacro" />
   <include filename="$(find pr2_description)/urdf/sensors/hokuyo_lx30_laser.urdf.xacro" />
 
-  <xacro:macro name="pr2_tilting_laser" params="name parent laser_calib_ref *origin">
+  <xacro:macro name="pr2_tilting_laser_v0" params="name parent laser_calib_ref *origin">
 
     <joint name="${name}_mount_joint" type="revolute">
       <axis xyz="0 1 0" />
@@ -48,13 +48,13 @@
       </collision>
     </link>
 
-    <xacro:hokuyo_lx30_laser name="${name}" parent="${name}_mount" ros_topic="tilt_scan">
+    <xacro:hokuyo_lx30_laser_v0 name="${name}" parent="${name}_mount" ros_topic="tilt_scan">
       <origin xyz="0 0 0.03" rpy="0 0 0" />
-    </xacro:hokuyo_lx30_laser>
+    </xacro:hokuyo_lx30_laser_v0>
 
     <!-- extensions -->
-    <xacro:pr2_tilting_laser_gazebo name="${name}"/>
-    <xacro:pr2_tilting_laser_transmission name="${name}"/>
+    <xacro:pr2_tilting_laser_gazebo_v0 name="${name}"/>
+    <xacro:pr2_tilting_laser_transmission_v0 name="${name}"/>
   </xacro:macro>
 
 </robot>

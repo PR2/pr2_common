@@ -6,7 +6,7 @@
   
   <include filename="$(find pr2_description)/urdf/sensors/prosilica_gc2450_camera.gazebo.xacro" />
 
-  <xacro:macro name="prosilica_cam" params="name parent *origin">
+  <xacro:macro name="prosilica_cam_v0" params="name parent *origin">
     <joint name="${name}_frame_joint" type="fixed">
       <insert_block name="origin" />
       <parent link="${parent}"/>
@@ -75,7 +75,7 @@
     </link>
 
     <!-- extensions -->
-    <xacro:prosilica_cam_gazebo name="${name}"/>
+    <xacro:prosilica_cam_gazebo_v0 name="${name}"/>
   </xacro:macro>
 
 </root>

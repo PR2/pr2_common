@@ -45,7 +45,7 @@
   <!--                                                      -->
   <!--           wheel                                      -->
   <!--                                                      -->
-  <xacro:macro name="pr2_wheel" params="suffix parent reflect">
+  <xacro:macro name="pr2_wheel_v0" params="suffix parent reflect">
 
     <joint name="${parent}_${suffix}_wheel_joint" type="continuous">
       <axis xyz="0 1 0" />
@@ -80,12 +80,12 @@
     </link>
 
     <!-- extensions -->
-    <xacro:pr2_wheel_gazebo parent="${parent}" suffix="${suffix}" />
-    <xacro:pr2_wheel_transmission parent="${parent}" suffix="${suffix}" reflect="${reflect}" />
+    <xacro:pr2_wheel_gazebo_v0 parent="${parent}" suffix="${suffix}" />
+    <xacro:pr2_wheel_transmission_v0 parent="${parent}" suffix="${suffix}" reflect="${reflect}" />
 
   </xacro:macro>
 
-  <xacro:macro name="pr2_caster" params="suffix parent *origin ref_position">
+  <xacro:macro name="pr2_caster_v0" params="suffix parent *origin ref_position">
 
     <joint name="${suffix}_caster_rotation_joint" type="continuous">
       <axis xyz="0 0 1" />
@@ -124,17 +124,17 @@
     </link>
 
     <!-- wheel macros -->
-    <xacro:pr2_wheel parent="${suffix}_caster" suffix="l" reflect="1" />
-    <xacro:pr2_wheel parent="${suffix}_caster" suffix="r" reflect="-1" />
+    <xacro:pr2_wheel_v0 parent="${suffix}_caster" suffix="l" reflect="1" />
+    <xacro:pr2_wheel_v0 parent="${suffix}_caster" suffix="r" reflect="-1" />
 
     <!-- extensions -->
-    <xacro:pr2_caster_transmission suffix="${suffix}" />
+    <xacro:pr2_caster_transmission_v0 suffix="${suffix}" />
 
   </xacro:macro>
 
 
   <!-- The xacro macro xacro:pr2_base contains: base, casters and wheels -->
-  <xacro:macro name="pr2_base" params="name *origin">
+  <xacro:macro name="pr2_base_v0" params="name *origin">
     <joint name="${name}_joint" type="planar">
       <insert_block name="origin" />
       <parent link="world"/>
@@ -170,26 +170,26 @@
 
 
     <!-- base laser -->
-    <xacro:hokuyo_lx30_laser name="${name}_laser" parent="${name}" ros_topic="base_scan" >
+    <xacro:hokuyo_lx30_laser_v0 name="${name}_laser" parent="${name}" ros_topic="base_scan" >
       <origin xyz="${base_laser_x} ${base_laser_y} ${base_laser_z}" rpy="0 0 0" />
-    </xacro:hokuyo_lx30_laser>
+    </xacro:hokuyo_lx30_laser_v0>
 
     <!-- all four caster macros -->
-    <xacro:pr2_caster suffix="fl" parent="${name}_link" ref_position="${cal_caster_fl}" >
+    <xacro:pr2_caster_v0 suffix="fl" parent="${name}_link" ref_position="${cal_caster_fl}" >
       <origin xyz="${caster_offset_x} ${caster_offset_y} ${caster_offset_z}" rpy="0 0 0" />
-    </xacro:pr2_caster>
-    <xacro:pr2_caster suffix="fr" parent="${name}_link" ref_position="${cal_caster_fr}" >
+    </xacro:pr2_caster_v0>
+    <xacro:pr2_caster_v0 suffix="fr" parent="${name}_link" ref_position="${cal_caster_fr}" >
       <origin xyz="${caster_offset_x} ${-caster_offset_y} ${caster_offset_z}" rpy="0 0 0" />
-    </xacro:pr2_caster>
-    <xacro:pr2_caster suffix="bl" parent="${name}_link" ref_position="${cal_caster_bl}" >
+    </xacro:pr2_caster_v0>
+    <xacro:pr2_caster_v0 suffix="bl" parent="${name}_link" ref_position="${cal_caster_bl}" >
       <origin xyz="${-caster_offset_x} ${caster_offset_y} ${caster_offset_z}" rpy="0 0 0" />
-    </xacro:pr2_caster>
-    <xacro:pr2_caster suffix="br" parent="${name}_link" ref_position="${cal_caster_br}"  >
+    </xacro:pr2_caster_v0>
+    <xacro:pr2_caster_v0 suffix="br" parent="${name}_link" ref_position="${cal_caster_br}"  >
       <origin xyz="${-caster_offset_x} ${-caster_offset_y} ${caster_offset_z}" rpy="0 0 0" />
-    </xacro:pr2_caster>
+    </xacro:pr2_caster_v0>
 
     <!-- gazebo extensions -->
-    <xacro:pr2_base_gazebo name="${name}" />
+    <xacro:pr2_base_gazebo_v0 name="${name}" />
 
   </xacro:macro>
 

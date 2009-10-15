@@ -18,20 +18,20 @@
 
   <property name="finger_joint_effort_limit"  value="100.0" />
 
-  <xacro:macro name="pr2_finger_limits" params="reflect">
+  <xacro:macro name="pr2_finger_limits_v0" params="reflect">
     <limit effort="${finger_joint_effort_limit}" velocity="0.5"
            lower="${gripper_lower_angle}" upper="${gripper_upper_angle}" />
     <safety_controller k_velocity="100.0" k_position="100.0"
                        soft_lower_limit="${gripper_lower_angle+0.0}" soft_upper_limit="${gripper_upper_angle-0.0}" />
   </xacro:macro>
 
-  <xacro:macro name="pr2_finger" params="prefix parent">
+  <xacro:macro name="pr2_finger_v0" params="prefix parent">
 
     <!-- Finger proximal digit -->
     <joint name="${prefix}_l_finger_joint" type="revolute">
       <axis xyz="0 0 1" />
 
-      <xacro:pr2_finger_limits reflect="1" />
+      <xacro:pr2_finger_limits_v0 reflect="1" />
 
       <dynamics damping="${finger_damping}" />
       <origin xyz="0.07691 0.01 0" rpy="0 0 0" />
@@ -73,7 +73,7 @@
     <joint name="${prefix}_r_finger_joint" type="revolute">
       <axis xyz="0 0 -1" />
       <origin xyz="0.07691 -0.01 0" rpy="0 0 0" />
-      <xacro:pr2_finger_limits reflect="1" />
+      <xacro:pr2_finger_limits_v0 reflect="1" />
       <dynamics damping="${finger_damping}" />
       <mimic joint="${prefix}_l_finger_joint" multiplier="1" offset="0"/>
       <parent link="${parent}"/>
@@ -114,7 +114,7 @@
     <joint name="${prefix}_l_finger_tip_joint" type="revolute">
       <axis xyz="0 0 -1" />
       <origin xyz="0.09137 0.00495 0" rpy="0 0 0" />
-      <xacro:pr2_finger_limits reflect="1" />
+      <xacro:pr2_finger_limits_v0 reflect="1" />
       <dynamics damping="${finger_tip_damping}" />
       <mimic joint="${prefix}_l_finger_joint" multiplier="1" offset="0"/>
       <parent link="${prefix}_l_finger_link"/>
@@ -152,7 +152,7 @@
     <joint name="${prefix}_r_finger_tip_joint" type="revolute">
       <axis xyz="0 0 1" />
       <origin xyz="${0.09137} ${-0.00495} 0" rpy="0 0 0" />
-      <xacro:pr2_finger_limits reflect="1" />
+      <xacro:pr2_finger_limits_v0 reflect="1" />
       <dynamics damping="${finger_tip_damping}" />
       <mimic joint="${prefix}_l_finger_joint" multiplier="1" offset="0"/>
       <parent link="${prefix}_r_finger_link"/>
@@ -186,12 +186,12 @@
     </link>
 
     <!-- extensions -->
-    <xacro:pr2_finger_gazebo prefix="${prefix}" />
+    <xacro:pr2_finger_gazebo_v0 prefix="${prefix}" />
   </xacro:macro>
 
 
 
-  <xacro:macro name="pr2_gripper" params="side parent *origin gear_ratio screw_reduction theta0 phi0 t0 L0 h a b r">
+  <xacro:macro name="pr2_gripper_v0" params="side parent *origin gear_ratio screw_reduction theta0 phi0 t0 L0 h a b r">
 
     <joint name="${side}_gripper_palm_joint" type="fixed">
       <insert_block name="origin"/>
@@ -315,7 +315,7 @@
     </link>
 
     <!-- pr2 fingers macro -->
-    <pr2_finger prefix="${side}_gripper" parent="${side}_gripper_palm_link" />
+    <xacro:pr2_finger_v0 prefix="${side}_gripper" parent="${side}_gripper_palm_link" />
 
     <!-- fictitous joint that represents the gripper gap -->
     <!-- effort is the linear force at the gripper gap
@@ -329,8 +329,8 @@
     </joint>
 
     <!-- extensions -->
-    <xacro:pr2_gripper_gazebo side="${side}" />
-    <xacro:pr2_gripper_transmission side="${side}"
+    <xacro:pr2_gripper_gazebo_v0 side="${side}" />
+    <xacro:pr2_gripper_transmission_v0 side="${side}"
         screw_reduction="${screw_reduction}"
         gear_ratio="${gear_ratio}"
         theta0="${theta0}"

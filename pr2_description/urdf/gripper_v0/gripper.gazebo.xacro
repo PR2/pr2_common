@@ -20,7 +20,7 @@
   <property name="finger_tip_mu"              value="500.0" />
   <property name="finger_mu"                  value="500.0" />
 
-  <xacro:macro name="pr2_finger_gazebo" params="prefix">
+  <xacro:macro name="pr2_finger_gazebo_v0" params="prefix">
 
     <!-- Finger proximal digit -->
 
@@ -156,7 +156,7 @@
 
 
 
-  <xacro:macro name="pr2_gripper_gazebo" params="side">
+  <xacro:macro name="pr2_gripper_gazebo_v0" params="side">
 
     <gazebo reference="${side}_gripper_palm_link">
       <turnGravityOff>true</turnGravityOff>

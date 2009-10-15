@@ -10,7 +10,7 @@
 
   <property name="M_PI" value="3.1415926535897931" />
 
-  <xacro:macro name="pr2_head_pan" params="name parent *origin">
+  <xacro:macro name="pr2_head_pan_v0" params="name parent *origin">
 
     <joint name="${name}_joint" type="revolute">
       <axis xyz="0 0 1" />
@@ -51,13 +51,13 @@
     </link>
 
     <!-- extensions -->
-    <xacro:pr2_head_pan_gazebo name="${name}" />
-    <xacro:pr2_head_pan_transmission name="${name}" />
+    <xacro:pr2_head_pan_gazebo_v0 name="${name}" />
+    <xacro:pr2_head_pan_transmission_v0 name="${name}" />
   </xacro:macro>
 
 
 
-  <xacro:macro name="pr2_head_tilt" params="name parent *origin">
+  <xacro:macro name="pr2_head_tilt_v0" params="name parent *origin">
 
     <joint name="${name}_joint" type="revolute">
       <axis xyz="0 1 0" />
@@ -98,20 +98,20 @@
     </link>
 
     <!-- extensions -->
-    <xacro:pr2_head_tilt_gazebo name="${name}" />
-    <xacro:pr2_head_tilt_transmission name="${name}" />
+    <xacro:pr2_head_tilt_gazebo_v0 name="${name}" />
+    <xacro:pr2_head_tilt_transmission_v0 name="${name}" />
   </xacro:macro>
 
 
 
-  <xacro:macro name="pr2_head" params="name parent *origin">
-    <xacro:pr2_head_pan name="${name}_pan" parent="${parent}">
+  <xacro:macro name="pr2_head_v0" params="name parent *origin">
+    <xacro:pr2_head_pan_v0 name="${name}_pan" parent="${parent}">
       <insert_block name="origin" />
-    </xacro:pr2_head_pan>
+    </xacro:pr2_head_pan_v0>
 
-    <xacro:pr2_head_tilt name="${name}_tilt" parent="${name}_pan_link">
+    <xacro:pr2_head_tilt_v0 name="${name}_tilt" parent="${name}_pan_link">
       <origin xyz="0.058 0 0" rpy="0 0 0" />
-    </xacro:pr2_head_tilt>
+    </xacro:pr2_head_tilt_v0>
 
     <!-- Head plate frame -->
     <joint name="${name}_plate_frame_joint" type="fixed">
@@ -147,7 +147,7 @@
     </link>
 
     <!-- extensions -->
-    <xacro:pr2_head_gazebo name="${name}" />
+    <xacro:pr2_head_gazebo_v0 name="${name}" />
     
   </xacro:macro>
 

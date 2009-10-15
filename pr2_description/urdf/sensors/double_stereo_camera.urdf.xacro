@@ -10,7 +10,7 @@
 
   <!-- Made by Kevin for double stereo camera for PR-2 Beta. -->
   <!-- Needs calibration verification, and CAD check. -->
-  <macro name="double_stereo_camera" params="name parent *origin">
+  <xacro:macro name="double_stereo_camera_v0" params="name parent *origin">
     <!-- Define link to stereo cameras, set origin relative to that -->
     <joint name="${name}_frame_joint" type="fixed">
       <insert_block name="origin" />
@@ -46,16 +46,16 @@
 
     <!-- Wide camera is on robot right (hca1), narrow on left (hca2)? -->
     <!-- 15mm offset from center needs check with CAD -->
-    <xacro:stereo_camera parent="${name}_link" name="wide_stereo" focal_length="320" hfov="90" >
+    <xacro:stereo_camera_v0 parent="${name}_link" name="wide_stereo" focal_length="320" hfov="90" >
       <origin xyz="0 -0.015 0" rpy="0 0 0" />
-    </xacro:stereo_camera>
-    <xacro:stereo_camera parent="${name}_link" name="narrow_stereo" focal_length="772.55" hfov="45" >
+    </xacro:stereo_camera_v0>
+    <xacro:stereo_camera_v0 parent="${name}_link" name="narrow_stereo" focal_length="772.55" hfov="45" >
       <origin xyz="0 0.015 0" rpy="0 0 0" />
-    </xacro:stereo_camera>
+    </xacro:stereo_camera_v0>
 
     <!-- extensions -->
-    <xacro:double_stereo_camera_gazebo name="${name}" />
+    <xacro:double_stereo_camera_gazebo_v0 name="${name}" />
     
-  </macro>
+  </xacro:macro>
 
 </robot>

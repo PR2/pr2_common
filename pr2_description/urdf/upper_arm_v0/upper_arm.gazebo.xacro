@@ -4,7 +4,7 @@
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
        xmlns:xacro="http://ros.org/wiki/xacro">
 
-  <xacro:macro name="pr2_upper_arm_gazebo" params="side">
+  <xacro:macro name="pr2_upper_arm_gazebo_v0" params="side">
 
     <gazebo reference="${side}_upper_arm_link">
       <sensor:contact name="${side}_upper_arm_contact_sensor">

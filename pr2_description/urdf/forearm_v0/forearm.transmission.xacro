@@ -4,7 +4,7 @@
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
        xmlns:xacro="http://ros.org/wiki/xacro">
 
-  <xacro:macro name="pr2_forearm_transmission" params="side">
+  <xacro:macro name="pr2_forearm_transmission_v0" params="side">
 
     <!-- Wrist flex , Wrist roll -->
 

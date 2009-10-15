@@ -14,7 +14,7 @@
 
   <!-- ============================   Forearm   ============================ -->
 
-  <xacro:macro name="pr2_forearm" params="side parent reflect">
+  <xacro:macro name="pr2_forearm_v0" params="side parent reflect">
 
     <joint name="${side}_forearm_joint" type="fixed">
       <origin xyz="0 0 0" rpy="0 0 0" />
@@ -124,8 +124,8 @@
       </collision>
     </link>
     <!-- extensions-->
-    <xacro:pr2_forearm_gazebo side="${side}" />
-    <xacro:pr2_forearm_transmission side="${side}" />
+    <xacro:pr2_forearm_gazebo_v0 side="${side}" />
+    <xacro:pr2_forearm_transmission_v0 side="${side}" />
 
   </xacro:macro>
 

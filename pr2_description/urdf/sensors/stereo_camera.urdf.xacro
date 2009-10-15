@@ -5,6 +5,9 @@
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
        xmlns:xacro="http://ros.org/wiki/xacro">
 
+  <!-- stereo camera macro uses wge100_camera macros -->
+  <include filename="$(find pr2_description)/urdf/sensors/wge100_camera.urdf.xacro" />
+
   <include filename="$(find pr2_description)/urdf/sensors/stereo_camera.gazebo.xacro" />
 
   <property name="stereo_size_x" value="0.005" />
@@ -20,7 +23,7 @@
   <property name="stereo_rz" value="0.00" />
 
   <!-- this macro is used for creating wide and narrow double stereo camera links -->
-  <xacro:macro name="stereo_camera" params="name parent focal_length hfov *origin">
+  <xacro:macro name="stereo_camera_v0" params="name parent focal_length hfov *origin">
     
     <joint name="${name}_frame_joint" type="fixed">
       <insert_block name="origin" />
@@ -36,18 +39,18 @@
                  iyy="0.005218991412"  iyz="-0.000314239509"  izz="0.008618784925" />
       </inertial>
 
-      <visual name="${name}_visual">
+      <visual>
         <origin xyz="${stereo_center_box_center_offset_x} 0 ${stereo_center_box_center_offset_z}" rpy="0 0 0" />
-        <geometry name="${name}_visual_geom">
+        <geometry>
           <box size="${stereo_size_x} ${stereo_size_y} ${stereo_size_z}" />
         </geometry>
         
         <material name="Blue" />
       </visual>
 
-      <collision name="${name}_collision">
+      <collision>
         <origin xyz="${stereo_center_box_center_offset_x} 0 ${stereo_center_box_center_offset_z}" rpy="0 0 0" />
-        <geometry name="${name}_collision_geom">
+        <geometry>
           <box size="${stereo_size_x} ${stereo_size_y} ${stereo_size_z}" />
         </geometry>
       </collision>
@@ -69,92 +72,41 @@
                  izz="0.001" />
       </inertial>
 
-      <visual name="${name}_optical_frame_visual">
+      <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry name="${name}_optical_frame_visual_geom">
+        <geometry>
           <box size="0.01 0.01 0.01" />
         </geometry>
         
         <material name="Blue" />
       </visual>
 
-      <collision name="${name}_optical_frame_collision">
+      <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry name="${name}_optical_frame_collision_geom">
+        <geometry>
           <box size="0.01 0.01 0.01" />
         </geometry>
       </collision>
 
     </link>
 
-    <joint name="${name}_l_stereo_camera_frame_joint" type="fixed">
+
+    <!-- stereo left camera -->
+    <xacro:wge100_camera_v0 name="${name}_l_stereo_camera" topic_name="${name}/left_image"
+                            parent="${name}_optical_frame"
+                            hfov="${hfov}" focal_length="${focal_length}">
       <origin xyz="0 0 0" rpy="0 ${-M_PI/2} ${M_PI/2}" />
-      <parent link="${name}_optical_frame"/>
-      <child link="${name}_l_stereo_camera_frame"/>
-    </joint>
-    <link name="${name}_l_stereo_camera_frame">
-      
-      <inertial>
-        <mass value="0.01" />
-        <origin xyz="0 0 0" rpy="0 0 0" />
-        <inertia ixx="0.001" ixy="0.000"  ixz="0.000"
-                 iyy="0.001" iyz="0.000"
-                 izz="0.001" />
-      </inertial>
+    </xacro:wge100_camera_v0>
 
-      <visual name="${name}_l_stereo_camera_visual">
-        <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry name="${name}_l_stereo_camera_visual_geom">
-          <box size="0.01 0.01 0.01" />
-        </geometry>
-        
-        <material name="Blue" />
-      </visual>
-
-      <collision name="${name}_l_stereo_camera_collision">
-        <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry name="${name}_l_stereo_camera_collision_geom">
-          <box size="0.01 0.01 0.01" />
-        </geometry>
-      </collision>
-      
-    </link>
-
-    <joint name="${name}_r_stereo_camera_frame_joint" type="fixed">
+    <!-- stereo right camera -->
+    <xacro:wge100_camera_v0 name="${name}_r_stereo_camera" topic_name="${name}/right_image"
+                            parent="${name}_l_stereo_camera_frame"
+                            hfov="${hfov}" focal_length="${focal_length}">
       <origin xyz="${stereo_dx} ${stereo_dy} ${stereo_dz}" rpy="${stereo_rx} ${stereo_ry} ${stereo_rz}" />
-      <parent link="${name}_l_stereo_camera_frame"/>
-      <child link="${name}_r_stereo_camera_frame"/>
-    </joint>
-    <link name="${name}_r_stereo_camera_frame">
-      
-      <inertial>
-        <mass value="0.01" />
-        <origin xyz="0 0 0" rpy="0 0 0" />
-        <inertia ixx="0.001" ixy="0.000"  ixz="0.000"
-                 iyy="0.001" iyz="0.000"
-                 izz="0.001" />
-      </inertial>
-
-      <visual name="${name}_r_stereo_camera_visual">
-        <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry name="${name}_r_stereo_camera_visual_geom">
-          <box size="0.01 0.01 0.01" />
-        </geometry>
-        
-        <material name="Blue" />
-      </visual>
-
-      <collision name="${name}_r_stereo_camera_collision">
-        <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry name="${name}_r_stereo_camera_collision_geom">
-          <box size="0.01 0.01 0.01" />
-        </geometry>
-      </collision>
-      
-    </link>
+    </xacro:wge100_camera_v0>
 
     <!-- extensions -->
-    <xacro:stereo_camera_gazebo name="${name}" focal_length="${focal_length}" hfov="${hfov}" />
+    <xacro:stereo_camera_gazebo_v0 name="${name}" focal_length="${focal_length}" hfov="${hfov}" />
 
   </xacro:macro>
 </robot>

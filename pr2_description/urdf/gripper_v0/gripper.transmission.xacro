@@ -5,7 +5,7 @@
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
        xmlns:xacro="http://ros.org/wiki/xacro">
 
-  <xacro:macro name="pr2_gripper_transmission" params="side screw_reduction gear_ratio theta0 phi0 t0 L0 h a b r">
+  <xacro:macro name="pr2_gripper_transmission_v0" params="side screw_reduction gear_ratio theta0 phi0 t0 L0 h a b r">
     <!-- [lr]_gripper_joint is a fictitious joint, used by transmission for controller gap   -->
     <!-- [lr]_gripper_joint is not attached to any link                                      -->
     <!-- [lr]_gripper_joint position is the gap_size                                         -->

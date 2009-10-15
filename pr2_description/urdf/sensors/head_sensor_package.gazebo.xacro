@@ -11,10 +11,10 @@
   <!-- Made by Kevin for A2 sensor package -->
   <!-- Origin is center mount screw on sensor plate mount -->
   <!-- When mounted properly, should have same origin as head plate frame -->
-  <macro name="pr2_head_sensor_package_gazebo" params="name">
+  <xacro:macro name="pr2_head_sensor_package_gazebo_v0" params="name">
     <gazebo reference="${name}_sensor_link">
       <material value="PR2/Blue" />
     </gazebo>
-  </macro>
+  </xacro:macro>
 
 </robot>
