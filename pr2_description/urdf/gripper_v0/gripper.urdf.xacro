@@ -31,7 +31,7 @@
     <joint name="${prefix}_l_finger_joint" type="revolute">
       <axis xyz="0 0 1" />
 
-      <pr2_finger_limits reflect="1" />
+      <xacro:pr2_finger_limits reflect="1" />
 
       <dynamics damping="${finger_damping}" />
       <origin xyz="0.07691 0.01 0" rpy="0 0 0" />
@@ -54,7 +54,7 @@
       <visual name="${prefix}_l_finger_visual">
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry name="${prefix}_l_finger_visual_geom">
-          <mesh filename="package://pr2_description/meshes/gripper_v0/upper_finger_l.stl" />
+          <mesh filename="package://pr2_defs/meshes/upper_finger_l.stl" />
         </geometry>
         
         <material name="Grey" />
@@ -62,7 +62,7 @@
       <collision name="${prefix}_l_finger_collision">
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry name="${prefix}_l_finger_collision_geom">
-          <mesh filename="package://pr2_description/meshes/gripper_v0/convex/upper_finger_l_convex.stlb" />
+          <mesh filename="package://pr2_defs/meshes/convex/upper_finger_l_convex.stlb" />
         </geometry>
         <verbose value="Yes" />
       </collision>
@@ -73,7 +73,7 @@
     <joint name="${prefix}_r_finger_joint" type="revolute">
       <axis xyz="0 0 -1" />
       <origin xyz="0.07691 -0.01 0" rpy="0 0 0" />
-      <pr2_finger_limits reflect="1" />
+      <xacro:pr2_finger_limits reflect="1" />
       <dynamics damping="${finger_damping}" />
       <mimic joint="${prefix}_l_finger_joint" multiplier="1" offset="0"/>
       <parent link="${parent}"/>
@@ -95,7 +95,7 @@
       <visual name="${prefix}_r_finger_visual">
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry name="${prefix}_r_finger_visual_geom">
-          <mesh filename="package://pr2_description/meshes/gripper_v0/upper_finger_r.stl" />
+          <mesh filename="package://pr2_defs/meshes/upper_finger_r.stl" />
         </geometry>
         
         <material name="Grey" />
@@ -103,7 +103,7 @@
       <collision name="${prefix}_r_finger_collision">
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry name="${prefix}_r_finger_collision_geom">
-          <mesh filename="package://pr2_description/meshes/gripper_v0/convex/upper_finger_r_convex.stlb" />
+          <mesh filename="package://pr2_defs/meshes/convex/upper_finger_r_convex.stlb" />
         </geometry>
         <verbose value="Yes" />
       </collision>
@@ -114,7 +114,7 @@
     <joint name="${prefix}_l_finger_tip_joint" type="revolute">
       <axis xyz="0 0 -1" />
       <origin xyz="0.09137 0.00495 0" rpy="0 0 0" />
-      <pr2_finger_limits reflect="1" />
+      <xacro:pr2_finger_limits reflect="1" />
       <dynamics damping="${finger_tip_damping}" />
       <mimic joint="${prefix}_l_finger_joint" multiplier="1" offset="0"/>
       <parent link="${prefix}_l_finger_link"/>
@@ -133,7 +133,7 @@
       <visual name="${prefix}_l_finger_tip_visual">
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry name="${prefix}_l_finger_tip_visual_geom">
-          <mesh filename="package://pr2_description/meshes/gripper_v0/finger_tip_l.stl" />
+          <mesh filename="package://pr2_defs/meshes/finger_tip_l.stl" />
         </geometry>
         
         <material name="Green" />
@@ -141,7 +141,7 @@
       <collision name="${prefix}_l_finger_tip_collision">
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry name="${prefix}_l_finger_tip_collision_geom">
-          <mesh filename="package://pr2_description/meshes/gripper_v0/finger_tip_pad2_l.stl" />
+          <mesh filename="package://pr2_defs/meshes/finger_tip_pad2_l.stl" />
         </geometry>
         <verbose value="Yes" />
       </collision>
@@ -152,7 +152,7 @@
     <joint name="${prefix}_r_finger_tip_joint" type="revolute">
       <axis xyz="0 0 1" />
       <origin xyz="${0.09137} ${-0.00495} 0" rpy="0 0 0" />
-      <pr2_finger_limits reflect="1" />
+      <xacro:pr2_finger_limits reflect="1" />
       <dynamics damping="${finger_tip_damping}" />
       <mimic joint="${prefix}_l_finger_joint" multiplier="1" offset="0"/>
       <parent link="${prefix}_r_finger_link"/>
@@ -171,7 +171,7 @@
       <visual name="${prefix}_r_finger_tip_visual">
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry name="${prefix}_r_finger_tip_visual_geom">
-          <mesh filename="package://pr2_description/meshes/gripper_v0/finger_tip_r.stl" />
+          <mesh filename="package://pr2_defs/meshes/finger_tip_r.stl" />
         </geometry>
         
         <material name="Green" />
@@ -179,19 +179,19 @@
       <collision name="${prefix}_r_finger_tip_collision">
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry name="${prefix}_r_finger_tip_collision_geom">
-          <mesh filename="package://pr2_description/meshes/gripper_v0/finger_tip_pad2_r.stl" />
+          <mesh filename="package://pr2_defs/meshes/finger_tip_pad2_r.stl" />
         </geometry>
         <verbose value="Yes" />
       </collision>
     </link>
 
     <!-- extensions -->
-    <pr2_finger_gazebo prefix="${prefix}" />
+    <xacro:pr2_finger_gazebo prefix="${prefix}" />
   </xacro:macro>
 
 
 
-  <xacro:macro name="pr2_gripper" params="side parent *origin gear_ratio screw_reduction">
+  <xacro:macro name="pr2_gripper" params="side parent *origin gear_ratio screw_reduction theta0 phi0 t0 L0 h a b r">
 
     <joint name="${side}_gripper_palm_joint" type="fixed">
       <insert_block name="origin"/>
@@ -210,7 +210,7 @@
       <visual name="${side}_gripper_palm_visual">
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry name="${side}_gripper_palm_visual_geom">
-          <mesh filename="package://pr2_description/meshes/gripper_v0/gripper_palm.stl" />
+          <mesh filename="package://pr2_defs/meshes/gripper_palm.stl" />
         </geometry>
         
         <material name="Red" />
@@ -218,7 +218,7 @@
       <collision name="${side}_gripper_palm_collision">
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry name="${side}_gripper_palm_collision_geom">
-          <mesh filename="package://pr2_description/meshes/gripper_v0/convex/gripper_palm_convex.stlb" />
+          <mesh filename="package://pr2_defs/meshes/convex/gripper_palm_convex.stlb" />
         </geometry>
         <verbose value="Yes" />
       </collision>
@@ -325,12 +325,22 @@
     <joint name="${side}_gripper_joint" type="prismatic">
       <axis xyz="0 0 1" />
       <limit effort="100.0" velocity="0.2" lower="0.0" upper="0.09" />
-      <safety_controller k_velocity="500.0" k_position="20.0" soft_lower_limit="${0.0-0.01}" soft_upper_limit="${0.09-0.001}" />
+      <safety_controller k_velocity="500.0" k_position="20.0" soft_lower_limit="${0.0-0.01}" soft_upper_limit="${0.09-0.002}" />
     </joint>
 
     <!-- extensions -->
-    <pr2_gripper_gazebo side="${side}" />
-    <pr2_gripper_transmission side="${side}" />
+    <xacro:pr2_gripper_gazebo side="${side}" />
+    <xacro:pr2_gripper_transmission side="${side}"
+        screw_reduction="${screw_reduction}"
+        gear_ratio="${gear_ratio}"
+        theta0="${theta0}"
+        phi0="${phi0}"
+        t0="${t0}"
+        L0="${L0}"
+        h="${h}"
+        a="${a}"
+        b="${b}"
+        r="${r}" />
 
   </xacro:macro>
 

@@ -71,7 +71,17 @@
   <xacro:pr2_upper_arm side="r" reflect="-1" parent="r_upper_arm_roll_link"/>
   <xacro:pr2_forearm side="r" reflect="-1" parent="r_forearm_roll_link"/>
 
-  <xacro:pr2_gripper screw_reduction="${2.0/1000.0}" gear_ratio="${29.16}" side="r" parent="r_wrist_roll_link" >
+  <xacro:pr2_gripper side="r" parent="r_wrist_roll_link"
+               screw_reduction="${4.0/1000.0}"
+               gear_ratio="${(729.0/25.0)*(22.0/16.0)}"
+               theta0="${3.6029*M_PI/180.0}"
+               phi0="${29.7089*M_PI/180.0}"
+               t0="${-0.1914/1000.0}"
+               L0="${37.5528/1000.0}"
+               h="${0.0/1000.0}"
+               a="${68.3698/1000.0}"
+               b="${43.3849/1000.0}"
+               r="${91.5/1000.0}" >
     <origin xyz="0 0 0" rpy="0 0 0" />
   </xacro:pr2_gripper>
 
@@ -81,7 +91,17 @@
   <xacro:pr2_upper_arm side="l" reflect="1" parent="l_upper_arm_roll_link"/>
   <xacro:pr2_forearm side="l" reflect="1" parent="l_forearm_roll_link"/>
 
-  <xacro:pr2_gripper screw_reduction="${2.0/1000.0}" gear_ratio="${29.16}" side="l" parent="l_wrist_roll_link" >
+  <xacro:pr2_gripper side="l" parent="l_wrist_roll_link"
+               screw_reduction="${4.0/1000.0}"
+               gear_ratio="${(729.0/25.0)*(22.0/16.0)}"
+               theta0="${3.6029*M_PI/180.0}"
+               phi0="${29.7089*M_PI/180.0}"
+               t0="${-0.1914/1000.0}"
+               L0="${37.5528/1000.0}"
+               h="${0.0/1000.0}"
+               a="${68.3698/1000.0}"
+               b="${43.3849/1000.0}"
+               r="${91.5/1000.0}" >
     <origin xyz="0 0 0" rpy="0 0 0" />
   </xacro:pr2_gripper>
 
