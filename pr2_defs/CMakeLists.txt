@@ -5,10 +5,6 @@ rosbuild_init()
 
 rosbuild_add_gtest(test_urdf test/test_urdf.cpp)
 
-rosbuild_find_ros_package(pr2_defs)
-
-file(GLOB def_files ${CMAKE_CURRENT_SOURCE_DIR}/defs/*.xml)
-
 # mesh file generations
 rosbuild_find_ros_package(ivcon)
 rosbuild_find_ros_package(convex_decomposition)
