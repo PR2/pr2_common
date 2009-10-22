@@ -32,12 +32,6 @@
       <selfTestServiceName>self_test</selfTestServiceName>
       <interface:audio name="battery_dummy_interface" />
     </controller:gazebo_battery>
-
-    <controller:ros_time name="ros_time" plugin="libros_time.so">
-      <alwaysOn>true</alwaysOn>
-      <updateRate>1000.0</updateRate>
-      <interface:audio name="dummy_ros_time_iface_should_not_be_here"/>
-    </controller:ros_time>
   </gazebo>
 
 </robot>
