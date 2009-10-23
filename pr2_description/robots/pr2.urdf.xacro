@@ -8,7 +8,7 @@
   <!-- The following included files set up definitions of parts of the robot body -->
   <!-- misc common stuff? -->
   <include filename="$(find pr2_description)/urdf/common.xacro" />
-  <!-- PR2 gripper -->
+  <!-- PR2 Arm -->
   <include filename="$(find pr2_description)/urdf/shoulder_v0/shoulder.urdf.xacro" />
   <include filename="$(find pr2_description)/urdf/upper_arm_v0/upper_arm.urdf.xacro" />
   <include filename="$(find pr2_description)/urdf/forearm_v0/forearm.urdf.xacro" />
@@ -49,7 +49,7 @@
   </xacro:pr2_torso_v0>
 
   <!-- The xacro preprocesser will replace the parameters below, such as ${cal_head_x}, with
-       numerical values that were specified in default_cal.xml which was included above -->
+       numerical values that were specified in common.xacro which was included above -->
   <xacro:pr2_head_v0 name="head" parent="torso_lift_link">
     <origin xyz="${cal_head_x}    ${cal_head_y}     ${0.3915+cal_head_z}"
             rpy="${cal_head_roll} ${cal_head_pitch} ${cal_head_yaw}" />

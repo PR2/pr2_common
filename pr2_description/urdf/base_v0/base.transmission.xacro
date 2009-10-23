@@ -7,7 +7,7 @@
   <!--                                                      -->
   <!-- Alpha 2.0 hardware                                   -->
   <!--                                                      -->
-  <xacro:macro name="pr2_wheel_transmission" params="suffix parent reflect">
+  <xacro:macro name="pr2_wheel_transmission_v0" params="suffix parent reflect">
     <transmission type="SimpleTransmission" name="${parent}_${suffix}_wheel_trans">
       <actuator name="${parent}_${suffix}_wheel_motor" />
       <joint name="${parent}_${suffix}_wheel_joint" />
@@ -15,7 +15,7 @@
     </transmission>
   </xacro:macro>
 
-  <xacro:macro name="pr2_caster_transmission" params="suffix">
+  <xacro:macro name="pr2_caster_transmission_v0" params="suffix">
     <transmission type="SimpleTransmission" name="${suffix}_caster_rotation_trans">
       <actuator name="${suffix}_caster_rotation_motor" />
       <joint name="${suffix}_caster_rotation_joint" />
