@@ -6,7 +6,7 @@
        xmlns:xacro="http://ros.org/wiki/xacro">
 
   <!-- this macro is used for creating wide and narrow double stereo camera in simulation -->
-  <xacro:macro name="stereo_camera_gazebo_v0" params="name focal_length hfov">
+  <xacro:macro name="stereo_camera_gazebo_v0" params="name focal_length hfov image_width image_height">
     
     <gazebo reference="${name}_link">
       <material value="PR2/Blue" />
@@ -25,9 +25,9 @@
         <rightCamera>${name}_r_stereo_camera_sensor</rightCamera>
         <topicName>${name}/raw_stereo</topicName>
         <frameName>${name}_optical_frame</frameName>
-        <CxPrime>320</CxPrime>
-        <Cx>320</Cx>
-        <Cy>240</Cy>
+        <CxPrime>${(image_width+1)/2}</CxPrime>
+        <Cx>${(image_width+1)/2}</Cx>
+        <Cy>${(image_height+1)/2}</Cy>
         <!-- image_width / (2*tan(hfov_radian /2)) -->
         <!-- 320 for wide and 772.55 for narrow stereo camera -->
         <focal_length>${focal_length}</focal_length>

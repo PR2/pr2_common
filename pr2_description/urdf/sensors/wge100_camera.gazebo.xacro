@@ -3,12 +3,10 @@
        xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
        xmlns:xacro="http://ros.org/wiki/xacro">
-  <xacro:macro name="wge100_camera_gazebo_v0" params="name topic_name hfov focal_length">
-    <!-- focal_length is not used at the moment, but will be needed for projection matrix
-         if we are to generate a camera projection matrix for CameraInfo message. -->
+  <xacro:macro name="wge100_camera_gazebo_v0" params="name topic_name hfov focal_length image_width image_height">
     <gazebo reference="${name}_frame">
       <sensor:camera name="${name}_sensor">
-        <imageSize>640 480</imageSize>
+        <imageSize>${image_width} ${image_height}</imageSize>
         <imageFormat>L8</imageFormat>
         <hfov>${hfov}</hfov>
         <nearClip>0.1</nearClip>
@@ -19,6 +17,17 @@
           <updateRate>20.0</updateRate>
           <topicName>${topic_name}</topicName>
           <frameName>${name}_frame</frameName>
+          <CxPrime>${(image_width+1)/2}</CxPrime>
+          <Cx>${(image_width+1)/2}</Cx>
+          <Cy>${(image_height+1)/2}</Cy>
+          <!-- image_width / (2*tan(hfov_radian /2)) -->
+          <!-- 320 for wide and 772.55 for narrow stereo camera -->
+          <focal_length>${focal_length}</focal_length>
+          <distortion_k1>0</distortion_k1>
+          <distortion_k2>0</distortion_k2>
+          <distortion_k3>0</distortion_k3>
+          <distortion_t1>0</distortion_t1>
+          <distortion_t2>0</distortion_t2>
           <interface:camera name="${name}_iface" />
         </controller:ros_camera>
       </sensor:camera>

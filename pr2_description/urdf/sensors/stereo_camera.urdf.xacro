@@ -23,7 +23,7 @@
   <property name="stereo_rz" value="0.00" />
 
   <!-- this macro is used for creating wide and narrow double stereo camera links -->
-  <xacro:macro name="stereo_camera_v0" params="name parent focal_length hfov *origin">
+  <xacro:macro name="stereo_camera_v0" params="name parent focal_length hfov image_width image_height *origin">
     
     <joint name="${name}_frame_joint" type="fixed">
       <insert_block name="origin" />
@@ -92,21 +92,24 @@
 
 
     <!-- stereo left camera -->
-    <xacro:wge100_camera_v0 name="${name}_l_stereo_camera" topic_name="${name}/left_image"
+    <xacro:wge100_camera_v0 name="${name}_l_stereo_camera" topic_name="${name}/left/image_raw"
                             parent="${name}_optical_frame"
-                            hfov="${hfov}" focal_length="${focal_length}">
+                            hfov="${hfov}" focal_length="${focal_length}"
+                            image_width="${image_width}" image_height="${image_height}">
       <origin xyz="0 0 0" rpy="0 ${-M_PI/2} ${M_PI/2}" />
     </xacro:wge100_camera_v0>
 
     <!-- stereo right camera -->
-    <xacro:wge100_camera_v0 name="${name}_r_stereo_camera" topic_name="${name}/right_image"
+    <xacro:wge100_camera_v0 name="${name}_r_stereo_camera" topic_name="${name}/right/image_raw"
                             parent="${name}_l_stereo_camera_frame"
-                            hfov="${hfov}" focal_length="${focal_length}">
+                            hfov="${hfov}" focal_length="${focal_length}"
+                            image_width="${image_width}" image_height="${image_height}">
       <origin xyz="${stereo_dx} ${stereo_dy} ${stereo_dz}" rpy="${stereo_rx} ${stereo_ry} ${stereo_rz}" />
     </xacro:wge100_camera_v0>
 
     <!-- extensions -->
-    <xacro:stereo_camera_gazebo_v0 name="${name}" focal_length="${focal_length}" hfov="${hfov}" />
+    <xacro:stereo_camera_gazebo_v0 name="${name}" focal_length="${focal_length}" hfov="${hfov}"
+                                   image_width="${image_width}" image_height="${image_height}"/>
 
   </xacro:macro>
 </robot>
