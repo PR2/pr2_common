@@ -3,13 +3,13 @@
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
 
 <map name="sensor" flag="gazebo">
-  <verbatim key="mechanism_control_simulation">
+  <verbatim key="controller_manager_simulation">
     <!-- PR2_ACTARRAY -->
-    <controller:gazebo_mechanism_control name="gazebo_mechanism_control" plugin="libgazebo_mechanism_control.so">
+    <controller:gazebo_controller_manager name="gazebo_controller_manager" plugin="libgazebo_controller_manager.so">
       <alwaysOn>true</alwaysOn>
       <updateRate>1000.0</updateRate>
-      <interface:audio name="gazebo_mechanism_control_dummy_iface" />
-    </controller:gazebo_mechanism_control>
+      <interface:audio name="gazebo_controller_manager_dummy_iface" />
+    </controller:gazebo_controller_manager>
 
     <!-- battery controls -->
     <controller:gazebo_battery name="gazebo_battery_controller" plugin="libgazebo_battery.so">
