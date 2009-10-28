@@ -4,13 +4,6 @@
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
 
   <gazebo>
-    <!-- distribute state for sensors -->
-    <controller:ros_pub_world_state name="ros_pub_world_state_controller" plugin="libros_pub_world_state.so">
-      <alwaysOn>true</alwaysOn>
-      <updateRate>1000.0</updateRate>
-      <interface:audio name="gazebo_pub_world_state_control_dummy_iface" />
-    </controller:ros_pub_world_state>
-
     <!-- PR2_ACTARRAY -->
     <controller:gazebo_controller_manager name="gazebo_controller_manager" plugin="libgazebo_controller_manager.so">
       <alwaysOn>true</alwaysOn>
