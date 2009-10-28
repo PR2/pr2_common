@@ -227,8 +227,18 @@
             <controller:ros_camera name="${name}_l_controller" plugin="libros_camera.so">
               <alwaysOn>true</alwaysOn>
               <updateRate>20.0</updateRate>
-              <topicName>${name}/left_image</topicName>
+              <imageTopicName>${name}/left/image_raw</imageTopicName>
+              <cameraInfoTopicName>${name}/left/camera_info</cameraInfoTopicName>
               <frameName>${name}_l_stereo_camera_frame</frameName>
+              <CxPrime>320.5</CxPrime>
+              <Cx>320.5</Cx>
+              <Cy>240.5</Cy>
+              <focal_length>320</focal_length> <!-- image_width / (2*tan(hfov_radian /2)) -->
+              <distortion_k1>0</distortion_k1>
+              <distortion_k2>0</distortion_k2>
+              <distortion_k3>0</distortion_k3>
+              <distortion_t1>0</distortion_t1>
+              <distortion_t2>0</distortion_t2>
               <interface:camera name="${name}_l_iface" />
             </controller:ros_camera>
           </sensor:camera>
@@ -280,8 +290,18 @@
             <controller:ros_camera name="${name}_r_controller" plugin="libros_camera.so">
               <alwaysOn>true</alwaysOn>
               <updateRate>20.0</updateRate>
-              <topicName>${name}/right_image</topicName>
+              <imageTopicName>${name}/right/image_raw</imageTopicName>
+              <cameraInfoTopicName>${name}/right/camera_info</cameraInfoTopicName>
               <frameName>${name}_r_stereo_camera_frame</frameName>
+              <CxPrime>320.5</CxPrime>
+              <Cx>320.5</Cx>
+              <Cy>240.5</Cy>
+              <focal_length>320</focal_length> <!-- image_width / (2*tan(hfov_radian /2)) -->
+              <distortion_k1>0</distortion_k1>
+              <distortion_k2>0</distortion_k2>
+              <distortion_k3>0</distortion_k3>
+              <distortion_t1>0</distortion_t1>
+              <distortion_t2>0</distortion_t2>
               <interface:camera name="${name}_r_iface" />
             </controller:ros_camera>
           </sensor:camera>
@@ -301,9 +321,9 @@
           <rightCamera>${name}_r_sensor</rightCamera>
           <topicName>${name}/raw_stereo</topicName>
           <frameName>${name}_optical_frame</frameName>
-          <CxPrime>320</CxPrime>
-          <Cx>320</Cx>
-          <Cy>240</Cy>
+          <CxPrime>320.5</CxPrime>
+          <Cx>320.5</Cx>
+          <Cy>240.5</Cy>
           <focal_length>320</focal_length> <!-- image_width / (2*tan(hfov_radian /2)) -->
           <distortion_k1>0</distortion_k1>
           <distortion_k2>0</distortion_k2>
