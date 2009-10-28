@@ -92,16 +92,16 @@
 
 
     <!-- stereo left camera -->
-    <xacro:wge100_camera_v0 name="${name}_l_stereo_camera" topic_name="${name}/left/image_raw"
-                            parent="${name}_optical_frame"
+    <xacro:wge100_camera_v0 name="${name}_l_stereo_camera" image_topic_name="${name}/left/image_raw"
+                            camera_info_topic_name="${name}/right/camera_info" parent="${name}_optical_frame"
                             hfov="${hfov}" focal_length="${focal_length}"
                             image_width="${image_width}" image_height="${image_height}">
       <origin xyz="0 0 0" rpy="0 ${-M_PI/2} ${M_PI/2}" />
     </xacro:wge100_camera_v0>
 
     <!-- stereo right camera -->
-    <xacro:wge100_camera_v0 name="${name}_r_stereo_camera" topic_name="${name}/right/image_raw"
-                            parent="${name}_l_stereo_camera_frame"
+    <xacro:wge100_camera_v0 name="${name}_r_stereo_camera" image_topic_name="${name}/right/image_raw"
+                            camera_info_topic_name="${name}/right/camera_info" parent="${name}_l_stereo_camera_frame"
                             hfov="${hfov}" focal_length="${focal_length}"
                             image_width="${image_width}" image_height="${image_height}">
       <origin xyz="${stereo_dx} ${stereo_dy} ${stereo_dz}" rpy="${stereo_rx} ${stereo_ry} ${stereo_rz}" />

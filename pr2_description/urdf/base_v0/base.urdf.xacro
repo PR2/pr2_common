@@ -170,7 +170,7 @@
 
 
     <!-- base laser -->
-    <xacro:hokuyo_lx30_laser_v0 name="${name}_laser" parent="${name}" ros_topic="base_scan" >
+    <xacro:hokuyo_lx30_laser_v0 name="${name}_laser" parent="${name}" ros_topic="base_scan" update_rate="20" >
       <origin xyz="${base_laser_x} ${base_laser_y} ${base_laser_z}" rpy="0 0 0" />
     </xacro:hokuyo_lx30_laser_v0>
 

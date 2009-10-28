@@ -108,12 +108,14 @@
   </xacro:pr2_gripper_v0>
 
   <!-- Forearm Cam (Hand approximated values) -->
-  <xacro:wge100_camera_v0 name="l_forearm_cam" topic_name="l_forearm_cam/image"
+  <xacro:wge100_camera_v0 name="l_forearm_cam" image_topic_name="l_forearm_cam/image_raw"
+                          camera_info_topic_name="l_forearm_cam/camera_info"
                           parent="l_forearm_roll_link" hfov="90" focal_length="320"
                           image_width="640" image_height="480">
     <origin xyz=".15 0 .07" rpy="${ M_PI/2} ${-45*M_PI/180} 0" />
   </xacro:wge100_camera_v0>
-  <xacro:wge100_camera_v0 name="r_forearm_cam" topic_name="r_forearm_cam/image"
+  <xacro:wge100_camera_v0 name="r_forearm_cam" image_topic_name="r_forearm_cam/image_raw"
+                          camera_info_topic_name="r_forearm_cam/camera_info"
                           parent="r_forearm_roll_link" hfov="90" focal_length="320"
                           image_width="640" image_height="480">
     <origin xyz=".15 0 .07" rpy="${-M_PI/2} ${-45*M_PI/180} 0" />
