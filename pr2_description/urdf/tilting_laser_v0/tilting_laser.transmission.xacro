@@ -8,7 +8,7 @@
     <transmission type="SimpleTransmission" name="${name}_mount_trans">
       <actuator name="${name}_mount_motor" />
       <joint name="${name}_mount_joint" />
-      <mechanicalReduction>6.0</mechanicalReduction>
+      <mechanicalReduction>6.05</mechanicalReduction>
     </transmission>
   </xacro:macro>
 </robot>
