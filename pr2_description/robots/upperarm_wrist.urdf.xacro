@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<robot name="forearm" 
+<robot name="pr2_upper_arm" 
        xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
        xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
@@ -8,11 +8,16 @@
   <include filename="$(find pr2_description)/urdf/common.xacro" />
   <include filename="$(find pr2_description)/urdf/materials.urdf.xacro" />
 
+  <include filename="$(find pr2_description)/urdf/upper_arm_v0/upper_arm.urdf.xacro" />
   <include filename="$(find pr2_description)/urdf/forearm_v0/forearm.urdf.xacro" />
   
-  <xacro:pr2_forearm_v0 side="r" reflect="-1" parent="base_link">
+  <xacro:pr2_upper_arm_v0 side="r" reflect="-1" parent="base_link">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+  </xacro:pr2_upper_arm_v0>
+
+    <xacro:pr2_forearm_v0 side="r" reflect="-1" parent="r_forearm_roll_link">
     <origin xyz="0 0 0" rpy="0 0 0" />
   </xacro:pr2_forearm_v0>
-   
+  
   <include filename="$(find pr2_description)/urdf/base_link.xacro" />
 </robot>

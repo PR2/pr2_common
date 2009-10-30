@@ -17,7 +17,7 @@
   <property name="cal_r_elbow_flex_flag"     value="0.0" />
   <property name="cal_r_forearm_roll_flag"   value="0.0" />
   <property name="cal_r_wrist_flex_flag"     value="0.0" />
-  <property name="cal_r_wrist_roll_flag"     value="0.4" />
+  <property name="cal_r_wrist_roll_flag"     value="0.0" />
   
   <!-- ********** Head ********** -->
   <!-- Head Location: Add to the transform from torso to head_pan_link (Nominally 0) -->
@@ -37,7 +37,7 @@
   
   <!-- Casters -->
   <property name="cal_caster_fl" value="0.0" />
-  <property name="cal_caster_fr" value="0.025" />
+  <property name="cal_caster_fr" value="0.0" />
   <property name="cal_caster_bl" value="0.0" />
   <property name="cal_caster_br" value="0.0" />
 
