@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<robot name="test_gripper"
+       xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+       xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <include filename="$(find pr2_description)/urdf/common.xacro" />
+  <include filename="$(find pr2_description)/urdf/materials.urdf.xacro" />
+
+  <include filename="$(find pr2_description)/urdf/gripper_v0/gripper.urdf.xacro" />
+  
+  <xacro:pr2_gripper_v0 side="r" parent="base_link"
+                        screw_reduction="${4.0/1000.0}"
+                        gear_ratio="${(729.0/25.0)*(22.0/16.0)}"
+                        theta0="${3.6029*M_PI/180.0}"
+                        phi0="${29.7089*M_PI/180.0}"
+                        t0="${-0.1914/1000.0}"
+                        L0="${37.5528/1000.0}"
+                        h="${0.0/1000.0}"
+                        a="${68.3698/1000.0}"
+                        b="${43.3849/1000.0}"
+                        r="${91.5/1000.0}" >
+    <origin xyz="0 0 0" rpy="0 0 0" />
+  </xacro:pr2_gripper_v0>
+  
+  <!-- Solid Base for visualizer -->
+  <joint name="base_joint" type="fixed">
+    <parent link="world" />
+    <origin xyz="0 0 0" rpy="0 0 0" /> 
+    <child link="base_link" />
+  </joint>
+
+  <link name="base_link">
+    <inertial>
+      <mass value="1000" />
+      <origin xyz=" 0 0 0 " /> 
+      <inertia ixx="1000" ixy="0" ixz="0" iyy="1000" iyz="0" izz="1000" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0 " /> 
+      <geometry name="pr2_base_mesh_file">
+        <box size="1 1 1" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0.0 0.0 0.0 " />
+      <geometry name="base_collision_geom">
+        <box size="1 1 1" />
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="base_link" >
+    <material>Gazebo/White</material>
+  </gazebo>
+</robot>
