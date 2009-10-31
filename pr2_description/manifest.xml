@@ -10,6 +10,7 @@
   <url>http://ros.org/wiki/pr2_description</url>
   <depend package="convex_decomposition"/>
   <depend package="ivcon"/>
+  <depend package="urdf" /> <!-- Testing -->
 </package>
 
 
