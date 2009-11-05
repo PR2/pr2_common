@@ -25,11 +25,15 @@
     <color rgba="1.0 1.0 1.0 1.0"/>
   </material>
   
-  <material name="Caster_l">
+  <material name="Caster">
     <texture filename="package://pr2_ogre/Media/materials/textures/pr2_wheel_left.png" />
   </material>
   
-  <material name="Caster_r">
+  <material name="Wheel_l">
+    <texture filename="package://pr2_ogre/Media/materials/textures/pr2_wheel_left.png" />
+  </material>
+  
+  <material name="Wheel_r">
     <texture filename="package://pr2_ogre/Media/materials/textures/pr2_wheel_right.png" />
   </material>
 

@@ -69,7 +69,7 @@
           <mesh filename="package://pr2_description/meshes/base_v0/pr2_wheel.stl" />
         </geometry>
         
-        <material name="Caster_${suffix}" />
+        <material name="Wheel_${suffix}" />
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="${M_PI/2} 0 0" /> <!-- rotation because cyl. geom primitive has symmetry axis in +x direction -->
@@ -112,7 +112,7 @@
           <mesh filename="package://pr2_description/meshes/base_v0/caster.stl" />
         </geometry>
         
-        <material name="Green" />
+        <material name="Caster" />
       </visual>
 
       <collision>
