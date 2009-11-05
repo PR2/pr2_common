@@ -85,9 +85,9 @@
 
   </xacro:macro>
 
-  <xacro:macro name="pr2_caster_v0" params="suffix parent *origin ref_position">
-
-    <joint name="${suffix}_caster_rotation_joint" type="continuous">
+  <!-- Macro for PR2 Caster hub only -->
+  <xacro:macro name="pr2_caster_hub_v0" params="suffix parent *origin ref_position" >
+    <joint name="${suffix}_rotation_joint" type="continuous">
       <axis xyz="0 0 1" />
       <limit effort="100" velocity="100"/>
       <safety_controller  k_velocity="10" />
@@ -95,9 +95,9 @@
       <dynamics damping="0.0" friction="0.0" />
       <insert_block name="origin" />
       <parent link="${parent}"/>
-      <child link="${suffix}_caster_rotation_link" />
+      <child link="${suffix}_rotation_link" />
     </joint>
-    <link name="${suffix}_caster_rotation_link">
+    <link name="${suffix}_rotation_link">
 
       <inertial>
         <mass value="3.473082"/>
@@ -123,14 +123,23 @@
       </collision>
     </link>
 
+    <!-- extensions -->
+    <xacro:pr2_caster_transmission_v0 suffix="${suffix}" />
+  </xacro:macro>
+
+  <xacro:macro name="pr2_caster_v0" params="suffix parent *origin ref_position">
+
+    <xacro:pr2_caster_hub_v0 parent="${parent}" suffix="${suffix}_caster"
+                             ref_position="${ref_position}" >
+      <insert_block name="origin" />
+    </xacro:pr2_caster_hub_v0>
+
     <!-- wheel macros -->
     <xacro:pr2_wheel_v0 parent="${suffix}_caster" suffix="l" reflect="1" />
     <xacro:pr2_wheel_v0 parent="${suffix}_caster" suffix="r" reflect="-1" />
 
     <!-- extensions -->
     <xacro:pr2_caster_gazebo_v0 suffix="${suffix}" />
-    <xacro:pr2_caster_transmission_v0 suffix="${suffix}" />
-
   </xacro:macro>
 
 
