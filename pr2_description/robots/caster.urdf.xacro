@@ -11,7 +11,7 @@
   <include filename="$(find pr2_description)/urdf/base_v0/base.urdf.xacro" />
   
   <xacro:pr2_caster_v0 suffix="fl" parent="base_link" ref_position="0.0" >
-    <origin xyz="0 0 0" rpy="0 0 0" />
+    <origin xyz="0 0 0" rpy="0 3.14 0" />
   </xacro:pr2_caster_v0>
   
   <include filename="$(find pr2_description)/urdf/base_link.xacro" />

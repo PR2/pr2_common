@@ -112,7 +112,7 @@
           <mesh filename="package://pr2_description/meshes/base_v0/caster.stl" />
         </geometry>
         
-        <material name="Caster" />
+        <material name="Green" />
       </visual>
 
       <collision>

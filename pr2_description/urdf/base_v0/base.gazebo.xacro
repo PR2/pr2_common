@@ -5,9 +5,6 @@
        xmlns:xacro="http://ros.org/wiki/xacro">
 
 
-  <!--                                                      -->
-  <!-- Alpha 2.0 hardware                                   -->
-  <!--                                                      -->
   <xacro:macro name="pr2_wheel_gazebo_v0" params="suffix parent">
     <gazebo reference="${parent}_${suffix}_wheel_link">
       <mu1 value="100.0" />
