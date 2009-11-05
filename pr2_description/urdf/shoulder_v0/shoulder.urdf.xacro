@@ -134,7 +134,7 @@
         <!-- TODO: This component doesn't actually have a mesh -->
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry name="${side}_upper_arm_roll_visual_geom">
-          <mesh filename="package://pr2_description/shoulder_v0/meshes/upper_arm_roll.stl" />
+          <mesh filename="package://pr2_description/meshes/shoulder_v0/upper_arm_roll.stl" />
         </geometry>
 
         <material name="RollLinks" />
