@@ -26,7 +26,7 @@
   </material>
   
   <material name="Caster">
-    <texture filename="package://pr2_ogre/Media/materials/textures/pr2_wheel_left.png" />
+    <texture filename="package://pr2_ogre/Media/materials/textures/pr2_caster_texture.png" />
   </material>
   
   <material name="Wheel_l">
