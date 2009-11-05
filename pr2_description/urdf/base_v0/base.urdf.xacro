@@ -128,6 +128,7 @@
     <xacro:pr2_wheel_v0 parent="${suffix}_caster" suffix="r" reflect="-1" />
 
     <!-- extensions -->
+    <xacro:pr2_caster_gazebo_v0 suffix="${suffix}" />
     <xacro:pr2_caster_transmission_v0 suffix="${suffix}" />
 
   </xacro:macro>
