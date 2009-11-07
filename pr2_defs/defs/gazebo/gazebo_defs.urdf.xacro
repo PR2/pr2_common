@@ -4,22 +4,15 @@
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
 
   <gazebo>
-    <!-- distribute state for sensors -->
-    <controller:ros_pub_world_state name="ros_pub_world_state_controller" plugin="libros_pub_world_state.so">
-      <alwaysOn>true</alwaysOn>
-      <updateRate>1000.0</updateRate>
-      <interface:audio name="gazebo_pub_world_state_control_dummy_iface" />
-    </controller:ros_pub_world_state>
-
     <!-- PR2_ACTARRAY -->
-    <controller:gazebo_controller_manager name="gazebo_controller_manager" plugin="libgazebo_controller_manager.so">
+    <controller:ros_controller_manager name="ros_controller_manager" plugin="libros_controller_manager.so">
       <alwaysOn>true</alwaysOn>
       <updateRate>1000.0</updateRate>
-      <interface:audio name="gazebo_controller_manager_dummy_iface" />
-    </controller:gazebo_controller_manager>
+      <interface:audio name="ros_controller_manager_dummy_iface" />
+    </controller:ros_controller_manager>
 
     <!-- battery controls -->
-    <controller:gazebo_battery name="gazebo_battery_controller" plugin="libgazebo_battery.so">
+    <controller:ros_battery name="ros_battery_controller" plugin="libros_battery.so">
       <alwaysOn>true</alwaysOn>
       <updateRate>1.0</updateRate>
       <timeout>5</timeout>
@@ -31,7 +24,7 @@
       <stateTopicName>battery_state</stateTopicName>
       <selfTestServiceName>self_test</selfTestServiceName>
       <interface:audio name="battery_dummy_interface" />
-    </controller:gazebo_battery>
+    </controller:ros_battery>
 
     <controller:ros_time name="ros_time" plugin="libros_time.so">
       <alwaysOn>true</alwaysOn>

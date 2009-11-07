@@ -36,7 +36,7 @@
   </pr2_head_sensor_package>
 
   <pr2_tilting_laser name="laser_tilt" parent="torso_lift_link" laser_calib_ref="-0.35">
-    <origin xyz="0.1 0 0.235" rpy="0 0 0" />
+    <origin xyz="0.1 0 0.2275" rpy="0 0 0" /> <!-- from hand measurement by JH on PRE (was originally .235 from CAD: -->
   </pr2_tilting_laser>
   
 </robot>
