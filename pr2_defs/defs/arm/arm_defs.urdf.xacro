@@ -377,14 +377,13 @@
         </geometry>
       </collision>
     </link>
-
     <!-- Wrist roll -->
     <joint name="${side}_wrist_roll_joint" type="continuous">
       <axis xyz="1 0 0" />
       <limit effort="10" velocity="${VELOCITY_LIMIT_SCALE*6}" />
       <safety_controller k_velocity="2" />
       <dynamics damping="0.1" />
-      <calibration reference_position="${1.27+cal_r_wrist_roll_flag}" values="1.5 -1" />
+      <calibration reference_position="${1.27 - .5*(reflect-1)*cal_r_wrist_roll_flag + .5*(reflect+1)*cal_l_wrist_roll_flag }" values="1.5 -1" />
       <origin xyz="0 0 0" rpy="0 0 0" />
       <parent link="${side}_wrist_flex_link"/>
       <child link="${side}_wrist_roll_link"/>
