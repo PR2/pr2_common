@@ -3,18 +3,18 @@
        xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
        xmlns:xacro="http://ros.org/wiki/xacro">
-  <xacro:macro name="wge100_camera_gazebo_v0" params="name image_topic_name camera_info_topic_name hfov focal_length image_width image_height">
+  <xacro:macro name="wge100_camera_gazebo_v0" params="name image_format image_topic_name camera_info_topic_name hfov focal_length image_width image_height">
     <gazebo reference="${name}_frame">
       <sensor:camera name="${name}_sensor">
         <imageSize>${image_width} ${image_height}</imageSize>
-        <imageFormat>L8</imageFormat>
+        <imageFormat>${image_format}</imageFormat>
         <hfov>${hfov}</hfov>
         <nearClip>0.1</nearClip>
         <farClip>100</farClip>
         <updateRate>20.0</updateRate>
         <controller:ros_camera name="${name}_controller" plugin="libros_camera.so">
           <alwaysOn>true</alwaysOn>
-          <updateRate>20.0</updateRate>
+          <updateRate>25.0</updateRate>
           <imageTopicName>${image_topic_name}</imageTopicName>
           <cameraInfoTopicName>${camera_info_topic_name}</cameraInfoTopicName>
           <frameName>${name}_frame</frameName>

@@ -7,7 +7,7 @@
   
   <include filename="$(find pr2_description)/urdf/sensors/wge100_camera.gazebo.xacro" />
 
-  <xacro:macro name="wge100_camera_v0" params="name image_topic_name camera_info_topic_name parent hfov focal_length image_width image_height *origin">
+  <xacro:macro name="wge100_camera_v0" params="name image_format image_topic_name camera_info_topic_name parent hfov focal_length image_width image_height *origin">
 
     <joint name="${name}_frame_joint" type="fixed">
       <insert_block name="origin" />
@@ -71,7 +71,7 @@
     </link>
 
     <!-- extensions -->
-    <xacro:wge100_camera_gazebo_v0 name="${name}" image_topic_name="${image_topic_name}"
+    <xacro:wge100_camera_gazebo_v0 name="${name}" image_format="${image_format}" image_topic_name="${image_topic_name}"
                                    camera_info_topic_name="${camera_info_topic_name}"
                                    hfov="${hfov}" focal_length="${focal_length}"
                                    image_width="${image_width}" image_height="${image_height}"/>
