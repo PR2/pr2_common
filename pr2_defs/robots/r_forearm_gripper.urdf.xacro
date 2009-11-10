@@ -64,15 +64,15 @@
     <material>PR2/White</material>
   </gazebo>
   <gazebo>
-    <!-- ros_p3d for position groundtruth -->
-    <controller:ros_p3d name="p3d_r_gripper_palm_controller" plugin="libros_p3d.so">
+    <!-- gazebo_ros_p3d for position groundtruth -->
+    <controller:gazebo_ros_p3d name="p3d_r_gripper_palm_controller" plugin="libgazebo_ros_p3d.so">
       <alwaysOn>true</alwaysOn>
       <updateRate>1000.0</updateRate>
       <bodyName>r_gripper_palm_link</bodyName>
       <topicName>r_gripper_palm_pose_ground_truth</topicName>
       <frameName>map</frameName>
       <interface:position name="p3d_r_gripper_palm_position"/>
-    </controller:ros_p3d>
+    </controller:gazebo_ros_p3d>
   </gazebo>
 
 

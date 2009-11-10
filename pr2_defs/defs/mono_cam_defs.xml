@@ -83,7 +83,7 @@
           <nearClip>0.1</nearClip>
           <farClip>100</farClip>
           <updateRate>20.0</updateRate>
-          <controller:ros_camera name="${name}_controller" plugin="libros_camera.so">
+          <controller:gazebo_ros_camera name="${name}_controller" plugin="libgazebo_ros_camera.so">
             <alwaysOn>true</alwaysOn>
             <updateRate>20.0</updateRate>
             <imageTopicName>${name}/image_raw</imageTopicName>
@@ -99,7 +99,7 @@
             <distortion_t1>0</distortion_t1>
             <distortion_t2>0</distortion_t2>
             <interface:camera name="${name}_iface" />
-          </controller:ros_camera>
+          </controller:gazebo_ros_camera>
         </sensor:camera>
       </verbatim>
     </map>

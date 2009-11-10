@@ -56,15 +56,15 @@
 
   <map name="gazebo_material" flag="gazebo">
   <verbatim>
-    <!-- ros_p3d for position groundtruth -->
-    <controller:ros_p3d name="p3d_l_gripper_palm_controller" plugin="libros_p3d.so">
+    <!-- gazebo_ros_p3d for position groundtruth -->
+    <controller:gazebo_ros_p3d name="p3d_l_gripper_palm_controller" plugin="libgazebo_ros_p3d.so">
       <alwaysOn>true</alwaysOn>
       <updateRate>1000.0</updateRate>
       <bodyName>l_gripper_palm_link</bodyName>
       <topicName>l_gripper_palm_pose_ground_truth</topicName>
       <frameName>map</frameName>
       <interface:position name="p3d_l_gripper_palm_position"/>
-    </controller:ros_p3d>
+    </controller:gazebo_ros_p3d>
   </verbatim>
   </map>
 

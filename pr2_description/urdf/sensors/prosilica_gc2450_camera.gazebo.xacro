@@ -13,7 +13,7 @@
       <nearClip>0.1</nearClip>
       <farClip>100</farClip>
       <updateRate>20.0</updateRate>
-      <controller:ros_prosilica name="${name}_controller" plugin="libros_prosilica.so">
+      <controller:gazebo_ros_prosilica name="${name}_controller" plugin="libgazebo_ros_prosilica.so">
         <alwaysOn>true</alwaysOn>
         <updateRate>20.0</updateRate>
         <camInfoTopicName>/prosilica/cam_info</camInfoTopicName>
@@ -32,7 +32,7 @@
         <distortion_t1>0</distortion_t1>
         <distortion_t2>0</distortion_t2>
         <interface:camera name="${name}_iface" />
-      </controller:ros_prosilica>
+      </controller:gazebo_ros_prosilica>
     </sensor:camera>
     <material value="PR2/Blue" />
   </gazebo>

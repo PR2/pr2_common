@@ -103,14 +103,14 @@
             <maxRange>10.0</maxRange>
             <resRange>0.01</resRange>
             <updateRate>20.0</updateRate>
-            <controller:ros_laser name="ros_${name}_controller" plugin="libros_laser.so">
+            <controller:gazebo_ros_laser name="gazebo_ros_${name}_controller" plugin="libgazebo_ros_laser.so">
               <gaussianNoise>0.005</gaussianNoise>
               <alwaysOn>true</alwaysOn>
               <updateRate>20.0</updateRate>
               <topicName>tilt_scan</topicName>
               <frameName>${name}_link</frameName>
-              <interface:laser name="ros_${name}_iface" />
-            </controller:ros_laser>
+              <interface:laser name="gazebo_ros_${name}_iface" />
+            </controller:gazebo_ros_laser>
           </sensor:ray>
         </verbatim>
       </map>
@@ -338,7 +338,7 @@
             <nearClip>0.1</nearClip>
             <farClip>100</farClip>
             <updateRate>20.0</updateRate>
-            <controller:ros_camera name="${name}_l_controller" plugin="libros_camera.so">
+            <controller:gazebo_ros_camera name="${name}_l_controller" plugin="libgazebo_ros_camera.so">
               <alwaysOn>true</alwaysOn>
               <updateRate>20.0</updateRate>
               <imageTopicName>${name}/left/image_raw</imageTopicName>
@@ -354,7 +354,7 @@
               <distortion_t1>0</distortion_t1>
               <distortion_t2>0</distortion_t2>
               <interface:camera name="${name}_l_iface" />
-            </controller:ros_camera>
+            </controller:gazebo_ros_camera>
           </sensor:camera>
        	</verbatim>
       </map>
@@ -401,7 +401,7 @@
             <nearClip>0.1</nearClip>
             <farClip>100</farClip>
             <updateRate>20.0</updateRate>
-            <controller:ros_camera name="${name}_r_controller" plugin="libros_camera.so">
+            <controller:gazebo_ros_camera name="${name}_r_controller" plugin="libgazebo_ros_camera.so">
               <alwaysOn>true</alwaysOn>
               <updateRate>20.0</updateRate>
               <imageTopicName>${name}/right/image_raw</imageTopicName>
@@ -417,7 +417,7 @@
               <distortion_t1>0</distortion_t1>
               <distortion_t2>0</distortion_t2>
               <interface:camera name="${name}_r_iface" />
-            </controller:ros_camera>
+            </controller:gazebo_ros_camera>
           </sensor:camera>
        	</verbatim>
       </map>
@@ -428,7 +428,7 @@
     -->
     <map name="sensor" flag="gazebo">
       <verbatim key="controller_${name}_camera">
-        <controller:ros_stereo_camera name="${name}_controller" plugin="libros_stereo_camera.so">
+        <controller:gazebo_ros_stereo_camera name="${name}_controller" plugin="libgazebo_ros_stereo_camera.so">
           <alwaysOn>true</alwaysOn>
           <updateRate>20.0</updateRate>
           <leftCamera>${name}_l_sensor</leftCamera>
@@ -446,7 +446,7 @@
           <distortion_t2>0</distortion_t2>
           <baseline>${stereo_dy}</baseline> <!-- home pos. of robot has +x forward, +y left -->
           <interface:stereocamera name="${name}_iface" />
-        </controller:ros_stereo_camera>
+        </controller:gazebo_ros_stereo_camera>
       </verbatim>
     </map>
 
@@ -704,14 +704,14 @@
             <maxRange>10.0</maxRange>
             <resRange>0.01</resRange>
             <updateRate>20.0</updateRate>
-            <controller:ros_laser name="ros_${name}_controller" plugin="libros_laser.so">
+            <controller:gazebo_ros_laser name="gazebo_ros_${name}_controller" plugin="libgazebo_ros_laser.so">
               <gaussianNoise>0.005</gaussianNoise>
               <alwaysOn>true</alwaysOn>
               <updateRate>20.0</updateRate>
               <topicName>tilt_scan</topicName>
               <frameName>${name}_link</frameName>
-              <interface:laser name="ros_${name}_iface" />
-            </controller:ros_laser>
+              <interface:laser name="gazebo_ros_${name}_iface" />
+            </controller:gazebo_ros_laser>
           </sensor:ray>
         </verbatim>
       </map>

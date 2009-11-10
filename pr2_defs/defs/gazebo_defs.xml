@@ -5,14 +5,14 @@
 <map name="sensor" flag="gazebo">
   <verbatim key="controller_manager_simulation">
     <!-- PR2_ACTARRAY -->
-    <controller:ros_controller_manager name="ros_controller_manager" plugin="libros_controller_manager.so">
+    <controller:gazebo_ros_controller_manager name="gazebo_ros_controller_manager" plugin="libgazebo_ros_controller_manager.so">
       <alwaysOn>true</alwaysOn>
       <updateRate>1000.0</updateRate>
-      <interface:audio name="ros_controller_manager_dummy_iface" />
-    </controller:ros_controller_manager>
+      <interface:audio name="gazebo_ros_controller_manager_dummy_iface" />
+    </controller:gazebo_ros_controller_manager>
 
     <!-- battery controls -->
-    <controller:ros_battery name="ros_battery_controller" plugin="libros_battery.so">
+    <controller:gazebo_ros_battery name="gazebo_ros_battery_controller" plugin="libgazebo_ros_battery.so">
       <alwaysOn>true</alwaysOn>
       <updateRate>1.0</updateRate>
       <timeout>5</timeout>
@@ -24,13 +24,13 @@
       <stateTopicName>battery_state</stateTopicName>
       <selfTestServiceName>self_test</selfTestServiceName>
       <interface:audio name="battery_dummy_interface" />
-    </controller:ros_battery>
+    </controller:gazebo_ros_battery>
 
-    <controller:ros_time name="ros_time" plugin="libros_time.so">
+    <controller:gazebo_ros_time name="gazebo_ros_time" plugin="libgazebo_ros_time.so">
       <alwaysOn>true</alwaysOn>
       <updateRate>1000.0</updateRate>
-      <interface:audio name="dummy_ros_time_iface_should_not_be_here"/>
-    </controller:ros_time>
+      <interface:audio name="dummy_gazebo_ros_time_iface_should_not_be_here"/>
+    </controller:gazebo_ros_time>
 
   </verbatim>
 </map>

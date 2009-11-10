@@ -10,17 +10,17 @@
       <sensor:contact name="${name}_contact_sensor">
         <geom>${name}_link_geom</geom>
         <updateRate>100.0</updateRate>
-        <controller:ros_bumper name="${name}_ros_bumper_controller" plugin="libros_bumper.so">
+        <controller:gazebo_ros_bumper name="${name}_gazebo_ros_bumper_controller" plugin="libgazebo_ros_bumper.so">
           <alwaysOn>true</alwaysOn>
           <updateRate>100.0</updateRate>
           <bumperTopicName>${name}_bumper</bumperTopicName>
-          <interface:bumper name="${name}_ros_bumper_iface" />
-        </controller:ros_bumper>
+          <interface:bumper name="${name}_gazebo_ros_bumper_iface" />
+        </controller:gazebo_ros_bumper>
       </sensor:contact>
       <material value="PR2/Grey2" />
     </gazebo>
     <gazebo>
-      <controller:ros_imu name="imu_base_controller" plugin="libros_imu.so">
+      <controller:gazebo_ros_imu name="imu_base_controller" plugin="libgazebo_ros_imu.so">
         <alwaysOn>true</alwaysOn>
         <updateRate>100.0</updateRate>
         <bodyName>${name}_link</bodyName>
@@ -30,7 +30,7 @@
         <xyzOffsets>0 0 0</xyzOffsets> 
         <rpyOffsets>0 0 0</rpyOffsets>
         <interface:position name="imu_base_position"/>
-      </controller:ros_imu>
+      </controller:gazebo_ros_imu>
     </gazebo>
 
   </macro>

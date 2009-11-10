@@ -81,12 +81,12 @@
           <sensor:contact name="${parent}_${suffix}_wheel_contact_sensor">
             <geom>${parent}_${suffix}_wheel_collision</geom>
             <updateRate>100.0</updateRate>
-            <controller:ros_bumper name="${parent}_${suffix}_wheel_ros_bumper_controller" plugin="libros_bumper.so">
+            <controller:gazebo_ros_bumper name="${parent}_${suffix}_wheel_gazebo_ros_bumper_controller" plugin="libgazebo_ros_bumper.so">
               <alwaysOn>true</alwaysOn>
               <updateRate>100.0</updateRate>
               <bumperTopicName>${parent}_${suffix}_wheel_bumper</bumperTopicName>
-              <interface:bumper name="${parent}_${suffix}_wheel_ros_bumper_iface" />
-            </controller:ros_bumper>
+              <interface:bumper name="${parent}_${suffix}_wheel_gazebo_ros_bumper_iface" />
+            </controller:gazebo_ros_bumper>
           </sensor:contact>
         </verbatim>
       </map>
@@ -202,12 +202,12 @@
           <sensor:contact name="${name}_contact_sensor">
             <geom>${name}_collision</geom>
             <updateRate>100.0</updateRate>
-            <controller:ros_bumper name="${name}_ros_bumper_controller" plugin="libros_bumper.so">
+            <controller:gazebo_ros_bumper name="${name}_gazebo_ros_bumper_controller" plugin="libgazebo_ros_bumper.so">
               <alwaysOn>true</alwaysOn>
               <updateRate>100.0</updateRate>
               <bumperTopicName>${name}_bumper</bumperTopicName>
               <interface:bumper name="${name}_bumper_iface" />
-            </controller:ros_bumper>
+            </controller:gazebo_ros_bumper>
           </sensor:contact>
         </verbatim>
       </map>
@@ -262,14 +262,14 @@
             <maxRange>10.0</maxRange>
             <resRange>0.01</resRange>
             <updateRate>20.0</updateRate>
-            <controller:ros_laser name="ros_base_laser_controller" plugin="libros_laser.so">
+            <controller:gazebo_ros_laser name="gazebo_ros_base_laser_controller" plugin="libgazebo_ros_laser.so">
               <gaussianNoise>0.005</gaussianNoise>
               <alwaysOn>true</alwaysOn>
 	      <updateRate>20.0</updateRate>
 	      <topicName>base_scan</topicName>
 	      <frameName>base_laser</frameName>
-	      <interface:laser name="ros_base_laser_iface" />
-            </controller:ros_laser>
+	      <interface:laser name="gazebo_ros_base_laser_iface" />
+            </controller:gazebo_ros_laser>
           </sensor:ray>
         </verbatim>
       </map>
@@ -310,7 +310,7 @@
     </link>
     <map name="sensor" flag="gazebo">
       <verbatim key="sensor_plug_magnet_p3d">
-        <controller:ros_p3d name="p3d_plug_magnet_controller" plugin="libros_p3d.so">
+        <controller:gazebo_ros_p3d name="p3d_plug_magnet_controller" plugin="libgazebo_ros_p3d.so">
           <alwaysOn>true</alwaysOn>
           <updateRate>100.0</updateRate>
           <bodyName>plug_magnet</bodyName>
@@ -320,7 +320,7 @@
           <xyzOffsets>0 0 0</xyzOffsets> <!-- initialize odometry for fake localization-->
           <rpyOffsets>0 0 0</rpyOffsets>
           <interface:position name="p3d_plug_magnet_position"/>
-        </controller:ros_p3d>
+        </controller:gazebo_ros_p3d>
       </verbatim>
     </map>
 
@@ -340,7 +340,7 @@
 
     <map name="sensor" flag="gazebo">
       <verbatim key="sensor_base_laser_ray">
-        <controller:ros_p3d name="p3d_base_controller" plugin="libros_p3d.so">
+        <controller:gazebo_ros_p3d name="p3d_base_controller" plugin="libgazebo_ros_p3d.so">
           <alwaysOn>true</alwaysOn>
           <updateRate>100.0</updateRate>
           <bodyName>base_link</bodyName>
@@ -350,7 +350,7 @@
           <xyzOffsets>25.7 25.7 0</xyzOffsets> <!-- initialize odometry for fake localization-->
           <rpyOffsets>0 0 0</rpyOffsets>
           <interface:position name="p3d_base_position"/>
-        </controller:ros_p3d>
+        </controller:gazebo_ros_p3d>
       </verbatim>
     </map>
 

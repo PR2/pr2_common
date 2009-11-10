@@ -10,12 +10,12 @@
       <sensor:contact name="${side}_shoulder_pan_contact_sensor">
         <geom>${side}_shoulder_pan_link_geom</geom>
         <updateRate>100.0</updateRate>
-        <controller:ros_bumper name="${side}_shoulder_pan_ros_bumper_controller" plugin="libros_bumper.so">
+        <controller:gazebo_ros_bumper name="${side}_shoulder_pan_gazebo_ros_bumper_controller" plugin="libgazebo_ros_bumper.so">
           <alwaysOn>true</alwaysOn>
           <updateRate>100.0</updateRate>
           <bumperTopicName>${side}_shoulder_pan_bumper</bumperTopicName>
-          <interface:bumper name="${side}_shoulder_pan_ros_bumper_iface" />
-        </controller:ros_bumper>
+          <interface:bumper name="${side}_shoulder_pan_gazebo_ros_bumper_iface" />
+        </controller:gazebo_ros_bumper>
       </sensor:contact>
       <material value="PR2/Blue" />
       <turnGravityOff>true</turnGravityOff>
@@ -30,12 +30,12 @@
       <sensor:contact name="${side}_shoulder_lift_contact_sensor">
         <geom>${side}_shoulder_lift_link_geom</geom>
         <updateRate>100.0</updateRate>
-        <controller:ros_bumper name="${side}_shoulder_lift_ros_bumper_controller" plugin="libros_bumper.so">
+        <controller:gazebo_ros_bumper name="${side}_shoulder_lift_gazebo_ros_bumper_controller" plugin="libgazebo_ros_bumper.so">
           <alwaysOn>true</alwaysOn>
           <updateRate>100.0</updateRate>
           <bumperTopicName>${side}_r_shoulder_lift_bumper</bumperTopicName>
-          <interface:bumper name="${side}_shoulder_lift_ros_bumper_iface" />
-        </controller:ros_bumper>
+          <interface:bumper name="${side}_shoulder_lift_gazebo_ros_bumper_iface" />
+        </controller:gazebo_ros_bumper>
       </sensor:contact>
       <turnGravityOff>true</turnGravityOff>
     </gazebo>
@@ -68,12 +68,12 @@
       <sensor:contact name="${side}_upper_arm_contact_sensor">
         <geom>${side}_upper_arm_link_geom</geom><!-- TODO -->
         <updateRate>100.0</updateRate>
-        <controller:ros_bumper name="${side}_upper_arm_ros_bumper_controller" plugin="libros_bumper.so">
+        <controller:gazebo_ros_bumper name="${side}_upper_arm_gazebo_ros_bumper_controller" plugin="libgazebo_ros_bumper.so">
           <alwaysOn>true</alwaysOn>
           <updateRate>100.0</updateRate>
           <bumperTopicName>${side}_upper_arm_bumper</bumperTopicName>
-          <interface:bumper name="${side}_upper_arm_ros_bumper_iface" />
-        </controller:ros_bumper>
+          <interface:bumper name="${side}_upper_arm_gazebo_ros_bumper_iface" />
+        </controller:gazebo_ros_bumper>
       </sensor:contact>
       <turnGravityOff>true</turnGravityOff>
       <material value="PR2/Green" />
@@ -86,12 +86,12 @@
       <sensor:contact name="${side}_elbow_flex_contact_sensor">
         <geom>${side}_elbow_flex_link_geom</geom>
         <updateRate>100.0</updateRate>
-        <controller:ros_bumper name="${side}_elbow_flex_ros_bumper_controller" plugin="libros_bumper.so">
+        <controller:gazebo_ros_bumper name="${side}_elbow_flex_gazebo_ros_bumper_controller" plugin="libgazebo_ros_bumper.so">
           <alwaysOn>true</alwaysOn>
           <updateRate>100.0</updateRate>
           <bumperTopicName>${side}_elbow_flex_bumper</bumperTopicName>
-          <interface:bumper name="${side}_elbow_flex_ros_bumper_iface" />
-        </controller:ros_bumper>
+          <interface:bumper name="${side}_elbow_flex_gazebo_ros_bumper_iface" />
+        </controller:gazebo_ros_bumper>
       </sensor:contact>
       <material value="PR2/Grey" />
       <turnGravityOff>true</turnGravityOff>
@@ -123,12 +123,12 @@
       <sensor:contact name="${side}_forearm_contact_sensor">
         <geom>${side}_forearm_link_geom</geom>
         <updateRate>100.0</updateRate>
-        <controller:ros_bumper name="${side}_forearm_ros_bumper_controller" plugin="libros_bumper.so">
+        <controller:gazebo_ros_bumper name="${side}_forearm_gazebo_ros_bumper_controller" plugin="libgazebo_ros_bumper.so">
           <alwaysOn>true</alwaysOn>
           <updateRate>100.0</updateRate>
           <bumperTopicName>${side}_forearm_bumper</bumperTopicName>
-          <interface:bumper name="${side}_forearm_ros_bumper_iface" />
-        </controller:ros_bumper>
+          <interface:bumper name="${side}_forearm_gazebo_ros_bumper_iface" />
+        </controller:gazebo_ros_bumper>
       </sensor:contact>
       <material value="PR2/Blue" />
     </gazebo>
@@ -140,12 +140,12 @@
       <sensor:contact name="${side}_wrist_flex_contact_sensor">
         <geom>${side}_wrist_flex_link_geom</geom>
         <updateRate>100.0</updateRate>
-        <controller:ros_bumper name="${side}_wrist_flex_ros_bumper_controller" plugin="libros_bumper.so">
+        <controller:gazebo_ros_bumper name="${side}_wrist_flex_gazebo_ros_bumper_controller" plugin="libgazebo_ros_bumper.so">
           <alwaysOn>true</alwaysOn>
           <updateRate>100.0</updateRate>
           <bumperTopicName>${side}_wrist_flex_bumper</bumperTopicName>
-          <interface:bumper name="${side}_wrist_flex_ros_bumper_iface" />
-        </controller:ros_bumper>
+          <interface:bumper name="${side}_wrist_flex_gazebo_ros_bumper_iface" />
+        </controller:gazebo_ros_bumper>
       </sensor:contact>
       <material value="PR2/Grey" />
     </gazebo>
@@ -161,12 +161,12 @@
       <sensor:contact name="${side}_wrist_roll_contact_sensor">
         <geom>${side}_wrist_roll_link_geom</geom>
         <updateRate>100.0</updateRate>
-        <controller:ros_bumper name="${side}_wrist_roll_ros_bumper_controller" plugin="libros_bumper.so">
+        <controller:gazebo_ros_bumper name="${side}_wrist_roll_gazebo_ros_bumper_controller" plugin="libgazebo_ros_bumper.so">
           <alwaysOn>true</alwaysOn>
           <updateRate>100.0</updateRate>
           <bumperTopicName>${side}_wrist_roll_bumper</bumperTopicName>
-          <interface:bumper name="${side}_wrist_roll_ros_bumper_iface" />
-        </controller:ros_bumper>
+          <interface:bumper name="${side}_wrist_roll_gazebo_ros_bumper_iface" />
+        </controller:gazebo_ros_bumper>
       </sensor:contact>
       <material value="PR2/RollLinks" />
     </gazebo>
