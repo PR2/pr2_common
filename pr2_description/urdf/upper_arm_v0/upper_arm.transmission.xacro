@@ -8,9 +8,7 @@
 
 
   <xacro:macro name="pr2_upper_arm_transmission_v0" params="side">
-
     <!-- Elbow flex -->
-
     <transmission type="SimpleTransmission" name="${side}_elbow_flex_trans">
       <actuator name="${side}_elbow_flex_motor" />
       <joint name="${side}_elbow_flex_joint" />
@@ -18,13 +16,10 @@
     </transmission>
 
     <!-- Forearm roll -->
-
     <transmission type="SimpleTransmission" name="${side}_forearm_roll_trans">
       <actuator name="${side}_forearm_roll_motor" />
       <joint name="${side}_forearm_roll_joint" />
       <mechanicalReduction>${576/25*55/14}</mechanicalReduction>
     </transmission>
-
   </xacro:macro>
-
 </robot>

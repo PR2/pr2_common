@@ -37,7 +37,6 @@
   <!-- ============================   Upper Arm   ============================ -->
 
   <xacro:macro name="pr2_upper_arm_v0" params="side parent reflect">
-
     <joint name="${side}_upper_arm_joint" type="fixed">
       <origin xyz="0 0 0" rpy="0 0 0" />
       <parent link="${parent}"/>
