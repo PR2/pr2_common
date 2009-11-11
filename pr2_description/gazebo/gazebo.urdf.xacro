@@ -23,12 +23,6 @@
       <dischargeVoltage>15.52</dischargeVoltage>
       <chargeVoltage>16.41</chargeVoltage>
     </controller:gazebo_ros_battery>
-
-    <controller:gazebo_ros_time name="gazebo_ros_time" plugin="libgazebo_ros_time.so">
-      <alwaysOn>true</alwaysOn>
-      <updateRate>1000.0</updateRate>
-      <interface:audio name="dummy_gazebo_ros_time_iface_should_not_be_here"/>
-    </controller:gazebo_ros_time>
   </gazebo>
 
 </robot>
