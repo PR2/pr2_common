@@ -1,3 +1,10 @@
+# Battery Controller Flags, one per battery
+bool present       # is this pack present
+bool charging      # is this pack charging
+bool discharging   # is this pack discharging
+bool power_present # is there an input voltage
+bool power_no_good # is there a fault (No Good)
+bool inhibited     # is this pack disabled for some reason
 # These registers are per battery
 time      last_battery_update     # last time any battery update occurred
 int16[48] battery_register        # value of this register in the battery
