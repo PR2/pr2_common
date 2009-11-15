@@ -14,8 +14,8 @@
 
     <joint name="${name}_joint" type="revolute">
       <axis xyz="0 0 1" />
-      <limit lower="-3.038729" upper="3.0368729" effort="2.645" velocity="6" />
-      <safety_controller k_velocity="1.5" soft_lower_limit="${-3.038729+0.20}" soft_upper_limit="${3.0368729-0.20}" k_position="100" />
+      <limit lower="-3.007" upper="3.007" effort="2.645" velocity="6" />
+      <safety_controller k_velocity="1.5" soft_lower_limit="${-3.007+0.10}" soft_upper_limit="${3.007-0.10}" k_position="100" />
       <calibration reference_position="${0.0+cal_head_pan_flag}" />
       <dynamics damping="1.0" />
       <insert_block name="origin" />
@@ -61,8 +61,8 @@
 
     <joint name="${name}_joint" type="revolute">
       <axis xyz="0 1 0" />
-      <limit lower="-0.471238" upper="1.39626" effort="12.21" velocity="100" />
-      <safety_controller k_velocity="1.5" soft_lower_limit="${-0.55+0.02}" soft_upper_limit="${1.047-0.002}" k_position="100" />
+      <limit lower="-0.471238" upper="1.39626" effort="15" velocity="100" />
+      <safety_controller k_velocity="1.5" soft_lower_limit="${-0.4712 + 0.05}" soft_upper_limit="${1.39626 - 0.05}" k_position="100" />
       <calibration reference_position="${0.0+cal_head_tilt_flag}" />
       <dynamics damping="20.0" />
       <insert_block name="origin" />
