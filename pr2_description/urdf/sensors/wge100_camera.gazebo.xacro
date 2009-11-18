@@ -11,7 +11,7 @@
         <hfov>${hfov}</hfov>
         <nearClip>0.1</nearClip>
         <farClip>100</farClip>
-        <updateRate>20.0</updateRate>
+        <updateRate>25.0</updateRate>
         <controller:gazebo_ros_camera name="${name}_controller" plugin="libgazebo_ros_camera.so">
           <alwaysOn>true</alwaysOn>
           <updateRate>25.0</updateRate>
