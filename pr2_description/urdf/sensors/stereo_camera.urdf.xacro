@@ -75,7 +75,7 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <box size="0.01 0.01 0.01" />
+          <box size="0.001 0.001 0.001" />
         </geometry>
         
         <material name="Blue" />
@@ -84,7 +84,7 @@
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <box size="0.01 0.01 0.01" />
+          <box size="0.0 0.0 0.0" />
         </geometry>
       </collision>
 
@@ -95,7 +95,7 @@
     <xacro:wge100_camera_v0 name="${name}_l_stereo_camera" image_format="${image_format}" image_topic_name="${name}/left/image_raw"
                             camera_info_topic_name="${name}/left/camera_info" parent="${name}_optical_frame"
                             hfov="${hfov}" focal_length="${focal_length}"
-                            frame_id="${name}_l_stereo_camera_frame" hack_baseline="0"
+                            frame_id="${name}_optical_frame" hack_baseline="0"
                             image_width="${image_width}" image_height="${image_height}">
       <origin xyz="0 0 0" rpy="0 ${-M_PI/2} ${M_PI/2}" />
     </xacro:wge100_camera_v0>
@@ -104,7 +104,7 @@
     <xacro:wge100_camera_v0 name="${name}_r_stereo_camera" image_format="${image_format}" image_topic_name="${name}/right/image_raw"
                             camera_info_topic_name="${name}/right/camera_info" parent="${name}_l_stereo_camera_frame"
                             hfov="${hfov}" focal_length="${focal_length}"
-                            frame_id="${name}_l_stereo_camera_frame" hack_baseline="${stereo_dy}"
+                            frame_id="${name}_optical_frame" hack_baseline="${stereo_dy}"
                             image_width="${image_width}" image_height="${image_height}">
       <origin xyz="${stereo_dx} ${stereo_dy} ${stereo_dz}" rpy="${stereo_rx} ${stereo_ry} ${stereo_rz}" />
     </xacro:wge100_camera_v0>
