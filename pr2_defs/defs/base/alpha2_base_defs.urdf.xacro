@@ -169,9 +169,9 @@
       <axis xyz="0 1 0" />
       <origin xyz="${base_laser_x} ${base_laser_y} ${base_height_offset+base_laser_z}" rpy="0 0 0" />
       <parent link="${name}_link"/>
-      <child link="base_laser" />
+      <child link="base_laser_link" />
     </joint>
-    <link name="base_laser" type="laser">
+    <link name="base_laser_link" type="laser">
 
 
       <inertial>

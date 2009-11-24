@@ -163,9 +163,9 @@
     <joint name="base_laser_joint" type="fixed">
       <origin xyz="${base_laser_x} ${base_laser_y} ${base_laser_z}" rpy="0 0 0" />
       <parent link="${name}_link"/>
-      <child link="base_laser"/>
+      <child link="base_laser_link"/>
     </joint>
-    <link name="base_laser" type="laser">
+    <link name="base_laser_link" type="laser">
 
       <inertial>
         <mass value="1.0" />
