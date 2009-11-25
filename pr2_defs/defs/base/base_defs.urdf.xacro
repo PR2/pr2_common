@@ -124,14 +124,7 @@
   <property name="caster_offset_y" value="0.2225" />
   <property name="caster_offset_z" value="0.0282" />
 
-  <macro name="pr2_base" params="name *origin">
-
-
-    <joint name="${name}_joint" type="planar">
-      <insert_block name="origin" />
-      <parent link="world"/>
-      <child link="${name}_link"/>
-    </joint>
+  <macro name="pr2_base" params="name">
     <link name="${name}_link">
 
       <inertial>

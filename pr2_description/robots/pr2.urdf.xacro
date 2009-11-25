@@ -40,9 +40,7 @@
        (e.g., base_link).  The included origin block is also an argument to the macro.  By convention, 
        the origin block defines where the component is w.r.t its parent (in this case the parent 
        is the world frame). For more, see http://www.ros.org/wiki/xacro -->
-  <xacro:pr2_base_v0 name="base" >
-    <origin xyz="0 0 0.051" rpy="0 0 0" /> <!-- 5.1cm is the height of the base when wheels contact ground -->
-  </xacro:pr2_base_v0>
+  <xacro:pr2_base_v0 name="base"/>
 
   <xacro:pr2_torso_v0 name="torso_lift" parent="base_link">
     <origin xyz="-0.05 0 0.739675" rpy="0 0 0" />

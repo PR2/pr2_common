@@ -14,9 +14,7 @@
   <include filename="$(find pr2_defs)/defs/gazebo/gazebo_defs.urdf.xacro" />
   <include filename="$(find pr2_defs)/defs/materials.urdf.xacro" />
 
-  <pr2_base name="base" >
-    <origin xyz="0 0 0.051" rpy="0 0 0" />
-  </pr2_base>
+  <pr2_base name="base"/>
 
   <pr2_torso name="torso_lift" parent="base_link">
     <origin xyz="-0.05 0 0.739675" rpy="0 0 0" />

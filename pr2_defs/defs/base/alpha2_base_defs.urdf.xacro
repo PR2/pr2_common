@@ -129,14 +129,7 @@
   </macro>
 
 
-  <macro name="pr2_base_alpha2" params="name *origin">
-
-
-    <joint name="${name}_joint" type="planar">
-      <insert_block name="origin" />
-      <parent link="world"/>
-      <child link="${name}_link" />
-    </joint>
+  <macro name="pr2_base_alpha2" params="name">
     <link name="${name}_link">
 
       <inertial>

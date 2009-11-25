@@ -32,12 +32,7 @@
     <origin xyz="0 0 0" rpy="0 0 0" />
   </pr2_gripper>
 
-  <!-- Solid Base -->
-  <joint name="base_joint" type="fixed">
-    <origin xyz="0 0 0" rpy="0 0 0" />
-    <parent link="world" />
-    <child link="torso_lift_link" />
-  </joint>
+  <!-- Base -->
   <link name="torso_lift_link">
     <inertial>
       <mass value="1000" />
@@ -63,6 +58,17 @@
     <mu2>10.0</mu2>
     <kp>10000000.0</kp>
     <kd>1.0</kd>
+  </gazebo>
+  <gazebo>
+    <!-- fixed joint to the world for simulation -->
+    <joint:hinge name="base_fixed_joint">
+      <body1>world</body1>
+      <body2>torso_lift_link</body2>
+      <anchor>torso_lift_link</anchor>
+      <lowStop>0</lowStop>
+      <highStop>0</highStop>
+      <axis>0 0 1</axis>
+    </joint:hinge>
   </gazebo>
 
 </robot>

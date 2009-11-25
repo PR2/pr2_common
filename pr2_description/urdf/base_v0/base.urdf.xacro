@@ -144,12 +144,7 @@
 
 
   <!-- The xacro macro xacro:pr2_base contains: base, casters and wheels -->
-  <xacro:macro name="pr2_base_v0" params="name *origin">
-    <joint name="${name}_joint" type="planar">
-      <insert_block name="origin" />
-      <parent link="world"/>
-      <child link="${name}_link" />
-    </joint>
+  <xacro:macro name="pr2_base_v0" params="name">
     <link name="${name}_link">
 
       <inertial>
