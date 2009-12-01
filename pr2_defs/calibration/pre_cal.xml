@@ -9,15 +9,21 @@
 
   <!-- ********** Right Arm ********** -->
   <!-- Flag offsets: Add to the optical flag locations (Nominally 0) -->
-  <property name="cal_r_shoulder_pan_flag" value="0.020000" />
-  <property name="cal_l_shoulder_pan_flag" value="0.000000" />
+  <property name="cal_r_shoulder_pan_flag" value="0.018508500000000001" />
+  <property name="cal_l_shoulder_pan_flag" value="0.020195774" />
 
-  <property name="cal_r_shoulder_lift_flag" value="-0.014003" />
-  <property name="cal_r_upper_arm_roll_flag" value="-0.008987" />
-  <property name="cal_r_elbow_flex_flag" value="-0.021100" />
-  <property name="cal_r_forearm_roll_flag" value="-0.032453" />
-  <property name="cal_r_wrist_flex_flag" value="0.034690" />
-  <property name="cal_r_wrist_roll_flag" value="0.4" /> <!-- Manually Set -->
+  <property name="cal_r_shoulder_lift_flag" value="-0.0086267699999999989" />
+  <property name="cal_r_upper_arm_roll_flag" value="0.00038642000000000017" />
+  <property name="cal_r_elbow_flex_flag" value="-0.01214078" />
+  <property name="cal_r_forearm_roll_flag" value="-0.0088257000000000023" />
+  <property name="cal_r_wrist_flex_flag" value="-0.021609799999999998" />
+  <property name="cal_r_wrist_roll_flag" value="0.35" /> <!-- Manually Set -->
+
+  <property name="cal_l_shoulder_lift_flag" value="-0.0071141399999999997" />
+  <property name="cal_l_upper_arm_roll_flag" value="0.013046" />
+  <property name="cal_l_elbow_flex_flag" value="-0.01884605" />
+  <property name="cal_l_forearm_roll_flag" value="-0.005078700000000002" />
+  <property name="cal_l_wrist_flex_flag" value="0.1" />
   <property name="cal_l_wrist_roll_flag" value="-1.7" /> <!-- Manually Set -->
   
   <!-- ********** Head ********** -->
