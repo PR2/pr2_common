@@ -26,7 +26,16 @@
   <include filename="$(find pr2_defs)/defs/materials.urdf.xacro" />
 
   <pr2_forearm side="r" reflect="1" parent="base_link"/>
-  <pr2_gripper screw_reduction="${2.0/1000.0}" gear_ratio="${29.16}" side="r" parent="r_wrist_roll_link" >
+  <pr2_gripper side="r" parent="r_wrist_roll_link"
+               screw_reduction="${2.0/1000.0}" gear_ratio="${29.16}"
+               theta0="${2.97571*M_PI/180.0}"
+               phi0="${29.98717*M_PI/180.0}"
+               t0="${-0.19543/1000.0}"
+               L0="${34.70821/1000.0}"
+               h="${5.200/1000.0}"
+               a="${67.56801/1000.0}"
+               b="${48.97193/1000.0}"
+               r="${91.50000/1000.0}" >
     <origin xyz="0 0 0" rpy="0 0 0" />
   </pr2_gripper>
 
