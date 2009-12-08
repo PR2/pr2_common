@@ -25,5 +25,6 @@
       <dischargeVoltage>15.52</dischargeVoltage>
       <chargeVoltage>16.41</chargeVoltage>
     </controller:gazebo_ros_ocean_battery>
+  </gazebo>
 
 </robot>
