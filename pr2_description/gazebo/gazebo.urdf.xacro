@@ -10,11 +10,11 @@
       <interface:audio name="gazebo_ros_controller_manager_dummy_iface" />
     </controller:gazebo_ros_controller_manager>
 
-    <controller:gazebo_ros_battery name="gazebo_ros_battery_controller" plugin="libgazebo_ros_battery.so">
+    <controller:gazebo_ros_ocean_battery name="gazebo_ros_ocean_battery_controller" plugin="libgazebo_ros_ocean_battery.so">
       <alwaysOn>true</alwaysOn>
       <updateRate>1.0</updateRate>
       <timeout>5</timeout>
-      <interface:audio name="battery_dummy_interface" />
+      <interface:audio name="ocean_battery_dummy_interface" />
       <powerStateTopic>power_state</powerStateTopic>
       <powerStateRate>10.0</powerStateRate>
       <fullChargeCapacity>87.78</fullChargeCapacity>     
@@ -22,7 +22,7 @@
       <chargeRate>525</chargeRate>
       <dischargeVoltage>15.52</dischargeVoltage>
       <chargeVoltage>16.41</chargeVoltage>
-    </controller:gazebo_ros_battery>
+    </controller:gazebo_ros_ocean_battery>
   </gazebo>
 
 </robot>
