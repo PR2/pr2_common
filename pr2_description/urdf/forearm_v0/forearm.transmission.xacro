@@ -9,10 +9,10 @@
     <!-- Wrist flex , Wrist roll -->
 
     <transmission type="WristTransmission" name="${side}_wrist_trans">
-      <rightActuator name="${side}_wrist_r_motor" />
-      <leftActuator name="${side}_wrist_l_motor" />
-      <flexJoint name="${side}_wrist_flex_joint" mechanicalReduction="${624/35*54/16}" />
-      <rollJoint name="${side}_wrist_roll_joint" mechanicalReduction="${624/35*54/16}"  />
+      <rightActuator name="${side}_wrist_r_motor" mechanicalReduction="${624/35*54/16}"/>
+      <leftActuator name="${side}_wrist_l_motor"  mechanicalReduction="${624/35*54/16}"/>
+      <flexJoint name="${side}_wrist_flex_joint"  mechanicalReduction="1.0" />
+      <rollJoint name="${side}_wrist_roll_joint"  mechanicalReduction="1.0" />
     </transmission>
 
   </xacro:macro>

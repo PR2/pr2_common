@@ -2,7 +2,7 @@
 <robot name="pr2">
   
   <!-- Include file with calibration parameters -->
-  <include filename="$(find pr2_defs)/calibration/prf_cal.xml" />
+  <include filename="$(find pr2_defs)/calibration/prf_cal_zeroed.xml" />
   
   <!-- declare the path where all models/textures/materials are stored -->
   <resource type="stl_meshes" location="$(find pr2_defs)/meshes"/>
