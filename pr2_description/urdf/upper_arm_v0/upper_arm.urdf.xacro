@@ -75,7 +75,6 @@
     </link>
 
     <!-- Elbow flex -->
-
     <joint name="${side}_elbow_flex_joint" type="revolute">
       <axis xyz="0 1 0" />
       <!-- Note: Overtravel limits are 140, -7 degrees instead of 133, 0 -->
