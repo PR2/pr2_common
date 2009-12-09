@@ -12,7 +12,7 @@
     <transmission type="SimpleTransmission" name="${side}_elbow_flex_trans">
       <actuator name="${side}_elbow_flex_motor" />
       <joint name="${side}_elbow_flex_joint" />
-      <mechanicalReduction>-13/3 * 127.532/15.28</mechanicalReduction>
+      <mechanicalReduction>${-13/3 * 127.532/15.28}</mechanicalReduction>
     </transmission>
 
     <!-- Forearm roll -->
