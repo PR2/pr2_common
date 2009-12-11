@@ -11,7 +11,6 @@
   <property name="M_PI" value="3.1415926535897931" />
 
   <xacro:macro name="pr2_head_pan_v0" params="name parent *origin">
-
     <joint name="${name}_joint" type="revolute">
       <axis xyz="0 0 1" />
       <limit lower="-3.007" upper="3.007" effort="2.645" velocity="6" />
@@ -23,8 +22,6 @@
       <child link="${name}_link"/>
     </joint>
     <link name="${name}_link">
-
-
       <inertial>
         <mass value="1.611118" />
         <origin xyz="-0.005717  0.010312 -0.029649" rpy="0 0 0" />
@@ -64,14 +61,12 @@
       <limit lower="-0.471238" upper="1.39626" effort="15" velocity="5" />
       <safety_controller k_velocity="1.5" soft_lower_limit="${-0.4712 + 0.1}" soft_upper_limit="${1.39626 - 0.1}" k_position="100" />
       <calibration reference_position="${0.0+cal_head_tilt_flag}" />
-      <dynamics damping="20.0" />
+      <dynamics damping="1.0" />
       <insert_block name="origin" />
       <parent link="${parent}"/>
       <child link="${name}_link"/>
     </joint>
     <link name="${name}_link">
-
-
       <inertial>
         <mass value="1.749727" />
         <origin xyz="0.041935 0.003569 0.028143" rpy="0 0 0" />
