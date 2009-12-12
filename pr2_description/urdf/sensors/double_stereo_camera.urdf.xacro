@@ -46,7 +46,7 @@
 
     <!-- Wide camera is on robot right (hca1), narrow on left (hca2)? -->
     <!-- 15mm offset from center needs check with CAD -->
-    <xacro:stereo_camera_v0 parent="${name}_link" name="wide_stereo" focal_length="320" hfov="90" image_format="B8G8R8" image_width="640" image_height="480" >
+    <xacro:stereo_camera_v0 parent="${name}_link" name="wide_stereo" focal_length="320" hfov="90" image_format="BAYER_BGGR8" image_width="640" image_height="480" >
       <origin xyz="0 -0.015 0" rpy="0 0 0" />
     </xacro:stereo_camera_v0>
     <xacro:stereo_camera_v0 parent="${name}_link" name="narrow_stereo" focal_length="772.55" hfov="45" image_format="L8" image_width="640" image_height="480" >
