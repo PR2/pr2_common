@@ -31,7 +31,8 @@
           <gaussianNoise>0.005</gaussianNoise>
           <alwaysOn>true</alwaysOn>
           <updateRate>40.0</updateRate>
-          <topicName>tilt_scan</topicName>
+          <topicName>tilt_laser/scan</topicName>
+          <deprecatedTopicName>tilt_scan</deprecatedTopicName>
           <frameName>${name}_link</frameName>
           <interface:laser name="gazebo_ros_${name}_iface" />
         </controller:gazebo_ros_laser>
@@ -81,16 +82,17 @@
           <updateRate>20.0</updateRate>
           <imageTopicName>${name}/left/image_raw</imageTopicName>
           <cameraInfoTopicName>${name}/left/camera_info</cameraInfoTopicName>
-          <frameName>${name}_l_stereo_camera_frame</frameName>
+          <frameName>${name}_optical_frame</frameName>
+          <hackBaseline>0</hackBaseline>
           <CxPrime>320.5</CxPrime>
           <Cx>320.5</Cx>
           <Cy>240.5</Cy>
           <focal_length>320</focal_length> <!-- image_width / (2*tan(hfov_radian /2)) -->
-          <distortion_k1>0</distortion_k1>
-          <distortion_k2>0</distortion_k2>
-          <distortion_k3>0</distortion_k3>
-          <distortion_t1>0</distortion_t1>
-          <distortion_t2>0</distortion_t2>
+          <distortion_k1>0.00000001</distortion_k1>
+          <distortion_k2>0.00000001</distortion_k2>
+          <distortion_k3>0.00000001</distortion_k3>
+          <distortion_t1>0.00000001</distortion_t1>
+          <distortion_t2>0.00000001</distortion_t2>
           <interface:camera name="${name}_l_iface" />
         </controller:gazebo_ros_camera>
       </sensor:camera>
@@ -110,44 +112,21 @@
           <updateRate>20.0</updateRate>
           <imageTopicName>${name}/right/image_raw</imageTopicName>
           <cameraInfoTopicName>${name}/right/camera_info</cameraInfoTopicName>
-          <frameName>${name}_r_stereo_camera_frame</frameName>
+          <frameName>${name}_optical_frame</frameName>
+          <hackBaseline>${-stereo_dy}</hackBaseline>
           <CxPrime>320.5</CxPrime>
           <Cx>320.5</Cx>
           <Cy>240.5</Cy>
           <focal_length>320</focal_length> <!-- image_width / (2*tan(hfov_radian /2)) -->
-          <distortion_k1>0</distortion_k1>
-          <distortion_k2>0</distortion_k2>
-          <distortion_k3>0</distortion_k3>
-          <distortion_t1>0</distortion_t1>
-          <distortion_t2>0</distortion_t2>
+          <distortion_k1>0.00000001</distortion_k1>
+          <distortion_k2>0.00000001</distortion_k2>
+          <distortion_k3>0.00000001</distortion_k3>
+          <distortion_t1>0.00000001</distortion_t1>
+          <distortion_t2>0.00000001</distortion_t2>
           <interface:camera name="${name}_r_iface" />
         </controller:gazebo_ros_camera>
       </sensor:camera>
       <material value="PR2/Blue" />
-    </gazebo>
-
-
-    <!-- stereo plugin that produces a raw_stereo message -->
-    <gazebo> <!-- this is not attached to any link!!!, there no reference -->
-      <controller:gazebo_ros_stereo_camera name="${name}_controller" plugin="libgazebo_ros_stereo_camera.so">
-        <alwaysOn>true</alwaysOn>
-        <updateRate>20.0</updateRate>
-        <leftCamera>${name}_l_sensor</leftCamera>
-        <rightCamera>${name}_r_sensor</rightCamera>
-        <topicName>${name}/raw_stereo</topicName>
-        <frameName>${name}_optical_frame</frameName>
-        <CxPrime>320.5</CxPrime>
-        <Cx>320.5</Cx>
-        <Cy>240.5</Cy>
-        <focal_length>320</focal_length> <!-- image_width / (2*tan(hfov_radian /2)) -->
-        <distortion_k1>0</distortion_k1>
-        <distortion_k2>0</distortion_k2>
-        <distortion_k3>0</distortion_k3>
-        <distortion_t1>0</distortion_t1>
-        <distortion_t2>0</distortion_t2>
-        <baseline>${stereo_dy}</baseline> <!-- home pos. of robot has +x forward, +y left -->
-        <interface:stereocamera name="${name}_iface" />
-      </controller:gazebo_ros_stereo_camera>
     </gazebo>
 
   </macro>
@@ -175,16 +154,17 @@
           <updateRate>20.0</updateRate>
           <imageTopicName>${name}/left/image_raw</imageTopicName>
           <cameraInfoTopicName>${name}/left/camera_info</cameraInfoTopicName>
-          <frameName>${name}_l_stereo_camera_frame</frameName>
+          <frameName>${name}_optical_frame</frameName>
+          <hackBaseline>0</hackBaseline>
           <CxPrime>320.5</CxPrime>
           <Cx>320.5</Cx>
           <Cy>240.5</Cy>
           <focal_length>320</focal_length> <!-- image_width / (2*tan(hfov_radian /2)) -->
-          <distortion_k1>0</distortion_k1>
-          <distortion_k2>0</distortion_k2>
-          <distortion_k3>0</distortion_k3>
-          <distortion_t1>0</distortion_t1>
-          <distortion_t2>0</distortion_t2>
+          <distortion_k1>0.00000001</distortion_k1>
+          <distortion_k2>0.00000001</distortion_k2>
+          <distortion_k3>0.00000001</distortion_k3>
+          <distortion_t1>0.00000001</distortion_t1>
+          <distortion_t2>0.00000001</distortion_t2>
           <interface:camera name="${name}_l_iface" />
         </controller:gazebo_ros_camera>
       </sensor:camera>
@@ -204,44 +184,21 @@
           <updateRate>20.0</updateRate>
           <imageTopicName>${name}/right/image_raw</imageTopicName>
           <cameraInfoTopicName>${name}/right/camera_info</cameraInfoTopicName>
-          <frameName>${name}_r_stereo_camera_frame</frameName>
+          <frameName>${name}_optical_frame</frameName>
+          <hackBaseline>${-stereo_dy}</hackBaseline>
           <CxPrime>320.5</CxPrime>
           <Cx>320.5</Cx>
           <Cy>240.5</Cy>
           <focal_length>320</focal_length> <!-- image_width / (2*tan(hfov_radian /2)) -->
-          <distortion_k1>0</distortion_k1>
-          <distortion_k2>0</distortion_k2>
-          <distortion_k3>0</distortion_k3>
-          <distortion_t1>0</distortion_t1>
-          <distortion_t2>0</distortion_t2>
+          <distortion_k1>0.00000001</distortion_k1>
+          <distortion_k2>0.00000001</distortion_k2>
+          <distortion_k3>0.00000001</distortion_k3>
+          <distortion_t1>0.00000001</distortion_t1>
+          <distortion_t2>0.00000001</distortion_t2>
           <interface:camera name="${name}_r_iface" />
         </controller:gazebo_ros_camera>
       </sensor:camera>
       <material value="PR2/Blue" />
-    </gazebo>
-
-
-    <!-- stereo plugin that produces a raw_stereo message -->
-    <gazebo> <!-- this is not attached to any link!!!, there no reference -->
-      <controller:gazebo_ros_stereo_camera name="${name}_controller" plugin="libgazebo_ros_stereo_camera.so">
-        <alwaysOn>true</alwaysOn>
-        <updateRate>20.0</updateRate>
-        <leftCamera>${name}_l_sensor</leftCamera>
-        <rightCamera>${name}_r_sensor</rightCamera>
-        <topicName>${name}/raw_stereo</topicName>
-        <frameName>${name}_optical_frame</frameName>
-        <CxPrime>320.5</CxPrime>
-        <Cx>320.5</Cx>
-        <Cy>240.5</Cy>
-        <focal_length>320</focal_length> <!-- image_width / (2*tan(hfov_radian /2)) -->
-        <distortion_k1>0</distortion_k1>
-        <distortion_k2>0</distortion_k2>
-        <distortion_k3>0</distortion_k3>
-        <distortion_t1>0</distortion_t1>
-        <distortion_t2>0</distortion_t2>
-        <baseline>${stereo_dy}</baseline> <!-- home pos. of robot has +x forward, +y left -->
-        <interface:stereocamera name="${name}_iface" />
-      </controller:gazebo_ros_stereo_camera>
     </gazebo>
 
   </macro>
@@ -269,16 +226,17 @@
           <updateRate>20.0</updateRate>
           <imageTopicName>${name}/left/image_raw</imageTopicName>
           <cameraInfoTopicName>${name}/left/camera_info</cameraInfoTopicName>
-          <frameName>${name}_l_stereo_camera_frame</frameName>
+          <frameName>${name}_optical_frame</frameName>
+          <hackBaseline>0</hackBaseline>
           <CxPrime>320.5</CxPrime>
           <Cx>320.5</Cx>
           <Cy>240.5</Cy>
           <focal_length>772.55</focal_length> <!-- image_width / (2*tan(hfov_radian /2)) -->
-          <distortion_k1>0</distortion_k1>
-          <distortion_k2>0</distortion_k2>
-          <distortion_k3>0</distortion_k3>
-          <distortion_t1>0</distortion_t1>
-          <distortion_t2>0</distortion_t2>
+          <distortion_k1>0.00000001</distortion_k1>
+          <distortion_k2>0.00000001</distortion_k2>
+          <distortion_k3>0.00000001</distortion_k3>
+          <distortion_t1>0.00000001</distortion_t1>
+          <distortion_t2>0.00000001</distortion_t2>
           <interface:camera name="${name}_l_iface" />
         </controller:gazebo_ros_camera>
       </sensor:camera>
@@ -298,45 +256,23 @@
           <updateRate>20.0</updateRate>
           <imageTopicName>${name}/right/image_raw</imageTopicName>
           <cameraInfoTopicName>${name}/right/camera_info</cameraInfoTopicName>
-          <frameName>${name}_r_stereo_camera_frame</frameName>
+          <frameName>${name}_optical_frame</frameName>
+          <hackBaseline>${-stereo_dy}</hackBaseline>
           <CxPrime>320.5</CxPrime>
           <Cx>320.5</Cx>
           <Cy>240.5</Cy>
           <focal_length>772.55</focal_length> <!-- image_width / (2*tan(hfov_radian /2)) -->
-          <distortion_k1>0</distortion_k1>
-          <distortion_k2>0</distortion_k2>
-          <distortion_k3>0</distortion_k3>
-          <distortion_t1>0</distortion_t1>
-          <distortion_t2>0</distortion_t2>
+          <distortion_k1>0.00000001</distortion_k1>
+          <distortion_k2>0.00000001</distortion_k2>
+          <distortion_k3>0.00000001</distortion_k3>
+          <distortion_t1>0.00000001</distortion_t1>
+          <distortion_t2>0.00000001</distortion_t2>
           <interface:camera name="${name}_r_iface" />
         </controller:gazebo_ros_camera>
       </sensor:camera>
       <material value="PR2/Blue" />
     </gazebo>
 
-
-    <!-- stereo plugin that produces a raw_stereo message -->
-    <gazebo> <!-- this is not attached to any link!!!, there no reference -->
-      <controller:gazebo_ros_stereo_camera name="${name}_controller" plugin="libgazebo_ros_stereo_camera.so">
-        <alwaysOn>true</alwaysOn>
-        <updateRate>20.0</updateRate>
-        <leftCamera>${name}_l_sensor</leftCamera>
-        <rightCamera>${name}_r_sensor</rightCamera>
-        <topicName>${name}/raw_stereo</topicName>
-        <frameName>${name}_optical_frame</frameName>
-        <CxPrime>320.5</CxPrime>
-        <Cx>320.5</Cx>
-        <Cy>240.5</Cy>
-        <focal_length>772.55</focal_length> <!-- image_width / (2*tan(hfov_radian /2)) -->
-        <distortion_k1>0</distortion_k1>
-        <distortion_k2>0</distortion_k2>
-        <distortion_k3>0</distortion_k3>
-        <distortion_t1>0</distortion_t1>
-        <distortion_t2>0</distortion_t2>
-        <baseline>${stereo_dy}</baseline> <!-- home pos. of robot has +x forward, +y left -->
-        <interface:stereocamera name="${name}_iface" />
-      </controller:gazebo_ros_stereo_camera>
-    </gazebo>
 
   </macro>
 
