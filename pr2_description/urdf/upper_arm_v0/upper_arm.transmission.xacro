@@ -19,7 +19,7 @@
     <transmission type="SimpleTransmission" name="${side}_forearm_roll_trans">
       <actuator name="${side}_forearm_roll_motor" />
       <joint name="${side}_forearm_roll_joint" />
-      <mechanicalReduction>${576/25 * 55/14}</mechanicalReduction>
+      <mechanicalReduction>-${576/25 * 55/14}</mechanicalReduction>
     </transmission>
   </xacro:macro>
 </robot>
