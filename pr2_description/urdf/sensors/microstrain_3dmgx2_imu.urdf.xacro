@@ -4,14 +4,14 @@
 
   <include filename="$(find pr2_description)/urdf/sensors/microstrain_3dmgx2_imu.gazebo.xacro" />
 
-  <xacro:macro name="microstrain_3dmgx2_imu_v0" params="name parent *origin ros_topic deprecated_ros_topic update_rate">
+  <xacro:macro name="microstrain_3dmgx2_imu_v0" params="name parent *origin ros_topic update_rate">
     <joint name="${name}_joint" type="fixed">
       <axis xyz="0 1 0" />
       <insert_block name="origin" />
       <parent link="${parent}_link"/>
       <child link="${name}_link"/>
     </joint>
-    <link name="${name}_link" type="laser">
+    <link name="${name}_link">
       <inertial>
         <mass value="0.001" />
         <origin xyz="0 0 0" rpy="0 0 0" />
@@ -32,7 +32,7 @@
       </collision>
     </link>
     <!-- gazebo extensions -->
-    <xacro:microstrain_3dmgx2_imu_gazebo_v0 name="${name}" ros_topic="${ros_topic}" deprecated_ros_topic="${deprecated_ros_topic}" update_rate="${update_rate}" />
+    <xacro:microstrain_3dmgx2_imu_gazebo_v0 name="${name}" ros_topic="${ros_topic}" update_rate="${update_rate}" />
   </xacro:macro>
 </robot>
 

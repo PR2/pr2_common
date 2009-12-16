@@ -6,6 +6,7 @@
 
   <include filename="$(find pr2_description)/urdf/torso_v0/torso.gazebo.xacro" />
   <include filename="$(find pr2_description)/urdf/torso_v0/torso.transmission.xacro" />
+  <include filename="$(find pr2_description)/urdf/sensors/microstrain_3dmgx2_imu.urdf.xacro" />
 
   <xacro:macro name="pr2_torso_v0" params="name parent *origin">
     <joint name="${name}_joint" type="prismatic">
@@ -13,7 +14,7 @@
       <limit lower="0.0" upper="0.31" effort="10000" velocity="0.013"/>
       <safety_controller  k_velocity="400000" soft_lower_limit="${0.0+0.003}" soft_upper_limit="${0.31-0.005}" k_position="1000" />
       <calibration reference_position="0.00536" />
-      <dynamics damping="10.0" />
+      <dynamics damping="5000.0" />
       <insert_block name="origin" />
       <parent link="${parent}"/>
       <child link="${name}_link"/>
@@ -48,6 +49,11 @@
     <!-- extensions -->
     <xacro:pr2_torso_gazebo_v0 name="${name}" />
     <xacro:pr2_torso_transmission_v0 name="${name}" />
+
+    <!-- imu -->
+    <xacro:microstrain_3dmgx2_imu_v0 name="imu" parent="${name}" ros_topic="imu_data" update_rate="100.0">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+    </xacro:microstrain_3dmgx2_imu_v0>
 
   </xacro:macro>
 
