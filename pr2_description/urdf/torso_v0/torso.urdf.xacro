@@ -52,7 +52,7 @@
 
     <!-- imu -->
     <xacro:microstrain_3dmgx2_imu_v0 name="imu" parent="${name}" ros_topic="imu_data" update_rate="100.0">
-        <origin xyz="0 0 0" rpy="0 0 0" />
+        <origin xyz="-0.02977 -0.1497 0.164" rpy="0 0 0" />
     </xacro:microstrain_3dmgx2_imu_v0>
 
   </xacro:macro>
