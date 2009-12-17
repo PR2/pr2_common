@@ -35,7 +35,7 @@
 
 
   <!-- ============================   Upper Arm   ============================ -->
-
+  <!-- Includes elbow flex, FA roll joints in macros below -->
   <xacro:macro name="pr2_upper_arm_v0" params="side parent reflect">
     <joint name="${side}_upper_arm_joint" type="fixed">
       <origin xyz="0 0 0" rpy="0 0 0" />
@@ -74,6 +74,16 @@
 
     </link>
 
+    <!-- extensions-->
+    <xacro:pr2_upper_arm_gazebo_v0 side="${side}" /> <!-- Has upperarm link -->
+    <!-- No transmission, since this a fixed joint w/o actuator -->
+
+    <!-- Elbow flex, FA roll macros -->
+    <xacro:pr2_forearm_roll_v0 side="${side}" parent="${side}_elbow_flex_link" reflect="${reflect}" />
+    <xacro:pr2_elbow_flex_v0 side="${side}" parent="${side}_upper_arm_link" reflect="${reflect}" />
+  </xacro:macro>
+
+  <xacro:macro name="pr2_elbow_flex_v0" params="side parent reflect">
     <!-- Elbow flex -->
     <joint name="${side}_elbow_flex_joint" type="revolute">
       <axis xyz="0 1 0" />
@@ -83,12 +93,10 @@
       <calibration reference_position="${-1.1606 + cal_r_elbow_flex_flag}"/>
       <dynamics damping="1.0" />
       <origin xyz="0.4 0 0" rpy="0 0 0" />
-      <parent link="${side}_upper_arm_link"/>
+      <parent link="${parent}"/>
       <child link="${side}_elbow_flex_link"/>
     </joint>
     <link name="${side}_elbow_flex_link">
-
-
       <inertial>
         <mass value="1.90327" />
         <origin xyz="0.01014 0.00032 -0.01211" />
@@ -114,6 +122,12 @@
       </collision>
     </link>
 
+    <xacro:pr2_elbow_flex_gazebo_v0 side="${side}" />
+    <xacro:pr2_elbow_flex_transmission_v0 side="${side}" />
+  </xacro:macro>
+  
+  <!-- FA roll joint only -->
+  <xacro:macro name="pr2_forearm_roll_v0" params="side parent reflect">
     <!-- forearm_roll_link is a fictitious link internal to elbow_flex_link, provides an attachment point for the actual forearm -->
     <joint name="${side}_forearm_roll_joint" type="continuous">
       <axis xyz="1 0 0" />
@@ -122,7 +136,7 @@
       <calibration reference_position="${0.0 + cal_r_forearm_roll_flag}" />
       <dynamics damping="0.1" />
       <origin xyz="0 0 0" rpy="0 0 0" />
-      <parent link="${side}_elbow_flex_link"/>
+      <parent link="${parent}"/>
       <child link="${side}_forearm_roll_link"/>
     </joint>
     <!-- TODO: inertial tag should be optional -->
@@ -153,9 +167,8 @@
       </collision>
     </link>
 
-    <!-- extensions-->
-    <xacro:pr2_upper_arm_gazebo_v0 side="${side}" />
-    <xacro:pr2_upper_arm_transmission_v0 side="${side}" />
-
+    <xacro:pr2_forearm_roll_gazebo_v0 side="${side}" />
+    <xacro:pr2_forearm_roll_transmission_v0 side="${side}" />
   </xacro:macro>
+
 </robot>

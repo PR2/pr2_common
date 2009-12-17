@@ -5,7 +5,6 @@
        xmlns:xacro="http://ros.org/wiki/xacro">
 
   <xacro:macro name="pr2_upper_arm_gazebo_v0" params="side">
-
     <gazebo reference="${side}_upper_arm_link">
       <sensor:contact name="${side}_upper_arm_contact_sensor">
         <geom>${side}_upper_arm_link_geom</geom><!-- TODO -->
@@ -20,10 +19,10 @@
       <turnGravityOff>true</turnGravityOff>
       <material value="PR2/Green" />
     </gazebo>
+  </xacro:macro>
 
-
-    <!-- Elbow flex -->
-
+  <!-- Elbow flex -->
+  <xacro:macro name="pr2_elbow_flex_gazebo_v0" params="side">
     <!-- testing initial joint position, to be parsed at urdf2gazebo parse time -->
     <gazebo reference="${side}_elbow_flex_joint">
       <initial_joint_position>-1.0</initial_joint_position>
@@ -47,9 +46,10 @@
       <stopKd value="1.0" />
       <stopKp value="1000000.0" />
     </gazebo>
+  </xacro:macro>
 
-    <!-- Forearm roll -->
-
+  <!-- Forearm roll -->
+  <xacro:macro name="pr2_forearm_roll_gazebo_v0" params="side" >
     <gazebo reference="${side}_forearm_roll_link">
       <material value="PR2/RollLinks" />
       <turnGravityOff>true</turnGravityOff>
@@ -57,6 +57,5 @@
     <gazebo reference="${side}_forearm_roll_joint">
       <fudgeFactor value="0.5" />
     </gazebo>
-
   </xacro:macro>
 </robot>
