@@ -1,5 +1,0 @@
-<launch>
-    <!-- send prf urdf to param server -->
-    <param name="robot_description" command="$(find xacro)/xacro.py '$(find pr2_defs)/robots/prf.urdf.xacro'" />
-</launch>
-
