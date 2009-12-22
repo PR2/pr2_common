@@ -14,7 +14,5 @@ set(ROSPACK_MAKEDIST true)
 # that CMake 2.6 may be required to ensure that the two lists are combined
 # properly.  CMake 2.4 seems to have unpredictable scoping rules for such
 # variables.
-#list(APPEND CPACK_SOURCE_IGNORE_FILES /core/experimental)
-list(APPEND CPACK_SOURCE_IGNORE_FILES /pr2_description)
 
 rosbuild_make_distribution(0.1.0)
