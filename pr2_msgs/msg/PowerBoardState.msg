@@ -13,5 +13,7 @@ float64 input_voltage # Input voltage to power board
 #  STATE_NOPOWER, STATE_STANDBY, STATE_PUMPING, STATE_ON, STATE_DISABLED
 int8[3] circuit_state # One of the above states
 float64[3] circuit_voltage  # Output voltage of each circuit
-bool run_stop
-bool wireless_stop
+
+# True if robot should be enabled
+bool run_stop           #Note - if the wireless run-stop is hit, this will be unobservable
+bool wireless_stop 
