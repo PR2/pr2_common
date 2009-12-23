@@ -1,6 +1,0 @@
-<launch>
-    <!-- send hca urdf to param server -->
-    <param name="robot_description_old" command="$(find xacro)/xacro.py '$(find pr2_defs)/robots/hca.xacro.xml'" />
-    <param name="robot_description" command="$(find xacro)/xacro.py '$(find pr2_defs)/robots/hca.urdf.xacro'" />
-</launch>
-

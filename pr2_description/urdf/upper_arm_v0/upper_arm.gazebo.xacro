@@ -1,38 +1,43 @@
 <?xml version="1.0"?>
 <robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
        xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
-       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+       xmlns:xacro="http://ros.org/wiki/xacro">
 
-  <macro name="pr2_upper_arm_gazebo" params="side">
-
+  <xacro:macro name="pr2_upper_arm_gazebo_v0" params="side">
     <gazebo reference="${side}_upper_arm_link">
       <sensor:contact name="${side}_upper_arm_contact_sensor">
         <geom>${side}_upper_arm_link_geom</geom><!-- TODO -->
         <updateRate>100.0</updateRate>
-        <controller:ros_bumper name="${side}_upper_arm_ros_bumper_controller" plugin="libros_bumper.so">
+        <controller:gazebo_ros_bumper name="${side}_upper_arm_gazebo_ros_bumper_controller" plugin="libgazebo_ros_bumper.so">
           <alwaysOn>true</alwaysOn>
           <updateRate>100.0</updateRate>
           <bumperTopicName>${side}_upper_arm_bumper</bumperTopicName>
-          <interface:bumper name="${side}_upper_arm_ros_bumper_iface" />
-        </controller:ros_bumper>
+          <interface:bumper name="${side}_upper_arm_gazebo_ros_bumper_iface" />
+        </controller:gazebo_ros_bumper>
       </sensor:contact>
       <turnGravityOff>true</turnGravityOff>
       <material value="PR2/Green" />
     </gazebo>
+  </xacro:macro>
 
-
-    <!-- Elbow flex -->
+  <!-- Elbow flex -->
+  <xacro:macro name="pr2_elbow_flex_gazebo_v0" params="side">
+    <!-- testing initial joint position, to be parsed at urdf2gazebo parse time -->
+    <gazebo reference="${side}_elbow_flex_joint">
+      <initial_joint_position>-1.0</initial_joint_position>
+    </gazebo>
 
     <gazebo reference="${side}_elbow_flex_link">
       <sensor:contact name="${side}_elbow_flex_contact_sensor">
         <geom>${side}_elbow_flex_link_geom</geom>
         <updateRate>100.0</updateRate>
-        <controller:ros_bumper name="${side}_elbow_flex_ros_bumper_controller" plugin="libros_bumper.so">
+        <controller:gazebo_ros_bumper name="${side}_elbow_flex_gazebo_ros_bumper_controller" plugin="libgazebo_ros_bumper.so">
           <alwaysOn>true</alwaysOn>
           <updateRate>100.0</updateRate>
           <bumperTopicName>${side}_elbow_flex_bumper</bumperTopicName>
-          <interface:bumper name="${side}_elbow_flex_ros_bumper_iface" />
-        </controller:ros_bumper>
+          <interface:bumper name="${side}_elbow_flex_gazebo_ros_bumper_iface" />
+        </controller:gazebo_ros_bumper>
       </sensor:contact>
       <material value="PR2/Grey" />
       <turnGravityOff>true</turnGravityOff>
@@ -41,9 +46,10 @@
       <stopKd value="1.0" />
       <stopKp value="1000000.0" />
     </gazebo>
+  </xacro:macro>
 
-    <!-- Forearm roll -->
-
+  <!-- Forearm roll -->
+  <xacro:macro name="pr2_forearm_roll_gazebo_v0" params="side" >
     <gazebo reference="${side}_forearm_roll_link">
       <material value="PR2/RollLinks" />
       <turnGravityOff>true</turnGravityOff>
@@ -51,6 +57,5 @@
     <gazebo reference="${side}_forearm_roll_joint">
       <fudgeFactor value="0.5" />
     </gazebo>
-
-  </macro>
+  </xacro:macro>
 </robot>

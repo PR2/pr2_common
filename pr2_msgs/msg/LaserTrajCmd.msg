@@ -1,6 +1,6 @@
 Header header
-string profile       # options are currently "linear" or "linear_blended"
-float64[] pos        # Laser positions
-float64[] time       # Times to reach laser positions in seconds
-float64 max_rate     # Set to -1 to use default
-float64 max_accel    # Set to -1 to use default
+string profile              # options are currently "linear" or "linear_blended"
+float64[] position          # Laser positions
+duration[] time_from_start  # Times to reach laser positions in seconds
+float64 max_velocity        # Set <= 0 to use default
+float64 max_acceleration    # Set <= 0 to use default

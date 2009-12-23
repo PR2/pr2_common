@@ -1,11 +1,12 @@
 <?xml version="1.0"?>
 <root xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
-      xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
+      xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+      xmlns:xacro="http://ros.org/wiki/xacro">
   
-  <include filename="$(find pr2_defs)/defs/head/prosilica_gazebo.xacro" />
+  <include filename="$(find pr2_description)/urdf/sensors/prosilica_gc2450_camera.gazebo.xacro" />
 
-  <macro name="prosilica_cam" params="name parent *origin">
+  <xacro:macro name="prosilica_cam_v0" params="name parent *origin">
     <joint name="${name}_frame_joint" type="fixed">
       <insert_block name="origin" />
       <parent link="${parent}"/>
@@ -22,11 +23,11 @@
       </inertial>
 
       <visual>
-        <origin xyz="0 0 0" rpy="0 0 0" />
+        <!-- bogus values for visual aesthetics -->
+        <origin xyz="-0.02 0 0" rpy="0 0 0"/>
         <geometry>
-          <box size="0.01 0.01 0.01" />
+          <box size="0.04 0.04 0.04" />
         </geometry>
-        
         <material name="Blue" />
       </visual>
 
@@ -57,11 +58,11 @@
       </inertial>
 
       <visual>
-        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <!-- bogus values for visual aesthetics -->
+        <origin xyz="0 0 0" rpy="0 0 ${M_PI/2}" />
         <geometry>
-          <box size="0.01 0.01 0.01" />
+          <cylinder radius="0.02" length="0.05" />
         </geometry>
-        
         <material name="Blue" />
       </visual>
 
@@ -74,7 +75,7 @@
     </link>
 
     <!-- extensions -->
-    <prosilica_cam_gazebo name="${name}"/>
-  </macro>
+    <xacro:prosilica_cam_gazebo_v0 name="${name}"/>
+  </xacro:macro>
 
 </root>

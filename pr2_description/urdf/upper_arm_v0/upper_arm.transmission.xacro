@@ -1,30 +1,28 @@
 <?xml version="1.0"?>
 <robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
        xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
-       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+       xmlns:xacro="http://ros.org/wiki/xacro">
 
   <!-- ============================   Upper Arm   ============================ -->
 
 
-  <macro name="pr2_upper_arm_transmission" params="side">
-
+  <xacro:macro name="pr2_elbow_flex_transmission_v0" params="side">
     <!-- Elbow flex -->
-
     <transmission type="SimpleTransmission" name="${side}_elbow_flex_trans">
       <actuator name="${side}_elbow_flex_motor" />
       <joint name="${side}_elbow_flex_joint" />
-      <mechanicalReduction>-36.17</mechanicalReduction>
+      <mechanicalReduction>${-13/3 * 127.532/15.28}</mechanicalReduction>
     </transmission>
+  </xacro:macro>
 
-    <!-- Forearm roll -->
-
+  <!-- Forearm roll -->
+  <xacro:macro name="pr2_forearm_roll_transmission_v0" params="side" >
     <transmission type="SimpleTransmission" name="${side}_forearm_roll_trans">
       <actuator name="${side}_forearm_roll_motor" />
       <joint name="${side}_forearm_roll_joint" />
-      <mechanicalReduction>${576/25*55/14}</mechanicalReduction>
+      <mechanicalReduction>${-576/25 * 55/14}</mechanicalReduction>
     </transmission>
-
-  </macro>
-
-
-
+  </xacro:macro>
+  
+</robot>

@@ -1,4 +1,4 @@
-<stack name="pr2_common" version="0.1.0">
+<stack>
   <description brief="pr2 robot description and pr2-specific messages">
     URDF description of the robot kinematics and dynamics, 3d models of robot components, information required for gazebo to simulate the pr2, and messages specific to the PR2 such as detailed information about our power board and fingertip pressure sensors.
   </description>
@@ -6,9 +6,8 @@
   <license>BSD</license>  
   <review status="unreviewed" notes=""/>
   <url>http://ros.org/wiki/pr2_common</url>
-  <depend stack="common"/> <!-- xacro --> 
-  <depend stack="ros"/> <!-- rostest, std_msgs, rosbagmigration --> 
-  <depend stack="robot_model"/> <!-- convex_decomposition, ivcon, urdf --> 
-  <depend stack="common_msgs"/> <!-- geometry_msgs --> 
+  <depend stack="common_msgs" /> <!-- geometry_msgs -->
+  <depend stack="robot_model" /> <!-- convex_decomposition, ivcon, urdf -->
+  <depend stack="ros" /> <!-- rostest, std_msgs, rosbagmigration -->
 
 </stack>

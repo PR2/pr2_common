@@ -3,7 +3,8 @@
 <!-- XML namespaces -->
 <robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
        xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
-       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+       xmlns:xacro="http://ros.org/wiki/xacro">
 
   <!-- Things that are needed only for Gazebo (not the physical robot).  These include
        sensor and controller plugin specifications -->
@@ -16,7 +17,7 @@
 
  <!-- ============================   Shoulder   ============================ -->
 
-  <macro name="pr2_shoulder" params="side parent reflect *origin">
+  <xacro:macro name="pr2_shoulder_v0" params="side parent reflect *origin">
 
     <!-- Shoulder pan -->
     <joint name="${side}_shoulder_pan_joint" type="revolute">
@@ -51,7 +52,7 @@
       <visual name="${side}_shoulder_pan_visual">
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry name="${side}_shoulder_pan_visual_geom">
-          <mesh filename="package://pr2_defs/meshes/shoulder_yaw.stl" />
+          <mesh filename="package://pr2_description/meshes/shoulder_v0/shoulder_yaw.stl" />
         </geometry>
         <material name="Blue" />
       </visual>
@@ -59,7 +60,7 @@
       <collision name="${side}_shoulder_pan_collision">
         <origin xyz="0.0 0 0.0" rpy="0 0 0" />
         <geometry name="${side}_shoulder_pan_collision_geom">
-          <mesh filename="package://pr2_defs/meshes/convex/shoulder_yaw_convex.stlb" />
+          <mesh filename="package://pr2_description/meshes/shoulder_v0/convex/shoulder_yaw_convex.stlb" />
         </geometry>
       </collision>
     </link>
@@ -93,7 +94,7 @@
       <visual name="${side}_shoulder_lift_visual">
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry name="${side}_shoulder_lift_visual_geom">
-          <mesh filename="package://pr2_defs/meshes/shoulder_lift.stl" />
+          <mesh filename="package://pr2_description/meshes/shoulder_v0/shoulder_lift.stl" />
         </geometry>
         <material name="Grey" />
       </visual>
@@ -101,7 +102,7 @@
       <collision name="${side}_shoulder_lift_collision">
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry name="${side}_shoulder_lift_collision_geom">
-          <mesh filename="package://pr2_defs/meshes/convex/shoulder_lift_convex.stlb" />
+          <mesh filename="package://pr2_description/meshes/shoulder_v0/convex/shoulder_lift_convex.stlb" />
         </geometry>
       </collision>
     </link>
@@ -133,7 +134,7 @@
         <!-- TODO: This component doesn't actually have a mesh -->
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry name="${side}_upper_arm_roll_visual_geom">
-          <mesh filename="package://pr2_defs/meshes/upper_arm_roll.stl" />
+          <mesh filename="package://pr2_description/meshes/shoulder_v0/upper_arm_roll.stl" />
         </geometry>
 
         <material name="RollLinks" />
@@ -147,6 +148,10 @@
       </collision>
     </link>
 
-  </macro>
+    <!-- extensions -->
+    <xacro:pr2_shoulder_gazebo_v0 side="${side}" />
+    <xacro:pr2_shoulder_transmission_v0 side="${side}" />
+
+  </xacro:macro>
 
 </robot>
