@@ -14,7 +14,7 @@
     </gazebo>
 
     <gazebo reference="${name}_optical_frame">
-      <material value="PR2/Blue" />
+      <material value="PR2/Green" />
       <turnGravityOff value="true" />
     </gazebo>
 

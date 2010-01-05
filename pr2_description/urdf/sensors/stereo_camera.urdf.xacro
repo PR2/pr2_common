@@ -10,11 +10,6 @@
 
   <include filename="$(find pr2_description)/urdf/sensors/stereo_camera.gazebo.xacro" />
 
-  <property name="stereo_size_x" value="0.005" />
-  <property name="stereo_size_y" value="0.010" />
-  <property name="stereo_size_z" value="0.005" />
-  <property name="stereo_center_box_center_offset_x" value="0.00" />
-  <property name="stereo_center_box_center_offset_z" value="0.05" />
   <property name="stereo_dx" value="0.00" />
   <property name="stereo_dy" value="-0.09" /> <!-- +y to the left -->
   <property name="stereo_dz" value="0.00" />
@@ -24,48 +19,50 @@
 
   <!-- this macro is used for creating wide and narrow double stereo camera links -->
   <xacro:macro name="stereo_camera_v0" params="name parent focal_length hfov image_format image_width image_height *origin">
-    
+
     <joint name="${name}_frame_joint" type="fixed">
       <insert_block name="origin" />
       <parent link="${parent}"/>
       <child link="${name}_link"/>
     </joint>
+    <!-- camera link is at center of the optical frame, but in x-forward notation -->
     <link name="${name}_link">
       
       <inertial>
         <mass value="0.1" />
         <origin xyz="0 0 0" rpy="0 0 0" />
-        <inertia ixx="0.00482611007"  ixy="-0.000144683999"  ixz="0.000110076136"
-                 iyy="0.005218991412"  iyz="-0.000314239509"  izz="0.008618784925" />
+        <inertia ixx="0.01"  ixy="0"  ixz="0" iyy="0.01"  iyz="0"  izz="0.01" /> <!-- this inertia is made up for now. -->
       </inertial>
 
       <visual>
-        <origin xyz="${stereo_center_box_center_offset_x} 0 ${stereo_center_box_center_offset_z}" rpy="0 0 0" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <box size="${stereo_size_x} ${stereo_size_y} ${stereo_size_z}" />
+          <box size="0.001 0.001 0.001" />
         </geometry>
         
         <material name="Blue" />
       </visual>
 
       <collision>
-        <origin xyz="${stereo_center_box_center_offset_x} 0 ${stereo_center_box_center_offset_z}" rpy="0 0 0" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <box size="${stereo_size_x} ${stereo_size_y} ${stereo_size_z}" />
+          <box size="0.001 0.001 0.001" />
         </geometry>
       </collision>
       
     </link>
 
+    <!-- attach optical frame to the camera link -->
     <joint name="${name}_optical_frame_joint" type="fixed">
-      <origin xyz="${cal_stereo_x}            ${0.045+cal_stereo_y}   ${.0305+cal_stereo_z}" rpy="${-M_PI/2+cal_stereo_roll} ${0.0+cal_stereo_pitch} ${-M_PI/2+cal_stereo_yaw}" />
+      <origin xyz="0 0 0" rpy="${-M_PI/2} 0.0 ${-M_PI/2}" /> <!-- rotate frame from x-forward to z-forward camera coords -->
       <parent link="${name}_link"/>
       <child link="${name}_optical_frame"/>
     </joint>
+    <!-- optical frame for the stereo camera, with z-forward notation, this is the frame stereo camera images users should refer to -->
     <link name="${name}_optical_frame" type="camera"/>
 
     <!-- stereo left camera -->
-    <xacro:wge100_camera_v0 name="${name}_l_stereo_camera" image_format="${image_format}" image_topic_name="${name}/left/image_raw"
+    <xacro:wge100_camera_v0 name="${name}_gazebo_l_stereo_camera" image_format="${image_format}" image_topic_name="${name}/left/image_raw"
                             camera_info_topic_name="${name}/left/camera_info" parent="${name}_link"
                             hfov="${hfov}" focal_length="${focal_length}"
                             frame_id="${name}_optical_frame" hack_baseline="0"
@@ -74,8 +71,8 @@
     </xacro:wge100_camera_v0>
 
     <!-- stereo right camera -->
-    <xacro:wge100_camera_v0 name="${name}_r_stereo_camera" image_format="${image_format}" image_topic_name="${name}/right/image_raw"
-                            camera_info_topic_name="${name}/right/camera_info" parent="${name}_l_stereo_camera_frame"
+    <xacro:wge100_camera_v0 name="${name}_gazebo_r_stereo_camera" image_format="${image_format}" image_topic_name="${name}/right/image_raw"
+                            camera_info_topic_name="${name}/right/camera_info" parent="${name}_gazebo_l_stereo_camera_frame"
                             hfov="${hfov}" focal_length="${focal_length}"
                             frame_id="${name}_optical_frame" hack_baseline="${-stereo_dy}"
                             image_width="${image_width}" image_height="${image_height}">
