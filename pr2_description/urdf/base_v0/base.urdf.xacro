@@ -177,7 +177,7 @@
          navigation stack dedpends on this frame -->
     <link name="${name}_footprint"/>
     <joint name="${name}_footprint_joint" type="fixed">
-      <origin xyz="0 0 0.051" rpy="0 0 0" />
+      <origin xyz="0 0 -0.051" rpy="0 0 0" />
       <parent link="${name}_link" />
       <child link="${name}_footprint"/>
     </joint>
