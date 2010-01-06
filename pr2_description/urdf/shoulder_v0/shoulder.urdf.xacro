@@ -107,12 +107,23 @@
       </collision>
     </link>
 
-    <!-- Upperarm roll: internal fixed attchment point for upper arm -->
+    <!-- Upper arm roll is separate macro -->
+    <xacro:pr2_upper_arm_roll_v0 side="${side}" parent="${side}_shoulder_lift_link" reflect="${reflect}" >
+      <origin xyz="0 0 0" rpy="0 0 0" />
+    </xacro:pr2_upper_arm_roll_v0>
 
+    <!-- extensions -->
+    <xacro:pr2_shoulder_gazebo_v0 side="${side}" />
+    <xacro:pr2_shoulder_transmission_v0 side="${side}" />
+
+  </xacro:macro>
+
+  <!-- Upperarm roll: internal fixed attchment point for upper arm -->
+  <xacro:macro name="pr2_upper_arm_roll_v0" params="side parent reflect *origin">
     <joint name="${side}_upper_arm_roll_joint" type="revolute">
       <axis xyz="1 0 0" />
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <parent link="${side}_shoulder_lift_link" />
+      <insert_block name="origin" />
+      <parent link="${parent}" />
       <child link="${side}_upper_arm_roll_link"/>
       <limit lower="${reflect*1.55-2.35}" upper="${reflect*1.55+2.35}" effort="30" velocity="${VELOCITY_LIMIT_SCALE*5.45}" /> <!-- alpha tested velocity and effort limits -->
       <safety_controller k_position="100" k_velocity="2" soft_lower_limit="${reflect*1.55-2.35+0.15}" soft_upper_limit="${reflect*1.55+2.35-0.15}" />
@@ -149,9 +160,9 @@
     </link>
 
     <!-- extensions -->
-    <xacro:pr2_shoulder_gazebo_v0 side="${side}" />
-    <xacro:pr2_shoulder_transmission_v0 side="${side}" />
-
+    <xacro:pr2_upper_arm_roll_gazebo_v0 side="${side}" />
+    <xacro:pr2_upper_arm_roll_transmission_v0 side="${side}" />
+    
   </xacro:macro>
 
 </robot>
