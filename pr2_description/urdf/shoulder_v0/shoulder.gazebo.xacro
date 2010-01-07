@@ -44,8 +44,10 @@
       <stopKd value="1.0" />
       <stopKp value="1000000.0" />
     </gazebo>
+  </xacro:macro>
 
-    <!-- Upperarm roll: internal fixed attchment point for upper arm -->
+  <!-- Upperarm roll: internal fixed attchment point for upper arm -->
+  <xacro:macro name="pr2_upper_arm_roll_gazebo_v0" params="side" >
     <gazebo reference="${side}_upper_arm_roll_link">
       <material value="PR2/RollLinks" />
       <turnGravityOff>true</turnGravityOff>
@@ -55,6 +57,5 @@
       <stopKp value="1000000.0" />
       <fudgeFactor value="0.5" />
     </gazebo>
-
   </xacro:macro>
 </robot>

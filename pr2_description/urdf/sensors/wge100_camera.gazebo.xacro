@@ -6,8 +6,7 @@
   <xacro:macro name="wge100_camera_gazebo_v0" params="name image_format image_topic_name camera_info_topic_name hfov focal_length frame_id hack_baseline image_width image_height">
     <gazebo reference="${name}_frame">
       <sensor:camera name="${name}_sensor">
-        <!--imageSize>${image_width} ${image_height}</imageSize-->
-        <imageSize>640 480</imageSize> <!-- FIXME: temporary fix because xacro expands above line to floats, not integers -->
+        <imageSize>${image_width} ${image_height}</imageSize>
         <imageFormat>${image_format}</imageFormat>
         <hfov>${hfov}</hfov>
         <nearClip>0.1</nearClip>

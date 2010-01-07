@@ -19,6 +19,11 @@
   <property name="finger_joint_effort_limit"  value="100.0" />
 
   <xacro:macro name="pr2_finger_limits_v0" params="reflect">
+    <!-- limits on passive finger and finger top joints without
+         transmission are not enforced by safety controllers.
+         The lower/upper limits and are enforced in PR2 simulation and
+         effort and velocity limits are ignored. This is also needed because
+         these joints are declared revolute rather than continuous.-->
     <limit effort="${finger_joint_effort_limit}" velocity="0.5"
            lower="${gripper_lower_angle}" upper="${gripper_upper_angle}" />
   </xacro:macro>
@@ -283,6 +288,7 @@
     <!-- effort is the linear force at the gripper gap
          velocity limit is the linear velocity limit at the gripper gap
          try and introduce a very stiff spring
+         The velocity and effort limits are alpha tested.
     -->
     <joint name="${side}_gripper_joint" type="prismatic">
       <axis xyz="0 0 1" />

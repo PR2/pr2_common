@@ -49,7 +49,7 @@
 
     <joint name="${parent}_${suffix}_wheel_joint" type="continuous">
       <axis xyz="0 1 0" />
-      <limit effort="100" velocity="100"/>
+      <limit effort="100" velocity="100"/> <!-- alpha tested effort and velocity limits -->
       <safety_controller  k_velocity="10" />
       <dynamics damping="0.0" friction="0.0" />
       <origin xyz="0 ${reflect*caster_wheel_offset_y} 0" rpy="0 0 0" />
@@ -89,7 +89,7 @@
   <xacro:macro name="pr2_caster_hub_v0" params="suffix parent *origin ref_position" >
     <joint name="${suffix}_rotation_joint" type="continuous">
       <axis xyz="0 0 1" />
-      <limit effort="100" velocity="100"/>
+      <limit effort="100" velocity="100"/> <!-- alpha tested velocity and effort limits -->
       <safety_controller  k_velocity="10" />
       <calibration reference_position="${ref_position}" />
       <dynamics damping="0.0" friction="0.0" />
@@ -173,6 +173,38 @@
       </collision>
     </link>
 
+    <!-- base_footprint is a fictitious link(frame) that is on the ground right below base_link origin,
+         navigation stack dedpends on this frame -->
+    <link name="${name}_footprint">
+      <inertial>
+        <mass value="1.0" />
+        <origin xyz="0 0 0" />
+        <inertia ixx="0.01" ixy="0.0" ixz="0.0"
+                 iyy="0.01" iyz="0.0" izz="0.01" />
+      </inertial>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <box size="0.01 0.01 0.01" />
+        </geometry>
+        
+        <material name="Green" />
+      </visual>
+      <collision>
+        <!-- represent base collision with a simple rectangular model, positioned by base_size_z s.t. top
+             surface of the collision box matches the top surface of the PR2 base -->
+        <origin xyz="0 0 ${0.051+base_collision_size_z/2}" rpy="0 0 0" />
+        <geometry>
+          <box size="0.001 0.001 0.001" />
+        </geometry>
+      </collision>
+    </link>
+
+    <joint name="${name}_footprint_joint" type="fixed">
+      <origin xyz="0 0 0.051" rpy="0 0 0" />
+      <child link="${name}_link" />
+      <parent link="${name}_footprint"/>
+    </joint>
 
     <!-- base laser -->
     <xacro:hokuyo_lx30_laser_v0 name="${name}_laser" parent="${name}" ros_topic="base_scan" update_rate="20" >
