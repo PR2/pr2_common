@@ -48,7 +48,7 @@
         <rpyOffsets>0 0 0</rpyOffsets>
         <interface:position name="p3d_base_position"/>
       </controller:gazebo_ros_p3d>
-      <canonicalBody>${name}_link</canonicalBody>
+      <canonicalBody>${name}_footprint</canonicalBody>
     </gazebo>
   </xacro:macro>
 
