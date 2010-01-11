@@ -8,7 +8,13 @@ Header header
 string name # Name with serial number
 uint32 serial_num # Serial number for this board's message
 float64 input_voltage # Input voltage to power board
+
 #
+# Master States:
+# MASTER_NOPOWER, MASTER_STANDBY, MASTER_ON, MASTER_OFF, MASTER_SHUTDOWN 
+#
+int8    master_state  # The master state machine's state in the powerboard
+
 # Circuit States:
 #  STATE_NOPOWER, STATE_STANDBY, STATE_PUMPING, STATE_ON, STATE_DISABLED
 int8[3] circuit_state # One of the above states
