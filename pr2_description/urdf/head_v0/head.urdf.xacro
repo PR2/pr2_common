@@ -16,7 +16,7 @@
       <limit lower="-3.007" upper="3.007" effort="2.645" velocity="6" /> <!-- alpha tested velocity and effort limits -->
       <safety_controller k_velocity="1.5" soft_lower_limit="${-3.007+0.15}" soft_upper_limit="${3.007-0.15}" k_position="100" />
       <!-- hold both reference_position and upper/lower for tick-tock, remove reference_positiion after verifying upper/lower works with calibration controllers.  if search velocity in pr2_calibration_controllers.yaml is +, the reference_position is rising, if - then it is falling -->
-      <calibration reference_position="${0.0+cal_head_pan_flag}" rising="${0.0+cal_head_pan_flag}" />
+      <calibration reference_position="0.0" rising="0.0" />
       <dynamics damping="1.0" />
       <insert_block name="origin" />
       <parent link="${parent}"/>
@@ -107,7 +107,7 @@
     </xacro:pr2_head_pan_v0>
 
     <xacro:pr2_head_tilt_v0 name="${name}_tilt" parent="${name}_pan_link">
-      <origin xyz="0.058 0 0" rpy="0 0 0" />
+      <origin xyz="0.068 0 0" rpy="0 0 0" />
     </xacro:pr2_head_tilt_v0>
 
     <!-- Head plate frame -->
