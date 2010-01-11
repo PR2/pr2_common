@@ -12,7 +12,7 @@
     <joint name="${name}_joint" type="prismatic">
       <axis xyz="0 0 1" />
       <limit lower="0.0" upper="0.31" effort="10000" velocity="0.013"/> <!-- alpha tested velocity and effort limits -->
-      <safety_controller  k_velocity="4000000" soft_lower_limit="${0.0+0.003}" soft_upper_limit="${0.31-0.005}" k_position="1000" />
+      <safety_controller  k_velocity="2000000" soft_lower_limit="${0.0+0.003}" soft_upper_limit="${0.31-0.005}" k_position="100" />
       <!-- hold both reference_position and upper/lower for tick-tock, remove reference_positiion after verifying upper/lower works with calibration controllers.  if search velocity in pr2_calibration_controllers.yaml is +, the reference_position is rising, if - then it is falling -->
       <calibration reference_position="0.00536" falling="0.00536" />
       <dynamics damping="5000.0" /> <!-- strictly tuned for sim only right now -->
