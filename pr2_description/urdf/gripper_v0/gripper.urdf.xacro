@@ -65,7 +65,7 @@
       <collision name="${prefix}_l_finger_collision">
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry name="${prefix}_l_finger_collision_geom">
-          <mesh filename="package://pr2_description/meshes/gripper_v0/convex/upper_finger_l_convex.stlb" />
+          <mesh filename="package://pr2_description/meshes/gripper_v0/upper_finger_l.stl" />
         </geometry>
         <verbose value="Yes" />
       </collision>
@@ -106,7 +106,7 @@
       <collision name="${prefix}_r_finger_collision">
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry name="${prefix}_r_finger_collision_geom">
-          <mesh filename="package://pr2_description/meshes/gripper_v0/convex/upper_finger_r_convex.stlb" />
+          <mesh filename="package://pr2_description/meshes/gripper_v0/upper_finger_r.stl" />
         </geometry>
         <verbose value="Yes" />
       </collision>
@@ -221,7 +221,7 @@
       <collision name="${side}_gripper_palm_collision">
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry name="${side}_gripper_palm_collision_geom">
-          <mesh filename="package://pr2_description/meshes/gripper_v0/convex/gripper_palm_convex.stlb" />
+          <mesh filename="package://pr2_description/meshes/gripper_v0/gripper_palm.stl" />
         </geometry>
         <verbose value="Yes" />
       </collision>
