@@ -91,7 +91,7 @@
       <axis xyz="0 0 1" />
       <limit effort="100" velocity="100"/> <!-- alpha tested velocity and effort limits -->
       <safety_controller  k_velocity="10" />
-      <calibration reference_position="${ref_position}" />
+      <calibration reference_position="${ref_position}" upper="${ref_position}" /> <!-- hold both reference_position and upper/lower for tick-tock, remove reference_positiion after verifying upper/lower works with calibration controllers.  if search velocity in pr2_calibration_controllers.yaml is +, the reference_position is rising, if - then it is falling -->
       <dynamics damping="0.0" friction="0.0" />
       <insert_block name="origin" />
       <parent link="${parent}"/>
@@ -207,7 +207,7 @@
     </joint>
 
     <!-- base laser -->
-    <xacro:hokuyo_lx30_laser_v0 name="${name}_laser" parent="${name}" ros_topic="base_scan" update_rate="20" >
+    <xacro:hokuyo_lx30_laser_v0 name="${name}_laser" parent="${name}" ros_topic="base_scan" update_rate="20" min_angle="-2.2689" max_angle="2.2689" >
       <origin xyz="${base_laser_x} ${base_laser_y} ${base_laser_z}" rpy="0 0 0" />
     </xacro:hokuyo_lx30_laser_v0>
 

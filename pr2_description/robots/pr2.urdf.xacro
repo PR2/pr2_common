@@ -49,8 +49,8 @@
   <!-- The xacro preprocesser will replace the parameters below, such as ${cal_head_x}, with
        numerical values that were specified in common.xacro which was included above -->
   <xacro:pr2_head_v0 name="head" parent="torso_lift_link">
-    <origin xyz="${cal_head_x}    ${cal_head_y}     ${0.3915+cal_head_z}"
-            rpy="${cal_head_roll} ${cal_head_pitch} ${cal_head_yaw}" />
+    <origin xyz="-0.01707 0.0 0.38145"
+            rpy="0.0 0.0 0.0" />
   </xacro:pr2_head_v0>
 
   <!-- Camera package: double stereo, prosilica -->
@@ -61,7 +61,7 @@
   </xacro:pr2_head_sensor_package_v0>
 
   <xacro:pr2_tilting_laser_v0 name="laser_tilt" parent="torso_lift_link" laser_calib_ref="0.0">
-    <origin xyz="0.1 0 0.235" rpy="0 0 0" />
+    <origin xyz="0.09893 0 0.227" rpy="0 0 0" />
   </xacro:pr2_tilting_laser_v0>
 
   <!-- This is a common convention, to use a reflect parameter that equals +-1 to distinguish left from right -->
