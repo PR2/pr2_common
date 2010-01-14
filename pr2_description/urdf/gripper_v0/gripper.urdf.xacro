@@ -227,6 +227,14 @@
       </collision>
     </link>
 
+    <joint name="${side}_gripper_led_joint" type="fixed">
+      <!--  Need to check if we need a positive or negative Z term -->
+      <origin xyz="0.0513 0.0 .0244"/>
+      <parent link="${side}_gripper_palm_link"/>
+      <child link="${side}_gripper_led_frame"/>
+    </joint>
+    <link name="${side}_gripper_led_frame" />
+
     <joint name="${side}_gripper_motor_accelerometer_joint" type="fixed">
       <origin xyz="0 0 0" rpy="0 0 0" />
       <parent link="${side}_gripper_palm_link"/>
