@@ -1,14 +1,13 @@
 <package>
-  <description brief="Common ROS Messages">
+  <description brief="PR2 Messages">
 
-    Messages that are specific to PR2
+    Messages for representing PR2 state, such as battery information and the PR2 fingertip sensors.
 
   </description>
-  <author>Morgan Quigley/mquigley@cs.stanford.edu, Ken Conley/kwc@willowgarage.com</author>
+  <author>Eric Berger and many others</author>
   <license>BSD</license>
-  <review status="unreviewed" notes=""/>
-  <url>http://pr.willowgarage.com/wiki/std_msgs</url>
-  <logo>http://www.willowgarage.com/files/willowgarage/robot10.jpg</logo>
+  <review status="Doc reviewed" notes="2010/01/18"/>
+  <url>http://ros.org/wiki/pr2_msgs</url>
 
   <depend package="std_msgs"/>
   <depend package="geometry_msgs"/>
