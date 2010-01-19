@@ -1,3 +1,5 @@
+# This message communicates the state of a battery server, which controls
+# multiple batteries.
 Header header
 int32 MAX_BAT_COUNT=4
 int32 MAX_BAT_REG=48

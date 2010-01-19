@@ -1,3 +1,4 @@
+# This message communicates the state of the PR2's power board.
 int8 STATE_NOPOWER=0
 int8 STATE_STANDBY=1
 int8 STATE_PUMPING=2
