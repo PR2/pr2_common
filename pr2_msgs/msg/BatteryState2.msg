@@ -1,3 +1,4 @@
+# This message communicates the state of a single battery.
 # Battery Controller Flags, one per battery
 bool present       # is this pack present
 bool charging      # is this pack charging

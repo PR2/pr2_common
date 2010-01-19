@@ -1,3 +1,5 @@
+# This message is used to set the profile that the tilt laser controller
+# executes.
 Header header
 string profile              # options are currently "linear" or "linear_blended"
 float64[] position          # Laser positions

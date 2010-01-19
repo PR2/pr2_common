@@ -56,7 +56,7 @@
       <dynamics damping="0.1" />
       <!-- hold both reference_position and upper/lower for tick-tock, remove reference_positiion after verifying upper/lower works with calibration controllers.  if search velocity in pr2_calibration_controllers.yaml is +, the reference_position is rising, if - then it is falling -->
       <calibration reference_position="${-0.5410521 + cal_r_wrist_flex_flag}" falling="${-0.5410521 + cal_r_wrist_flex_flag}" />
-      <origin xyz="0.32025 0 0" rpy="0 0 0" />
+      <origin xyz="0.321 0 0" rpy="0 0 0" />
       <parent link="${side}_forearm_link"/>
       <child link="${side}_wrist_flex_link"/>
     </joint>

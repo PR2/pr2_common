@@ -1,3 +1,4 @@
+# This message communicates the state of the PR2's power system.
 Header header
 float64 power_consumption ## Watts
 duration time_remaining ## estimated time to empty or full

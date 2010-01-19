@@ -1,3 +1,4 @@
+# DEPRECATED. Use pr2_msgs/BatteryServer2 instead.
 Header header
 uint32 MAX_BAT_COUNT=4
 uint32 MAX_BAT_REG=48
