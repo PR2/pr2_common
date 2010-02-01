@@ -15,4 +15,4 @@ set(ROSPACK_MAKEDIST true)
 # properly.  CMake 2.4 seems to have unpredictable scoping rules for such
 # variables.
 
-rosbuild_make_distribution(1.0.1)
+rosbuild_make_distribution(1.0.2)
