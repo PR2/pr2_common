@@ -109,20 +109,21 @@
     <origin xyz="0 0 0" rpy="0 0 0" />
   </xacro:pr2_gripper_v0>
 
-  <!-- Forearm Cam (Hand approximated values) -->
+  <!-- Forearm cam Position is a guess, based on full robot calibration -->
+  <!-- Forearm cam Orientation is from Function -->
   <xacro:wge100_camera_v0 name="l_forearm_cam" image_format="L8" image_topic_name="l_forearm_cam/image_raw"
                           camera_info_topic_name="l_forearm_cam/camera_info"
                           parent="l_forearm_roll_link" hfov="90" focal_length="320"
                           frame_id="l_forearm_cam_frame" hack_baseline="0"
                           image_width="640" image_height="480">
-    <origin xyz=".15 0 .07" rpy="${-M_PI/2} ${-M_PI/4} 0" />
+    <origin xyz=".135 0 .044" rpy="${-M_PI/2} ${-32.25*M_PI/180} 0" />
   </xacro:wge100_camera_v0>
   <xacro:wge100_camera_v0 name="r_forearm_cam" image_format="L8" image_topic_name="r_forearm_cam/image_raw"
                           camera_info_topic_name="r_forearm_cam/camera_info"
                           parent="r_forearm_roll_link" hfov="90" focal_length="320"
                           frame_id="r_forearm_cam_frame" hack_baseline="0"
                           image_width="640" image_height="480">
-    <origin xyz=".15 0 .07" rpy="${M_PI/2} ${-M_PI/4} 0" />
+    <origin xyz=".135 0 .044" rpy="${M_PI/2} ${-32.25*M_PI/180} 0" />
   </xacro:wge100_camera_v0>
 
 </robot>
