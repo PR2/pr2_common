@@ -16,7 +16,7 @@
   <property name="finger_damping"             value="0.2" />
   <property name="finger_tip_damping"         value="0.01" />
 
-  <property name="finger_joint_effort_limit"  value="100.0" />
+  <property name="finger_joint_effort_limit"  value="1000.0" />
 
   <xacro:macro name="pr2_finger_limits_v0" params="reflect">
     <!-- limits on passive finger and finger top joints without
@@ -296,11 +296,12 @@
     <!-- effort is the linear force at the gripper gap
          velocity limit is the linear velocity limit at the gripper gap
          try and introduce a very stiff spring
-         The velocity and effort limits are alpha tested.
+         The velocity limits are alpha tested.
+         The effort limits are somewhat inflated.
     -->
     <joint name="${side}_gripper_joint" type="prismatic">
       <axis xyz="0 0 1" />
-      <limit effort="100.0" velocity="0.2" lower="0.0" upper="0.09" />
+      <limit effort="1000.0" velocity="0.2" lower="0.0" upper="0.09" />
       <safety_controller k_velocity="500.0" k_position="20.0" soft_lower_limit="${0.0-0.01}" soft_upper_limit="${0.09-0.002}" />
     </joint>
 
