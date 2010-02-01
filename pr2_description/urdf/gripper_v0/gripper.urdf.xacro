@@ -296,7 +296,8 @@
     <!-- effort is the linear force at the gripper gap
          velocity limit is the linear velocity limit at the gripper gap
          try and introduce a very stiff spring
-         The velocity and effort limits are alpha tested.
+         The velocity limits are alpha tested.
+         The effort limits are somewhat inflated.
     -->
     <joint name="${side}_gripper_joint" type="prismatic">
       <axis xyz="0 0 1" />
