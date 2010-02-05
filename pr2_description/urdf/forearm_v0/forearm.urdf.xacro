@@ -37,7 +37,7 @@
           <mesh filename="package://pr2_description/meshes/forearm_v0/forearm.stl" />
         </geometry>
 
-        <material name="Blue" />
+        <material name="Grey" />
       </visual>
 
       <collision name="${side}_forearm_collision">

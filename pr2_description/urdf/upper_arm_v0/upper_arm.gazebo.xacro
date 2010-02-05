@@ -17,7 +17,7 @@
         </controller:gazebo_ros_bumper>
       </sensor:contact>
       <turnGravityOff>true</turnGravityOff>
-      <material value="PR2/Green" />
+      <material value="Gazebo/Grey" />
     </gazebo>
   </xacro:macro>
 

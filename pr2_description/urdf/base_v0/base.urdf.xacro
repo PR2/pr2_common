@@ -112,7 +112,7 @@
           <mesh filename="package://pr2_description/meshes/base_v0/caster.stl" />
         </geometry>
         
-        <material name="Green" />
+        <material name="White" />
       </visual>
 
       <collision>
@@ -160,7 +160,7 @@
           <mesh filename="package://pr2_description/meshes/base_v0/base.stl" />
         </geometry>
         
-        <material name="Green" />
+        <material name="White" />
       </visual>
 
       <collision>
@@ -188,7 +188,7 @@
           <box size="0.01 0.01 0.01" />
         </geometry>
         
-        <material name="Green" />
+        <material name="White" />
       </visual>
       <collision>
         <!-- represent base collision with a simple rectangular model, positioned by base_size_z s.t. top
