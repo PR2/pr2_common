@@ -23,6 +23,18 @@
       <dischargeVoltage>15.52</dischargeVoltage>
       <chargeVoltage>16.41</chargeVoltage>
     </controller:gazebo_ros_power_monitor>
+
+    <!-- set pr2 pose -->
+    <controller:gazebo_ros_sim_iface name="sim_iface_plug_controller" plugin="libgazebo_ros_sim_iface.so">
+        <alwaysOn>true</alwaysOn>
+        <updateRate>100.0</updateRate>
+        <modelName>pr2</modelName>
+        <topicName>set_pr2_pose</topicName>
+        <serviceName>set_pr2_pose</serviceName>
+        <frameName>map</frameName>
+        <interface:position name="sim_iface_plug_position"/>
+    </controller:gazebo_ros_sim_iface>
+
   </gazebo>
 
 </robot>
