@@ -56,22 +56,49 @@
                   izz="${0.5*((reflect+1)*ual_izz+(1-reflect)*uar_izz)}" />
       </inertial>
 
-      <visual name="{side}_upper_arm_visual">
+      <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry name="${side}_upper_arm_visual_geom">
+        <geometry>
           <mesh filename="package://pr2_description/meshes/upper_arm_v0/upper_arm.stl" />
         </geometry>
 
         <material name="Green" />
       </visual>
 
-      <collision name="${side}_upper_arm_collision">
+      <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry name="${side}_upper_arm_collision_geom">
+        <geometry>
           <mesh filename="package://pr2_description/meshes/upper_arm_v0/convex/upper_arm_convex.stlb" />
         </geometry>
       </collision>
 
+    </link>
+
+    <joint name="${side}_upper_arm_sleeve_joint" type="fixed">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <parent link="${parent}"/>
+      <child link="${side}_upper_arm_sleeve_link"/>
+    </joint>
+    <link name="${side}_upper_arm_sleeve_link">
+      <inertial>
+        <!-- NOTE:reflect==-1 for right side, reflect==1 for the left side -->
+        <mass value="0.1" />
+        <origin xyz="0 0 0" />
+        <inertia  ixx="0.01" ixy="0.00" ixz="0.00" iyy="0.01" iyz="0.00" izz="0.01" />
+      </inertial>
+      <visual>
+        <origin rpy="0 1.57079632679 0" xyz="-0.01 0 0"/>
+        <geometry>
+          <mesh filename="package://pr2_description/meshes/upper_arm_v0/upper_arm.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+        <material name="Green" />
+      </visual>
+      <collision>
+        <origin rpy="0 1.57079632679 0" xyz="-0.01 0 0"/>
+        <geometry>
+          <mesh filename="package://pr2_description/meshes/upper_arm_v0/upper_arm.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
     </link>
 
     <!-- extensions-->
