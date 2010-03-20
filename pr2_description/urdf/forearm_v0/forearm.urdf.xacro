@@ -60,13 +60,13 @@
         <inertia ixx="0.01" ixy="0.00" ixz="0.00" iyy="0.01" iyz="0.00" izz="0.01" />
       </inertial>
       <visual>
-        <origin xyz="-0.03 0 0" rpy="0 ${M_PI/2} 0" />
+        <origin xyz="-0.03 0.009 0" rpy="0 1.5707 -0.04" />
         <geometry>
           <mesh filename="package://pr2_description/meshes/forearm_v0/forearm.dae" scale="0.001 0.001 0.001" />
         </geometry>
       </visual>
       <collision>
-        <origin xyz="-0.03 0 0" rpy="0 ${M_PI/2} 0" />
+        <origin xyz="-0.03 0.009 0" rpy="0 1.5707 -0.04" />
         <geometry>
           <mesh filename="package://pr2_description/meshes/forearm_v0/forearm.dae" scale="0.001 0.001 0.001" />
         </geometry>
