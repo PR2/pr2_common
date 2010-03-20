@@ -12,7 +12,6 @@
         <bodyName>${name}_link</bodyName>
         <topicName>${imu_topic}</topicName>
         <gaussianNoise>${stdev*stdev}</gaussianNoise>
-        <frameName>map</frameName>
         <xyzOffsets>0 0 0</xyzOffsets> 
         <rpyOffsets>0 0 0</rpyOffsets>
         <interface:position name="imu_position"/>
