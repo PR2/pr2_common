@@ -59,7 +59,7 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://pr2_description/meshes/upper_arm_v0/upper_arm.stl" />
+          <mesh filename="package://pr2_description/meshes/upper_arm_v0/upper_arm.stl" scale="0.98 0.98 0.98" />
         </geometry>
 
         <material name="Green" />
@@ -68,7 +68,7 @@
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://pr2_description/meshes/upper_arm_v0/convex/upper_arm_convex.stlb" />
+          <mesh filename="package://pr2_description/meshes/upper_arm_v0/convex/upper_arm_convex.stlb" scale="0.98 0.98 0.98" />
         </geometry>
       </collision>
 
@@ -87,14 +87,14 @@
         <inertia  ixx="0.01" ixy="0.00" ixz="0.00" iyy="0.01" iyz="0.00" izz="0.01" />
       </inertial>
       <visual>
-        <origin rpy="0 1.57079632679 0" xyz="-0.01 0 0"/>
+        <origin rpy="0 1.59 0.02" xyz="-0.015 0 0"/>
         <geometry>
           <mesh filename="package://pr2_description/meshes/upper_arm_v0/upper_arm.dae" scale="0.001 0.001 0.001"/>
         </geometry>
         <material name="Green" />
       </visual>
       <collision>
-        <origin rpy="0 1.57079632679 0" xyz="-0.01 0 0"/>
+        <origin rpy="0 1.59 0.02" xyz="-0.015 0 0"/>
         <geometry>
           <mesh filename="package://pr2_description/meshes/upper_arm_v0/upper_arm.dae" scale="0.001 0.001 0.001"/>
         </geometry>
