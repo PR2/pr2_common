@@ -267,27 +267,7 @@
       <parent link="${side}_gripper_palm_link"/>
       <child link="${side}_gripper_tool_frame"/>
     </joint>
-    <link name="${side}_gripper_tool_frame">
-      <!-- TODO: all that follows is made-up and useless, but the old parser crashes without it -->
-      <inertial>
-        <mass value="0.01" />
-        <origin xyz="0 0 0" rpy="0 0 0" />
-        <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001" />
-      </inertial>
-      <visual>
-        <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry name="${side}_gripper_tool_visual_geom">
-          <box size="0.001 0.001 0.001" />
-        </geometry>
-        <material name="Grey" />
-      </visual>
-      <collision>
-        <origin xyz="-0.1 0 0" rpy="0 0 0" /> <!-- move it out of the way -->
-        <geometry name="${side}_gripper_tool_collision_geom">
-          <box size="0.001 0.001 0.001" />
-        </geometry>
-      </collision>
-    </link>
+    <link name="${side}_gripper_tool_frame"/>
 
     <!-- pr2 fingers macro -->
     <xacro:pr2_finger_v0 prefix="${side}_gripper" parent="${side}_gripper_palm_link" />

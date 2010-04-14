@@ -270,11 +270,6 @@
       </controller:gazebo_ros_p3d>
     </gazebo>
 
-    <gazebo reference="${side}_gripper_tool_frame">
-      <turnGravityOff>true</turnGravityOff>
-      <material value="PR2/Grey" />
-    </gazebo>
-
   </xacro:macro>
 
 
