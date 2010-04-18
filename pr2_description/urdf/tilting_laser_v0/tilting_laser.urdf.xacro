@@ -32,9 +32,9 @@
                  izz="0.0001" />
       </inertial>
 
-      <visual name="${name}_mount_visual">
+      <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry name="${name}_mount_visual_geom">
+        <geometry>
           <mesh filename="package://pr2_description/meshes/tilting_laser_v0/hok_tilt.stl" />
         </geometry>
         
@@ -43,7 +43,7 @@
 
       <collision name="${name}_mount_collision">
         <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry name="${name}_mount_collision_geom" >
+        <geometry>
           <box size=".001 .001 .001" />
         </geometry>
       </collision>

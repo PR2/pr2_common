@@ -33,7 +33,7 @@
       <visual>
         <origin xyz="0 0 0.0" rpy="0 0 0 " />
         <geometry>
-          <mesh filename="package://pr2_description/meshes/head_v0/head_pan.stl" />
+          <mesh filename="package://pr2_description/meshes/head_v0/head_pan.stl" scale=".001 .001 .001" />
         </geometry>
         
         <material name="Blue" />
@@ -80,7 +80,7 @@
       <visual>
         <origin xyz="0 0 0" rpy="0.0 0.0 0.0" />
         <geometry>
-          <mesh filename="package://pr2_description/meshes/head_v0/head_tilt.stl" />
+          <mesh filename="package://pr2_description/meshes/head_v0/head_tilt.stl" scale=".001 .001 .001" />
         </geometry>
         
         <material name="Green" />
