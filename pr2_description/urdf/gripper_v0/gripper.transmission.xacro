@@ -30,6 +30,7 @@
                       b="${b}"
                       r="${r}"
                       />
+      <simulated_gripper_joint name="${side}_gripper_simulated_joint" />
       <passive_joint  name="${side}_gripper_l_finger_joint"     />
       <passive_joint  name="${side}_gripper_r_finger_joint"     />
       <passive_joint  name="${side}_gripper_r_finger_tip_joint" />

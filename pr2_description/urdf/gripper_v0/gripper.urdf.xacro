@@ -14,7 +14,10 @@
   <property name="gripper_lower_angle" value="0.00" />
 
   <property name="finger_damping"             value="0.2" />
+  <property name="gripper_damping"            value="100.0" />
   <property name="finger_tip_damping"         value="0.01" />
+  <property name="parallel_link_x_offset"     value="-0.018" />
+  <property name="parallel_link_y_offset"     value="0.021" />
 
   <property name="finger_joint_effort_limit"  value="1000.0" />
 
@@ -112,6 +115,80 @@
       </collision>
     </link>
 
+    <!-- Floating Link -->
+    <joint name="${prefix}_l_parallel_root_joint" type="revolute">
+      <axis xyz="0 0 1" />
+      <origin xyz="${0.07691+parallel_link_x_offset} ${+0.01+parallel_link_y_offset} 0" rpy="0 0 0" />
+      <dynamics damping="${finger_damping}" />
+      <mimic joint="${prefix}_l_finger_joint" multiplier="1" offset="0"/>
+      <parent link="${parent}"/>
+      <child link="${prefix}_l_parallel_link"/>
+      <xacro:pr2_finger_limits_v0 reflect="1" />
+    </joint>
+    <joint name="${prefix}_r_parallel_root_joint" type="revolute">
+      <axis xyz="0 0 -1" />
+      <origin xyz="${0.07691+parallel_link_x_offset} ${-0.01-parallel_link_y_offset} 0" rpy="0 0 0" />
+      <dynamics damping="${finger_damping}" />
+      <mimic joint="${prefix}_l_finger_joint" multiplier="-1" offset="0"/>
+      <parent link="${parent}"/>
+      <child link="${prefix}_r_parallel_link"/>
+      <xacro:pr2_finger_limits_v0 reflect="1" />
+    </joint>
+
+    <link name="${prefix}_l_parallel_link">
+      <inertial>
+        <mass value="0.17126" />
+        <origin xyz="${0.03598} 0.01730 -0.00164" rpy="0 0 0" />
+        <inertia  ixx= "0.00007756198"
+                  ixy= "0.00000149095"
+                  ixz="-0.00000983385"
+                  iyy= "0.00019708305"
+                  iyz="-0.00000306125"
+                  izz= "0.00018105446" />
+      </inertial>
+      <visual>
+        <origin xyz="${0.0914942479/2.0} 0 0" rpy="0 0 0.0541224233" />
+        <geometry>
+          <box size="${0.0914942479} 0.005 0.005" />
+        </geometry>
+        <material name="Green" />
+      </visual>
+      <collision>
+        <origin xyz="${0.0914942479/2.0} 0 0" rpy="0 0 0.0541224233" />
+        <geometry>
+          <box size="${0.0914942479} 0.005 0.005" />
+        </geometry>
+        <verbose value="Yes" />
+      </collision>
+    </link>
+
+    <link name="${prefix}_r_parallel_link">
+      <inertial>
+        <mass value="0.17389" />
+        <origin xyz="${0.03576} -0.01736 -0.00095" rpy="0 0 0" />
+        <inertia  ixx= "0.00007738410"
+                  ixy="-0.00000209309"
+                  ixz="-0.00000836228"
+                  iyy= "0.00019847383"
+                  iyz= "0.00000246110"
+                  izz= "0.00018106988" />
+      </inertial>
+      <visual>
+        <origin xyz="${0.0914942479/2.0} 0 0" rpy="0 0 -0.0541224233" />
+        <geometry>
+          <box size="${0.0914942479} 0.005 0.005" />
+        </geometry>
+        <material name="Green" />
+      </visual>
+      <collision>
+        <origin xyz="${0.0914942479/2.0} 0 0" rpy="0 0 -0.0541224233" />
+        <geometry>
+          <box size="${0.0914942479} 0.005 0.005" />
+        </geometry>
+        <verbose value="Yes" />
+      </collision>
+    </link>
+
     <!-- Finger tip -->
 
     <joint name="${prefix}_l_finger_tip_joint" type="revolute">
@@ -189,7 +266,7 @@
     </link>
 
     <!-- extensions -->
-    <xacro:pr2_finger_gazebo_v0 prefix="${prefix}" />
+    <xacro:pr2_finger_gazebo_v0 prefix="${prefix}" parallel_link_x_offset="${parallel_link_x_offset}" parallel_link_y_offset="${parallel_link_y_offset}" />
   </xacro:macro>
 
 
@@ -281,7 +358,15 @@
          k_velocity was recently raised from 500.0 to 5000.0.  Tested on beta
     -->
     <joint name="${side}_gripper_joint" type="prismatic">
-      <axis xyz="0 0 1" />
+      <axis xyz="0 1 0" />
+      <dynamics damping="${gripper_damping}" />
+      <limit effort="1000.0" velocity="0.2" lower="0.0" upper="0.09" />
+      <safety_controller k_velocity="5000.0" k_position="20.0" soft_lower_limit="${0.0-0.01}" soft_upper_limit="${0.09-0.002}" />
+    </joint>
+    <!-- simulated gripper joint between gripper tips -->
+    <joint name="${side}_gripper_simulated_joint" type="prismatic">
+      <axis xyz="0 1 0" />
+      <dynamics damping="${gripper_damping}" />
       <limit effort="1000.0" velocity="0.2" lower="0.0" upper="0.09" />
       <safety_controller k_velocity="5000.0" k_position="20.0" soft_lower_limit="${0.0-0.01}" soft_upper_limit="${0.09-0.002}" />
     </joint>
