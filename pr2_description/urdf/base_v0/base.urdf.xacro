@@ -109,7 +109,7 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://pr2_description/meshes/base_v0/caster.stl" />
+          <mesh filename="package://pr2_description/meshes/base_v0/caster.stl" scale=".001 .001 .001"/>
         </geometry>
         
         <material name="Green" />
