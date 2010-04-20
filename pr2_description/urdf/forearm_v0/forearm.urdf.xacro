@@ -43,32 +43,7 @@
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://pr2_description/meshes/forearm_v0/convex/forearm_convex.stlb" />
-        </geometry>
-      </collision>
-    </link>
-
-    <joint name="${side}_forearm_sleeve_joint" type="fixed">
-      <insert_block name="origin" /> <!-- transform from parent link to this joint frame -->
-      <parent link="${parent}"/>
-      <child link="${side}_forearm_sleeve_link"/>
-    </joint>
-    <link name="${side}_forearm_sleeve_link">
-      <inertial>
-        <mass value="0.1" />
-        <origin xyz="0 0 0" />
-        <inertia ixx="0.01" ixy="0.00" ixz="0.00" iyy="0.01" iyz="0.00" izz="0.01" />
-      </inertial>
-      <visual>
-        <origin xyz="-0.03 0.009 0" rpy="0 1.5707 -0.04" />
-        <geometry>
-          <mesh filename="package://pr2_description/meshes/forearm_v0/forearm.dae" scale="0.001 0.001 0.001" />
-        </geometry>
-      </visual>
-      <collision>
-        <origin xyz="-0.03 0.009 0" rpy="0 1.5707 -0.04" />
-        <geometry>
-          <mesh filename="package://pr2_description/meshes/forearm_v0/forearm.dae" scale="0.001 0.001 0.001" />
+          <mesh filename="package://pr2_description/meshes/forearm_v0/forearm.stl" />
         </geometry>
       </collision>
     </link>
@@ -107,7 +82,7 @@
       <collision name="${side}_wrist_flex_collision">
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry name="${side}_wrist_flex_collision_geom">
-          <mesh filename="package://pr2_description/meshes/forearm_v0/convex/wrist_flex_convex.stlb" />
+          <mesh filename="package://pr2_description/meshes/forearm_v0/wrist_flex.stl" />
         </geometry>
       </collision>
     </link>

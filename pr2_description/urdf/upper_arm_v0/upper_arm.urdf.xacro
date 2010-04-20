@@ -59,7 +59,7 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://pr2_description/meshes/upper_arm_v0/upper_arm.stl" scale="0.98 0.98 0.98" />
+          <mesh filename="package://pr2_description/meshes/upper_arm_v0/upper_arm.stl"  />
         </geometry>
 
         <material name="Green" />
@@ -68,37 +68,10 @@
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://pr2_description/meshes/upper_arm_v0/convex/upper_arm_convex.stlb" scale="0.98 0.98 0.98" />
+          <mesh filename="package://pr2_description/meshes/upper_arm_v0/upper_arm.stl"  />
         </geometry>
       </collision>
 
-    </link>
-
-    <joint name="${side}_upper_arm_sleeve_joint" type="fixed">
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <parent link="${parent}"/>
-      <child link="${side}_upper_arm_sleeve_link"/>
-    </joint>
-    <link name="${side}_upper_arm_sleeve_link">
-      <inertial>
-        <!-- NOTE:reflect==-1 for right side, reflect==1 for the left side -->
-        <mass value="0.1" />
-        <origin xyz="0 0 0" />
-        <inertia  ixx="0.01" ixy="0.00" ixz="0.00" iyy="0.01" iyz="0.00" izz="0.01" />
-      </inertial>
-      <visual>
-        <origin rpy="0 1.59 0.02" xyz="-0.015 0 0"/>
-        <geometry>
-          <mesh filename="package://pr2_description/meshes/upper_arm_v0/upper_arm.dae" scale="0.001 0.001 0.001"/>
-        </geometry>
-        <material name="Green" />
-      </visual>
-      <collision>
-        <origin rpy="0 1.59 0.02" xyz="-0.015 0 0"/>
-        <geometry>
-          <mesh filename="package://pr2_description/meshes/upper_arm_v0/upper_arm.dae" scale="0.001 0.001 0.001"/>
-        </geometry>
-      </collision>
     </link>
 
     <!-- extensions-->
@@ -133,10 +106,10 @@
                   izz="0.00359156824" />
       </inertial>
 
-      <visual name="${side}_elbow_flex_visual">
+      <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry name="${side}_elbow_flex_visual_geom">
-          <mesh filename="package://pr2_description/meshes/upper_arm_v0/elbow_flex.stl" />
+        <geometry>
+          <mesh filename="package://pr2_description/meshes/upper_arm_v0/elbow_flex.stl"  />
         </geometry>
 
         <material name="Grey" />
@@ -144,8 +117,8 @@
 
       <collision name="${side}_elbow_flex_collision">
         <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry name="${side}_elbow_flex_collision_geom">
-          <mesh filename="package://pr2_description/meshes/upper_arm_v0/convex/elbow_flex_convex.stlb" />
+        <geometry>
+          <mesh filename="package://pr2_description/meshes/upper_arm_v0/elbow_flex.stl"  />
         </geometry>
       </collision>
     </link>
@@ -178,10 +151,10 @@
                   iyy="0.01" iyz="0.00"
                   izz="0.01" />
       </inertial>
-      <visual name="${side}_forearm_roll_visual">
+      <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry name="${side}_forearm_roll_visual_geom">
-          <mesh filename="package://pr2_description/meshes/upper_arm_v0/forearm_roll.stl" />
+        <geometry>
+          <mesh filename="package://pr2_description/meshes/upper_arm_v0/forearm_roll.stl"  />
         </geometry>
 
         <material name="RollLinks" />
@@ -190,7 +163,7 @@
       <collision name="${side}_forearm_roll_collision">
         <!-- dummy geom, to be removed -->
         <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry name="${side}_forearm_roll_collision_geom">
+        <geometry>
           <box size="0.1 0.1 0.1" />
         </geometry>
       </collision>

@@ -33,9 +33,9 @@
       </inertial>
 
       <!-- Should probably get real visuals here at some point -->
-      <visual name="${name}_sensor_visual">
+      <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry name="${name}_sensor_visual_geom">
+        <geometry>
           <box size="0.01 0.01 0.01" />
         </geometry>
         
@@ -44,7 +44,7 @@
 
       <collision name="${name}_sensor_collision">
         <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry name="${name}_sensor_collision_geom">
+        <geometry>
           <box size="0.01 0.01 0.01" />
         </geometry>
       </collision>

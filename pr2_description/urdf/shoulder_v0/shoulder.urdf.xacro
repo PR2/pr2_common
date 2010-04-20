@@ -50,18 +50,18 @@
                  izz="0.27353821674" />
       </inertial>
 
-      <visual name="${side}_shoulder_pan_visual">
+      <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry name="${side}_shoulder_pan_visual_geom">
-          <mesh filename="package://pr2_description/meshes/shoulder_v0/shoulder_yaw.stl" />
+        <geometry>
+          <mesh filename="package://pr2_description/meshes/shoulder_v0/shoulder_pan.stl"  />
         </geometry>
         <material name="Blue" />
       </visual>
 
       <collision name="${side}_shoulder_pan_collision">
         <origin xyz="0.0 0 0.0" rpy="0 0 0" />
-        <geometry name="${side}_shoulder_pan_collision_geom">
-          <mesh filename="package://pr2_description/meshes/shoulder_v0/convex/shoulder_yaw_convex.stlb" />
+        <geometry>
+          <mesh filename="package://pr2_description/meshes/shoulder_v0/shoulder_pan.stl"  />
         </geometry>
       </collision>
     </link>
@@ -93,18 +93,18 @@
                  izz="0.01975753814" />
       </inertial>
 
-      <visual name="${side}_shoulder_lift_visual">
+      <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry name="${side}_shoulder_lift_visual_geom">
-          <mesh filename="package://pr2_description/meshes/shoulder_v0/shoulder_lift.stl" />
+        <geometry>
+          <mesh filename="package://pr2_description/meshes/shoulder_v0/shoulder_lift.stl"  />
         </geometry>
         <material name="Grey" />
       </visual>
 
       <collision name="${side}_shoulder_lift_collision">
         <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry name="${side}_shoulder_lift_collision_geom">
-          <mesh filename="package://pr2_description/meshes/shoulder_v0/convex/shoulder_lift_convex.stlb" />
+        <geometry>
+          <mesh filename="package://pr2_description/meshes/shoulder_v0/shoulder_lift.stl"  />
         </geometry>
       </collision>
     </link>
@@ -144,11 +144,11 @@
                   iyy="0.01" iyz="0.00"
                   izz="0.01" />
       </inertial>
-      <visual name="${side}_upper_arm_roll_visual">
+      <visual>
         <!-- TODO: This component doesn't actually have a mesh -->
         <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry name="${side}_upper_arm_roll_visual_geom">
-          <mesh filename="package://pr2_description/meshes/shoulder_v0/upper_arm_roll.stl" />
+        <geometry>
+          <mesh filename="package://pr2_description/meshes/shoulder_v0/upper_arm_roll.stl"  />
         </geometry>
 
         <material name="RollLinks" />
@@ -156,7 +156,7 @@
       <collision name="${side}_upper_arm_roll_collision">
         <!-- TODO: collision tag should be optional -->
         <origin xyz="0.0 0 0" rpy="0 0 0" />
-        <geometry name="${side}_upper_arm_roll_collision_geom">
+        <geometry>
           <box size="0.1 0.1 0.1" />
         </geometry>
       </collision>

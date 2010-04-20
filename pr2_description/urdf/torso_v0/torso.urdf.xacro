@@ -29,10 +29,10 @@
                  iyy="2.510019507959" iyz="0.029664468704" izz="0.526432355569" />
       </inertial>
 
-      <visual name="${name}_visual">
+      <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry name="${name}_visual_geom">
-          <mesh filename="package://pr2_description/meshes/torso_v0/torso.stl" />
+        <geometry>
+          <mesh filename="package://pr2_description/meshes/torso_v0/torso_lift_2k.stl"  />
         </geometry>
         
         <material name="Grey2" />
@@ -40,7 +40,7 @@
 
       <collision name="${name}_collision">
         <origin xyz="0 0 0.16" rpy="0 0 0" />
-        <geometry name="${name}_collision_geom">
+        <geometry>
           <!-- arbitrarily chosen collision box by JH, torso collision is not important for now -->
           <box size="0.30 0.620 0.02" />
         </geometry>
