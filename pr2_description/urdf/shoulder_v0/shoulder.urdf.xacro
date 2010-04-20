@@ -53,7 +53,7 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://pr2_description/meshes/shoulder_v0/shoulder_pan.stl" scale=".001 .001 .001" />
+          <mesh filename="package://pr2_description/meshes/shoulder_v0/shoulder_pan.stl"  />
         </geometry>
         <material name="Blue" />
       </visual>
@@ -61,7 +61,7 @@
       <collision name="${side}_shoulder_pan_collision">
         <origin xyz="0.0 0 0.0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://pr2_description/meshes/shoulder_v0/shoulder_pan.stl" scale=".001 .001 .001" />
+          <mesh filename="package://pr2_description/meshes/shoulder_v0/shoulder_pan.stl"  />
         </geometry>
       </collision>
     </link>
@@ -96,7 +96,7 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://pr2_description/meshes/shoulder_v0/shoulder_lift.stl" scale=".001 .001 .001" />
+          <mesh filename="package://pr2_description/meshes/shoulder_v0/shoulder_lift.stl"  />
         </geometry>
         <material name="Grey" />
       </visual>
@@ -104,7 +104,7 @@
       <collision name="${side}_shoulder_lift_collision">
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://pr2_description/meshes/shoulder_v0/shoulder_lift.stl" scale=".001 .001 .001" />
+          <mesh filename="package://pr2_description/meshes/shoulder_v0/shoulder_lift.stl"  />
         </geometry>
       </collision>
     </link>
@@ -148,7 +148,7 @@
         <!-- TODO: This component doesn't actually have a mesh -->
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://pr2_description/meshes/shoulder_v0/upper_arm_roll.stl" scale=".001 .001 .001" />
+          <mesh filename="package://pr2_description/meshes/shoulder_v0/upper_arm_roll.stl"  />
         </geometry>
 
         <material name="RollLinks" />
