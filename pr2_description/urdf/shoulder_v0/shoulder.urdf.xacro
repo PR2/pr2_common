@@ -28,7 +28,7 @@
       <limit lower="${reflect*M_PI/4-1.5}"  upper="${reflect*M_PI/4+1.5}"
              effort="30" velocity="${VELOCITY_LIMIT_SCALE*3.48}" /> <!-- alpha tested velocity and effort limits -->
 
-      <dynamics damping="80.0" />
+      <dynamics damping="10.0" />
 
       <safety_controller k_position="100" k_velocity="10"
                          soft_lower_limit="${reflect*M_PI/4-1.5+0.15}"
@@ -131,7 +131,7 @@
       <safety_controller k_position="100" k_velocity="2" soft_lower_limit="${reflect*1.55-2.35+0.15}" soft_upper_limit="${reflect*1.55+2.35-0.15}" />
       <!-- hold both reference_position and upper/lower for tick-tock, remove reference_positiion after verifying upper/lower works with calibration controllers.  if search velocity in pr2_calibration_controllers.yaml is +, the reference_position is rising, if - then it is falling -->
       <calibration reference_position="${(reflect*M_PI/2)*cal_r_upper_arm_roll_gearing + cal_r_upper_arm_roll_flag}" rising="${(reflect*M_PI/2)*cal_r_upper_arm_roll_gearing + cal_r_upper_arm_roll_flag}" />
-      <dynamics damping="20.0" />
+      <dynamics damping="0.1" />
     </joint>
     <link name="${side}_upper_arm_roll_link">
 
