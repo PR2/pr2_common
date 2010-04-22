@@ -363,13 +363,6 @@
       <limit effort="1000.0" velocity="0.2" lower="0.0" upper="0.09" />
       <safety_controller k_velocity="5000.0" k_position="20.0" soft_lower_limit="${0.0-0.01}" soft_upper_limit="${0.09-0.002}" />
     </joint>
-    <!-- simulated gripper joint between gripper tips -->
-    <joint name="${side}_gripper_simulated_joint" type="prismatic">
-      <axis xyz="0 1 0" />
-      <dynamics damping="${gripper_damping}" />
-      <limit effort="1000.0" velocity="0.2" lower="0.0" upper="0.09" />
-      <safety_controller k_velocity="5000.0" k_position="20.0" soft_lower_limit="${0.0-0.01}" soft_upper_limit="${0.09-0.002}" />
-    </joint>
 
     <!-- extensions -->
     <xacro:pr2_gripper_gazebo_v0 side="${side}" />
