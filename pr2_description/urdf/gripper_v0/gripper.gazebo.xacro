@@ -170,7 +170,7 @@
           <axis>0 0 1</axis>
           <anchorOffset>${parallel_link_x_offset} ${parallel_link_y_offset} 0</anchorOffset>
       </joint:hinge>
-      <joint:slider name="${prefix}_simulated_joint">
+      <joint:slider name="${prefix}_joint">
           <body1>${prefix}_l_finger_tip_link</body1>
           <body2>${prefix}_r_finger_tip_link</body2>
           <anchor>${prefix}_r_finger_tip_link</anchor>
