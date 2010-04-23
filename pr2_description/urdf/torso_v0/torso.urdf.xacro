@@ -32,7 +32,7 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://pr2_description/meshes/torso_v0/torso_lift_2k.stl"  />
+          <mesh filename="package://pr2_description/meshes/torso_v0/torso_lift.stl"  />
         </geometry>
         
         <material name="Grey2" />
