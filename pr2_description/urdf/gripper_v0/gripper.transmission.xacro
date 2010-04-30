@@ -40,14 +40,14 @@
     </transmission>
 
     <!-- parallel links -->
-    <transmission type="SimpleTransmission" name="${side}_gripper_l_parallel_trans">
-      <actuator name="${side}_gripper_l_parallel_motor" />
-      <joint name="${side}_gripper_l_parallel_joint" />
+    <transmission type="SimpleTransmission" name="${side}_gripper_l_parallel_root_trans">
+      <actuator name="${side}_gripper_l_parallel_root_motor" />
+      <joint name="${side}_gripper_l_parallel_root_joint" />
       <mechanicalReduction>1</mechanicalReduction>
     </transmission>
-    <transmission type="SimpleTransmission" name="${side}_gripper_r_parallel_trans">
-      <actuator name="${side}_gripper_r_parallel_motor" />
-      <joint name="${side}_gripper_r_parallel_joint" />
+    <transmission type="SimpleTransmission" name="${side}_gripper_r_parallel_root_trans">
+      <actuator name="${side}_gripper_r_parallel_root_motor" />
+      <joint name="${side}_gripper_r_parallel_root_joint" />
       <mechanicalReduction>1</mechanicalReduction>
     </transmission>
   
