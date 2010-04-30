@@ -146,6 +146,7 @@
                   iyz="-0.00000306125"
                   izz= "0.00018105446" />
       </inertial>
+<!--
       <visual>
         <origin xyz="${0.0914942479/2.0} 0 0" rpy="0 0 0.0541224233" />
         <geometry>
@@ -153,6 +154,7 @@
         </geometry>
         <material name="Green" />
       </visual>
+-->
       <collision>
         <origin xyz="${0.0914942479/2.0} 0 0" rpy="0 0 0.0541224233" />
         <geometry>
@@ -173,6 +175,7 @@
                   iyz= "0.00000246110"
                   izz= "0.00018106988" />
       </inertial>
+<!--
       <visual>
         <origin xyz="${0.0914942479/2.0} 0 0" rpy="0 0 -0.0541224233" />
         <geometry>
@@ -180,6 +183,7 @@
         </geometry>
         <material name="Green" />
       </visual>
+-->
       <collision>
         <origin xyz="${0.0914942479/2.0} 0 0" rpy="0 0 -0.0541224233" />
         <geometry>
