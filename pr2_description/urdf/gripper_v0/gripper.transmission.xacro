@@ -37,20 +37,10 @@
       <passive_joint  name="${side}_gripper_r_finger_joint"     />
       <passive_joint  name="${side}_gripper_r_finger_tip_joint" />
       <passive_joint  name="${side}_gripper_l_finger_tip_joint" />
+      <passive_joint  name="${side}_gripper_r_parallel_root_joint" />
+      <passive_joint  name="${side}_gripper_l_parallel_root_joint" />
     </transmission>
 
-    <!-- parallel links -->
-    <transmission type="SimpleTransmission" name="${side}_gripper_l_parallel_root_trans">
-      <actuator name="${side}_gripper_l_parallel_root_motor" />
-      <joint name="${side}_gripper_l_parallel_root_joint" />
-      <mechanicalReduction>1</mechanicalReduction>
-    </transmission>
-    <transmission type="SimpleTransmission" name="${side}_gripper_r_parallel_root_trans">
-      <actuator name="${side}_gripper_r_parallel_root_motor" />
-      <joint name="${side}_gripper_r_parallel_root_joint" />
-      <mechanicalReduction>1</mechanicalReduction>
-    </transmission>
-  
   </xacro:macro>
 
 
