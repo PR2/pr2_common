@@ -4,6 +4,7 @@
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
        xmlns:xacro="http://ros.org/wiki/xacro">
 
+  <include filename="$(find pr2_description)/urdf/sensors/hokuyo_lx30_laser.urdf.xacro" />
   <include filename="$(find pr2_description)/urdf/base_v0/base.gazebo.xacro" />
   <include filename="$(find pr2_description)/urdf/base_v0/base.transmission.xacro" />
 
