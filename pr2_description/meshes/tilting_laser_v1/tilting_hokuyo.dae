@@ -13,10 +13,10 @@
 			exportTexTangents=0;exportTangents=0;exportReferencedMaterials=0;exportMaterialsOnly=0;
 			exportXRefs=1;dereferenceXRefs=1;exportCameraAsLookat=0;cameraXFov=0;cameraYFov=1;doublePrecision=0
 		</comments>
-      <source_data>file:///C:/Users/WakiMudi/Documents/maya/projects/willow_textures/scenes/hokuyo1d.mb</source_data>
+      <source_data>file:///C:/Users/WakiMudi/Documents/maya/projects/willow_textures/scenes/hokuyo_100430.2.mb</source_data>
     </contributor>
-    <created>2010-04-30T16:05:46</created>
-    <modified>2010-04-30T16:05:46</modified>
+    <created>2010-05-05T09:07:15</created>
+    <modified>2010-05-05T09:07:15</modified>
     <unit name="meter" meter="1"/>
     <up_axis>Y_UP</up_axis>
   </asset>
@@ -36,6 +36,16 @@
         <newparam sid="file2-sampler">
           <sampler2D>
             <source>file2-surface</source>
+          </sampler2D>
+        </newparam>
+        <newparam sid="file3-surface">
+          <surface type="2D">
+            <init_from>file3</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="file3-sampler">
+          <sampler2D>
+            <source>file3-surface</source>
           </sampler2D>
         </newparam>
         <technique sid="common">
@@ -62,6 +72,41 @@
               <float>1</float>
             </transparency>
           </lambert>
+          <extra>
+            <technique profile="OpenCOLLADAMaya">
+              <bump>
+                <texture texture="file3-sampler" texcoord="TEX1">
+                  <extra>
+                    <technique profile="OpenCOLLADA3dsMax">
+                      <amount>1</amount>
+                      <bumpInterp>1</bumpInterp>
+                    </technique>
+                    <technique profile="OpenCOLLADAMaya">
+                      <blend_mode>NONE</blend_mode>
+                      <coverageU>1</coverageU>
+                      <coverageV>1</coverageV>
+                      <fast>0</fast>
+                      <mirrorU>0</mirrorU>
+                      <mirrorV>0</mirrorV>
+                      <noiseU>0</noiseU>
+                      <noiseV>0</noiseV>
+                      <offsetU>0</offsetU>
+                      <offsetV>0</offsetV>
+                      <repeatU>1</repeatU>
+                      <repeatV>1</repeatV>
+                      <rotateFrame>0</rotateFrame>
+                      <rotateUV>0</rotateUV>
+                      <stagger>0</stagger>
+                      <translateFrameU>0</translateFrameU>
+                      <translateFrameV>0</translateFrameV>
+                      <wrapU>1</wrapU>
+                      <wrapV>1</wrapV>
+                    </technique>
+                  </extra>
+                </texture>
+              </bump>
+            </technique>
+          </extra>
         </technique>
       </profile_COMMON>
     </effect>
@@ -74,6 +119,16 @@
           <dgnode_type>kFile</dgnode_type>
           <image_sequence>0</image_sequence>
           <originalMayaNodeId>file2</originalMayaNodeId>
+        </technique>
+      </extra>
+    </image>
+    <image id="file3" name="file3">
+      <init_from>tilting_hokuyo_normals.tif</init_from>
+      <extra>
+        <technique profile="OpenCOLLADAMaya">
+          <dgnode_type>kFile</dgnode_type>
+          <image_sequence>0</image_sequence>
+          <originalMayaNodeId>file3</originalMayaNodeId>
         </technique>
       </extra>
     </image>
@@ -129,7 +184,7 @@
     </geometry>
   </library_geometries>
   <library_visual_scenes>
-    <visual_scene id="VisualSceneNode" name="hokuyo1d">
+    <visual_scene id="VisualSceneNode" name="hokuyo_100430.2">
       <node id="hokuyo_M" name="hokuyo_M" type="NODE">
         <translate sid="translate">0 0 0</translate>
         <rotate sid="rotateZ">0 0 1 0</rotate>
@@ -141,6 +196,7 @@
             <technique_common>
               <instance_material symbol="lambert2SG" target="#lambert3">
                 <bind_vertex_input semantic="TEX0" input_semantic="TEXCOORD" input_set="0"/>
+                <bind_vertex_input semantic="TEX1" input_semantic="TEXCOORD" input_set="0"/>
               </instance_material>
             </technique_common>
           </bind_material>
