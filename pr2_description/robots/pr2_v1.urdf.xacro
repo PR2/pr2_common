@@ -54,11 +54,11 @@
   </xacro:pr2_head_v1>
 
   <!-- Camera package: double stereo, prosilica -->
-  <xacro:pr2_head_sensor_package_v1 name="sensor_mount" hd_name="high_def" 
+  <xacro:pr2_head_sensor_package_v0 name="sensor_mount" hd_name="high_def" 
 			   stereo_name="double_stereo" 
 			   parent="head_plate_frame">
     <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
-  </xacro:pr2_head_sensor_package_v1>
+  </xacro:pr2_head_sensor_package_v0>
 
   <xacro:pr2_tilting_laser_v1 name="laser_tilt" parent="torso_lift_link" laser_calib_ref="0.0">
     <origin xyz="0.09893 0 0.227" rpy="0 0 0" />
@@ -111,19 +111,19 @@
 
   <!-- Forearm cam Position is a guess, based on full robot calibration -->
   <!-- Forearm cam Orientation is from Function -->
-  <xacro:wge100_camera_v1 name="l_forearm_cam" image_format="L8" image_topic_name="l_forearm_cam/image_raw"
+  <xacro:wge100_camera_v0 name="l_forearm_cam" image_format="L8" image_topic_name="l_forearm_cam/image_raw"
                           camera_info_topic_name="l_forearm_cam/camera_info"
                           parent="l_forearm_roll_link" hfov="90" focal_length="320"
                           frame_id="l_forearm_cam_optical_frame" hack_baseline="0"
                           image_width="640" image_height="480">
     <origin xyz=".135 0 .044" rpy="${-M_PI/2} ${-32.25*M_PI/180} 0" />
-  </xacro:wge100_camera_v1>
-  <xacro:wge100_camera_v1 name="r_forearm_cam" image_format="L8" image_topic_name="r_forearm_cam/image_raw"
+  </xacro:wge100_camera_v0>
+  <xacro:wge100_camera_v0 name="r_forearm_cam" image_format="L8" image_topic_name="r_forearm_cam/image_raw"
                           camera_info_topic_name="r_forearm_cam/camera_info"
                           parent="r_forearm_roll_link" hfov="90" focal_length="320"
                           frame_id="r_forearm_cam_optical_frame" hack_baseline="0"
                           image_width="640" image_height="480">
     <origin xyz=".135 0 .044" rpy="${M_PI/2} ${-32.25*M_PI/180} 0" />
-  </xacro:wge100_camera_v1>
+  </xacro:wge100_camera_v0>
 
 </robot>

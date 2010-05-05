@@ -208,9 +208,9 @@
     </joint>
 
     <!-- base laser -->
-    <xacro:hokuyo_lx30_laser_v1 name="${name}_laser" parent="${name}" ros_topic="base_scan" update_rate="20" min_angle="-2.2689" max_angle="2.2689" >
+    <xacro:hokuyo_lx30_laser_v0 name="${name}_laser" parent="${name}" ros_topic="base_scan" update_rate="20" min_angle="-2.2689" max_angle="2.2689" >
       <origin xyz="${base_laser_x} ${base_laser_y} ${base_laser_z}" rpy="0 0 0" />
-    </xacro:hokuyo_lx30_laser_v1>
+    </xacro:hokuyo_lx30_laser_v0>
 
     <!-- all four caster macros -->
     <xacro:pr2_caster_v1 suffix="fl" parent="${name}_link" ref_position="${cal_caster_fl - M_PI/4}" >
