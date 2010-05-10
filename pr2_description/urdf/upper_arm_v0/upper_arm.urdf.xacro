@@ -115,7 +115,7 @@
         <material name="Grey" />
       </visual>
 
-      <collision name="${side}_elbow_flex_collision">
+      <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
           <mesh filename="package://pr2_description/meshes/upper_arm_v0/elbow_flex.stl"  />
@@ -160,11 +160,10 @@
         <material name="RollLinks" />
       </visual>
       <!-- TODO: collision tag should be optional -->
-      <collision name="${side}_forearm_roll_collision">
-        <!-- dummy geom, to be removed -->
+      <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <box size="0.1 0.1 0.1" />
+          <mesh filename="package://pr2_description/meshes/upper_arm_v0/forearm_roll_L.stl"  />
         </geometry>
       </collision>
     </link>

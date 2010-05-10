@@ -34,7 +34,7 @@
           <interface:bumper name="${name}_bumper_iface" />
         </controller:gazebo_ros_bumper>
       </sensor:contact>
-      <material value="Gazebo/White" />
+      <material value="PR2/caster_texture" />
     </gazebo>
     <gazebo>
       <controller:gazebo_ros_p3d name="p3d_base_controller" plugin="libgazebo_ros_p3d.so">
