@@ -117,9 +117,9 @@
         <material name="RollLinks" />
       </visual>
       <collision name="${side}_wrist_roll_collision">
-        <origin xyz="0.0 0 0" rpy="0 0 0" />
-        <geometry name="${side}_wrist_roll_collision_geom">
-          <box size="0.01 0.01 0.01" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry name="${side}_wrist_roll_visual_geom">
+          <mesh filename="package://pr2_description/meshes/forearm_v0/wrist_roll_L.stl" />
         </geometry>
         <verbose value="Yes" />
       </collision>

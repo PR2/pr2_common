@@ -161,10 +161,9 @@
       </visual>
       <!-- TODO: collision tag should be optional -->
       <collision name="${side}_forearm_roll_collision">
-        <!-- dummy geom, to be removed -->
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <box size="0.1 0.1 0.1" />
+          <mesh filename="package://pr2_description/meshes/upper_arm_v0/forearm_roll_L.stl"  />
         </geometry>
       </collision>
     </link>

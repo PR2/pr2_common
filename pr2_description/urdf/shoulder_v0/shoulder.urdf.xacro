@@ -154,10 +154,9 @@
         <material name="RollLinks" />
       </visual>
       <collision name="${side}_upper_arm_roll_collision">
-        <!-- TODO: collision tag should be optional -->
-        <origin xyz="0.0 0 0" rpy="0 0 0" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <box size="0.1 0.1 0.1" />
+          <mesh filename="package://pr2_description/meshes/shoulder_v0/upper_arm_roll_L.stl"  />
         </geometry>
       </collision>
     </link>

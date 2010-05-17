@@ -42,9 +42,8 @@
       </visual>
 
       <collision name="${name}_mount_collision">
-        <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <box size=".001 .001 .001" />
+          <mesh filename="package://pr2_description/meshes/tilting_laser_v0/tilting_hokuyo_L.stl" />
         </geometry>
       </collision>
     </link>
