@@ -53,15 +53,15 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://pr2_description/meshes/shoulder_v0/shoulder_pan.stl"  />
+          <mesh filename="package://pr2_description/meshes/shoulder_v0/shoulder_yaw.stl"  />
         </geometry>
         <material name="Blue" />
       </visual>
 
-      <collision name="${side}_shoulder_pan_collision">
+      <collision>
         <origin xyz="0.0 0 0.0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://pr2_description/meshes/shoulder_v0/shoulder_pan.stl"  />
+          <mesh filename="package://pr2_description/meshes/shoulder_v0/convex/shoulder_yaw_convex.stlb" />
         </geometry>
       </collision>
     </link>
@@ -101,10 +101,10 @@
         <material name="Grey" />
       </visual>
 
-      <collision name="${side}_shoulder_lift_collision">
+      <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://pr2_description/meshes/shoulder_v0/shoulder_lift.stl"  />
+          <mesh filename="package://pr2_description/meshes/shoulder_v0/convex/shoulder_lift_convex.stlb" />
         </geometry>
       </collision>
     </link>
@@ -153,10 +153,11 @@
 
         <material name="RollLinks" />
       </visual>
-      <collision name="${side}_upper_arm_roll_collision">
-        <origin xyz="0 0 0" rpy="0 0 0" />
+      <collision>
+        <!-- TODO: collision tag should be optional -->
+        <origin xyz="0.0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://pr2_description/meshes/shoulder_v0/upper_arm_roll_L.stl"  />
+          <box size="0.1 0.1 0.1" />
         </geometry>
       </collision>
     </link>

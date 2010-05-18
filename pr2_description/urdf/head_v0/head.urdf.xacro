@@ -40,9 +40,9 @@
       </visual>
 
       <collision>
-        <origin xyz="0 0 0.0" rpy="0 0 0 " />
+        <origin xyz="-0.005717  0.010312 -0.029649" rpy="0.0 0.0 0.0 " />
         <geometry>
-          <mesh filename="package://pr2_description/meshes/head_v0/head_pan_L.stl"  />
+          <box size="0.188 0.219 0.137" />
         </geometry>
       </collision>
 
@@ -87,9 +87,9 @@
       </visual>
 
       <collision>
-        <origin xyz="0 0 0" rpy="0.0 0.0 0.0" />
+        <origin xyz="0.041935 0.003569 0.028143" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://pr2_description/meshes/head_v0/head_tilt_L.stl"  />
+          <box size="0.064 0.253 0.181" />
         </geometry>
       </collision>
     </link>

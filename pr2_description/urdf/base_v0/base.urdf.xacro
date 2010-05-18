@@ -67,7 +67,7 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://pr2_description/meshes/base_v0/wheel.stl" />
+          <mesh filename="package://pr2_description/meshes/base_v0/pr2_wheel.stl" />
         </geometry>
         
         <material name="Wheel_${suffix}" />
@@ -117,9 +117,9 @@
       </visual>
 
       <collision>
-        <origin xyz="0 0 0" rpy="0 0 0" />
+        <origin xyz="0 0 0.07" rpy="0.0 0.0 0.0" />
         <geometry>
-          <mesh filename="package://pr2_description/meshes/base_v0/caster_L.stl" />
+          <box size="0.192 0.164 0.013" />
         </geometry>
       </collision>
     </link>
@@ -165,9 +165,11 @@
       </visual>
 
       <collision>
-        <origin xyz="0 0 0" rpy="0 0 0" />
+        <!-- represent base collision with a simple rectangular model, positioned by base_size_z s.t. top
+             surface of the collision box matches the top surface of the PR2 base -->
+        <origin xyz="0 0 ${base_size_z-base_collision_size_z/2}" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://pr2_description/meshes/base_v0/base_L.stl" />
+          <box size="${base_size_x} ${base_size_y} ${base_collision_size_z}" />
         </geometry>
       </collision>
     </link>

@@ -35,15 +35,16 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://pr2_description/meshes/tilting_laser_v0/tilting_hokuyo.stl" />
+          <mesh filename="package://pr2_description/meshes/tilting_laser_v0/hok_tilt.stl" />
         </geometry>
         
         <material name="Red" />
       </visual>
 
-      <collision name="${name}_mount_collision">
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://pr2_description/meshes/tilting_laser_v0/tilting_hokuyo_L.stl" />
+          <box size=".001 .001 .001" />
         </geometry>
       </collision>
     </link>

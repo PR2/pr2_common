@@ -60,15 +60,15 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://pr2_description/meshes/gripper_v0/l_finger.stl" />
+          <mesh filename="package://pr2_description/meshes/gripper_v0/upper_finger_l.stl" />
         </geometry>
         
         <material name="Grey" />
       </visual>
-      <collision name="${prefix}_l_finger_collision">
+      <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://pr2_description/meshes/gripper_v0/l_finger.stl" />
+          <mesh filename="package://pr2_description/meshes/gripper_v0/upper_finger_l.stl" />
         </geometry>
         <verbose value="Yes" />
       </collision>
@@ -99,17 +99,17 @@
                   izz= "0.00018106988" />
       </inertial>
       <visual>
-        <origin xyz="0 0 0" rpy="${M_PI} 0 0" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://pr2_description/meshes/gripper_v0/l_finger.stl" />
+          <mesh filename="package://pr2_description/meshes/gripper_v0/upper_finger_r.stl" />
         </geometry>
         
         <material name="Grey" />
       </visual>
-      <collision name="${prefix}_r_finger_collision">
-        <origin xyz="0 0 0" rpy="${M_PI} 0 0" />
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://pr2_description/meshes/gripper_v0/l_finger.stl" />
+          <mesh filename="package://pr2_description/meshes/gripper_v0/upper_finger_r.stl" />
         </geometry>
         <verbose value="Yes" />
       </collision>
@@ -213,15 +213,15 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://pr2_description/meshes/gripper_v0/l_finger_tip.stl" />
+          <mesh filename="package://pr2_description/meshes/gripper_v0/finger_tip_l.stl" />
         </geometry>
         
         <material name="Green" />
       </visual>
-      <collision name="${prefix}_l_finger_tip_collision">
+      <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://pr2_description/meshes/gripper_v0/l_finger_tip.stl" />
+          <mesh filename="package://pr2_description/meshes/gripper_v0/finger_tip_pad2_l.stl" />
         </geometry>
         <verbose value="Yes" />
       </collision>
@@ -249,17 +249,17 @@
                   izz="0.00001541768" />
       </inertial>
       <visual>
-        <origin xyz="0 0 0" rpy="${M_PI} 0 0" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://pr2_description/meshes/gripper_v0/l_finger_tip.stl"  />
+          <mesh filename="package://pr2_description/meshes/gripper_v0/finger_tip_r.stl" />
         </geometry>
         
         <material name="Green" />
       </visual>
-      <collision name="${prefix}_r_finger_tip_collision">
-        <origin xyz="0 0 0" rpy="${M_PI} 0 0" />
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://pr2_description/meshes/gripper_v0/l_finger_tip.stl"  />
+          <mesh filename="package://pr2_description/meshes/gripper_v0/finger_tip_pad2_r.stl" />
         </geometry>
         <verbose value="Yes" />
       </collision>
@@ -295,7 +295,7 @@
         
         <material name="Red" />
       </visual>
-      <collision name="${side}_gripper_palm_collision">
+      <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
           <mesh filename="package://pr2_description/meshes/gripper_v0/gripper_palm.stl"  />
