@@ -1,0 +1,151 @@
+<?xml version="1.0"?>
+
+<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+       xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <include filename="$(find pr2_description)/urdf/head_v0/head_dae.gazebo.xacro" />
+  <include filename="$(find pr2_description)/urdf/head_v0/head_dae.transmission.xacro" />
+
+  <property name="M_PI" value="3.1415926535897931" />
+
+  <xacro:macro name="pr2_head_pan_dae_v0" params="name parent *origin">
+    <joint name="${name}_joint" type="revolute">
+      <axis xyz="0 0 1" />
+      <limit lower="-3.007" upper="3.007" effort="2.645" velocity="6" /> <!-- alpha tested velocity and effort limits -->
+      <safety_controller k_velocity="1.5" soft_lower_limit="${-3.007+0.15}" soft_upper_limit="${3.007-0.15}" k_position="100" />
+      <!-- hold both reference_position and upper/lower for tick-tock, remove reference_positiion after verifying upper/lower works with calibration controllers.  if search velocity in pr2_calibration_controllers.yaml is +, the reference_position is rising, if - then it is falling -->
+      <calibration reference_position="0.0" rising="0.0" />
+      <dynamics damping="1.0" />
+      <insert_block name="origin" />
+      <parent link="${parent}"/>
+      <child link="${name}_link"/>
+    </joint>
+    <link name="${name}_link">
+      <inertial>
+        <mass value="1.611118" />
+        <origin xyz="-0.005717  0.010312 -0.029649" rpy="0 0 0" />
+        <inertia ixx="0.00482611007"  ixy="-0.000144683999"  ixz="0.000110076136"
+                 iyy="0.005218991412"  iyz="-0.000314239509"  izz="0.008618784925" />
+      </inertial>
+
+      <visual>
+        <origin xyz="0 0 0.0" rpy="0 0 0 " />
+        <geometry>
+          <mesh filename="package://pr2_description/meshes/head_v0/head_pan.dae"  />
+        </geometry>
+        
+        <material name="Blue" />
+      </visual>
+
+      <collision>
+        <geometry>
+          <mesh filename="package://pr2_description/meshes/head_v0/head_pan_L.stl"  />
+        </geometry>
+      </collision>
+
+    </link>
+
+    <!-- extensions -->
+    <xacro:pr2_head_pan_gazebo_dae_v0 name="${name}" />
+    <xacro:pr2_head_pan_transmission_dae_v0 name="${name}" />
+  </xacro:macro>
+
+
+
+  <xacro:macro name="pr2_head_tilt_dae_v0" params="name parent *origin">
+
+    <joint name="${name}_joint" type="revolute">
+      <axis xyz="0 1 0" />
+      <limit lower="-0.471238" upper="1.39626" effort="15" velocity="5" /> <!-- alpha tested velocity and effort limits -->
+      <safety_controller k_velocity="1.5" soft_lower_limit="${-0.4712 + 0.1}" soft_upper_limit="${1.39626 - 0.1}" k_position="100" />
+      <!-- hold both reference_position and upper/lower for tick-tock, remove reference_positiion after verifying upper/lower works with calibration controllers.  if search velocity in pr2_calibration_controllers.yaml is +, the reference_position is rising, if - then it is falling -->
+      <calibration reference_position="${0.0+cal_head_tilt_flag}" falling="${0.0+cal_head_tilt_flag}" />
+      <dynamics damping="1.0" />
+      <insert_block name="origin" />
+      <parent link="${parent}"/>
+      <child link="${name}_link"/>
+    </joint>
+    <link name="${name}_link">
+      <inertial>
+        <mass value="1.749727" />
+        <origin xyz="0.041935 0.003569 0.028143" rpy="0 0 0" />
+        <inertia ixx="0.010602303435"  ixy="-0.000408814235"  ixz="0.00198303894"
+                 iyy="0.011874383747"  iyz="0.000197908779"
+                 izz="0.005516790626" />
+      </inertial>
+
+      <visual>
+        <origin xyz="0 0 0" rpy="0.0 0.0 0.0" />
+        <geometry>
+          <mesh filename="package://pr2_description/meshes/head_v0/head_tilt.dae"  />
+        </geometry>
+        
+        <material name="Green" />
+      </visual>
+
+      <collision>
+        <origin xyz="0 0 0" rpy="0.0 0.0 0.0" />
+        <geometry>
+          <mesh filename="package://pr2_description/meshes/head_v0/head_tilt_L.stl"  />
+        </geometry>
+      </collision>
+    </link>
+
+    <!-- extensions -->
+    <xacro:pr2_head_tilt_gazebo_dae_v0 name="${name}" />
+    <xacro:pr2_head_tilt_transmission_dae_v0 name="${name}" />
+  </xacro:macro>
+
+
+
+  <xacro:macro name="pr2_head_dae_v0" params="name parent *origin">
+    <xacro:pr2_head_pan_dae_v0 name="${name}_pan" parent="${parent}">
+      <insert_block name="origin" />
+    </xacro:pr2_head_pan_dae_v0>
+
+    <xacro:pr2_head_tilt_dae_v0 name="${name}_tilt" parent="${name}_pan_link">
+      <origin xyz="0.068 0 0" rpy="0 0 0" />
+    </xacro:pr2_head_tilt_dae_v0>
+
+    <!-- Head plate frame -->
+    <joint name="${name}_plate_frame_joint" type="fixed">
+      <origin xyz="0.0232 0 0.0645" rpy="0 0 0" />     
+      <parent link="${name}_tilt_link"/>
+      <child link="${name}_plate_frame"/>
+    </joint>
+    <link name="${name}_plate_frame">
+
+      <inertial>
+        <mass value="0.01" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <inertia ixx="0.001"  ixy="0.0"  ixz="0.0"
+                 iyy="0.001"  iyz="0.0"
+                 izz="0.001" />
+      </inertial>
+
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <box size="0.01 0.01 0.01" />
+        </geometry>
+        
+        <material name="Blue" />
+      </visual>
+
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <box size="0.01 0.01 0.01" />
+        </geometry>
+      </collision>
+    </link>
+
+    <!-- extensions -->
+    <xacro:pr2_head_gazebo_dae_v0 name="${name}" />
+    
+  </xacro:macro>
+
+
+</robot>
