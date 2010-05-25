@@ -6,7 +6,6 @@
        xmlns:xacro="http://ros.org/wiki/xacro">
 
   <xacro:macro name="hokuyo_lx30_laser_gazebo_v0" params="name ros_topic update_rate min_angle max_angle">
-<!--
     <gazebo reference="${name}_link">
       <sensor:ray name="${name}">
         <rayCount>640</rayCount>
@@ -33,7 +32,6 @@
         </controller:gazebo_ros_laser>
       </sensor:ray>
     </gazebo>
--->
   </xacro:macro>
 
 </robot>
