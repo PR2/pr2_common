@@ -30,10 +30,15 @@
                       b="${b}"
                       r="${r}"
                       />
+      <!-- if a gazebo joint exists as [l|r]_gripper_joint, use this tag to have
+           gripper transmission apply torque directly to prismatic joint -->
+      <use_simulated_gripper_joint/>
       <passive_joint  name="${side}_gripper_l_finger_joint"     />
       <passive_joint  name="${side}_gripper_r_finger_joint"     />
       <passive_joint  name="${side}_gripper_r_finger_tip_joint" />
       <passive_joint  name="${side}_gripper_l_finger_tip_joint" />
+      <passive_joint  name="${side}_gripper_r_parallel_root_joint" />
+      <passive_joint  name="${side}_gripper_l_parallel_root_joint" />
     </transmission>
 
   </xacro:macro>

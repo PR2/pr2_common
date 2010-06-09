@@ -4,6 +4,7 @@
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
        xmlns:xacro="http://ros.org/wiki/xacro">
 
+  <include filename="$(find pr2_description)/urdf/sensors/hokuyo_lx30_laser.urdf.xacro" />
   <include filename="$(find pr2_description)/urdf/base_v0/base.gazebo.xacro" />
   <include filename="$(find pr2_description)/urdf/base_v0/base.transmission.xacro" />
 
@@ -66,7 +67,7 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://pr2_description/meshes/base_v0/pr2_wheel.stl" />
+          <mesh filename="package://pr2_description/meshes/base_v0/wheel.stl" />
         </geometry>
         
         <material name="Wheel_${suffix}" />
@@ -112,13 +113,13 @@
           <mesh filename="package://pr2_description/meshes/base_v0/caster.stl" />
         </geometry>
         
-        <material name="Green" />
+        <material name="Caster" />
       </visual>
 
       <collision>
-        <origin xyz="0 0 0.07" rpy="0.0 0.0 0.0" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <box size="0.192 0.164 0.013" />
+          <mesh filename="package://pr2_description/meshes/base_v0/caster_L.stl" />
         </geometry>
       </collision>
     </link>
@@ -160,15 +161,13 @@
           <mesh filename="package://pr2_description/meshes/base_v0/base.stl" />
         </geometry>
         
-        <material name="Green" />
+        <material name="White" />
       </visual>
 
       <collision>
-        <!-- represent base collision with a simple rectangular model, positioned by base_size_z s.t. top
-             surface of the collision box matches the top surface of the PR2 base -->
-        <origin xyz="0 0 ${base_size_z-base_collision_size_z/2}" rpy="0 0 0" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <box size="${base_size_x} ${base_size_y} ${base_collision_size_z}" />
+          <mesh filename="package://pr2_description/meshes/base_v0/base_L.stl" />
         </geometry>
       </collision>
     </link>
@@ -188,7 +187,7 @@
           <box size="0.01 0.01 0.01" />
         </geometry>
         
-        <material name="Green" />
+        <material name="White" />
       </visual>
       <collision>
         <!-- represent base collision with a simple rectangular model, positioned by base_size_z s.t. top

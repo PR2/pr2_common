@@ -32,24 +32,24 @@
                  izz="0.0001" />
       </inertial>
 
-      <visual name="${name}_mount_visual">
+      <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry name="${name}_mount_visual_geom">
-          <mesh filename="package://pr2_description/meshes/tilting_laser_v0/hok_tilt.stl" />
+        <geometry>
+          <mesh filename="package://pr2_description/meshes/tilting_laser_v0/tilting_hokuyo.stl" />
         </geometry>
         
         <material name="Red" />
       </visual>
 
-      <collision name="${name}_mount_collision">
+      <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry name="${name}_mount_collision_geom" >
-          <box size=".001 .001 .001" />
+        <geometry>
+          <mesh filename="package://pr2_description/meshes/tilting_laser_v0/tilting_hokuyo_L.stl" />
         </geometry>
       </collision>
     </link>
 
-    <xacro:hokuyo_lx30_laser_v0 name="${name}" parent="${name}_mount" ros_topic="tilt_scan" update_rate="20" min_angle="-1.3962634" max_angle="1.3962634" >
+    <xacro:hokuyo_lx30_laser_v0 name="${name}" parent="${name}_mount" ros_topic="tilt_scan" update_rate="40" min_angle="-1.3962634" max_angle="1.3962634" >
       <origin xyz="0 0 0.03" rpy="0 0 0" />
     </xacro:hokuyo_lx30_laser_v0>
 

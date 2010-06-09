@@ -32,7 +32,7 @@
         <interface:camera name="${name}_iface" />
       </controller:gazebo_ros_prosilica>
     </sensor:camera>
-    <material value="PR2/Blue" />
+    <material value="Gazebo/Black" />
   </gazebo>
 
 </xacro:macro>

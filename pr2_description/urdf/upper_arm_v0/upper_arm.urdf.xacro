@@ -56,19 +56,19 @@
                   izz="${0.5*((reflect+1)*ual_izz+(1-reflect)*uar_izz)}" />
       </inertial>
 
-      <visual name="{side}_upper_arm_visual">
+      <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry name="${side}_upper_arm_visual_geom">
-          <mesh filename="package://pr2_description/meshes/upper_arm_v0/upper_arm.stl" />
+        <geometry>
+          <mesh filename="package://pr2_description/meshes/upper_arm_v0/upper_arm.stl"  />
         </geometry>
 
         <material name="Green" />
       </visual>
 
-      <collision name="${side}_upper_arm_collision">
+      <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry name="${side}_upper_arm_collision_geom">
-          <mesh filename="package://pr2_description/meshes/upper_arm_v0/convex/upper_arm_convex.stlb" />
+        <geometry>
+          <mesh filename="package://pr2_description/meshes/upper_arm_v0/upper_arm.stl"  />
         </geometry>
       </collision>
 
@@ -106,19 +106,19 @@
                   izz="0.00359156824" />
       </inertial>
 
-      <visual name="${side}_elbow_flex_visual">
+      <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry name="${side}_elbow_flex_visual_geom">
-          <mesh filename="package://pr2_description/meshes/upper_arm_v0/elbow_flex.stl" />
+        <geometry>
+          <mesh filename="package://pr2_description/meshes/upper_arm_v0/elbow_flex.stl"  />
         </geometry>
 
         <material name="Grey" />
       </visual>
 
-      <collision name="${side}_elbow_flex_collision">
+      <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry name="${side}_elbow_flex_collision_geom">
-          <mesh filename="package://pr2_description/meshes/upper_arm_v0/convex/elbow_flex_convex.stlb" />
+        <geometry>
+          <mesh filename="package://pr2_description/meshes/upper_arm_v0/elbow_flex.stl"  />
         </geometry>
       </collision>
     </link>
@@ -151,20 +151,19 @@
                   iyy="0.01" iyz="0.00"
                   izz="0.01" />
       </inertial>
-      <visual name="${side}_forearm_roll_visual">
+      <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry name="${side}_forearm_roll_visual_geom">
-          <mesh filename="package://pr2_description/meshes/upper_arm_v0/forearm_roll.stl" />
+        <geometry>
+          <mesh filename="package://pr2_description/meshes/upper_arm_v0/forearm_roll.stl"  />
         </geometry>
 
         <material name="RollLinks" />
       </visual>
       <!-- TODO: collision tag should be optional -->
-      <collision name="${side}_forearm_roll_collision">
-        <!-- dummy geom, to be removed -->
+      <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry name="${side}_forearm_roll_collision_geom">
-          <box size="0.1 0.1 0.1" />
+        <geometry>
+          <mesh filename="package://pr2_description/meshes/upper_arm_v0/forearm_roll_L.stl"  />
         </geometry>
       </collision>
     </link>

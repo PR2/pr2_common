@@ -18,7 +18,7 @@
           <interface:bumper name="${side}_shoulder_pan_gazebo_ros_bumper_iface" />
         </controller:gazebo_ros_bumper>
       </sensor:contact>
-      <material value="PR2/Blue" />
+      <material value="PR2/Grey" />
       <turnGravityOff>true</turnGravityOff>
     </gazebo>
     <gazebo reference="${side}_shoulder_pan_joint">

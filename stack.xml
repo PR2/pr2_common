@@ -2,12 +2,12 @@
   <description brief="PR2 robot description and PR2-specific messages">
     URDF description of the robot kinematics and dynamics, 3D models of robot components, information required for gazebo to simulate the PR2, and messages specific to the PR2 such as detailed information about its power board and fingertip pressure sensors.
   </description>
-  <author>Maintained by Eric Berger</author>
+  <author>Maintained by John Hsu</author>
   <license>BSD</license>  
   <review status="Doc reviewed" notes="2010/01/18"/>
   <url>http://ros.org/wiki/pr2_common</url>
   <depend stack="common_msgs" /> <!-- geometry_msgs -->
   <depend stack="robot_model" /> <!-- convex_decomposition, ivcon, urdf -->
-  <depend stack="ros" /> <!-- rostest, std_msgs, rosbagmigration -->
+  <depend stack="ros" /> <!-- std_msgs, rostest, rospy, rosbagmigration -->
 
 </stack>
