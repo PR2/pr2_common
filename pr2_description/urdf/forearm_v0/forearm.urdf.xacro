@@ -31,18 +31,18 @@
                  izz="0.01659310749" />
       </inertial>
 
-      <visual name="${side}_forearm_visual">
+      <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry name="${side}_forearm_visual_geom">
+        <geometry>
           <mesh filename="package://pr2_description/meshes/forearm_v0/forearm.stl" />
         </geometry>
 
         <material name="Blue" />
       </visual>
 
-      <collision name="${side}_forearm_collision">
+      <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry name="${side}_forearm_collision_geom">
+        <geometry>
           <mesh filename="package://pr2_description/meshes/forearm_v0/convex/forearm_convex.stlb" />
         </geometry>
       </collision>
@@ -70,18 +70,18 @@
                  izz="0.00064450498" />
       </inertial>
 
-      <visual name="${side}_wrist_flex_visual">
+      <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry name="${side}_wrist_flex_visual_geom">
+        <geometry>
           <mesh filename="package://pr2_description/meshes/forearm_v0/wrist_flex.stl" />
         </geometry>
 
         <material name="Grey" />
       </visual>
 
-      <collision name="${side}_wrist_flex_collision">
+      <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry name="${side}_wrist_flex_collision_geom">
+        <geometry>
           <mesh filename="package://pr2_description/meshes/forearm_v0/convex/wrist_flex_convex.stlb" />
         </geometry>
       </collision>
@@ -108,17 +108,17 @@
                  iyy="0.01" iyz="0"
                  izz="0.01" />
       </inertial>
-      <visual name="${side}_wrist_roll_visual">
+      <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry name="${side}_wrist_roll_visual_geom">
+        <geometry>
           <mesh filename="package://pr2_description/meshes/forearm_v0/wrist_roll.stl" />
         </geometry>
 
         <material name="RollLinks" />
       </visual>
-      <collision name="${side}_wrist_roll_collision">
+      <collision>
         <origin xyz="0.0 0 0" rpy="0 0 0" />
-        <geometry name="${side}_wrist_roll_collision_geom">
+        <geometry>
           <box size="0.01 0.01 0.01" />
         </geometry>
         <verbose value="Yes" />

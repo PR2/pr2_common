@@ -22,7 +22,7 @@
   <property name="finger_tip_mu"              value="500.0" />
   <property name="finger_mu"                  value="500.0" />
 
-  <xacro:macro name="pr2_finger_gazebo_v0" params="prefix">
+  <xacro:macro name="pr2_finger_gazebo_v0" params="prefix parallel_link_x_offset parallel_link_y_offset">
 
     <!-- Finger proximal digit -->
 
@@ -154,6 +154,38 @@
       <provideFeedback value="true"/>
     </gazebo>
 
+    <!-- parallel link for simulating gripper constraints -->
+    <gazebo>
+      <joint:hinge name="${prefix}_r_parallel_tip_joint">
+          <body1>${prefix}_r_parallel_link</body1>
+          <body2>${prefix}_r_finger_tip_link</body2>
+          <anchor>${prefix}_r_finger_tip_link</anchor>
+          <axis>0 0 1</axis>
+          <anchorOffset>${parallel_link_x_offset} ${-parallel_link_y_offset} 0</anchorOffset>
+      </joint:hinge>
+      <joint:hinge name="${prefix}_l_parallel_tip_joint">
+          <body1>${prefix}_l_parallel_link</body1>
+          <body2>${prefix}_l_finger_tip_link</body2>
+          <anchor>${prefix}_l_finger_tip_link</anchor>
+          <axis>0 0 1</axis>
+          <anchorOffset>${parallel_link_x_offset} ${parallel_link_y_offset} 0</anchorOffset>
+      </joint:hinge>
+      <joint:slider name="${prefix}_simulated_joint">
+          <body1>${prefix}_l_finger_tip_link</body1>
+          <body2>${prefix}_r_finger_tip_link</body2>
+          <anchor>${prefix}_r_finger_tip_link</anchor>
+          <axis>0 1 0</axis>
+      </joint:slider>
+    </gazebo>
+    <gazebo reference="${prefix}_l_parallel_link">
+      <turnGravityOff>true</turnGravityOff>
+      <material value="PR2/Red" />
+    </gazebo>
+    <gazebo reference="${prefix}_r_parallel_link">
+      <turnGravityOff>true</turnGravityOff>
+      <material value="PR2/Red" />
+    </gazebo>
+
   </xacro:macro>
 
 
@@ -175,76 +207,6 @@
       <material value="PR2/Red" />
     </gazebo>
 
-    <!-- floating link for simulating gripper constraints -->
-    <gazebo reference="${side}_gripper_float_link">
-      <turnGravityOff>true</turnGravityOff>
-      <material value="PR2/White" />
-    </gazebo>
-    <gazebo>
-      <!-- floating link for enforcing gripper constraints -->
-      <body:box name="${side}_gripper_float_link">
-          <massMatrix>true</massMatrix>
-          <mass>0.01</mass>
-          <ixx>0.0001</ixx>
-          <ixy>0</ixy>
-          <ixz>0</ixz>
-          <iyy>0.0001</iyy>
-          <iyz>0</iyz>
-          <izz>0.0001</izz>
-          <cx>0</cx>
-          <cy>0</cy>
-          <cz>0</cz>
-          <xyz>0.82025 0.188 0.790675</xyz>
-          <rpy>0 -0 0</rpy>
-          <geom:box name="${side}_gripper_float_link_geom">
-              <xyz>0 0 0</xyz>
-              <rpy>0 -0 0</rpy>
-              <size>0.0 0.0 0.0</size>
-              <visual>
-                  <xyz>0 0 0</xyz>
-                  <rpy>0 -0 0</rpy>
-                  <scale>0.0 0.0 0.0</scale>
-                  <mesh>unit_box</mesh>
-                  <material>PR2/White</material>
-              </visual>
-          </geom:box>
-          <turnGravityOff>true</turnGravityOff>
-          <selfCollide>false</selfCollide>
-      </body:box>
-      <joint:slider name="${side}_gripper_float_joint">
-          <body1>${side}_gripper_float_link</body1>
-          <body2>${side}_gripper_palm_link</body2>
-          <anchor>${side}_gripper_float_link</anchor>
-          <axis>1 0 0</axis>
-          <lowStop>-0.05</lowStop>
-          <highStop>0.001</highStop>
-      </joint:slider>
-      <joint:slider name="${side}_gripper_l_finger_tip_slider_joint">
-          <body1>${side}_gripper_l_finger_tip_link</body1>
-          <body2>${side}_gripper_float_link</body2>
-          <anchor>${side}_gripper_l_finger_tip_link</anchor>
-          <axis>0 1 0</axis>
-          <anchorOffset>0 0 0</anchorOffset>
-      </joint:slider>
-      <joint:slider name="${side}_gripper_r_finger_tip_slider_joint">
-          <body1>${side}_gripper_r_finger_tip_link</body1>
-          <body2>${side}_gripper_float_link</body2>
-          <anchor>${side}_gripper_r_finger_tip_link</anchor>
-          <axis>0 1 0</axis>
-          <anchorOffset>0 0 0</anchorOffset>
-      </joint:slider>
-      <!--
-      <joint:slider name="${side}_gripper_finger_tip_slider_joint">
-          <body1>${side}_gripper_l_finger_tip_link</body1>
-          <body2>${side}_gripper_r_finger_tip_link</body2>
-          <anchor>${side}_gripper_l_finger_tip_link</anchor>
-          <axis>0 1 0</axis>
-          <anchorOffset>0 0 0</anchorOffset>
-          <lowStop>0.0</lowStop>
-          <highStop>0.08</highStop>
-      </joint:slider>
-      -->
-    </gazebo>
     <gazebo>
       <controller:gazebo_ros_p3d name="p3d_${side}_gripper_palm_controller" plugin="libgazebo_ros_p3d.so">
         <alwaysOn>true</alwaysOn>
@@ -257,22 +219,6 @@
         <frameName>map</frameName>
         <interface:position name="p3d_${side}_gripper_palm_position_iface" />
       </controller:gazebo_ros_p3d>
-      <controller:gazebo_ros_p3d name="p3d_${side}_gripper_tool_frame" plugin="libgazebo_ros_p3d.so">
-        <alwaysOn>true</alwaysOn>
-        <updateRate>100.0</updateRate>
-        <bodyName>${side}_gripper_tool_frame</bodyName>
-        <topicName>${side}_gripper_tool_frame_pose_ground_truth</topicName>
-        <xyzOffsets>0 0 0</xyzOffsets>
-        <rpyOffsets>0 0 0</rpyOffsets>
-        <gaussianNoise>0.0</gaussianNoise>
-        <frameName>/map</frameName>
-        <interface:position name="p3d_${side}_gripper_tool_frame_position_iface" />
-      </controller:gazebo_ros_p3d>
-    </gazebo>
-
-    <gazebo reference="${side}_gripper_tool_frame">
-      <turnGravityOff>true</turnGravityOff>
-      <material value="PR2/Grey" />
     </gazebo>
 
   </xacro:macro>
