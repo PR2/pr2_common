@@ -27,10 +27,6 @@
     <param name="robot_meshes/upper_arm_v0/forearm_roll_L.stl" binfile="$(find pr2_description)/meshes/upper_arm_v0/forearm_roll_L.stl" />
 
     <!-- collada meshes -->
-    <param name="robot_meshes/base_v0/base_M_UV.dae" textfile="$(find pr2_description)/meshes/base_v0/base_M_UV.dae" />
-    <param name="robot_meshes/forearm_v0/forearm_M_UV.dae" textfile="$(find pr2_description)/meshes/forearm_v0/forearm_M_UV.dae" />
-    <param name="robot_meshes/upper_arm_v0/upperarm_M_UV.dae" textfile="$(find pr2_description)/meshes/upper_arm_v0/upperarm_M_UV.dae" />
-    <param name="robot_meshes/head_v0/headtilt_M_UV.dae" textfile="$(find pr2_description)/meshes/head_v0/headtilt_M_UV.dae" />
     <param name="robot_meshes/base_v0/base.dae" textfile="$(find pr2_description)/meshes/base_v0/base.dae" />
     <param name="robot_meshes/base_v0/wheel.dae" textfile="$(find pr2_description)/meshes/base_v0/wheel.dae" />
     <param name="robot_meshes/base_v0/wheel_h.dae" textfile="$(find pr2_description)/meshes/base_v0/wheel_h.dae" />
@@ -38,14 +34,10 @@
     <param name="robot_meshes/head_v0/head_tilt.dae" textfile="$(find pr2_description)/meshes/head_v0/head_tilt.dae" />
     <param name="robot_meshes/forearm_v0/forearm.dae" textfile="$(find pr2_description)/meshes/forearm_v0/forearm.dae" />
     <param name="robot_meshes/forearm_v0/wrist_flex.dae" textfile="$(find pr2_description)/meshes/forearm_v0/wrist_flex.dae" />
-    <param name="robot_meshes/gripper_v0/finger_H_UV_100430.dae" textfile="$(find pr2_description)/meshes/gripper_v0/finger_H_UV_100430.dae" />
-    <param name="robot_meshes/gripper_v0/finger_tip_H_UV_100430.dae" textfile="$(find pr2_description)/meshes/gripper_v0/finger_tip_H_UV_100430.dae" />
-    <param name="robot_meshes/gripper_v0/float_H_UV_100430.dae" textfile="$(find pr2_description)/meshes/gripper_v0/float_H_UV_100430.dae" />
     <param name="robot_meshes/gripper_v0/gripper_palm.dae" textfile="$(find pr2_description)/meshes/gripper_v0/gripper_palm.dae" />
     <param name="robot_meshes/gripper_v0/l_finger.dae" textfile="$(find pr2_description)/meshes/gripper_v0/l_finger.dae" />
     <param name="robot_meshes/gripper_v0/l_finger_tip.dae" textfile="$(find pr2_description)/meshes/gripper_v0/l_finger_tip.dae" />
     <param name="robot_meshes/gripper_v0/l_float.dae" textfile="$(find pr2_description)/meshes/gripper_v0/l_float.dae" />
-    <param name="robot_meshes/gripper_v0/palm_H_UV_100430.dae" textfile="$(find pr2_description)/meshes/gripper_v0/palm_H_UV_100430.dae" />
     <param name="robot_meshes/shoulder_v0/shoulder_lift.dae" textfile="$(find pr2_description)/meshes/shoulder_v0/shoulder_lift.dae" />
     <param name="robot_meshes/shoulder_v0/shoulder_pan.dae" textfile="$(find pr2_description)/meshes/shoulder_v0/shoulder_pan.dae" />
     <param name="robot_meshes/shoulder_v0/upper_arm_roll.dae" textfile="$(find pr2_description)/meshes/shoulder_v0/upper_arm_roll.dae" />
