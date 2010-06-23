@@ -60,7 +60,7 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://pr2_description/meshes/gripper_v0/l_finger.stl" />
+          <mesh filename="package://pr2_description/meshes/gripper_v0/l_finger.dae" />
         </geometry>
         
         <material name="Grey" />
@@ -101,7 +101,7 @@
       <visual>
         <origin xyz="0 0 0" rpy="${M_PI} 0 0" />
         <geometry>
-          <mesh filename="package://pr2_description/meshes/gripper_v0/l_finger.stl" />
+          <mesh filename="package://pr2_description/meshes/gripper_v0/l_finger.dae" />
         </geometry>
         
         <material name="Grey" />
@@ -217,7 +217,7 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://pr2_description/meshes/gripper_v0/l_finger_tip.stl" />
+          <mesh filename="package://pr2_description/meshes/gripper_v0/l_finger_tip.dae" />
         </geometry>
         
         <material name="Green" />
@@ -255,7 +255,7 @@
       <visual>
         <origin xyz="0 0 0" rpy="${M_PI} 0 0" />
         <geometry>
-          <mesh filename="package://pr2_description/meshes/gripper_v0/l_finger_tip.stl"  />
+          <mesh filename="package://pr2_description/meshes/gripper_v0/l_finger_tip.dae"  />
         </geometry>
         
         <material name="Green" />
@@ -294,7 +294,7 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://pr2_description/meshes/gripper_v0/gripper_palm.stl"  />
+          <mesh filename="package://pr2_description/meshes/gripper_v0/gripper_palm.dae"  />
         </geometry>
         
         <material name="Red" />

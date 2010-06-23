@@ -42,7 +42,6 @@
       <mu2 value="${finger_mu}" />
       <kp value="1000000.0" />
       <kd value="1.0" />
-      <material value="PR2/Grey" />
       <!-- for "${prefix}_l_finger_joint"-->
     </gazebo>
     <gazebo reference="${prefix}_l_finger_joint">
@@ -70,7 +69,6 @@
       <mu2 value="${finger_mu}" />
       <kp value="1000000.0" />
       <kd value="1.0" />
-      <material value="PR2/Grey" />
     </gazebo>
     <gazebo reference="${prefix}_r_finger_joint">
       <stopKd value="${finger_stop_kd}" />
@@ -98,7 +96,6 @@
       <mu2 value="${finger_tip_mu}" />
       <kp  value="10000000.0" />
       <kd  value="1.0" />
-      <material value="PR2/Grey" />
     </gazebo>
     <gazebo reference="${prefix}_l_finger_tip_joint">
       <stopKd value="${finger_stop_kd}" />
@@ -126,7 +123,6 @@
       <mu2 value="${finger_tip_mu}" />
       <kp  value="10000000.0" />
       <kd  value="1.0" />
-      <material value="PR2/Grey" />
     </gazebo>
     <gazebo>
       <controller:gazebo_ros_p3d name="p3d_${prefix}_l_finger_controller" plugin="libgazebo_ros_p3d.so">
@@ -204,7 +200,6 @@
           <interface:bumper name="${side}_gripper_palm_gazebo_ros_bumper_iface" />
         </controller:gazebo_ros_bumper>
       </sensor:contact>
-      <material value="PR2/Grey" />
     </gazebo>
 
     <gazebo>

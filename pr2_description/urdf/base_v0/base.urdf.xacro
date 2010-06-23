@@ -67,7 +67,7 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://pr2_description/meshes/base_v0/wheel.stl" />
+          <mesh filename="package://pr2_description/meshes/base_v0/wheel.dae" />
         </geometry>
         
         <material name="Wheel_${suffix}" />
@@ -158,7 +158,7 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://pr2_description/meshes/base_v0/base.stl" />
+          <mesh filename="package://pr2_description/meshes/base_v0/base.dae" />
         </geometry>
         
         <material name="White" />

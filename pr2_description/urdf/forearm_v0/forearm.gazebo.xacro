@@ -34,7 +34,6 @@
           <interface:bumper name="${side}_wrist_flex_gazebo_ros_bumper_iface" />
         </controller:gazebo_ros_bumper>
       </sensor:contact>
-      <material value="PR2/Grey" />
     </gazebo>
     <gazebo reference="${side}_wrist_flex_joint">
       <stopKd value="1.0" />
