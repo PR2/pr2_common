@@ -33,14 +33,13 @@
       <visual>
         <origin xyz="0 0 0.0" rpy="0 0 0 " />
         <geometry>
-          <mesh filename="package://pr2_description/meshes/head_v0/head_pan.stl"  />
+          <mesh filename="package://pr2_description/meshes/head_v0/head_pan.dae"  />
         </geometry>
         
         <material name="Blue" />
       </visual>
 
       <collision>
-        <origin xyz="0 0 0.0" rpy="0 0 0 " />
         <geometry>
           <mesh filename="package://pr2_description/meshes/head_v0/head_pan_L.stl"  />
         </geometry>
@@ -80,7 +79,7 @@
       <visual>
         <origin xyz="0 0 0" rpy="0.0 0.0 0.0" />
         <geometry>
-          <mesh filename="package://pr2_description/meshes/head_v0/head_tilt.stl"  />
+          <mesh filename="package://pr2_description/meshes/head_v0/head_tilt.dae"  />
         </geometry>
         
         <material name="Green" />

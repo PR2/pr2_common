@@ -22,7 +22,10 @@
   <property name="finger_tip_mu"              value="500.0" />
   <property name="finger_mu"                  value="500.0" />
 
-  <xacro:macro name="pr2_finger_gazebo_v0" params="prefix parallel_link_x_offset parallel_link_y_offset">
+  <property name="parallel_link_x_offset"     value="-0.018" />
+  <property name="parallel_link_y_offset"     value="0.021" />
+
+  <xacro:macro name="pr2_finger_gazebo_v0" params="prefix reflect">
 
     <!-- Finger proximal digit -->
 
@@ -42,7 +45,6 @@
       <mu2 value="${finger_mu}" />
       <kp value="1000000.0" />
       <kd value="1.0" />
-      <material value="PR2/Grey" />
       <!-- for "${prefix}_l_finger_joint"-->
     </gazebo>
     <gazebo reference="${prefix}_l_finger_joint">
@@ -70,7 +72,6 @@
       <mu2 value="${finger_mu}" />
       <kp value="1000000.0" />
       <kd value="1.0" />
-      <material value="PR2/Grey" />
     </gazebo>
     <gazebo reference="${prefix}_r_finger_joint">
       <stopKd value="${finger_stop_kd}" />
@@ -98,7 +99,6 @@
       <mu2 value="${finger_tip_mu}" />
       <kp  value="10000000.0" />
       <kd  value="1.0" />
-      <material value="PR2/Grey" />
     </gazebo>
     <gazebo reference="${prefix}_l_finger_tip_joint">
       <stopKd value="${finger_stop_kd}" />
@@ -126,7 +126,6 @@
       <mu2 value="${finger_tip_mu}" />
       <kp  value="10000000.0" />
       <kd  value="1.0" />
-      <material value="PR2/Grey" />
     </gazebo>
     <gazebo>
       <controller:gazebo_ros_p3d name="p3d_${prefix}_l_finger_controller" plugin="libgazebo_ros_p3d.so">
@@ -156,6 +155,60 @@
 
     <!-- parallel link for simulating gripper constraints -->
     <gazebo>
+      <body:box name="${prefix}_l_parallel_link">
+          <massMatrix>true</massMatrix>
+          <mass>0.17126</mass>
+          <ixx>7.7562e-05</ixx>
+          <ixy>1.49095e-06</ixy>
+          <ixz>-9.83385e-06</ixz>
+          <iyy>0.000197083</iyy>
+          <iyz>-3.06125e-06</iyz>
+          <izz>0.000181054</izz>
+          <cx>0.03598</cx>
+          <cy>0.0173</cy>
+          <cz>-0.00164</cz>
+          <xyz>0.82991 ${0.188*reflect+0.031} 0.790675</xyz>
+          <rpy>0 -0 0</rpy>
+          <turnGravityOff>true</turnGravityOff>
+          <selfCollide>false</selfCollide>
+      </body:box>
+      <body:box name="${prefix}_r_parallel_link">
+          <massMatrix>true</massMatrix>
+          <mass>0.17389</mass>
+          <ixx>7.73841e-05</ixx>
+          <ixy>-2.09309e-06</ixy>
+          <ixz>-8.36228e-06</ixz>
+          <iyy>0.000198474</iyy>
+          <iyz>2.4611e-06</iyz>
+          <izz>0.00018107</izz>
+          <cx>0.03576</cx>
+          <cy>-0.01736</cy>
+          <cz>-0.00095</cz>
+          <xyz>0.82991 ${0.188*reflect-0.031} 0.790675</xyz>
+          <rpy>0 -0 0</rpy>
+          <turnGravityOff>true</turnGravityOff>
+          <selfCollide>false</selfCollide>
+      </body:box>
+    </gazebo>
+
+
+    <gazebo>
+      <joint:hinge name="${prefix}_r_parallel_root_joint">
+          <body1>${prefix}_r_parallel_link</body1>
+          <body2>${prefix}_palm_link</body2>
+          <anchor>${prefix}_palm_link</anchor>
+          <axis>0 0 -1</axis>
+          <damping>0.2</damping>
+          <anchorOffset>${0.07691+parallel_link_x_offset} ${-0.01-parallel_link_y_offset} 0</anchorOffset>
+      </joint:hinge>
+      <joint:hinge name="${prefix}_l_parallel_root_joint">
+          <body1>${prefix}_l_parallel_link</body1>
+          <body2>${prefix}_palm_link</body2>
+          <anchor>${prefix}_palm_link</anchor>
+          <axis>0 0 1</axis>
+          <damping>0.2</damping>
+          <anchorOffset>${0.07691+parallel_link_x_offset} ${0.01+parallel_link_y_offset} 0</anchorOffset>
+      </joint:hinge>
       <joint:hinge name="${prefix}_r_parallel_tip_joint">
           <body1>${prefix}_r_parallel_link</body1>
           <body2>${prefix}_r_finger_tip_link</body2>
@@ -204,7 +257,6 @@
           <interface:bumper name="${side}_gripper_palm_gazebo_ros_bumper_iface" />
         </controller:gazebo_ros_bumper>
       </sensor:contact>
-      <material value="PR2/Grey" />
     </gazebo>
 
     <gazebo>

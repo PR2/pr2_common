@@ -53,7 +53,7 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://pr2_description/meshes/shoulder_v0/shoulder_pan.stl"  />
+          <mesh filename="package://pr2_description/meshes/shoulder_v0/shoulder_pan.dae"  />
         </geometry>
         <material name="Blue" />
       </visual>
@@ -96,7 +96,7 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://pr2_description/meshes/shoulder_v0/shoulder_lift.stl"  />
+          <mesh filename="package://pr2_description/meshes/shoulder_v0/shoulder_lift.dae"  />
         </geometry>
         <material name="Grey" />
       </visual>

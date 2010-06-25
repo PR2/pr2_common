@@ -38,7 +38,6 @@
           <interface:bumper name="${side}_elbow_flex_gazebo_ros_bumper_iface" />
         </controller:gazebo_ros_bumper>
       </sensor:contact>
-      <material value="PR2/Grey" />
       <turnGravityOff>true</turnGravityOff>
     </gazebo>
     <gazebo reference="${side}_elbow_flex_joint">

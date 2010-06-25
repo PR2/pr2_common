@@ -59,7 +59,7 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://pr2_description/meshes/upper_arm_v0/upper_arm.stl"  />
+          <mesh filename="package://pr2_description/meshes/upper_arm_v0/upper_arm.dae"  />
         </geometry>
 
         <material name="Green" />
@@ -109,7 +109,7 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://pr2_description/meshes/upper_arm_v0/elbow_flex.stl"  />
+          <mesh filename="package://pr2_description/meshes/upper_arm_v0/elbow_flex.dae"  />
         </geometry>
 
         <material name="Grey" />

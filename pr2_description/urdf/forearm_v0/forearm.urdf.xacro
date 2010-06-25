@@ -34,7 +34,7 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://pr2_description/meshes/forearm_v0/forearm.stl" />
+          <mesh filename="package://pr2_description/meshes/forearm_v0/forearm.dae" />
        </geometry>
 
         <material name="Grey" />
@@ -73,7 +73,7 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://pr2_description/meshes/forearm_v0/wrist_flex.stl" />
+          <mesh filename="package://pr2_description/meshes/forearm_v0/wrist_flex.dae" />
         </geometry>
 
         <material name="Grey" />
