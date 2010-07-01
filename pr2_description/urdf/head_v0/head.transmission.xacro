@@ -8,7 +8,7 @@
 
   <xacro:macro name="pr2_head_pan_transmission_v0" params="name">
 
-    <transmission type="SimpleTransmission" name="${name}_trans">
+    <transmission type="pr2_mechanism_model/SimpleTransmission" name="${name}_trans">
       <actuator name="${name}_motor" />
       <joint name="${name}_joint" />
       <mechanicalReduction>6.0</mechanicalReduction>
@@ -20,7 +20,7 @@
 
   <xacro:macro name="pr2_head_tilt_transmission_v0" params="name">
 
-    <transmission type="SimpleTransmission" name="${name}_trans">
+    <transmission type="pr2_mechanism_model/SimpleTransmission" name="${name}_trans">
       <actuator name="${name}_motor" />
       <joint name="${name}_joint" />
       <mechanicalReduction>6.0</mechanicalReduction>

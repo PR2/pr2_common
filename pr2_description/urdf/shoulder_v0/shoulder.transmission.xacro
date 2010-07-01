@@ -7,14 +7,14 @@
   <xacro:macro name="pr2_shoulder_transmission_v0" params="side">
 
     <!-- Shoulder pan -->
-    <transmission type="SimpleTransmission" name="${side}_shoulder_pan_trans">
+    <transmission type="pr2_mechanism_model/SimpleTransmission" name="${side}_shoulder_pan_trans">
       <actuator name="${side}_shoulder_pan_motor" />
       <joint name="${side}_shoulder_pan_joint" />
       <mechanicalReduction>${13/3 * 250.532/17.19 / cal_r_shoulder_pan_gearing}</mechanicalReduction>
     </transmission>
 
     <!-- Shoulder lift -->
-    <transmission type="SimpleTransmission" name="${side}_shoulder_lift_trans">
+    <transmission type="pr2_mechanism_model/SimpleTransmission" name="${side}_shoulder_lift_trans">
       <actuator name="${side}_shoulder_lift_motor" />
       <joint name="${side}_shoulder_lift_joint" />
       <mechanicalReduction>${13/3 * 245.532/17.19 / cal_r_shoulder_lift_gearing}</mechanicalReduction>
@@ -23,7 +23,7 @@
 
   <xacro:macro name="pr2_upper_arm_roll_transmission_v0" params="side" >
         <!-- Upperarm roll: internal fixed attchment point for upper arm -->
-    <transmission type="SimpleTransmission" name="${side}_upper_arm_roll_trans">
+    <transmission type="pr2_mechanism_model/SimpleTransmission" name="${side}_upper_arm_roll_trans">
       <actuator name="${side}_upper_arm_roll_motor" />
       <joint name="${side}_upper_arm_roll_joint" />
       <mechanicalReduction>${13/3 * 129.53/17.19 / cal_r_upper_arm_roll_gearing}</mechanicalReduction>

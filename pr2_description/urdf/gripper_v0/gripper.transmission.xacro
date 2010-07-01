@@ -15,7 +15,7 @@
     <!-- the transmission function.                                                          -->
     <!-- Please refer to mechanism_model/src/pr2_gripper_transmission.cpp for implementation.-->
     <!-- gazebo_mimic_pid is for sim only.                                                   -->
-    <transmission type="PR2GripperTransmission" name="${side}_gripper_trans" >
+    <transmission type="pr2_mechanism_model/PR2GripperTransmission" name="${side}_gripper_trans" >
       <actuator       name="${side}_gripper_motor" />
       <gap_joint      name="${side}_gripper_joint"
                       mechanical_reduction="1.0"
