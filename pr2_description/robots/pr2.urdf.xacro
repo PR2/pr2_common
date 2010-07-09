@@ -26,6 +26,8 @@
   <include filename="$(find pr2_description)/urdf/sensors/head_sensor_package.urdf.xacro" />
   <!-- Camera sensors -->
   <include filename="$(find pr2_description)/urdf/sensors/wge100_camera.urdf.xacro" />
+  <!-- Texture projector -->
+  <include filename="$(find pr2_description)/urdf/sensors/projector_wg6802418.urdf.xacro" />
   <!-- generic simulator_gazebo plugins for starting mechanism control, ros time, ros battery -->
   <include filename="$(find pr2_description)/gazebo/gazebo.urdf.xacro" />
   <!-- materials for visualization -->
@@ -59,6 +61,12 @@
 			   parent="head_plate_frame">
     <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
   </xacro:pr2_head_sensor_package_v0>
+
+  <!-- Projector -->
+  <xacro:projector_wg6802418_v0 name="projector_wg6802418" parent="head_plate_frame" >
+    <!-- Camera is slightly recessed from front, where is camera origin? Lens? -->
+    <origin xyz="0 0.109 0.035" rpy="0 0 0" />        
+  </xacro:projector_wg6802418_v0>
 
   <xacro:pr2_tilting_laser_v0 name="laser_tilt" parent="torso_lift_link" laser_calib_ref="0.0">
     <origin xyz="0.09893 0 0.227" rpy="0 0 0" />

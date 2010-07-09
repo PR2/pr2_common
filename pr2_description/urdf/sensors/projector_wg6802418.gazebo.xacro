@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<root xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+      xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+      xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+      xmlns:xacro="http://ros.org/wiki/xacro">
+  
+<xacro:macro name="projector_wg6802418_gazebo_v0" params="name">
+  <gazebo>
+    <controller:gazebo_ros_projector name="${name}_controller" plugin="libgazebo_ros_projector.so">
+        <alwaysOn>true</alwaysOn>
+        <updateRate>15.0</updateRate>
+        <textureName>stereo_projection_pattern_high_res_red.png</textureName>
+        <bodyName>${name}_child_frame</bodyName>
+        <filterTextureName>stereo_projection_pattern_filter.png</filterTextureName>        
+        <textureTopicName>${name}_controller/image</textureTopicName>
+        <projectorTopicName>${name}_controller/projector</projectorTopicName>        
+        <fov>${M_PI/4}</fov>
+        <nearClipDist>0.4</nearClipDist>
+        <farClipDist>10</farClipDist>
+    </controller:gazebo_ros_projector>
+  </gazebo>
+
+</xacro:macro>
+
+</root>

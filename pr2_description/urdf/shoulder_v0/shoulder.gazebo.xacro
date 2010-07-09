@@ -8,16 +8,6 @@
 
     <!-- Shoulder pan -->
     <gazebo reference="${side}_shoulder_pan_link">
-      <sensor:contact name="${side}_shoulder_pan_contact_sensor">
-        <geom>${side}_shoulder_pan_link_geom</geom>
-        <updateRate>100.0</updateRate>
-        <controller:gazebo_ros_bumper name="${side}_shoulder_pan_gazebo_ros_bumper_controller" plugin="libgazebo_ros_bumper.so">
-          <alwaysOn>true</alwaysOn>
-          <updateRate>100.0</updateRate>
-          <bumperTopicName>${side}_shoulder_pan_bumper</bumperTopicName>
-          <interface:bumper name="${side}_shoulder_pan_gazebo_ros_bumper_iface" />
-        </controller:gazebo_ros_bumper>
-      </sensor:contact>
       <turnGravityOff>true</turnGravityOff>
     </gazebo>
     <gazebo reference="${side}_shoulder_pan_joint">
@@ -27,16 +17,6 @@
 
     <!-- Shoulder lift -->
     <gazebo reference="${side}_shoulder_lift_link">
-      <sensor:contact name="${side}_shoulder_lift_contact_sensor">
-        <geom>${side}_shoulder_lift_link_geom</geom>
-        <updateRate>100.0</updateRate>
-        <controller:gazebo_ros_bumper name="${side}_shoulder_lift_gazebo_ros_bumper_controller" plugin="libgazebo_ros_bumper.so">
-          <alwaysOn>true</alwaysOn>
-          <updateRate>100.0</updateRate>
-          <bumperTopicName>${side}_r_shoulder_lift_bumper</bumperTopicName>
-          <interface:bumper name="${side}_shoulder_lift_gazebo_ros_bumper_iface" />
-        </controller:gazebo_ros_bumper>
-      </sensor:contact>
       <turnGravityOff>true</turnGravityOff>
     </gazebo>
     <gazebo reference="${side}_shoulder_lift_joint">

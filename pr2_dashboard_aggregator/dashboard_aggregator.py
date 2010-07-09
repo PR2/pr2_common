@@ -90,7 +90,10 @@ def main():
   r = rospy.Rate(1)
   while not rospy.is_shutdown():
     da.publish()
-    r.sleep()
+    try:
+      r.sleep()
+    except rospy.exceptions.ROSInterruptException:
+      rospy.logdebug('Sleep interrupted')
 
 if __name__ == "__main__":
   main()

@@ -9,7 +9,7 @@
 
   <xacro:macro name="pr2_elbow_flex_transmission_v0" params="side">
     <!-- Elbow flex -->
-    <transmission type="SimpleTransmission" name="${side}_elbow_flex_trans">
+    <transmission type="pr2_mechanism_model/SimpleTransmission" name="${side}_elbow_flex_trans">
       <actuator name="${side}_elbow_flex_motor" />
       <joint name="${side}_elbow_flex_joint" />
       <mechanicalReduction>${-13/3 * 127.532/15.28}</mechanicalReduction>
@@ -18,7 +18,7 @@
 
   <!-- Forearm roll -->
   <xacro:macro name="pr2_forearm_roll_transmission_v0" params="side" >
-    <transmission type="SimpleTransmission" name="${side}_forearm_roll_trans">
+    <transmission type="pr2_mechanism_model/SimpleTransmission" name="${side}_forearm_roll_trans">
       <actuator name="${side}_forearm_roll_motor" />
       <joint name="${side}_forearm_roll_joint" />
       <mechanicalReduction>${-576/25 * 55/14}</mechanicalReduction>
