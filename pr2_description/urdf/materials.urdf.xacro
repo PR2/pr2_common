@@ -24,6 +24,10 @@
   <material name="White">
     <color rgba="1.0 1.0 1.0 1.0"/>
   </material>
+
+  <material name="LightGrey">
+    <color rgba="0.6 0.6 0.6 1.0"/>
+  </material>
   
   <material name="Caster">
     <texture filename="package://pr2_ogre/Media/materials/textures/pr2_caster_texture.png" />
