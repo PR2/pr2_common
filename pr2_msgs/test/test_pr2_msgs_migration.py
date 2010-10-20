@@ -42,7 +42,7 @@ import unittest
 
 import rostest
 import rosrecord
-import rosbagmigration
+import rosbag.migration as rosbagmigration
 
 import re
 from cStringIO import StringIO
