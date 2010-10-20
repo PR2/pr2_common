@@ -13,7 +13,7 @@
   <depend package="geometry_msgs"/>
 
   <depend package="rostest"/>
-  <depend package="rosbag"/>
+  <depend package="rosbagmigration"/>
   <depend package="rosrecord"/>
   
   <export>
