@@ -31,14 +31,6 @@
         <material name="Blue" />
       </visual>
 
-      <collision>
-        <origin xyz="0 0 0" rpy="0 0 0"/>
-        <geometry>
-          <box size="0.01 0.01 0.01" />
-        </geometry>
-      </collision>
-
-
     </link>
 
     <joint name="${name}_optical_frame_joint" type="fixed">
@@ -66,12 +58,6 @@
         <material name="Blue" />
       </visual>
 
-      <collision>
-        <origin xyz="0 0 0" rpy="0 0 0"/>
-        <geometry>
-          <box size="0.01 0.01 0.01" />
-        </geometry>
-      </collision>
     </link>
 
     <!-- extensions -->

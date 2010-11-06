@@ -205,6 +205,35 @@
       <parent link="${name}_footprint"/>
     </joint>
 
+    <!-- visualize bellow -->
+    <link name="${name}_bellow_link">
+      <inertial>
+        <mass value="1.0" />
+        <origin xyz="0 0 0" />
+        <inertia ixx="0.01" ixy="0.0" ixz="0.0"
+                 iyy="0.01" iyz="0.0" izz="0.01" />
+      </inertial>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <box size="0.05 0.37 0.3" />
+        </geometry>
+        <material name="Black" />
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <box size="0.05 0.37 0.3" />
+        </geometry>
+        <material name="Black" />
+      </collision>
+    </link>
+    <joint name="${name}_bellow_joint" type="fixed">
+      <origin xyz="-0.29 0 0.8" rpy="0 0 0" />
+      <parent link="${name}_link" />
+      <child link="${name}_bellow_link"/>
+    </joint>
+
     <!-- base laser -->
     <xacro:hokuyo_lx30_laser_v0 name="${name}_laser" parent="${name}" ros_topic="base_scan" update_rate="20" min_angle="-2.2689" max_angle="2.2689" >
       <origin xyz="${base_laser_x} ${base_laser_y} ${base_laser_z}" rpy="0 0 0" />

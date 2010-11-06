@@ -22,7 +22,7 @@
 
   <xacro:macro name="pr2_base_gazebo_v0" params="name">
     <gazebo reference="${name}_link">
-      <selfCollide>true</selfCollide>
+      <selfCollide>false</selfCollide>
       <sensor:contact name="${name}_contact_sensor">
         <geom>${name}_link_geom</geom>
         <updateRate>100.0</updateRate>
@@ -33,6 +33,9 @@
           <interface:bumper name="${name}_bumper_iface" />
         </controller:gazebo_ros_bumper>
       </sensor:contact>
+    </gazebo>
+    <gazebo reference="${name}_bellow_link">
+      <material value="PR2/Black" />
     </gazebo>
     <gazebo>
       <controller:gazebo_ros_p3d name="p3d_base_controller" plugin="libgazebo_ros_p3d.so">
