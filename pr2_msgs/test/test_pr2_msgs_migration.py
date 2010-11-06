@@ -41,8 +41,8 @@ import struct
 import unittest
 
 import rostest
-import rosrecord
-import rosbagmigration
+import rosbag
+from rosbag.migration import MessageMigrator, checkbag, fixbag
 
 import re
 from cStringIO import StringIO
@@ -52,7 +52,7 @@ import rospy
 
 import math
 
-migrator = rosbagmigration.MessageMigrator()
+migrator = MessageMigrator()
 
 def repack(x):
   return struct.unpack('<f',struct.pack('<f',x))[0]
@@ -131,18 +131,17 @@ class TestPR2MsgsMigration(unittest.TestCase):
     newbag = "%s/test/%s_new.bag"%(self.pkg_dir,name)
 
     # Create an old message
-    bag = rosrecord.Rebagger(oldbag)
-    bag.add("topic", old_msg(), roslib.rostime.Time())
-    bag.close()
+    with rosbag.Bag(oldbag, 'w') as bag:
+        bag.write("topic", old_msg(), roslib.rostime.Time())
 
     # Check and migrate
-    res = rosbagmigration.checkbag(migrator, oldbag)
+    res = checkbag(migrator, oldbag)
     self.assertTrue(not False in [m[1] == [] for m in res], 'Bag not ready to be migrated')
-    res = rosbagmigration.fixbag(migrator, oldbag, newbag)
+    res = fixbag(migrator, oldbag, newbag)
     self.assertTrue(res, 'Bag not converted successfully')
 
     # Pull the first message out of the bag
-    msgs = [msg for msg in rosrecord.logplayer(newbag)]
+    msgs = [msg for msg in rosbag.Bag(newbag).read_messages()]
 
     # Reserialize the new message so that floats get screwed up, etc.
     m = new_msg()
