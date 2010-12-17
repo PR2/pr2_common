@@ -45,6 +45,36 @@
       </collision>
     </link>
 
+    <joint name="l_${name}_side_plate_joint" type="fixed">
+      <origin xyz="0.0535 -0.209285 0.176625" /> <!-- location of bottom front bolt hole location -->
+      <parent link="${name}_link"/>
+      <child link="l_${name}_side_plate_link"/>
+    </joint>
+    <link name="l_${name}_side_plate_link">
+      <inertial>
+        <mass value="0.1" />
+        <origin xyz="-0.0625 0.0 0.05" />  <!-- center of the 12.5cm by 10cm bolt hole pattern -->
+        <inertia ixx="0.001" ixy="0.0" ixz="0.0"
+                 iyy="0.001" iyz="0.0"
+                 izz="0.001" />
+      </inertial>
+    </link>
+
+    <joint name="r_${name}_side_plate_joint" type="fixed">
+      <origin xyz="0.0535  0.209285 0.176625" /> <!-- location of bottom front bolt hole location -->
+      <parent link="${name}_link"/>
+      <child link="r_${name}_side_plate_link"/>
+    </joint>
+    <link name="r_${name}_side_plate_link">
+      <inertial>
+        <mass value="0.1" />
+        <origin xyz="-0.0625 0.0 0.05" />  <!-- center of the 12.5cm by 10cm bolt hole pattern -->
+        <inertia ixx="0.001" ixy="0.0" ixz="0.0"
+                 iyy="0.001" iyz="0.0"
+                 izz="0.001" />
+      </inertial>
+    </link>
+
     <!-- extensions -->
     <xacro:pr2_torso_gazebo_v0 name="${name}" />
     <xacro:pr2_torso_transmission_v0 name="${name}" />
