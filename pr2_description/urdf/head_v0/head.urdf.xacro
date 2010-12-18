@@ -23,10 +23,10 @@
     </joint>
     <link name="${name}_link">
       <inertial>
-        <mass value="1.611118" />
-        <origin xyz="-0.005717  0.010312 -0.029649" rpy="0 0 0" />
-        <inertia ixx="0.00482611007"  ixy="-0.000144683999"  ixz="0.000110076136"
-                 iyy="0.005218991412"  iyz="-0.000314239509"  izz="0.008618784925" />
+        <mass value="6.339" /> <!-- mass/cog/moi updated per 100505_link_data.xls -->
+        <origin xyz="0.010907 0.031693 0.090507" rpy="0 0 0" />
+        <inertia ixx="0.032497592"  ixy="0.00063604088"  ixz="0.0025851534"
+                 iyy="0.046545627"  iyz="-0.0024534295"  izz="0.057652724" />
       </inertial>
 
       <visual>
@@ -67,11 +67,11 @@
     </joint>
     <link name="${name}_link">
       <inertial>
-        <mass value="1.749727" />
-        <origin xyz="0.041935 0.003569 0.028143" rpy="0 0 0" />
-        <inertia ixx="0.010602303435"  ixy="-0.000408814235"  ixz="0.00198303894"
-                 iyy="0.011874383747"  iyz="0.000197908779"
-                 izz="0.005516790626" />
+        <mass value="4.479" /> <!-- mass/cog/moi updated per 100505_link_data.xls -->
+        <origin xyz="0.001716 -0.019556 0.055002" rpy="0 0 0" />
+        <inertia ixx="0.024223222"  ixy="0.00062063507"  ixz="-0.000096909696"
+                 iyy="0.054723086"  iyz="0.00279702400"
+                 izz="0.067306377" />
       </inertial>
 
       <visual>
