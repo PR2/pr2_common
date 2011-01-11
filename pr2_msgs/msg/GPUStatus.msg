@@ -1,0 +1,10 @@
+Header header
+string product_name
+string pci_device_id
+string pci_location
+string display
+string driver_version
+int32 temperature
+int32 fan_speed
+int32 gpu_usage
+int32 memory_usage
