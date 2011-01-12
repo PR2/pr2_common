@@ -17,11 +17,11 @@
   <depend package="rosbagmigration"/>
   
   <export>
-    <cpp cflags="-I${prefix}/msg/cpp -I${prefix}/srv/cpp"/>
     <rosbagmigration rule_file="migration_rules/pr2_msgs.bmr"/>
   </export>
   <platform os="ubuntu" version="9.04"/>
   <platform os="ubuntu" version="9.10"/>
   <platform os="ubuntu" version="10.04"/>
+  <platform os="ubuntu" version="10.10"/>
 </package>
 
