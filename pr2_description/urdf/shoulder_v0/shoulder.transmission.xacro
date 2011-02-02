@@ -26,11 +26,10 @@
 
   <xacro:macro name="pr2_upper_arm_roll_transmission_v0" params="side" >
     <!-- Upperarm roll: internal fixed attchment point for upper arm -->
-    <transmission type="pr2_mechanism_model/PR2BeltCompensatorTransmission" name="${side}_upper_arm_roll_trans">
-      <joint name="${side}_upper_arm_roll_joint"/>
-      <actuator name="${side}_upper_arm_roll_motor"/>
+    <transmission type="pr2_mechanism_model/SimpleTransmission" name="${side}_upper_arm_roll_trans">
+      <actuator name="${side}_upper_arm_roll_motor" />
+      <joint name="${side}_upper_arm_roll_joint" />
       <mechanicalReduction>${13/3 * 129.53/17.19 / cal_r_upper_arm_roll_gearing}</mechanicalReduction>
-      <compensator k_belt="4000.0" mass_motor="0.05" kd_motor="5.0" lambda_motor="30.0" lambda_joint="50.0" lambda_combined="20.0"/>
     </transmission>
   </xacro:macro>
 </robot>
