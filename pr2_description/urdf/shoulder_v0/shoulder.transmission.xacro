@@ -11,7 +11,7 @@
       <joint name="${side}_shoulder_pan_joint"/>
       <actuator name="${side}_shoulder_pan_motor"/>
       <mechanicalReduction>${13/3 * 250.532/17.19 / cal_r_shoulder_pan_gearing}</mechanicalReduction>
-      <compensator k_belt="4000.0" mass_motor="0.05" kd_motor="15.0" lambda_motor="30.0" lambda_joint="50.0" lambda_combined="20.0"/>
+      <compensator k_belt="4000.0" mass_motor="0.05" kd_motor="15.0" lambda_motor="40.0" lambda_joint="40.0" lambda_combined="0.0"/>
     </transmission>
 
     <!-- Shoulder lift -->
@@ -19,7 +19,7 @@
       <joint name="${side}_shoulder_lift_joint"/>
       <actuator name="${side}_shoulder_lift_motor"/>
       <mechanicalReduction>${13/3 * 245.532/17.19 / cal_r_shoulder_lift_gearing}</mechanicalReduction>
-      <compensator k_belt="4000.0" mass_motor="0.05" kd_motor="10.0" lambda_motor="30.0" lambda_joint="50.0" lambda_combined="20.0"/>
+      <compensator k_belt="4000.0" mass_motor="0.05" kd_motor="10.0" lambda_motor="60.0" lambda_joint="60.0" lambda_combined="0.0"/>
     </transmission>
 
   </xacro:macro>
