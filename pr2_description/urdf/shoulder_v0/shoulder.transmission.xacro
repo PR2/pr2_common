@@ -7,7 +7,7 @@
   <xacro:macro name="pr2_shoulder_transmission_v0" params="side">
 
     <!-- Shoulder pan -->
-    <transmission type="pr2_mechanism_model/PR2BeltCompensatorTransmission" name="${side}_shoulder_pan_trans">
+    <transmission type="pr2_mechanism_model/SimpleTransmission" name="${side}_shoulder_pan_trans">
       <joint name="${side}_shoulder_pan_joint"/>
       <actuator name="${side}_shoulder_pan_motor"/>
       <mechanicalReduction>${13/3 * 250.532/17.19 / cal_r_shoulder_pan_gearing}</mechanicalReduction>
@@ -15,7 +15,7 @@
     </transmission>
 
     <!-- Shoulder lift -->
-    <transmission type="pr2_mechanism_model/PR2BeltCompensatorTransmission" name="${side}_shoulder_lift_trans">
+    <transmission type="pr2_mechanism_model/SimpleTransmission" name="${side}_shoulder_lift_trans">
       <joint name="${side}_shoulder_lift_joint"/>
       <actuator name="${side}_shoulder_lift_motor"/>
       <mechanicalReduction>${13/3 * 245.532/17.19 / cal_r_shoulder_lift_gearing}</mechanicalReduction>
