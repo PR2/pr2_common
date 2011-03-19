@@ -49,6 +49,14 @@
   <property name="cal_stereo_pitch" value="0.0" />
   <property name="cal_stereo_yaw" value="0.0" />
 
+  <!-- Kinect Camera Location (Nominally 0) -->
+  <property name="cal_kinect_x" value="0.0" />
+  <property name="cal_kinect_y" value="0.0" />
+  <property name="cal_kinect_z" value="0.0" />
+  <property name="cal_kinect_roll" value="0.0" />
+  <property name="cal_kinect_pitch" value="0.0" />
+  <property name="cal_kinect_yaw" value="0.0" />
+
   <!-- HighDef Camera Location (Nominally 0) -->
   <property name="cal_high_def_x" value="0.0" />
   <property name="cal_high_def_y" value="0.0" />
