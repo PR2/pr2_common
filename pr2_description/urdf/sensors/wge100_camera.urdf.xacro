@@ -9,7 +9,7 @@
 
   <!-- hack_baseline is used to simulate right stereo camera projection matrix translation to left stereo camera frame, currently on the hardware,
        custom left stereo camera frame_id is passed to right stereo wge100 camera node at launch time, baseline is stored on the camera. -->
-  <xacro:macro name="wge100_camera_v0" params="name image_format image_topic_name camera_info_topic_name parent hfov focal_length frame_id hack_baseline image_width image_height *origin">
+  <xacro:macro name="wge100_camera_v0" params="name camera_name image_format image_topic_name camera_info_topic_name parent hfov focal_length frame_id hack_baseline image_width image_height *origin">
 
     <joint name="${name}_frame_joint" type="fixed">
       <insert_block name="origin" />
@@ -36,7 +36,7 @@
     <link name="${name}_optical_frame"/>
 
     <!-- extensions -->
-    <xacro:wge100_camera_gazebo_v0 name="${name}" image_format="${image_format}" image_topic_name="${image_topic_name}"
+    <xacro:wge100_camera_gazebo_v0 name="${name}" camera_name="${camera_name}" image_format="${image_format}" image_topic_name="${image_topic_name}"
                                    camera_info_topic_name="${camera_info_topic_name}"
                                    hfov="${hfov}" focal_length="${focal_length}"
                                    frame_id="${frame_id}" hack_baseline="${hack_baseline}"
