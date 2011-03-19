@@ -4,8 +4,11 @@
       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
       xmlns:xacro="http://ros.org/wiki/xacro">
   
+<!-- this controller is pushed into a body scope (previously model scope)
+     this will only work with added r36415 patch in simulator_gazebo stack
+     otherwise projector will not work without removing the reference tag -->
 <xacro:macro name="projector_wg6802418_gazebo_v0" params="name">
-  <gazebo>
+  <gazebo reference="${name}_child_frame">
     <controller:gazebo_ros_projector name="${name}_controller" plugin="libgazebo_ros_projector.so">
         <alwaysOn>true</alwaysOn>
         <updateRate>15.0</updateRate>
