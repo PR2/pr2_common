@@ -56,7 +56,8 @@
   </xacro:pr2_head_v0>
 
   <!-- Camera package: double stereo, prosilica -->
-  <xacro:pr2_head_sensor_package_v0 name="sensor_mount" hd_name="high_def" 
+  <xacro:pr2_head_sensor_package_v0 name="sensor_mount" hd_frame_name="high_def" 
+			   hd_camera_name="prosilica" 
 			   stereo_name="double_stereo" 
 			   parent="head_plate_frame">
     <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
