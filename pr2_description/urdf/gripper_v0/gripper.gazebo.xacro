@@ -172,6 +172,26 @@
           <selfCollide>false</selfCollide>
       </body:box>
     </gazebo>
+    <gazebo>
+      <joint:screw name="${prefix}_r_screw_screw_joint">
+          <body1>${prefix}_motor_screw_link</body1>
+          <body2>${prefix}_r_finger_tip_link</body2>
+          <anchor>${prefix}_r_finger_tip_link</anchor>
+          <anchorOffset>0 0 0</anchorOffset>
+          <axis>0 1 0</axis>
+          <threadPitch>-3141.6</threadPitch>
+          <damping>100.0</damping>
+      </joint:screw>
+      <joint:screw name="${prefix}_l_screw_screw_joint">
+          <body1>${prefix}_motor_screw_link</body1>
+          <body2>${prefix}_l_finger_tip_link</body2>
+          <anchor>${prefix}_l_finger_tip_link</anchor>
+          <anchorOffset>0 0 0</anchorOffset>
+          <axis>0 1 0</axis>
+          <threadPitch>3141.6</threadPitch>
+          <damping>10.0</damping>
+      </joint:screw>
+    </gazebo>
 
 
     <gazebo>
