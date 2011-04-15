@@ -282,7 +282,7 @@
                   iyy="0.001" iyz="0.0"
                   izz="0.001" />
       </inertial>
-      <!--
+      <!-- for debugging only
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
@@ -311,7 +311,7 @@
                   iyy="0.0001" iyz="0.0"
                   izz="0.0001" />
       </inertial>
-      <!--
+      <!-- for debugging only
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>

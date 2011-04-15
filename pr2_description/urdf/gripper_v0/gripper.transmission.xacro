@@ -40,8 +40,8 @@
       <passive_joint  name="${side}_gripper_r_finger_tip_joint" />
       <passive_joint  name="${side}_gripper_l_finger_tip_joint" />
       <!-- screw joint to capture gripper "dynamics" -->
-      <screw_joint    name="${side}_gripper_motor_screw_joint"
-                      simulated_thread_pitch="3141.6"   />
+      <simulated_actuated_joint name="${side}_gripper_motor_screw_joint"
+                                simulated_reduction="3141.6"   />
     </transmission>
 
   </xacro:macro>
