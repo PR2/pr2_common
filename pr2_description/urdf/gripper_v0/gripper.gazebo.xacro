@@ -189,7 +189,7 @@
           <anchorOffset>0 0 0</anchorOffset>
           <axis>0 1 0</axis>
           <threadPitch>3141.6</threadPitch>
-          <damping>10.0</damping>
+          <damping>100.0</damping>
       </joint:screw>
     </gazebo>
 
