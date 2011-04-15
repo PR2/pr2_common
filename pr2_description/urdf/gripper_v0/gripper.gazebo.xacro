@@ -180,7 +180,7 @@
           <anchorOffset>0 0 0</anchorOffset>
           <axis>0 1 0</axis>
           <threadPitch>-3141.6</threadPitch>
-          <damping>100.0</damping>
+          <damping>0.0001</damping>
       </joint:screw>
       <joint:screw name="${prefix}_l_screw_screw_joint">
           <body1>${prefix}_motor_screw_link</body1>
@@ -189,7 +189,7 @@
           <anchorOffset>0 0 0</anchorOffset>
           <axis>0 1 0</axis>
           <threadPitch>3141.6</threadPitch>
-          <damping>100.0</damping>
+          <damping>0.0001</damping>
       </joint:screw>
     </gazebo>
 
