@@ -302,6 +302,7 @@
       <axis xyz="1 0 0"/>
       <parent link="${side}_gripper_palm_link"/>
       <child link="${side}_gripper_motor_slider_link"/>
+      <limit effort="1000.0" velocity="0.2" lower="-0.1" upper="0.1" />
     </joint>
     <link name="${side}_gripper_motor_screw_link">
       <inertial>
