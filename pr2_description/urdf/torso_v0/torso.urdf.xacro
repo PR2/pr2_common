@@ -104,6 +104,7 @@
       <axis xyz="0 0 1"/>
       <parent link="${parent}"/>
       <child link="${name}_motor_screw_link"/>
+      <dynamics damping="0.0001" />
     </joint>
 
     <!-- extensions -->
