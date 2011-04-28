@@ -46,7 +46,7 @@
     </link>
 
     <joint name="l_${name}_side_plate_joint" type="fixed">
-      <origin xyz="0.0535 -0.209285 0.176625" /> <!-- location of bottom front bolt hole location -->
+      <origin xyz="0.0535 0.209285 0.176625" /> <!-- location of bottom front bolt hole location -->
       <parent link="${name}_link"/>
       <child link="l_${name}_side_plate_link"/>
     </joint>
@@ -61,7 +61,7 @@
     </link>
 
     <joint name="r_${name}_side_plate_joint" type="fixed">
-      <origin xyz="0.0535  0.209285 0.176625" /> <!-- location of bottom front bolt hole location -->
+      <origin xyz="0.0535  -0.209285 0.176625" /> <!-- location of bottom front bolt hole location -->
       <parent link="${name}_link"/>
       <child link="r_${name}_side_plate_link"/>
     </joint>
