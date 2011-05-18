@@ -14,7 +14,7 @@
       <limit lower="0.0" upper="0.31" effort="10000" velocity="0.013"/> <!-- alpha tested velocity and effort limits -->
       <safety_controller  k_velocity="2000000" soft_lower_limit="${0.0+0.0115}" soft_upper_limit="${0.31-0.005}" k_position="100" />
       <calibration falling="0.00536" />
-      <dynamics damping="100.0" />
+      <dynamics damping="20000.0" />
       <insert_block name="origin" />
       <parent link="${parent}"/>
       <child link="${name}_link"/>
