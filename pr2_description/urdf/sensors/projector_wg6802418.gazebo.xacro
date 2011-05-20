@@ -14,8 +14,8 @@
         <filterTextureName>stereo_projection_pattern_filter.png</filterTextureName>        
         <textureTopicName>${name}_controller/image</textureTopicName>
         <projectorTopicName>${name}_controller/projector</projectorTopicName>        
-        <fov>${M_PI/4}</fov>
-        <nearClipDist>0.4</nearClipDist>
+        <fov>${55.0/180.0*M_PI}</fov>
+        <nearClipDist>0.1</nearClipDist>
         <farClipDist>10</farClipDist>
     </controller:gazebo_ros_projector>
   </gazebo>

@@ -25,7 +25,7 @@
 
   <property name="base_cg_x" value="-0.061" />
   <property name="base_cg_y" value="0.0" />
-  <property name="base_cg_z" value="0.293" />
+  <property name="base_cg_z" value="${0.5*0.293}" />
   <property name="base_mass" value="116.0" />
 
   <!-- simplified box collision geometry for base -->
