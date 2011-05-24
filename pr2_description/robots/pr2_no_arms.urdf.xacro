@@ -21,7 +21,7 @@
   <!-- Camera sensors -->
   <include filename="$(find pr2_description)/urdf/sensors/wge100_camera.urdf.xacro" />
   <!-- Texture projector -->
-  <include filename="$(find pr2_description)/urdf/sensors/projector_wg6802418.urdf.xacro" />	
+  <include filename="$(find pr2_description)/urdf/sensors/projector_wg6802418.urdf.xacro" />  
   <!-- generic simulator_gazebo plugins for starting mechanism control, ros time, ros battery -->
   <include filename="$(find pr2_description)/gazebo/gazebo.urdf.xacro" />
   <!-- materials for visualization -->
@@ -56,9 +56,10 @@
   </xacro:projector_wg6802418_v0>
 
   <!-- Camera package: double stereo, prosilica -->
-  <xacro:pr2_head_sensor_package_v0 name="sensor_mount" hd_name="high_def" 
-			   stereo_name="double_stereo" 
-			   parent="head_plate_frame">
+  <xacro:pr2_head_sensor_package_v0 name="sensor_mount" hd_frame_name="high_def" 
+         hd_camera_name="prosilica" 
+         stereo_name="double_stereo" 
+         parent="head_plate_frame">
     <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
   </xacro:pr2_head_sensor_package_v0>
 

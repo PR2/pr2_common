@@ -13,11 +13,14 @@
   <property name="gripper_upper_angle" value="0.548" />
   <property name="gripper_lower_angle" value="0.00" />
 
-  <property name="finger_damping"             value="0.2" />
-  <property name="gripper_damping"            value="100.0" />
-  <property name="finger_tip_damping"         value="0.01" />
+  <property name="finger_damping"             value="0.02" />
+  <property name="gripper_damping"            value="10.0" />
+  <property name="finger_tip_damping"         value="0.001" />
 
   <property name="finger_joint_effort_limit"  value="1000.0" />
+
+  <property name="finger_to_finger_tip_x"     value="0.09137" />
+  <property name="palm_to_finger_x"           value="0.07691" />
 
   <xacro:macro name="pr2_finger_limits_v0">
     <!-- limits on passive finger and finger top joints without
@@ -76,7 +79,7 @@
 
     <joint name="${prefix}_r_finger_joint" type="revolute">
       <axis xyz="0 0 -1" />
-      <origin xyz="0.07691 -0.01 0" rpy="0 0 0" />
+      <origin xyz="${palm_to_finger_x} -0.01 0" rpy="0 0 0" />
       <xacro:pr2_finger_limits_v0/>
       <dynamics damping="${finger_damping}" />
       <mimic joint="${prefix}_l_finger_joint" multiplier="1" offset="0"/>
@@ -117,7 +120,7 @@
 
     <joint name="${prefix}_l_finger_tip_joint" type="revolute">
       <axis xyz="0 0 -1" />
-      <origin xyz="0.09137 0.00495 0" rpy="0 0 0" />
+      <origin xyz="${finger_to_finger_tip_x} 0.00495 0" rpy="0 0 0" />
       <xacro:pr2_finger_limits_v0/>
       <dynamics damping="${finger_tip_damping}" />
       <mimic joint="${prefix}_l_finger_joint" multiplier="1" offset="0"/>
@@ -269,6 +272,68 @@
       <child link="${side}_gripper_tool_frame"/>
     </joint>
     <link name="${side}_gripper_tool_frame"/>
+
+    <!-- actuated motor screw joint -->
+    <link name="${side}_gripper_motor_slider_link">
+      <inertial>
+        <mass value="0.01" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <inertia  ixx="0.001" ixy="0.0" ixz="0.0"
+                  iyy="0.001" iyz="0.0"
+                  izz="0.001" />
+      </inertial>
+      <!-- for debugging only
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <box size="0.05 0.01 0.05" />
+        </geometry>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <box size="0.05 0.01 0.05" />
+        </geometry>
+      </collision>
+      -->
+    </link>
+    <joint name="${side}_gripper_motor_slider_joint" type="prismatic">
+      <origin xyz="${finger_to_finger_tip_x+palm_to_finger_x} 0 0" rpy="0 0 0" />
+      <axis xyz="1 0 0"/>
+      <parent link="${side}_gripper_palm_link"/>
+      <child link="${side}_gripper_motor_slider_link"/>
+      <limit effort="1000.0" velocity="0.2" lower="-0.1" upper="0.1" />
+    </joint>
+    <link name="${side}_gripper_motor_screw_link">
+      <inertial>
+        <mass value="0.01" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <inertia  ixx="0.0001" ixy="0.0" ixz="0.0"
+                  iyy="0.0001" iyz="0.0"
+                  izz="0.0001" />
+      </inertial>
+      <!-- for debugging only
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <box size="0.05 0.01 0.05" />
+        </geometry>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <box size="0.05 0.01 0.05" />
+        </geometry>
+      </collision>
+      -->
+    </link>
+    <joint name="${side}_gripper_motor_screw_joint" type="continuous">
+      <origin xyz="0.0 0 0" rpy="0 0 0" />
+      <axis xyz="0 1 0"/>
+      <parent link="${side}_gripper_motor_slider_link"/>
+      <child link="${side}_gripper_motor_screw_link"/>
+      <dynamics damping="0.0001" />
+    </joint>
 
     <!-- pr2 fingers macro -->
     <xacro:pr2_finger_v0 prefix="${side}_gripper" reflect="${reflect}" parent="${side}_gripper_palm_link" />

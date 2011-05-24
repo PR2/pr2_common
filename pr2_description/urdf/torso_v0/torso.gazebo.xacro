@@ -3,6 +3,7 @@
 <robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
        xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+       xmlns:joint="http://playerstage.sourceforge.net/gazebo/xmlschema/#joint"
        xmlns:xacro="http://ros.org/wiki/xacro">
 
   <xacro:macro name="pr2_torso_gazebo_v0" params="name">
@@ -18,6 +19,17 @@
           <interface:bumper name="${name}_gazebo_ros_bumper_iface" />
         </controller:gazebo_ros_bumper>
       </sensor:contact>
+    </gazebo>
+
+    <gazebo>
+      <joint:screw name="${name}_screw_torso_lift_joint">
+          <body1>${name}_motor_screw_link</body1>
+          <body2>${name}_link</body2>
+          <anchor>${name}_motor_screw_link</anchor>
+          <anchorOffset>0 0 0</anchorOffset>
+          <axis>0 0 1</axis>
+          <threadPitch>3141.6</threadPitch>
+      </joint:screw>
     </gazebo>
 
   </xacro:macro>

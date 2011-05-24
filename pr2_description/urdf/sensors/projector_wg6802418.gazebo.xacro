@@ -4,8 +4,11 @@
       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
       xmlns:xacro="http://ros.org/wiki/xacro">
   
+<!-- this controller is pushed into a body scope (previously model scope)
+     this will only work with added r36415 patch in simulator_gazebo stack
+     otherwise projector will not work without removing the reference tag -->
 <xacro:macro name="projector_wg6802418_gazebo_v0" params="name">
-  <gazebo>
+  <gazebo reference="${name}_child_frame">
     <controller:gazebo_ros_projector name="${name}_controller" plugin="libgazebo_ros_projector.so">
         <alwaysOn>true</alwaysOn>
         <updateRate>15.0</updateRate>
@@ -14,8 +17,8 @@
         <filterTextureName>stereo_projection_pattern_filter.png</filterTextureName>        
         <textureTopicName>${name}_controller/image</textureTopicName>
         <projectorTopicName>${name}_controller/projector</projectorTopicName>        
-        <fov>${M_PI/4}</fov>
-        <nearClipDist>0.4</nearClipDist>
+        <fov>${55.0/180.0*M_PI}</fov>
+        <nearClipDist>0.1</nearClipDist>
         <farClipDist>10</farClipDist>
     </controller:gazebo_ros_projector>
   </gazebo>

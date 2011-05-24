@@ -14,7 +14,7 @@
       <limit lower="0.0" upper="0.31" effort="10000" velocity="0.013"/> <!-- alpha tested velocity and effort limits -->
       <safety_controller  k_velocity="2000000" soft_lower_limit="${0.0+0.0115}" soft_upper_limit="${0.31-0.005}" k_position="100" />
       <calibration falling="0.00536" />
-      <dynamics damping="20000.0" /> <!-- strictly tuned for sim only right now -->
+      <dynamics damping="20000.0" />
       <insert_block name="origin" />
       <parent link="${parent}"/>
       <child link="${name}_link"/>
@@ -46,7 +46,7 @@
     </link>
 
     <joint name="l_${name}_side_plate_joint" type="fixed">
-      <origin xyz="0.0535 -0.209285 0.176625" /> <!-- location of bottom front bolt hole location -->
+      <origin xyz="0.0535 0.209285 0.176625" /> <!-- location of bottom front bolt hole location -->
       <parent link="${name}_link"/>
       <child link="l_${name}_side_plate_link"/>
     </joint>
@@ -61,7 +61,7 @@
     </link>
 
     <joint name="r_${name}_side_plate_joint" type="fixed">
-      <origin xyz="0.0535  0.209285 0.176625" /> <!-- location of bottom front bolt hole location -->
+      <origin xyz="0.0535  -0.209285 0.176625" /> <!-- location of bottom front bolt hole location -->
       <parent link="${name}_link"/>
       <child link="r_${name}_side_plate_link"/>
     </joint>
@@ -74,6 +74,38 @@
                  izz="0.001" />
       </inertial>
     </link>
+
+    <!-- actuated motor screw joint -->
+    <link name="${name}_motor_screw_link">
+      <inertial>
+        <mass value="1.0" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <inertia  ixx="0.001" ixy="0.0" ixz="0.0"
+                  iyy="0.001" iyz="0.0"
+                  izz="0.001" />
+      </inertial>
+      <!-- for debugging only
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <box size="0.5 0.7 0.01" />
+        </geometry>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <box size="0.5 0.7 0.01" />
+        </geometry>
+      </collision>
+      -->
+    </link>
+    <joint name="${name}_motor_screw_joint" type="continuous">
+      <origin xyz="-0.15 0.0 0.7"/>
+      <axis xyz="0 0 1"/>
+      <parent link="${parent}"/>
+      <child link="${name}_motor_screw_link"/>
+      <dynamics damping="0.0001" />
+    </joint>
 
     <!-- extensions -->
     <xacro:pr2_torso_gazebo_v0 name="${name}" />

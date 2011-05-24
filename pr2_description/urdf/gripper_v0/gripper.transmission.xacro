@@ -31,14 +31,19 @@
                       r="${r}"
                       />
       <!-- if a gazebo joint exists as [l|r]_gripper_joint, use this tag to have
-           gripper transmission apply torque directly to prismatic joint -->
+           gripper transmission apply torque directly to prismatic joint
+           this should be the default behavior in diamondback, deprecating this flag -->
       <use_simulated_gripper_joint/>
+      <!-- set passive joint angles so things look nice in rviz -->
       <passive_joint  name="${side}_gripper_l_finger_joint"     />
       <passive_joint  name="${side}_gripper_r_finger_joint"     />
       <passive_joint  name="${side}_gripper_r_finger_tip_joint" />
       <passive_joint  name="${side}_gripper_l_finger_tip_joint" />
+      <!-- screw joint to capture gripper "dynamics" -->
+      <simulated_actuated_joint name="${side}_gripper_motor_screw_joint"
+                                passive_actuated_joint="${side}_gripper_motor_slider_joint"
+                                simulated_reduction="3141.6"   />
     </transmission>
-
   </xacro:macro>
 
 

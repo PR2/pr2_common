@@ -31,17 +31,6 @@
 
     <gazebo reference="${prefix}_l_finger_link">
       <turnGravityOff>true</turnGravityOff>
-      <sensor:contact name="${prefix}_l_finger_contact_sensor">
-        <geom>${prefix}_l_finger_link_geom</geom>
-        <updateRate>100.0</updateRate>
-        <controller:gazebo_ros_bumper name="${prefix}_l_finger_gazebo_ros_bumper_controller" plugin="libgazebo_ros_bumper.so">
-          <alwaysOn>true</alwaysOn>
-          <updateRate>100.0</updateRate>
-          <frameName>${prefix}_l_finger_link</frameName>
-          <bumperTopicName>${prefix}_l_finger_bumper</bumperTopicName>
-          <interface:bumper name="${prefix}_l_finger_gazebo_ros_bumper_iface" />
-        </controller:gazebo_ros_bumper>
-      </sensor:contact>
       <mu1 value="${finger_mu}" />
       <mu2 value="${finger_mu}" />
       <kp value="1000000.0" />
@@ -59,17 +48,6 @@
 
     <gazebo reference="${prefix}_r_finger_link">
       <turnGravityOff>true</turnGravityOff>
-      <sensor:contact name="${prefix}_r_finger_contact_sensor">
-        <geom>${prefix}_r_finger_link_geom</geom>
-        <updateRate>100.0</updateRate>
-        <controller:gazebo_ros_bumper name="${prefix}_r_finger_gazebo_ros_bumper_controller" plugin="libgazebo_ros_bumper.so">
-          <alwaysOn>true</alwaysOn>
-          <frameName>${prefix}_r_finger_link</frameName>
-          <updateRate>100.0</updateRate>
-          <bumperTopicName>${prefix}_r_finger_bumper</bumperTopicName>
-          <interface:bumper name="${prefix}_r_finger_gazebo_ros_bumper_iface" />
-        </controller:gazebo_ros_bumper>
-      </sensor:contact>
       <mu1 value="${finger_mu}" />
       <mu2 value="${finger_mu}" />
       <kp value="1000000.0" />
@@ -194,6 +172,24 @@
           <selfCollide>false</selfCollide>
       </body:box>
     </gazebo>
+    <gazebo>
+      <joint:screw name="${prefix}_r_screw_screw_joint">
+          <body1>${prefix}_motor_screw_link</body1>
+          <body2>${prefix}_r_finger_tip_link</body2>
+          <anchor>${prefix}_r_finger_tip_link</anchor>
+          <anchorOffset>0 0 0</anchorOffset>
+          <axis>0 1 0</axis>
+          <threadPitch>-3141.6</threadPitch>
+      </joint:screw>
+      <joint:screw name="${prefix}_l_screw_screw_joint">
+          <body1>${prefix}_motor_screw_link</body1>
+          <body2>${prefix}_l_finger_tip_link</body2>
+          <anchor>${prefix}_l_finger_tip_link</anchor>
+          <anchorOffset>0 0 0</anchorOffset>
+          <axis>0 1 0</axis>
+          <threadPitch>3141.6</threadPitch>
+      </joint:screw>
+    </gazebo>
 
 
     <gazebo>
@@ -251,17 +247,6 @@
 
     <gazebo reference="${side}_gripper_palm_link">
       <turnGravityOff>true</turnGravityOff>
-      <sensor:contact name="${side}_gripper_palm_contact_sensor">
-        <geom>${side}_gripper_palm_link_geom</geom>
-        <updateRate>100.0</updateRate>
-        <controller:gazebo_ros_bumper name="${side}_gripper_palm_gazebo_ros_bumper_controller" plugin="libgazebo_ros_bumper.so">
-          <alwaysOn>true</alwaysOn>
-          <updateRate>100.0</updateRate>
-          <frameName>${side}_gripper_palm_link</frameName>
-          <bumperTopicName>${side}_gripper_palm_bumper</bumperTopicName>
-          <interface:bumper name="${side}_gripper_palm_gazebo_ros_bumper_iface" />
-        </controller:gazebo_ros_bumper>
-      </sensor:contact>
     </gazebo>
 
     <gazebo>
