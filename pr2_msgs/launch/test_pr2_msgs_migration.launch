@@ -1,0 +1,3 @@
+<launch>
+    <test test-name="pr2_msgs_migration_test"       pkg="pr2_msgs" type="test_pr2_msgs_migration.py" time-limit="600" />
+</launch>
