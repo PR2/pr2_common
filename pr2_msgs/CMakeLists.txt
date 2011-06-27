@@ -4,5 +4,5 @@ rosbuild_init()
 rosbuild_genmsg()
 rosbuild_gensrv()
 
-
-rosbuild_add_pyunit(test/test_pr2_msgs_migration.py)
+rosbuild_add_rostest(launch/test_pr2_msgs_migration.launch)
+#rosbuild_add_pyunit(test/test_pr2_msgs_migration.py)
