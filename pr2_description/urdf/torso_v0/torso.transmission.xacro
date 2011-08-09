@@ -10,7 +10,7 @@
     <transmission type="pr2_mechanism_model/SimpleTransmission" name="${name}_trans">
       <actuator name="${name}_motor" />
       <joint name="${name}_joint" />
-      <mechanicalReduction>-47275.06</mechanicalReduction>
+      <mechanicalReduction>-47641.53</mechanicalReduction>
       <simulated_actuated_joint name="${name}_motor_screw_joint"
                                 simulated_reduction="3141.6" />
     </transmission>
