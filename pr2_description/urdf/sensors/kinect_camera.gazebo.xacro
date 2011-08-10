@@ -9,7 +9,7 @@
     <sensor:camera name="${name}_frame_sensor">
       <imageFormat>R8G8B8</imageFormat>
       <imageSize>640 480</imageSize>
-      <hfov>60</hfov>
+      <hfov>57</hfov>
       <nearClip>0.01</nearClip>
       <farClip>5</farClip>
       <updateRate>20.0</updateRate>
