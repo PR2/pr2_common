@@ -46,9 +46,8 @@
 
     <!-- Prosilica Camera -->
     <xacro:prosilica_cam_v0 frame_name="${hd_frame_name}" camera_name="${hd_camera_name}" parent="${name}_link" >
-      <!-- Center of camera is 109mm right of center screw, 35mm up -->
-      <!-- Camera is slightly recessed from front, where is camera origin? Lens? -->
-      <origin xyz="0 -0.109 0.035" rpy="0 0 0" />        
+      <!-- camera focal point update from S. Stanford (called Kowa from Prosilica) 2011-08-18 -->
+      <origin xyz="0.046457 -0.110 0.054600" rpy="0 0 0" />        
     </xacro:prosilica_cam_v0>
 
     <!-- construct wide and narrow double stereo camera -->
