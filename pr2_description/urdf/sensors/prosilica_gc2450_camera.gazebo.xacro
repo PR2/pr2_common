@@ -19,7 +19,7 @@
         <imageTopicName>/prosilica/image_raw</imageTopicName>
         <cameraInfoTopicName>/prosilica/camera_info</cameraInfoTopicName>
         <pollServiceName>/prosilica/request_image</pollServiceName>
-        <frameName>${frame_name}_optical_frame</frameName>
+        <frameName>${name}_optical_frame</frameName>
         <CxPrime>1224.5</CxPrime>
         <Cx>1224.5</Cx>
         <Cy>1025.5</Cy>
