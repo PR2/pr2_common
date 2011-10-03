@@ -47,7 +47,6 @@
     </link>
 
     <!-- extensions -->
-    <xacro:pr2_head_pan_gazebo_v0 name="${name}" />
     <xacro:pr2_head_pan_transmission_v0 name="${name}" />
   </xacro:macro>
 
@@ -92,7 +91,6 @@
     </link>
 
     <!-- extensions -->
-    <xacro:pr2_head_tilt_gazebo_v0 name="${name}" />
     <xacro:pr2_head_tilt_transmission_v0 name="${name}" />
   </xacro:macro>
 

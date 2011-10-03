@@ -71,7 +71,6 @@
         <geometry>
           <mesh filename="package://pr2_description/meshes/gripper_v0/l_finger.stl" />
         </geometry>
-        <verbose value="Yes" />
       </collision>
     </link>
 
@@ -112,7 +111,6 @@
         <geometry>
           <mesh filename="package://pr2_description/meshes/gripper_v0/l_finger.stl" />
         </geometry>
-        <verbose value="Yes" />
       </collision>
     </link>
 
@@ -150,7 +148,6 @@
         <geometry>
           <mesh filename="package://pr2_description/meshes/gripper_v0/l_finger_tip.stl" />
         </geometry>
-        <verbose value="Yes" />
       </collision>
     </link>
 
@@ -188,7 +185,6 @@
         <geometry>
           <mesh filename="package://pr2_description/meshes/gripper_v0/l_finger_tip.stl"  />
         </geometry>
-        <verbose value="Yes" />
       </collision>
     </link>
 
@@ -227,7 +223,6 @@
         <geometry>
           <mesh filename="package://pr2_description/meshes/gripper_v0/gripper_palm.stl"  />
         </geometry>
-        <verbose value="Yes" />
       </collision>
     </link>
 
