@@ -23,7 +23,8 @@
   <!-- PR2 base -->
   <include filename="$(find pr2_description)/urdf/base_v0/base.urdf.xacro" />
   <!-- Head sensors -->
-  <include filename="$(find pr2_description)/urdf/sensors/pr2_se_head_sensor_package.urdf.xacro" />
+  <!-- kinect/prosilica model -->
+  <include filename="$(find pr2_kinect_test_description)/urdf/kinect_prosilica_camera.urdf.xacro" />
   <!-- Camera sensors -->
   <include filename="$(find pr2_description)/urdf/sensors/wge100_camera.urdf.xacro" />
   <!-- Texture projector -->
@@ -55,8 +56,6 @@
             rpy="0.0 0.0 0.0" />
   </xacro:pr2_head_v0>
 
-  <!-- kinect/prosilica model -->
-  <include filename="$(find pr2_kinect_test_description)/urdf/kinect_prosilica_camera.urdf.xacro" />
 
   <!-- Base of Kinect/Prosilica Mount -->
   <xacro:kinect_prosilica_camera_swept_back_v0 name="head_sensors" parent="head_plate_frame" >
