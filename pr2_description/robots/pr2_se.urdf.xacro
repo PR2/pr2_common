@@ -24,7 +24,7 @@
   <include filename="$(find pr2_description)/urdf/base_v0/base.urdf.xacro" />
   <!-- Head sensors -->
   <!-- kinect/prosilica model -->
-  <include filename="$(find pr2_kinect_test_description)/urdf/kinect_prosilica_camera.urdf.xacro" />
+  <include filename="$(find pr2_description)/urdf/sensors/kinect_prosilica_camera.urdf.xacro" />
   <!-- Camera sensors -->
   <include filename="$(find pr2_description)/urdf/sensors/wge100_camera.urdf.xacro" />
   <!-- Texture projector -->
@@ -58,7 +58,7 @@
 
 
   <!-- Base of Kinect/Prosilica Mount -->
-  <xacro:kinect_prosilica_camera_swept_back_v0 name="head_sensors" parent="head_plate_frame" >
+  <xacro:kinect_prosilica_camera_swept_back_v0 name="head_mount" parent="head_plate_frame" >
     <origin xyz="-0.137376 0 0.091746" rpy="0 0 0" />
     <!--  
           Was -0.1 0 0.09225, -0.138 0 0.09225 looks good front back and sheet metal on bolt pattern, 

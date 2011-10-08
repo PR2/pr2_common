@@ -9,14 +9,14 @@
   <!-- kinect and prosilica combo -->
   <xacro:macro name="kinect_prosilica_camera_swept_back_v0" params="name parent *origin">
     <!-- stl contains structure + kinect + prosilica combo -->
-    <joint name="${name}_mount_joint" type="fixed">
+    <joint name="${name}_joint" type="fixed">
       <!-- <limit lower="0.1" upper="0.1" effort="10000" velocity="100.0"/> -->
       <!-- <insert_block name="origin" /> -->
       <origin xyz="-0.138 0 0.091" rpy="0 0 0"/>
       <parent link="${parent}"/>
-      <child link="${name}_mount_link"/>
+      <child link="${name}_link"/>
     </joint>
-    <link name="${name}_mount_link">
+    <link name="${name}_link">
       <inertial>
         <mass value="0.1" />
         <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -27,7 +27,7 @@
       <visual>
         <origin xyz="0.0 0.0 0" rpy="0 0 0"/>
         <geometry>
-          <mesh filename="package://pr2_kinect_test_description/meshes/115x100_swept_back--coarse.STL" scale="0.001 0.001 0.001" />
+          <mesh filename="package://pr2_description/meshes/sensors/kinect_prosilica_v0/115x100_swept_back--coarse.STL" scale="0.001 0.001 0.001" />
         </geometry>
         <material name="gray">
           <color rgba="0.5 0.5 0.5 1"/>
@@ -49,7 +49,7 @@
     <!-- kinect housing physical attachment -->
     <joint name="${name}_kinect_joint" type="fixed">
       <origin xyz="-0.032267 0.0125 0.136453" rpy="0 0 0"/>
-      <parent link="${name}_mount_link"/>
+      <parent link="${name}_link"/>
       <child link="${name}_kinect_frame"/>
     </joint>
     <link name="${name}_kinect_frame"/>
@@ -138,7 +138,7 @@
     <!-- prosilica sensor physical attachment -->
     <joint name="${name}_prosilica_joint" type="fixed">
       <origin xyz="-0.046457 0.0125 0.088921" rpy="0 0 0"/>
-      <parent link="${name}_mount_link"/>
+      <parent link="${name}_link"/>
       <child link="${name}_prosilica_link"/>
     </joint>
     <link name="${name}_prosilica_link">
