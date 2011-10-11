@@ -79,7 +79,7 @@
 
   <!-- Projector 
   <xacro:projector_wg6802418_v0 name="projector_wg6802418" parent="head_plate_frame" >
-    <origin xyz="0 0.109 0.035" rpy="0 0 0" />        
+    <origin xyz="0 0.110 0.0546" rpy="0 0 0" />        
   </xacro:projector_wg6802418_v0>
   -->
 

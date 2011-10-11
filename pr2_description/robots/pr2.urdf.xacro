@@ -66,7 +66,7 @@
   <!-- Projector -->
   <xacro:projector_wg6802418_v0 name="projector_wg6802418" parent="head_plate_frame" >
     <!-- Camera is slightly recessed from front, where is camera origin? Lens? -->
-    <origin xyz="0 0.109 0.035" rpy="0 0 0" />        
+    <origin xyz="0.046457 0.110 0.0546" rpy="0 0 0" />        
   </xacro:projector_wg6802418_v0>
 
   <xacro:pr2_tilting_laser_v0 name="laser_tilt" parent="torso_lift_link" laser_calib_ref="0.0">
