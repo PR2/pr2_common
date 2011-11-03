@@ -14,7 +14,7 @@
       <farClip>5</farClip>
       <updateRate>1.0</updateRate>
       <baseline>0.2</baseline>
-      <controller:gazebo_ros_camera name="${link_name}_controller" plugin="libgazebo_ros_camera.so">
+      <controller:gazebo_ros_depth_camera name="${link_name}_controller" plugin="libgazebo_ros_depth_camera.so">
         <alwaysOn>true</alwaysOn>
         <updateRate>1.0</updateRate>
         <imageTopicName>/${camera_name}/image_raw</imageTopicName>
@@ -27,7 +27,7 @@
         <distortion_k3>0.00000001</distortion_k3>
         <distortion_t1>0.00000001</distortion_t1>
         <distortion_t2>0.00000001</distortion_t2>
-      </controller:gazebo_ros_camera>
+      </controller:gazebo_ros_depth_camera>
     </sensor:camera>
     <material value="Gazebo/Red" />
   </gazebo>
@@ -43,7 +43,7 @@
       <farClip>5</farClip>
       <updateRate>1.0</updateRate>
       <baseline>0.2</baseline>
-      <controller:gazebo_ros_camera name="${link_name}_controller" plugin="libgazebo_ros_camera.so">
+      <controller:gazebo_ros_depth_camera name="${link_name}_controller" plugin="libgazebo_ros_depth_camera.so">
         <alwaysOn>true</alwaysOn>
         <updateRate>1.0</updateRate>
         <imageTopicName>/${camera_name}/image_raw</imageTopicName>
@@ -56,7 +56,7 @@
         <distortion_k3>0.00000001</distortion_k3>
         <distortion_t1>0.00000001</distortion_t1>
         <distortion_t2>0.00000001</distortion_t2>
-      </controller:gazebo_ros_camera>
+      </controller:gazebo_ros_depth_camera>
     </sensor:camera>
     <material value="Gazebo/Red" />
   </gazebo>
@@ -109,14 +109,14 @@
       <nearClip>0.1</nearClip>
       <farClip>100</farClip>
       <updateRate>1.0</updateRate>
-      <controller:gazebo_ros_camera name="${link_name}_sim_pcd_controller" plugin="libgazebo_ros_camera.so">
+      <controller:gazebo_ros_depth_camera name="${link_name}_sim_pcd_controller" plugin="libgazebo_ros_depth_camera.so">
         <alwaysOn>true</alwaysOn>
         <updateRate>1.0</updateRate>
         <cameraName>${camera_name}_1mb_sim_pcd</cameraName>
         <imageTopicName>image_raw</imageTopicName>
         <cameraInfoTopicName>camera_info</cameraInfoTopicName>
         <frameName>${frame_name}</frameName>
-      </controller:gazebo_ros_camera>
+      </controller:gazebo_ros_depth_camera>
     </sensor:camera>
     <material value="Gazebo/Red" />
   </gazebo>
