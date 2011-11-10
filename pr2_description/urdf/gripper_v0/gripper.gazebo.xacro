@@ -226,7 +226,7 @@
       <joint:slider name="${prefix}_joint">
           <body1>${prefix}_l_finger_tip_link</body1>
           <body2>${prefix}_r_finger_tip_link</body2>
-          <anchor>${prefix}_r_finger_tip_link</anchor>
+          <anchor>${prefix}_l_finger_tip_link</anchor>
           <axis>0 1 0</axis>
       </joint:slider>
     </gazebo>
