@@ -279,15 +279,15 @@
       </inertial>
       <!-- for debugging only
       <visual>
-        <origin xyz="0 0 0" rpy="0 0 0" />
+        <origin xyz="0 0 0" rpy="1.5708 0 0" />
         <geometry>
-          <box size="0.05 0.01 0.05" />
+          <cylinder length="0.002" radius="0.025"/>
         </geometry>
       </visual>
       <collision>
-        <origin xyz="0 0 0" rpy="0 0 0" />
+        <origin xyz="0 0 0" rpy="1.5708 0 0" />
         <geometry>
-          <box size="0.05 0.01 0.05" />
+          <cylinder length="0.002" radius="0.025"/>
         </geometry>
       </collision>
       -->
@@ -311,13 +311,13 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <box size="0.05 0.01 0.05" />
+          <box size="0.05 0.001 0.05" />
         </geometry>
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <box size="0.05 0.01 0.05" />
+          <box size="0.05 0.001 0.05" />
         </geometry>
       </collision>
       -->
