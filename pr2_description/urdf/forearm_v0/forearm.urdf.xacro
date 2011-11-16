@@ -119,7 +119,6 @@
         <geometry>
           <mesh filename="package://pr2_description/meshes/forearm_v0/wrist_roll_L.stl" />
         </geometry>
-        <verbose value="Yes" />
       </collision>
     </link>
     <!-- extensions-->

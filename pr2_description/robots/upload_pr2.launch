@@ -1,4 +1,10 @@
 <launch>
+    <arg name="swept_back_kinect" default="false"/>
     <!-- send pr2 urdf to param server -->
-    <param name="robot_description" command="$(find xacro)/xacro.py '$(find pr2_description)/robots/pr2.urdf.xacro'" />
+    <group if="$(arg swept_back_kinect)">
+      <param name="robot_description" command="$(find xacro)/xacro.py '$(find pr2_description)/robots/pr2_with_swept_back_kinect.urdf.xacro'" />
+    </group>
+    <group unless="$(arg swept_back_kinect)">
+      <param name="robot_description" command="$(find xacro)/xacro.py '$(find pr2_description)/robots/pr2.urdf.xacro'" />
+    </group>
 </launch>
