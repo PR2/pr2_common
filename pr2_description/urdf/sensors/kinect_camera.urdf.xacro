@@ -23,16 +23,16 @@
       </inertial>
 
       <visual>
-        <origin xyz="0.0 0 0" rpy="0 0 0"/>
+        <origin xyz="0.0 0.012 0" rpy="0 0 0"/>
         <geometry>
-          <mesh filename="package://pr2_description/meshes/kinect/kinect.dae" />
+          <mesh filename="package://pr2_description/meshes/sensors/kinect_v0/kinect.dae" />
         </geometry>
       </visual>
 
       <collision>
-        <origin xyz="0.0 0 0" rpy="0 0 0"/>
+        <origin xyz="0.0 0.012 0" rpy="0 0 0"/>
         <geometry>
-          <mesh filename="package://pr2_description/meshes/kinect/kinect.dae" />
+          <mesh filename="package://pr2_description/meshes/sensors/kinect_v0/kinect.dae" />
         </geometry>
       </collision>
 

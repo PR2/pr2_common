@@ -47,7 +47,6 @@
     </link>
 
     <!-- extensions -->
-    <xacro:pr2_head_pan_gazebo_v0 name="${name}" />
     <xacro:pr2_head_pan_transmission_v0 name="${name}" />
   </xacro:macro>
 
@@ -57,8 +56,8 @@
 
     <joint name="${name}_joint" type="revolute">
       <axis xyz="0 1 0" />
-      <limit lower="-0.471238" upper="1.39626" effort="15" velocity="5" /> <!-- alpha tested velocity and effort limits -->
-      <safety_controller k_velocity="1.5" soft_lower_limit="${-0.4712 + 0.1}" soft_upper_limit="${1.39626 - 0.1}" k_position="100" />
+      <limit lower="-0.471238" upper="1.39626" effort="18" velocity="5" /> <!-- alpha tested velocity and effort limits -->
+      <safety_controller k_velocity="3.0" soft_lower_limit="${-0.4712 + 0.1}" soft_upper_limit="${1.39626 - 0.1}" k_position="100" />
       <calibration falling="${0.0+cal_head_tilt_flag}" />
       <dynamics damping="1.0" />
       <insert_block name="origin" />
@@ -92,7 +91,6 @@
     </link>
 
     <!-- extensions -->
-    <xacro:pr2_head_tilt_gazebo_v0 name="${name}" />
     <xacro:pr2_head_tilt_transmission_v0 name="${name}" />
   </xacro:macro>
 

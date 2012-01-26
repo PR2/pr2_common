@@ -176,7 +176,7 @@
       <joint:screw name="${prefix}_r_screw_screw_joint">
           <body1>${prefix}_motor_screw_link</body1>
           <body2>${prefix}_r_finger_tip_link</body2>
-          <anchor>${prefix}_r_finger_tip_link</anchor>
+          <anchor>${prefix}_motor_screw_link</anchor>
           <anchorOffset>0 0 0</anchorOffset>
           <axis>0 1 0</axis>
           <threadPitch>-3141.6</threadPitch>
@@ -184,7 +184,7 @@
       <joint:screw name="${prefix}_l_screw_screw_joint">
           <body1>${prefix}_motor_screw_link</body1>
           <body2>${prefix}_l_finger_tip_link</body2>
-          <anchor>${prefix}_l_finger_tip_link</anchor>
+          <anchor>${prefix}_motor_screw_link</anchor>
           <anchorOffset>0 0 0</anchorOffset>
           <axis>0 1 0</axis>
           <threadPitch>3141.6</threadPitch>
@@ -226,9 +226,17 @@
       <joint:slider name="${prefix}_joint">
           <body1>${prefix}_l_finger_tip_link</body1>
           <body2>${prefix}_r_finger_tip_link</body2>
-          <anchor>${prefix}_r_finger_tip_link</anchor>
+          <anchor>${prefix}_l_finger_tip_link</anchor>
           <axis>0 1 0</axis>
       </joint:slider>
+    </gazebo>
+    <gazebo reference="${prefix}_motor_slider_link">
+      <turnGravityOff>true</turnGravityOff>
+      <material value="PR2/Red" />
+    </gazebo>
+    <gazebo reference="${prefix}_motor_screw_link">
+      <turnGravityOff>true</turnGravityOff>
+      <material value="PR2/Red" />
     </gazebo>
     <gazebo reference="${prefix}_l_parallel_link">
       <turnGravityOff>true</turnGravityOff>

@@ -1,4 +1,10 @@
 <launch>
+    <arg name="kinect" default="true"/>
     <!-- send pr2 urdf to param server -->
-    <param name="robot_description" command="$(find xacro)/xacro.py '$(find pr2_description)/robots/pr2.urdf.xacro'" />
+    <group if="$(arg kinect)">
+      <param name="robot_description" command="$(find xacro)/xacro.py '$(find pr2_description)/robots/pr2.urdf.xacro'" />
+    </group>
+    <group unless="$(arg kinect)">
+      <param name="robot_description" command="$(find xacro)/xacro.py '$(find pr2_description)/robots/pr2_no_kinect.urdf.xacro'" />
+    </group>
 </launch>

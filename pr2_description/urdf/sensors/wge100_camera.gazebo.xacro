@@ -12,7 +12,7 @@
         <nearClip>0.1</nearClip>
         <farClip>100</farClip>
         <updateRate>25.0</updateRate>
-        <controller:gazebo_ros_camera name="${name}_controller" plugin="libgazebo_ros_camera.so">
+        <controller:gazebo_ros_depth_camera name="${name}_controller" plugin="libgazebo_ros_depth_camera.so">
           <alwaysOn>true</alwaysOn>
           <updateRate>25.0</updateRate>
           <cameraName>${camera_name}</cameraName>
@@ -32,7 +32,7 @@
           <distortion_t1>0.0</distortion_t1>
           <distortion_t2>0.0</distortion_t2>
           <interface:camera name="${name}_iface" />
-        </controller:gazebo_ros_camera>
+        </controller:gazebo_ros_depth_camera>
       </sensor:camera>
       <turnGravityOff>true</turnGravityOff>
       <material>PR2/Blue</material>
