@@ -25,14 +25,14 @@
       <visual>
         <origin xyz="0.0 0.012 0" rpy="0 0 0"/>
         <geometry>
-          <mesh filename="package://pr2_description/meshes/sensors/kinect_v0/kinect.dae" />
+          <mesh filename="package://pr2_description/meshes/sensors/kinect_v0/kinect.dae" scale="0.001 0.001 0.001" />
         </geometry>
       </visual>
 
       <collision>
         <origin xyz="0.0 0.012 0" rpy="0 0 0"/>
         <geometry>
-          <mesh filename="package://pr2_description/meshes/sensors/kinect_v0/kinect.dae" />
+          <mesh filename="package://pr2_description/meshes/sensors/kinect_v0/kinect.dae" scale="0.001 0.001 0.001" />
         </geometry>
       </collision>
 
