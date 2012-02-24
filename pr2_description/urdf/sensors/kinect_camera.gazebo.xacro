@@ -14,7 +14,7 @@
       <farClip>5</farClip>
       <updateRate>20.0</updateRate>
       <baseline>0.2</baseline>
-      <controller:gazebo_ros_depth_camera name="${name}_frame_controller" plugin="libgazebo_ros_depth_camera.so">
+      <controller:gazebo_ros_openni_kinect name="${name}_frame_controller" plugin="libgazebo_ros_openni_kinect.so">
         <alwaysOn>true</alwaysOn>
         <updateRate>20.0</updateRate>
         <imageTopicName>${name}/ir/image_raw</imageTopicName>
@@ -29,7 +29,7 @@
         <distortionK3>0.00000001</distortionK3>
         <distortionT1>0.00000001</distortionT1>
         <distortionT2>0.00000001</distortionT2>
-      </controller:gazebo_ros_depth_camera>
+      </controller:gazebo_ros_openni_kinect>
     </sensor:camera>
     <sensor:camera name="${name}_frame_sensor">
       <imageFormat>R8G8B8</imageFormat>
@@ -39,7 +39,7 @@
       <farClip>5</farClip>
       <updateRate>20.0</updateRate>
       <baseline>0.2</baseline>
-      <controller:gazebo_ros_depth_camera name="${name}_frame_controller" plugin="libgazebo_ros_depth_camera.so">
+      <controller:gazebo_ros_openni_kinect name="${name}_frame_controller" plugin="libgazebo_ros_openni_kinect.so">
         <alwaysOn>true</alwaysOn>
         <updateRate>20.0</updateRate>
         <imageTopicName>${name}/rgb/image_raw</imageTopicName>
@@ -52,7 +52,7 @@
         <distortionK3>0.00000001</distortionK3>
         <distortionT1>0.00000001</distortionT1>
         <distortionT2>0.00000001</distortionT2>
-      </controller:gazebo_ros_depth_camera>
+      </controller:gazebo_ros_openni_kinect>
     </sensor:camera>
   </gazebo>
 
