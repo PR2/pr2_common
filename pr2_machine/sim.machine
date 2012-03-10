@@ -1,4 +1,6 @@
 <launch>
-  <machine name="c1" address="localhost" ros-root="$(env ROS_ROOT)" ros-package-path="$(env ROS_PACKAGE_PATH)" default="true" />   
-  <machine name="c2" address="localhost" ros-root="$(env ROS_ROOT)" ros-package-path="$(env ROS_PACKAGE_PATH)" />   
+  <!-- if running sim across different machines, see rep 124 for detaails
+       on env-loader attribute -->
+  <machine name="c1" address="localhost" default="true" />   
+  <machine name="c2" address="localhost" />   
 </launch>
