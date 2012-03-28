@@ -8,7 +8,7 @@
      this will only work with added r36415 patch in simulator_gazebo stack
      otherwise projector will not work without removing the reference tag -->
 <xacro:macro name="projector_wg6802418_gazebo_v0" params="name">
-  <gazebo reference="${name}_child_frame">
+  <gazebo>
     <controller:gazebo_ros_projector name="${name}_controller" plugin="libgazebo_ros_projector.so">
         <alwaysOn>true</alwaysOn>
         <updateRate>15.0</updateRate>
