@@ -1,4 +1,4 @@
 <launch>
   <machine name="c1" address="c1" default="true"/>
-  <machine name="c2" address="c2"/>
+  <machine name="c2" address="c2" env-loader="$(env ROS_ENV_LOADER)"/>
 </launch>
