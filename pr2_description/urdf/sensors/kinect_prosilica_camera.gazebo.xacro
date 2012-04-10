@@ -50,7 +50,7 @@
         <updateRate>1.0</updateRate>
         <imageTopicName>/${camera_name}/rgb/image_raw</imageTopicName>
         <cameraInfoTopicName>/${camera_name}/rgb/camera_info</cameraInfoTopicName>
-        <pointCloudTopicName>/${camera_name}/rgb/points</pointCloudTopicName>
+        <pointCloudTopicName>/${camera_name}/depth_registered/points</pointCloudTopicName>
         <frameName>${frame_name}</frameName>
         <pointCloudCutoff>0.5</pointCloudCutoff>
         <distortionK1>0.00000001</distortionK1>
