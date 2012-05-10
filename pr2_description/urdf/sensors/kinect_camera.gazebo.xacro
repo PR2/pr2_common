@@ -17,6 +17,7 @@
       <controller:gazebo_ros_openni_kinect name="${name}_frame_controller" plugin="libgazebo_ros_openni_kinect.so">
         <alwaysOn>true</alwaysOn>
         <updateRate>20.0</updateRate>
+        <cameraName>${name}</cameraName>
         <imageTopicName>${name}/ir/image_raw</imageTopicName>
         <cameraInfoTopicName>${name}/ir/camera_info</cameraInfoTopicName>
         <depthImageTopicName>${name}/depth/image_raw</depthImageTopicName>
@@ -42,6 +43,7 @@
       <controller:gazebo_ros_openni_kinect name="${name}_frame_controller" plugin="libgazebo_ros_openni_kinect.so">
         <alwaysOn>true</alwaysOn>
         <updateRate>20.0</updateRate>
+        <cameraName>${name}</cameraName>
         <imageTopicName>${name}/rgb/image_raw</imageTopicName>
         <pointCloudTopicName>${name}/rgb/points</pointCloudTopicName>
         <cameraInfoTopicName>${name}/rgb/camera_info</cameraInfoTopicName>
