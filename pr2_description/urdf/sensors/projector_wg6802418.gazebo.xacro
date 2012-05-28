@@ -8,18 +8,25 @@
      this will only work with added r36415 patch in simulator_gazebo stack
      otherwise projector will not work without removing the reference tag -->
 <xacro:macro name="projector_wg6802418_gazebo_v0" params="name">
+  <gazebo reference="${name}_child_frame">
+    <projector name="${name}_projector_wg6802418">
+      <pose>0 0 0 0 -1.5707 0</pose>
+      <texture>stereo_projection_pattern_high_res_red.png</texture>
+      <fov>${55.0/180.0*M_PI}</fov>
+      <near_clip>0.1</near_clip>
+      <far_clip>10</far_clip>
+      <updateRate>15.0</updateRate>
+    </projector>
+  </gazebo>
   <gazebo>
     <controller:gazebo_ros_projector name="${name}_controller" plugin="libgazebo_ros_projector.so">
-        <alwaysOn>true</alwaysOn>
-        <updateRate>15.0</updateRate>
-        <textureName>stereo_projection_pattern_high_res_red.png</textureName>
-        <bodyName>${name}_child_frame</bodyName>
-        <filterTextureName>stereo_projection_pattern_filter.png</filterTextureName>        
-        <textureTopicName>${name}_controller/image</textureTopicName>
-        <projectorTopicName>${name}_controller/projector</projectorTopicName>        
-        <fov>${55.0/180.0*M_PI}</fov>
-        <nearClipDist>0.1</nearClipDist>
-        <farClipDist>10</farClipDist>
+      <projector>${name}_child_frame/${name}_projector_wg6802418</projector>
+      <alwaysOn>true</alwaysOn>
+      <updateRate>15.0</updateRate>
+      <textureName>stereo_projection_pattern_high_res_red.png</textureName>
+      <filterTextureName>stereo_projection_pattern_filter.png</filterTextureName>        
+      <textureTopicName>${name}_controller/image</textureTopicName>
+      <projectorTopicName>${name}_controller/projector</projectorTopicName>
     </controller:gazebo_ros_projector>
   </gazebo>
 

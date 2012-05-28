@@ -83,7 +83,7 @@
 
     <link name="${name}_kinect_ir_optical_frame"/>
     <!-- gazebo extensions -->
-    <xacro:kinect_ir_gazebo_v0 link_name="${name}_kinect_ir_link" frame_name="${name}_kinect_ir_optical_frame" camera_name="kinect_ir" />
+    <xacro:kinect_ir_gazebo_v0 link_name="${name}_kinect_ir_link" frame_name="${name}_kinect_ir_optical_frame" camera_name="head_mount_kinect" />
 
 
 
@@ -127,7 +127,7 @@
 
     <link name="${name}_kinect_rgb_optical_frame"/>
     <!-- gazebo extensions -->
-    <xacro:kinect_rgb_gazebo_v0 link_name="${name}_kinect_rgb_link" frame_name="${name}_kinect_rgb_optical_frame" camera_name="kinect_rgb" />
+    <xacro:kinect_rgb_gazebo_v0 link_name="${name}_kinect_rgb_link" frame_name="${name}_kinect_rgb_optical_frame" camera_name="head_mount_kinect" />
 
 
 
