@@ -15,7 +15,6 @@
       <fov>${55.0/180.0*M_PI}</fov>
       <near_clip>0.1</near_clip>
       <far_clip>10</far_clip>
-      <updateRate>15.0</updateRate>
     </projector>
   </gazebo>
   <gazebo>
