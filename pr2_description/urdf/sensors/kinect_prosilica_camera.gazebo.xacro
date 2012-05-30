@@ -6,7 +6,7 @@
   
 <xacro:macro name="kinect_ir_gazebo_v0" params="link_name frame_name camera_name">
   <gazebo reference="${link_name}">
-    <sensor:camera name="${name}_sensor">
+    <sensor:camera name="${name}_ir_sensor">
       <imageFormat>L8</imageFormat>
       <imageSize>640 480</imageSize>
       <hfov>57</hfov>
@@ -17,9 +17,9 @@
       <controller:gazebo_ros_openni_kinect name="${link_name}_controller" plugin="libgazebo_ros_openni_kinect.so">
         <alwaysOn>true</alwaysOn>
         <updateRate>1.0</updateRate>
-        <cameraName>${camera_name}</cameraName>
-        <imageTopicName>/${camera_name}/ir/image_raw</imageTopicName>
-        <cameraInfoTopicName>/${camera_name}/ir/camera_info</cameraInfoTopicName>
+        <cameraName>${camera_name}_ir</cameraName>
+        <imageTopicName>/${camera_name}/depth/image_raw</imageTopicName>
+        <cameraInfoTopicName>/${camera_name}/depth/camera_info</cameraInfoTopicName>
         <depthImageTopicName>/${camera_name}/depth/image_raw</depthImageTopicName>
         <depthImageInfoTopicName>/${camera_name}/depth/camera_info</depthImageInfoTopicName>
         <pointCloudTopicName>/${camera_name}/depth/points</pointCloudTopicName>
@@ -38,7 +38,7 @@
 
 <xacro:macro name="kinect_rgb_gazebo_v0" params="link_name frame_name camera_name">
   <gazebo reference="${link_name}">
-    <sensor:camera name="${name}_sensor">
+    <sensor:camera name="${name}_rgb_sensor">
       <imageFormat>R8G8B8</imageFormat>
       <imageSize>640 480</imageSize>
       <hfov>57</hfov>
@@ -49,7 +49,7 @@
       <controller:gazebo_ros_openni_kinect name="${link_name}_controller" plugin="libgazebo_ros_openni_kinect.so">
         <alwaysOn>true</alwaysOn>
         <updateRate>1.0</updateRate>
-        <cameraName>${camera_name}</cameraName>
+        <cameraName>${camera_name}_rgb</cameraName>
         <imageTopicName>/${camera_name}/rgb/image_raw</imageTopicName>
         <cameraInfoTopicName>/${camera_name}/rgb/camera_info</cameraInfoTopicName>
         <pointCloudTopicName>/${camera_name}/depth_registered/points</pointCloudTopicName>
