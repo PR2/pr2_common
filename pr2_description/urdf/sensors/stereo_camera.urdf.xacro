@@ -46,19 +46,19 @@
     <link name="${name}_optical_frame" type="camera"/>
 
     <!-- stereo left camera -->
-    <xacro:wge100_camera_v0 name="${name}_gazebo_l_stereo_camera" camera_name="${name}/left" image_format="${image_format}" image_topic_name="image_raw"
+    <xacro:wge100_camera_v0 name="${name}_l_stereo_camera" camera_name="${name}/left" image_format="${image_format}" image_topic_name="image_raw"
                             camera_info_topic_name="camera_info" parent="${name}_link"
                             hfov="${hfov}" focal_length="${focal_length}"
-                            frame_id="${name}_optical_frame" hack_baseline="0"
+                            frame_id="${name}_l_stereo_camera_optical_frame" hack_baseline="0"
                             image_width="${image_width}" image_height="${image_height}">
       <origin xyz="0 0 0" rpy="0 0 0" />
     </xacro:wge100_camera_v0>
 
     <!-- stereo right camera -->
-    <xacro:wge100_camera_v0 name="${name}_gazebo_r_stereo_camera" camera_name="${name}/right" image_format="${image_format}" image_topic_name="image_raw"
-                            camera_info_topic_name="camera_info" parent="${name}_gazebo_l_stereo_camera_frame"
+    <xacro:wge100_camera_v0 name="${name}_r_stereo_camera" camera_name="${name}/right" image_format="${image_format}" image_topic_name="image_raw"
+                            camera_info_topic_name="camera_info" parent="${name}_l_stereo_camera_frame"
                             hfov="${hfov}" focal_length="${focal_length}"
-                            frame_id="${name}_optical_frame" hack_baseline="${-stereo_dy}"
+                            frame_id="${name}_r_stereo_camera_optical_frame" hack_baseline="${-stereo_dy}"
                             image_width="${image_width}" image_height="${image_height}">
       <origin xyz="${stereo_dx} ${stereo_dy} ${stereo_dz}" rpy="${stereo_rx} ${stereo_ry} ${stereo_rz}" />
     </xacro:wge100_camera_v0>
