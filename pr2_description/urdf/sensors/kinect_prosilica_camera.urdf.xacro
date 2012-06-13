@@ -6,6 +6,8 @@
   
   <include filename="$(find pr2_description)/urdf/sensors/kinect_prosilica_camera.gazebo.xacro" />
 
+  <property name="ir_depth_rgb_offset_y" value="0.01"/> <!-- FIXME: what is this offset? -->
+
   <!-- kinect and prosilica combo -->
   <xacro:macro name="kinect_prosilica_camera_swept_back_v0" params="name parent *origin">
     <!-- stl contains structure + kinect + prosilica combo -->
@@ -75,7 +77,7 @@
     </link>
     <!-- kinect ir sensor frame -->
     <joint name="${name}_kinect_ir_optical_frame_joint" type="fixed">
-      <origin xyz="${cal_kinect_x}            ${cal_kinect_y}         ${cal_kinect_z}"
+      <origin xyz="${cal_kinect_x}            ${cal_kinect_y + ir_depth_rgb_offset_y}         ${cal_kinect_z}"
                 rpy="${-M_PI/2+cal_kinect_roll} ${0.0+cal_kinect_pitch} ${-M_PI/2+cal_kinect_yaw}" />
       <parent link="${name}_kinect_ir_link"/>
       <child link="${name}_kinect_ir_optical_frame"/>
