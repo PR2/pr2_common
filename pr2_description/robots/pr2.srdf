@@ -41,10 +41,14 @@
       <joint name="world_joint"/>
    </group>
 
+   <group name="torso">
+     <joint name="torso_lift_joint"/>
+   </group>
+
    <group name="whole_body">
       <group name="arms"/>
       <group name="base"/>
-      <joint name="torso_lift_joint"/>
+      <group name="torso"/>
    </group>
 
    <group name="l_end_effector">
