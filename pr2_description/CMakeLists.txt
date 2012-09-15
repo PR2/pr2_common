@@ -32,8 +32,10 @@ set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
 rosbuild_add_gtest(test_urdf test/test_urdf.cpp)
 
 # mesh file generations
-rosbuild_find_ros_package(ivcon)
-rosbuild_find_ros_package(convex_decomposition)
+#rosbuild_find_ros_package(ivcon)
+#rosbuild_find_ros_package(convex_decomposition)
+find_program(IVCON_PROG ivcon)
+find_program(CONVEX_DECOMPOSITION_PROG convex_decomposition)
 
 # iterate through all the stl files to:
 #  1. convert to *.iv files
@@ -70,7 +72,7 @@ foreach(it ${pr2_stl_files})
     #create obj files for convex decomposition from stl files
     add_custom_command(
       OUTPUT ${basepath}/convex/${basename}.obj
-      COMMAND ${ivcon_PACKAGE_PATH}/bin/ivcon
+      COMMAND ${IVCON_PROG}
       ARGS ${it} ${basepath}/convex/${basename}.obj
       DEPENDS ${it} ${basepath}/convex)
 
@@ -79,7 +81,7 @@ foreach(it ${pr2_stl_files})
     #convex decompose object files
     add_custom_command(
       OUTPUT ${basepath}/convex/${basename}_convex.obj
-      COMMAND ${convex_decomposition_PACKAGE_PATH}/convex_decomposition/bin/convex_decomposition
+      COMMAND ${CONVEX_DECOMPOSITION_PROG}
       ARGS ${basepath}/convex/${basename}.obj -v12 -p10
       DEPENDS ${basepath}/convex/${basename}.obj ${basepath}/convex)
 
@@ -88,7 +90,7 @@ foreach(it ${pr2_stl_files})
     #convert obj files back to stlb, put in directory named convex
     add_custom_command(
       OUTPUT ${basepath}/convex/${basename}_convex.stlb
-      COMMAND ${ivcon_PACKAGE_PATH}/bin/ivcon
+      COMMAND ${IVCON_PROG}
       ARGS ${basepath}/convex/${basename}_convex.obj ${basepath}/convex/${basename}_convex.stlb
       DEPENDS ${it} ${basepath}/convex ${basepath}/convex/${basename}_convex.obj)
 
@@ -97,7 +99,7 @@ foreach(it ${pr2_stl_files})
     #convert obj files back to stla, put in directory named convex
     add_custom_command(
       OUTPUT ${basepath}/convex/${basename}_convex.stla
-      COMMAND ${ivcon_PACKAGE_PATH}/bin/ivcon
+      COMMAND ${IVCON_PROG}
       ARGS ${basepath}/convex/${basename}_convex.obj ${basepath}/convex/${basename}_convex.stla
       DEPENDS ${it} ${basepath}/convex ${basepath}/convex/${basename}_convex.obj)
 
@@ -106,12 +108,12 @@ foreach(it ${pr2_stl_files})
     #create iv files
     add_custom_command(
       OUTPUT ${basepath}/iv/${basename}.iv
-      COMMAND ${ivcon_PACKAGE_PATH}/bin/ivcon
+      COMMAND ${IVCON_PROG}
       ARGS ${it} ${basepath}/iv/${basename}.iv
       DEPENDS ${basepath}/iv ${it})
     add_custom_command(
       OUTPUT ${basepath}/convex/${basename}_convex.iv
-      COMMAND ${ivcon_PACKAGE_PATH}/bin/ivcon
+      COMMAND ${IVCON_PROG}
       ARGS ${basepath}/convex/${basename}_convex.obj ${basepath}/convex/${basename}_convex.iv
       DEPENDS ${it} ${basepath}/convex ${basepath}/convex/${basename}_convex.obj)
      
