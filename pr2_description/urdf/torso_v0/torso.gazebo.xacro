@@ -9,27 +9,28 @@
   <xacro:macro name="pr2_torso_gazebo_v0" params="name">
 
     <gazebo reference="${name}_link">
-      <sensor:contact name="${name}_contact_sensor">
-        <geom>${name}_link_geom</geom>
-        <updateRate>100.0</updateRate>
-        <controller:gazebo_ros_bumper name="${name}_gazebo_ros_bumper_controller" plugin="libgazebo_ros_bumper.so">
+      <sensor type="contact" name="${name}_contact_sensor">
+        <update_rate>100.0</update_rate>
+        <contact>
+          <collision>${name}_link_geom</collision>
+        </contact>
+        <plugin name="${name}_gazebo_ros_bumper_controller" filename="libgazebo_ros_bumper.so">
           <alwaysOn>true</alwaysOn>
           <updateRate>100.0</updateRate>
           <bumperTopicName>${name}_bumper</bumperTopicName>
-          <interface:bumper name="${name}_gazebo_ros_bumper_iface" />
-        </controller:gazebo_ros_bumper>
-      </sensor:contact>
+        </plugin>
+      </sensor>
     </gazebo>
 
     <gazebo>
-      <joint:screw name="${name}_screw_torso_lift_joint">
-          <body1>${name}_motor_screw_link</body1>
-          <body2>${name}_link</body2>
-          <anchor>${name}_motor_screw_link</anchor>
-          <anchorOffset>0 0 0</anchorOffset>
-          <axis>0 0 1</axis>
-          <threadPitch>3141.6</threadPitch>
-      </joint:screw>
+      <joint type="screw" name="${name}_screw_torso_lift_joint">
+          <parent>${name}_motor_screw_link</parent>
+          <child>${name}_link</child>
+          <axis>
+            <xyz>0 0 1</xyz>
+          </axis>
+          <thread_pitch>3141.6</thread_pitch>
+      </joint>
     </gazebo>
 
   </xacro:macro>

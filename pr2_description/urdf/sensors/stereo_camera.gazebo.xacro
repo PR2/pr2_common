@@ -10,12 +10,12 @@
     
     <gazebo reference="${name}_link">
       <material value="PR2/Blue" />
-      <turnGravityOff value="true" />
+      <gravity value="false" />
     </gazebo>
 
     <gazebo reference="${name}_optical_frame">
       <material value="Gazebo/White" />
-      <turnGravityOff value="true" />
+      <gravity value="false" />
     </gazebo>
 
   </xacro:macro>

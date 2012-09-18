@@ -18,7 +18,7 @@
     </projector>
   </gazebo>
   <gazebo>
-    <controller:gazebo_ros_projector name="${name}_controller" plugin="libgazebo_ros_projector.so">
+    <plugin name="${name}_controller" filename="libgazebo_ros_projector.so">
       <projector>${name}_child_frame/${name}_projector_wg6802418</projector>
       <alwaysOn>true</alwaysOn>
       <updateRate>15.0</updateRate>
@@ -26,7 +26,7 @@
       <filterTextureName>stereo_projection_pattern_filter.png</filterTextureName>        
       <textureTopicName>${name}_controller/image</textureTopicName>
       <projectorTopicName>${name}_controller/projector</projectorTopicName>
-    </controller:gazebo_ros_projector>
+    </plugin>
   </gazebo>
 
 </xacro:macro>

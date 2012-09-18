@@ -6,7 +6,7 @@
 
   <xacro:macro name="pr2_upper_arm_gazebo_v0" params="side">
     <gazebo reference="${side}_upper_arm_link">
-      <turnGravityOff>true</turnGravityOff>
+      <gravity>false</gravity>
     </gazebo>
   </xacro:macro>
 
@@ -18,11 +18,11 @@
     </gazebo>
 
     <gazebo reference="${side}_elbow_flex_link">
-      <turnGravityOff>true</turnGravityOff>
+      <gravity>false</gravity>
     </gazebo>
     <gazebo reference="${side}_elbow_flex_joint">
-      <stopKd value="1.0" />
-      <stopKp value="1000000.0" />
+      <stop_erp value="1.0" />
+      <stop_cfm value="0.001" />
     </gazebo>
   </xacro:macro>
 
@@ -30,10 +30,10 @@
   <xacro:macro name="pr2_forearm_roll_gazebo_v0" params="side" >
     <gazebo reference="${side}_forearm_roll_link">
       <material value="PR2/RollLinks" />
-      <turnGravityOff>true</turnGravityOff>
+      <gravity>false</gravity>
     </gazebo>
     <gazebo reference="${side}_forearm_roll_joint">
-      <fudgeFactor value="0.5" />
+      <fudge_factor value="0.5" />
     </gazebo>
   </xacro:macro>
 </robot>

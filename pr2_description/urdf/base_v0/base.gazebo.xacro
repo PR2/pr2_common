@@ -22,34 +22,34 @@
 
   <xacro:macro name="pr2_base_gazebo_v0" params="name">
     <gazebo reference="${name}_link">
-      <selfCollide>false</selfCollide>
-      <sensor:contact name="${name}_contact_sensor">
-        <geom>${name}_link_geom</geom>
-        <updateRate>100.0</updateRate>
-        <controller:gazebo_ros_bumper name="${name}_gazebo_ros_bumper_controller" plugin="libgazebo_ros_bumper.so">
+      <self_collide>false</self_collide>
+      <sensor type="contact" name="${name}_contact_sensor">
+        <update_rate>100.0</update_rate>
+        <contact>
+          <collision>${name}_link_geom</collision>
+        </contact>
+        <plugin name="${name}_gazebo_ros_bumper_controller" filename="libgazebo_ros_bumper.so">
           <alwaysOn>true</alwaysOn>
-          <updateRate>100.0</updateRate>
+          <update_rate>100.0</update_rate>
           <bumperTopicName>${name}_bumper</bumperTopicName>
-          <interface:bumper name="${name}_bumper_iface" />
-        </controller:gazebo_ros_bumper>
-      </sensor:contact>
+        </plugin>
+      </sensor>
     </gazebo>
     <gazebo reference="${name}_bellow_link">
       <material value="PR2/Black" />
     </gazebo>
     <gazebo>
-      <controller:gazebo_ros_p3d name="p3d_base_controller" plugin="libgazebo_ros_p3d.so">
+      <plugin name="p3d_base_controller" filename="libgazebo_ros_p3d.so">
         <alwaysOn>true</alwaysOn>
-        <updateRate>100.0</updateRate>
+        <update_rate>100.0</update_rate>
         <bodyName>${name}_link</bodyName>
         <topicName>${name}_pose_ground_truth</topicName>
         <gaussianNoise>0.01</gaussianNoise>
         <frameName>map</frameName>
         <xyzOffsets>0 0 0</xyzOffsets>
         <rpyOffsets>0 0 0</rpyOffsets>
-        <interface:position name="p3d_base_position"/>
-      </controller:gazebo_ros_p3d>
-      <canonicalBody>${name}_footprint</canonicalBody>
+      </plugin>
+      <!--canonicalBody>${name}_footprint</canonicalBody-->
     </gazebo>
   </xacro:macro>
 

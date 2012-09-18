@@ -8,20 +8,20 @@
 
     <!-- Shoulder pan -->
     <gazebo reference="${side}_shoulder_pan_link">
-      <turnGravityOff>true</turnGravityOff>
+      <gravity>false</gravity>
     </gazebo>
     <gazebo reference="${side}_shoulder_pan_joint">
-      <stopKd value="1.0" />
-      <stopKp value="1000000.0" />
+      <stop_erp value="1.0" />
+      <stop_cfm value="0.001" />
     </gazebo>
 
     <!-- Shoulder lift -->
     <gazebo reference="${side}_shoulder_lift_link">
-      <turnGravityOff>true</turnGravityOff>
+      <gravity>false</gravity>
     </gazebo>
     <gazebo reference="${side}_shoulder_lift_joint">
-      <stopKd value="1.0" />
-      <stopKp value="1000000.0" />
+      <stop_erp value="1.0" />
+      <stop_cfm value="0.001" />
     </gazebo>
   </xacro:macro>
 
@@ -29,12 +29,12 @@
   <xacro:macro name="pr2_upper_arm_roll_gazebo_v0" params="side" >
     <gazebo reference="${side}_upper_arm_roll_link">
       <material value="PR2/RollLinks" />
-      <turnGravityOff>true</turnGravityOff>
+      <gravity>false</gravity>
     </gazebo>
     <gazebo reference="${side}_upper_arm_roll_joint">
-      <stopKd value="1.0" />
-      <stopKp value="1000000.0" />
-      <fudgeFactor value="0.5" />
+      <stop_erp value="1.0" />
+      <stop_cfm value="0.001" />
+      <fudge_factor value="0.5" />
     </gazebo>
   </xacro:macro>
 </robot>
