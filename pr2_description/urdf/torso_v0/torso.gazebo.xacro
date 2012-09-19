@@ -12,7 +12,7 @@
       <sensor type="contact" name="${name}_contact_sensor">
         <update_rate>100.0</update_rate>
         <contact>
-          <collision>${name}_link_geom</collision>
+          <collision>${name}_link_collision</collision>
         </contact>
         <plugin name="${name}_gazebo_ros_bumper_controller" filename="libgazebo_ros_bumper.so">
           <alwaysOn>true</alwaysOn>
