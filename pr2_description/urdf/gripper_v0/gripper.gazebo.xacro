@@ -195,7 +195,7 @@
 
 
     <gazebo>
-      <joint type="hinge" name="${prefix}_r_parallel_root_joint">
+      <joint type="revolute" name="${prefix}_r_parallel_root_joint">
           <child>${prefix}_r_parallel_link</child>
           <parent>${prefix}_palm_link</parent>
           <axis>
@@ -206,7 +206,7 @@
           </axis>
           <pose>${0.07691+parallel_link_x_offset} ${-0.01-parallel_link_y_offset} 0 0 0 0</pose>
       </joint>
-      <joint type="hinge" name="${prefix}_l_parallel_root_joint">
+      <joint type="revolute" name="${prefix}_l_parallel_root_joint">
           <child>${prefix}_l_parallel_link</child>
           <parent>${prefix}_palm_link</parent>
           <axis>
@@ -217,7 +217,7 @@
           </axis>
           <pose>${0.07691+parallel_link_x_offset} ${0.01+parallel_link_y_offset} 0 0 0 0</pose>
       </joint>
-      <joint type="hinge" name="${prefix}_r_parallel_tip_joint">
+      <joint type="revolute" name="${prefix}_r_parallel_tip_joint">
           <child>${prefix}_r_parallel_link</child>
           <parent>${prefix}_r_finger_tip_link</parent>
           <axis>
@@ -225,7 +225,7 @@
           </axis>
           <pose>${parallel_link_x_offset} ${-parallel_link_y_offset} 0 0 0 0</pose>
       </joint>
-      <joint type="hinge" name="${prefix}_l_parallel_tip_joint">
+      <joint type="revolute" name="${prefix}_l_parallel_tip_joint">
           <child>${prefix}_l_parallel_link</child>
           <parent>${prefix}_l_finger_tip_link</parent>
           <axis>
@@ -233,7 +233,7 @@
           </axis>
           <pose>${parallel_link_x_offset} ${parallel_link_y_offset} 0 0 0 0</pose>
       </joint>
-      <joint type="slider" name="${prefix}_joint">
+      <joint type="prismatic" name="${prefix}_joint">
           <parent>${prefix}_l_finger_tip_link</parent>
           <child>${prefix}_r_finger_tip_link</child>
           <axis>

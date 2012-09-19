@@ -6,7 +6,7 @@
   
 <xacro:macro name="kinect_ir_gazebo_v0" params="link_name frame_name camera_name">
   <gazebo reference="${link_name}">
-    <sensor type="camera" name="${name}_ir_sensor">
+    <sensor type="depth" name="${name}_ir_sensor">
       <update_rate>1.0</update_rate>
       <camera>
         <horizontal_fov>${57.0/180.0*M_PI}</horizontal_fov>
@@ -44,7 +44,7 @@
 
 <xacro:macro name="kinect_rgb_gazebo_v0" params="link_name frame_name camera_name">
   <gazebo reference="${link_name}">
-    <sensor type="camera" name="${name}_rgb_sensor">
+    <sensor type="depth" name="${name}_rgb_sensor">
       <update_rate>1.0</update_rate>
       <camera>
         <horizontal_fov>${57.0/180.0*M_PI}</horizontal_fov>
@@ -97,7 +97,7 @@
 
 <xacro:macro name="prosilica_cam_gazebo_v1" params="link_name frame_name camera_name ">
   <gazebo reference="${link_name}">
-    <sensor type="camera" name="${link_name}_sensor">
+    <sensor type="depth" name="${link_name}_sensor">
       <update_rate>1.0</update_rate>
       <camera>
         <horizontal_fov>${64.2/180.0*M_PI}</horizontal_fov>
@@ -126,7 +126,7 @@
         <distortionT2>0.0</distortionT2>
       </plugin>
     </sensor>
-    <sensor type="camera" name="${link_name}_sim_pcd_sensor">
+    <sensor type="depth" name="${link_name}_sim_pcd_sensor">
       <update_rate>1.0</update_rate>
       <camera>
         <horizontal_fov>${64.2/180.0*M_PI}</horizontal_fov>

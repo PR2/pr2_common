@@ -19,7 +19,7 @@
             <far>100</far>
           </clip>
         </camera>
-        <plugin name="${name}_controller" filename="libgazebo_ros_depth_camera.so">
+        <plugin name="${name}_controller" filename="libgazebo_ros_camera.so">
           <alwaysOn>true</alwaysOn>
           <updateRate>25.0</updateRate>
           <cameraName>${camera_name}</cameraName>
