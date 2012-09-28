@@ -7,8 +7,8 @@
        xmlns:geom="http://playerstage.sourceforge.net/gazebo/xmlschema/#geom"
        xmlns:xacro="http://ros.org/wiki/xacro">
 
-  <property name="finger_stop_kd"             value="1.0" />
-  <property name="finger_stop_kp"             value="0.001" />
+  <property name="finger_stop_erp"             value="0.0" />
+  <property name="finger_stop_cfm"             value="0.1" />
   <property name="finger_fudge_factor"        value="1.0" />
 
   <property name="finger_kp"                  value="0.0" />
@@ -38,8 +38,8 @@
       <!-- for "${prefix}_l_finger_joint"-->
     </gazebo>
     <gazebo reference="${prefix}_l_finger_joint">
-      <stop_erp value="${finger_stop_kd}" />
-      <stop_cfm value="${finger_stop_kp}" />
+      <stop_erp value="${finger_stop_erp}" />
+      <stop_cfm value="${finger_stop_cfm}" />
       <fudge_factor value="${finger_fudge_factor}" />
       <provideFeedback value="true"/>
     </gazebo>
@@ -54,8 +54,8 @@
       <kd value="1.0" />
     </gazebo>
     <gazebo reference="${prefix}_r_finger_joint">
-      <stop_erp value="${finger_stop_kd}" />
-      <stop_cfm value="${finger_stop_kp}" />
+      <stop_erp value="${finger_stop_erp}" />
+      <stop_cfm value="${finger_stop_cfm}" />
       <fudge_factor value="${finger_fudge_factor}" />
       <provideFeedback value="true"/>
     </gazebo>
@@ -83,8 +83,8 @@
       <kd  value="1.0" />
     </gazebo>
     <gazebo reference="${prefix}_l_finger_tip_joint">
-      <stop_erp value="${finger_stop_kd}" />
-      <stop_cfm value="${finger_stop_kp}" />
+      <stop_erp value="${finger_stop_erp}" />
+      <stop_cfm value="${finger_stop_cfm}" />
       <fudge_factor value="${finger_fudge_factor}" />
       <provideFeedback value="true"/>
     </gazebo>
@@ -129,8 +129,8 @@
       </plugin>
     </gazebo>
     <gazebo reference="${prefix}_r_finger_tip_joint">
-      <stop_erp value="${finger_stop_kd}" />
-      <stop_cfm value="${finger_stop_kp}" />
+      <stop_erp value="${finger_stop_erp}" />
+      <stop_cfm value="${finger_stop_cfm}" />
       <fudge_factor value="${finger_fudge_factor}" />
       <provideFeedback value="true"/>
     </gazebo>
@@ -174,8 +174,8 @@
     </gazebo>
     <gazebo>
       <joint type="screw" name="${prefix}_r_screw_screw_joint">
-          <parent>${prefix}_motor_screw_link</parent>
-          <child>${prefix}_r_finger_tip_link</child>
+          <child>${prefix}_motor_screw_link</child>
+          <parent>${prefix}_r_finger_tip_link</parent>
           <pose>0 0 0 0 0 0</pose>
           <axis>
             <xyz>0 1 0</xyz>
@@ -183,8 +183,8 @@
           <thread_pitch>-3141.6</thread_pitch>
       </joint>
       <joint type="screw" name="${prefix}_l_screw_screw_joint">
-          <parent>${prefix}_motor_screw_link</parent>
-          <child>${prefix}_l_finger_tip_link</child>
+          <child>${prefix}_motor_screw_link</child>
+          <parent>${prefix}_l_finger_tip_link</parent>
           <pose>0 0 0 0 0 0</pose>
           <axis>
             <xyz>0 1 0</xyz>
@@ -196,8 +196,8 @@
 
     <gazebo>
       <joint type="revolute" name="${prefix}_r_parallel_root_joint">
-          <child>${prefix}_r_parallel_link</child>
-          <parent>${prefix}_palm_link</parent>
+          <parent>${prefix}_r_parallel_link</parent>
+          <child>${prefix}_palm_link</child>
           <axis>
             <xyz>0 0 -1</xyz>
             <dynamics>
@@ -207,8 +207,8 @@
           <pose>${0.07691+parallel_link_x_offset} ${-0.01-parallel_link_y_offset} 0 0 0 0</pose>
       </joint>
       <joint type="revolute" name="${prefix}_l_parallel_root_joint">
-          <child>${prefix}_l_parallel_link</child>
-          <parent>${prefix}_palm_link</parent>
+          <parent>${prefix}_l_parallel_link</parent>
+          <child>${prefix}_palm_link</child>
           <axis>
             <xyz>0 0 1</xyz>
             <dynamics>
@@ -218,24 +218,24 @@
           <pose>${0.07691+parallel_link_x_offset} ${0.01+parallel_link_y_offset} 0 0 0 0</pose>
       </joint>
       <joint type="revolute" name="${prefix}_r_parallel_tip_joint">
-          <child>${prefix}_r_parallel_link</child>
-          <parent>${prefix}_r_finger_tip_link</parent>
+          <parent>${prefix}_r_parallel_link</parent>
+          <child>${prefix}_r_finger_tip_link</child>
           <axis>
             <xyz>0 0 1</xyz>
           </axis>
           <pose>${parallel_link_x_offset} ${-parallel_link_y_offset} 0 0 0 0</pose>
       </joint>
       <joint type="revolute" name="${prefix}_l_parallel_tip_joint">
-          <child>${prefix}_l_parallel_link</child>
-          <parent>${prefix}_l_finger_tip_link</parent>
+          <parent>${prefix}_l_parallel_link</parent>
+          <child>${prefix}_l_finger_tip_link</child>
           <axis>
             <xyz>0 0 1</xyz>
           </axis>
           <pose>${parallel_link_x_offset} ${parallel_link_y_offset} 0 0 0 0</pose>
       </joint>
       <joint type="prismatic" name="${prefix}_joint">
-          <parent>${prefix}_l_finger_tip_link</parent>
-          <child>${prefix}_r_finger_tip_link</child>
+          <child>${prefix}_l_finger_tip_link</child>
+          <parent>${prefix}_r_finger_tip_link</parent>
           <axis>
             <xyz>0 1 0</xyz>
           </axis>

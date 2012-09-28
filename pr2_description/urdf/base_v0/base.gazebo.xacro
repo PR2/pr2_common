@@ -11,6 +11,7 @@
       <mu2 value="100.0" />
       <kp  value="1000000.0" />
       <kd  value="1.0" />
+      <maxVel  value="1000.0" />
     </gazebo>
   </xacro:macro>
 
