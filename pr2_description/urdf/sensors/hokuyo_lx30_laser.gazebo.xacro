@@ -16,8 +16,8 @@
             <horizontal>
               <samples>640</samples>
               <resolution>1</resolution>
-              <min_angle>${min_angle*180.0/M_PI}</min_angle>
-              <max_angle>${max_angle*180.0/M_PI}</max_angle>
+              <min_angle>${min_angle}</min_angle>
+              <max_angle>${max_angle}</max_angle>
             </horizontal>
           </scan>
           <range>
