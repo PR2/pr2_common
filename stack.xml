@@ -8,7 +8,9 @@
   <url>http://ros.org/wiki/pr2_common</url>
   <depend stack="common_msgs" /> <!-- geometry_msgs -->
   <depend stack="convex_decomposition" /> <!-- convex_decomposition -->
-  <depend stack="robot_model" /> <!-- ivcon, urdf -->
+  <depend stack="ivcon" /> <!-- convex_decomposition -->
+  <depend stack="urdf" /> <!-- convex_decomposition -->
+  <depend stack="robot_model" /> <!-- urdf -->
   <depend stack="ros" />
   <depend stack="ros_comm" /> <!-- rosbag, rostest, std_msgs, rosbagmigration, rospy -->
   <depend stack="xacro" /> <!-- xacro -->
