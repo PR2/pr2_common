@@ -79,7 +79,7 @@ foreach(it ${pr2_stl_files})
     #convex decompose object files
     add_custom_command(
       OUTPUT ${basepath}/convex/${basename}_convex.obj
-      COMMAND ${convex_decomposition_PACKAGE_PATH}/convex_decomposition/bin/convex_decomposition
+      COMMAND convex_decomposition
       ARGS ${basepath}/convex/${basename}.obj -v12 -p10
       DEPENDS ${basepath}/convex/${basename}.obj ${basepath}/convex)
 
