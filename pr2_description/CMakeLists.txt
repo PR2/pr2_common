@@ -97,7 +97,7 @@ foreach(it ${pr2_stl_files})
     #convert obj files back to stla, put in directory named convex
     add_custom_command(
       OUTPUT ${basepath}/convex/${basename}_convex.stla
-      COMMAND ${ivcon_PACKAGE_PATH}/bin/ivcon
+      COMMAND ivcon
       ARGS ${basepath}/convex/${basename}_convex.obj ${basepath}/convex/${basename}_convex.stla
       DEPENDS ${it} ${basepath}/convex ${basepath}/convex/${basename}_convex.obj)
 
@@ -106,7 +106,7 @@ foreach(it ${pr2_stl_files})
     #create iv files
     add_custom_command(
       OUTPUT ${basepath}/iv/${basename}.iv
-      COMMAND ${ivcon_PACKAGE_PATH}/bin/ivcon
+      COMMAND ivcon
       ARGS ${it} ${basepath}/iv/${basename}.iv
       DEPENDS ${basepath}/iv ${it})
     add_custom_command(
