@@ -50,9 +50,9 @@
 
     <joint name="${parent}_${suffix}_wheel_joint" type="continuous">
       <axis xyz="0 1 0" />
-      <limit effort="100" velocity="100"/> <!-- alpha tested effort and velocity limits -->
+      <limit effort="7" velocity="15"/> <!-- alpha tested effort and velocity limits -->
       <safety_controller  k_velocity="10" />
-      <dynamics damping="0.0" friction="0.0" />
+      <dynamics damping="1.0" friction="0.0" />
       <origin xyz="0 ${reflect*caster_wheel_offset_y} 0" rpy="0 0 0" />
       <parent link="${parent}_rotation_link"/>
       <child link="${parent}_${suffix}_wheel_link"/>
@@ -90,10 +90,10 @@
   <xacro:macro name="pr2_caster_hub_v0" params="suffix parent *origin ref_position" >
     <joint name="${suffix}_rotation_joint" type="continuous">
       <axis xyz="0 0 1" />
-      <limit effort="100" velocity="100"/> <!-- alpha tested velocity and effort limits -->
+      <limit effort="6.5" velocity="10"/> <!-- alpha tested velocity and effort limits -->
       <safety_controller  k_velocity="10" />
       <calibration rising="${ref_position}" />
-      <dynamics damping="0.0" friction="0.0" />
+      <dynamics damping="1.0" friction="0.0" />
       <insert_block name="origin" />
       <parent link="${parent}"/>
       <child link="${suffix}_rotation_link" />
