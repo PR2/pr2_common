@@ -6,7 +6,7 @@
         <always_on>true</always_on>
         <update_rate>25.0</update_rate>
         <camera>
-          <horizontal_fov>${hfov}</horizontal_fov>
+          <horizontal_fov>${hfov*M_PI/180.0}</horizontal_fov>
           <image>
             <format>${image_format}</format>
             <width>${image_width}</width>
