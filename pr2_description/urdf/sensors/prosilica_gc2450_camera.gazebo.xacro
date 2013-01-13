@@ -1,20 +1,24 @@
 <?xml version="1.0"?>
-<root xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
-      xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
-      xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
-      xmlns:xacro="http://ros.org/wiki/xacro">
+<root xmlns:xacro="http://ros.org/wiki/xacro">
   
 <xacro:macro name="prosilica_cam_gazebo_v0" params="camera_name frame_name">
   <gazebo reference="${frame_name}_frame">
-    <sensor:camera name="${frame_name}_sensor">
-      <imageFormat>R8G8B8</imageFormat>
-      <imageSize>2448 2050</imageSize>
-      <hfov>45</hfov>
-      <nearClip>0.1</nearClip>
-      <farClip>100</farClip>
-      <updateRate>20.0</updateRate>
-      <controller:gazebo_ros_prosilica name="${frame_name}_controller" plugin="libgazebo_ros_prosilica.so">
-        <alwaysOn>true</alwaysOn>
+    <sensor type="depth" name="${frame_name}_sensor">
+      <always_on>true</always_on>
+      <update_rate>20.0</update_rate>
+      <camera>
+        <horizontal_fov>${M_PI/4}</horizontal_fov>
+        <image>
+          <format>R8G8B8</format>
+          <width>2448</width>
+          <height>2050</height>
+        </image>
+        <clip>
+          <near>0.1</near>
+          <far>100</far>
+        </clip>
+      </camera>
+      <plugin name="${frame_name}_controller" filename="libgazebo_ros_prosilica.so">
         <updateRate>20.0</updateRate>
         <cameraName>${camera_name}</cameraName>
         <imageTopicName>image_raw</imageTopicName>
@@ -24,17 +28,16 @@
         <CxPrime>1224.5</CxPrime>
         <Cx>1224.5</Cx>
         <Cy>1025.5</Cy>
-        <focalLength>2955</focalLength> <!-- image_width / (2*tan(hfov_radian /2)) -->
+        <focalLength>2955</focalLength>
         <distortionK1>0.0</distortionK1>
         <distortionK2>0.0</distortionK2>
         <distortionK3>0.0</distortionK3>
         <distortionT1>0.0</distortionT1>
         <distortionT2>0.0</distortionT2>
-      </controller:gazebo_ros_prosilica>
-    </sensor:camera>
+      </plugin>
+    </sensor>
     <material value="Gazebo/Black" />
   </gazebo>
-
 </xacro:macro>
 
 </root>

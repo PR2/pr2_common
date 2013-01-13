@@ -1,20 +1,25 @@
 <?xml version="1.0"?>
-<root xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
-      xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
-      xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
-      xmlns:xacro="http://ros.org/wiki/xacro">
+<root xmlns:xacro="http://ros.org/wiki/xacro">
   
 <xacro:macro name="kinect_ir_gazebo_v0" params="link_name frame_name camera_name">
   <gazebo reference="${link_name}">
-    <sensor:camera name="${name}_ir_sensor">
-      <imageFormat>L8</imageFormat>
-      <imageSize>640 480</imageSize>
-      <hfov>57</hfov>
-      <nearClip>0.01</nearClip>
-      <farClip>5</farClip>
-      <updateRate>1.0</updateRate>
-      <baseline>0.2</baseline>
-      <controller:gazebo_ros_openni_kinect name="${link_name}_controller" plugin="libgazebo_ros_openni_kinect.so">
+    <sensor type="depth" name="${name}_ir_sensor">
+      <always_on>true</always_on>
+      <update_rate>1.0</update_rate>
+      <camera>
+        <horizontal_fov>${57.0*M_PI/180.0}</horizontal_fov>
+        <image>
+          <format>L8</format>
+          <width>640</width>
+          <height>480</height>
+        </image>
+        <clip>
+          <near>0.01</near>
+          <far>5</far>
+        </clip>
+      </camera>
+      <plugin name="${link_name}_controller" filename="libgazebo_ros_openni_kinect.so">
+        <baseline>0.2</baseline>
         <alwaysOn>true</alwaysOn>
         <updateRate>1.0</updateRate>
         <cameraName>${camera_name}_ir</cameraName>
@@ -30,23 +35,30 @@
         <distortionK3>0.00000001</distortionK3>
         <distortionT1>0.00000001</distortionT1>
         <distortionT2>0.00000001</distortionT2>
-      </controller:gazebo_ros_openni_kinect>
-    </sensor:camera>
+      </plugin>
+    </sensor>
     <material value="Gazebo/Red" />
   </gazebo>
 </xacro:macro>
 
 <xacro:macro name="kinect_rgb_gazebo_v0" params="link_name frame_name camera_name">
   <gazebo reference="${link_name}">
-    <sensor:camera name="${name}_rgb_sensor">
-      <imageFormat>R8G8B8</imageFormat>
-      <imageSize>640 480</imageSize>
-      <hfov>57</hfov>
-      <nearClip>0.01</nearClip>
-      <farClip>5</farClip>
-      <updateRate>1.0</updateRate>
-      <baseline>0.2</baseline>
-      <controller:gazebo_ros_openni_kinect name="${link_name}_controller" plugin="libgazebo_ros_openni_kinect.so">
+    <sensor type="depth" name="${name}_rgb_sensor">
+      <always_on>true</always_on>
+      <update_rate>1.0</update_rate>
+      <camera>
+        <horizontal_fov>${57.0*M_PI/180.0}</horizontal_fov>
+        <image>
+          <format>R8G8B8</format>
+          <width>640</width>
+          <height>480</height>
+        </image>
+        <clip>
+          <near>0.01</near>
+          <far>5</far>
+        </clip>
+      </camera>
+      <plugin name="${link_name}_controller" filename="libgazebo_ros_openni_kinect.so">
         <alwaysOn>true</alwaysOn>
         <updateRate>1.0</updateRate>
         <cameraName>${camera_name}_rgb</cameraName>
@@ -60,38 +72,46 @@
         <distortionK3>0.00000001</distortionK3>
         <distortionT1>0.00000001</distortionT1>
         <distortionT2>0.00000001</distortionT2>
-      </controller:gazebo_ros_openni_kinect>
-    </sensor:camera>
+      </plugin>
+    </sensor>
     <material value="Gazebo/Red" />
   </gazebo>
 </xacro:macro>
 
 <xacro:macro name="kinect_prosilica_gazebo" params="joint_name link_name">
   <gazebo>
-    <controller:gazebo_ros_srp name="${link_name}_srp_controller" plugin="libgazebo_ros_srp.so">
+    <plugin name="${link_name}_srp_controller" filename="libgazebo_ros_srp.so">
       <bodyName>${link_name}</bodyName>
       <jointName>${joint_name}</jointName>
       <topicName>${link_name}</topicName>
-    </controller:gazebo_ros_srp>
+    </plugin>
   </gazebo>
   <!-- also add transmission for this sliding joint -->
-      <transmission type="pr2_mechanism_model/SimpleTransmission" name="${joint_name}_trans">
-      <actuator name="${joint_name}_motor" />
-      <joint name="${joint_name}" />
-      <mechanicalReduction>1</mechanicalReduction>
-    </transmission>
+  <transmission type="pr2_mechanism_model/SimpleTransmission" name="${joint_name}_trans">
+    <actuator name="${joint_name}_motor" />
+    <joint name="${joint_name}" />
+    <mechanicalReduction>1</mechanicalReduction>
+  </transmission>
 </xacro:macro>
 
 <xacro:macro name="prosilica_cam_gazebo_v1" params="link_name frame_name camera_name ">
   <gazebo reference="${link_name}">
-    <sensor:camera name="${link_name}_sensor">
-      <imageFormat>R8G8B8</imageFormat>
-      <imageSize>320 240</imageSize>
-      <hfov>64.2</hfov>
-      <nearClip>0.1</nearClip>
-      <farClip>100</farClip>
-      <updateRate>1.0</updateRate>
-      <controller:gazebo_ros_prosilica name="${link_name}_controller" plugin="libgazebo_ros_prosilica.so">
+    <sensor type="depth" name="${link_name}_sensor">
+      <always_on>true</always_on>
+      <update_rate>1.0</update_rate>
+      <camera>
+        <horizontal_fov>${64.2*M_PI/180.0}</horizontal_fov>
+        <image>
+          <format>R8G8B8</format>
+          <width>320</width>
+          <height>240</height>
+        </image>
+        <clip>
+          <near>0.1</near>
+          <far>100</far>
+        </clip>
+      </camera>
+      <plugin name="${link_name}_controller" filename="libgazebo_ros_prosilica.so">
         <alwaysOn>true</alwaysOn>
         <updateRate>1.0</updateRate>
         <cameraName>${camera_name}_1mb</cameraName>
@@ -104,24 +124,32 @@
         <distortionK3>0.0</distortionK3>
         <distortionT1>0.0</distortionT1>
         <distortionT2>0.0</distortionT2>
-      </controller:gazebo_ros_prosilica>
-    </sensor:camera>
-    <sensor:camera name="${link_name}_sim_pcd_sensor">
-      <imageFormat>R8G8B8</imageFormat>
-      <imageSize>320 240</imageSize>
-      <hfov>64.2</hfov>
-      <nearClip>0.1</nearClip>
-      <farClip>100</farClip>
-      <updateRate>1.0</updateRate>
-      <controller:gazebo_ros_openni_kinect name="${link_name}_sim_pcd_controller" plugin="libgazebo_ros_openni_kinect.so">
+      </plugin>
+    </sensor>
+    <sensor type="depth" name="${link_name}_sim_pcd_sensor">
+      <always_on>true</always_on>
+      <update_rate>1.0</update_rate>
+      <camera>
+        <horizontal_fov>${64.2*M_PI/180.0}</horizontal_fov>
+        <image>
+          <format>R8G8B8</format>
+          <width>320</width>
+          <height>240</height>
+        </image>
+        <clip>
+          <near>0.1</near>
+          <far>100</far>
+        </clip>
+      </camera>
+      <plugin name="${link_name}_sim_pcd_controller" filename="libgazebo_ros_openni_kinect.so">
         <alwaysOn>true</alwaysOn>
         <updateRate>1.0</updateRate>
         <cameraName>${camera_name}_1mb_sim_pcd</cameraName>
         <imageTopicName>image_raw</imageTopicName>
         <cameraInfoTopicName>camera_info</cameraInfoTopicName>
         <frameName>${frame_name}</frameName>
-      </controller:gazebo_ros_openni_kinect>
-    </sensor:camera>
+      </plugin>
+    </sensor>
     <material value="Gazebo/Red" />
   </gazebo>
 </xacro:macro>
