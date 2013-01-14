@@ -13,7 +13,7 @@
   <url>http://ros.org/wiki/pr2_description</url>
   <depend package="convex_decomposition"/>
   <depend package="ivcon"/>
-  <depend package="urdf" /> <!-- Testing -->
+  <depend package="urdfdom" /> <!-- Testing -->
   <depend package="xacro" /> <!-- Testing -->
   <platform os="ubuntu" version="9.04"/>
   <platform os="ubuntu" version="9.10"/>
