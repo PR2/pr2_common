@@ -1,11 +1,5 @@
 <?xml version="1.0"?>
-<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
-       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
-       xmlns:joint="http://playerstage.sourceforge.net/gazebo/xmlschema/#slider"
-       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
-       xmlns:body="http://playerstage.sourceforge.net/gazebo/xmlschema/#body"
-       xmlns:geom="http://playerstage.sourceforge.net/gazebo/xmlschema/#geom"
-       xmlns:xacro="http://ros.org/wiki/xacro">
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
 
   <property name="finger_stop_kd"             value="1.0" />
   <property name="finger_stop_kp"             value="10000000.0" />
@@ -65,17 +59,18 @@
     <gazebo reference="${prefix}_l_finger_tip_link">
       <turnGravityOff>true</turnGravityOff>
       <selfCollide>false</selfCollide>
-      <sensor:contact name="${prefix}_l_finger_tip_contact_sensor">
-        <geom>${prefix}_l_finger_tip_link_geom</geom>
-        <updateRate>100.0</updateRate>
-        <controller:gazebo_ros_bumper name="${prefix}_l_finger_tip_gazebo_ros_bumper_controller" plugin="libgazebo_ros_bumper.so">
+      <sensor type="contact" name="${prefix}_l_finger_tip_contact_sensor">
+        <update_rate>100.0</update_rate>
+        <contact>
+          <collision>${prefix}_l_finger_tip_link_geom</collision>
+        </contact>
+        <plugin name="${prefix}_l_finger_tip_gazebo_ros_bumper_controller" filename="libgazebo_ros_bumper.so">
           <alwaysOn>true</alwaysOn>
           <frameName>${prefix}_l_finger_tip_link</frameName>
           <updateRate>100.0</updateRate>
           <bumperTopicName>${prefix}_l_finger_tip_bumper</bumperTopicName>
-          <interface:bumper name="${prefix}_l_finger_tip_gazebo_ros_bumper_iface" />
-        </controller:gazebo_ros_bumper>
-      </sensor:contact>
+        </plugin>
+      </sensor>
       <mu1 value="${finger_tip_mu}" />
       <mu2 value="${finger_tip_mu}" />
       <kp  value="10000000.0" />
@@ -93,40 +88,39 @@
     <gazebo reference="${prefix}_r_finger_tip_link">
       <turnGravityOff>true</turnGravityOff>
       <selfCollide>false</selfCollide>
-      <sensor:contact name="${prefix}_r_finger_tip_contact_sensor">
-        <geom>${prefix}_r_finger_tip_link_geom</geom>
-        <updateRate>100.0</updateRate>
-        <controller:gazebo_ros_bumper name="${prefix}_r_finger_tip_gazebo_ros_bumper_controller" plugin="libgazebo_ros_bumper.so">
+      <sensor type="contact" name="${prefix}_r_finger_tip_contact_sensor">
+        <update_rate>100.0</update_rate>
+        <contact>
+          <collision>${prefix}_r_finger_tip_link_geom</collision>
+        </contact>
+        <plugin name="${prefix}_r_finger_tip_gazebo_ros_bumper_controller" filename="libgazebo_ros_bumper.so">
           <alwaysOn>true</alwaysOn>
           <frameName>${prefix}_r_finger_tip_link</frameName>
           <updateRate>100.0</updateRate>
           <bumperTopicName>${prefix}_r_finger_tip_bumper</bumperTopicName>
-          <interface:bumper name="${prefix}_r_finger_tip_gazebo_ros_bumper_iface" />
-        </controller:gazebo_ros_bumper>
-      </sensor:contact>
+        </plugin>
+      </sensor>
       <mu1 value="${finger_tip_mu}" />
       <mu2 value="${finger_tip_mu}" />
       <kp  value="10000000.0" />
       <kd  value="1.0" />
     </gazebo>
     <gazebo>
-      <controller:gazebo_ros_p3d name="p3d_${prefix}_l_finger_controller" plugin="libgazebo_ros_p3d.so">
+      <plugin name="p3d_${prefix}_l_finger_controller" filename="libgazebo_ros_p3d.so">
         <alwaysOn>true</alwaysOn>
         <updateRate>100.0</updateRate>
         <bodyName>${prefix}_l_finger_link</bodyName>
         <topicName>${prefix}_l_finger_pose_ground_truth</topicName>
         <gaussianNoise>0.0</gaussianNoise>
         <frameName>base_link</frameName>
-        <interface:position name="p3d_${prefix}_l_finger_position_iface" />
-      </controller:gazebo_ros_p3d>
-      <controller:gazebo_ros_f3d name="f3d_${prefix}_l_finger_controller" plugin="libgazebo_ros_f3d.so">
+      </plugin>
+      <plugin name="f3d_${prefix}_l_finger_controller" filename="libgazebo_ros_f3d.so">
         <alwaysOn>true</alwaysOn>
         <updateRate>100.0</updateRate>
         <bodyName>${prefix}_l_finger_link</bodyName>
         <topicName>${prefix}_l_finger_force_ground_truth</topicName>
         <frameName>${prefix}_l_finger_link</frameName>
-        <interface:position name="f3d_${prefix}_l_finger_force_iface" />
-      </controller:gazebo_ros_f3d>
+      </plugin>
     </gazebo>
     <gazebo reference="${prefix}_r_finger_tip_joint">
       <stopKd value="${finger_stop_kd}" />
@@ -137,98 +131,105 @@
 
     <!-- parallel link for simulating gripper constraints -->
     <gazebo>
-      <body:box name="${prefix}_l_parallel_link">
-          <massMatrix>true</massMatrix>
-          <mass>0.17126</mass>
-          <ixx>7.7562e-05</ixx>
-          <ixy>1.49095e-06</ixy>
-          <ixz>-9.83385e-06</ixz>
-          <iyy>0.000197083</iyy>
-          <iyz>-3.06125e-06</iyz>
-          <izz>0.000181054</izz>
-          <cx>0.03598</cx>
-          <cy>0.0173</cy>
-          <cz>-0.00164</cz>
-          <xyz>0.82991 ${0.188*reflect+0.031} 0.790675</xyz>
-          <rpy>0 -0 0</rpy>
-          <turnGravityOff>true</turnGravityOff>
-          <selfCollide>false</selfCollide>
-      </body:box>
-      <body:box name="${prefix}_r_parallel_link">
-          <massMatrix>true</massMatrix>
-          <mass>0.17389</mass>
-          <ixx>7.73841e-05</ixx>
-          <ixy>-2.09309e-06</ixy>
-          <ixz>-8.36228e-06</ixz>
-          <iyy>0.000198474</iyy>
-          <iyz>2.4611e-06</iyz>
-          <izz>0.00018107</izz>
-          <cx>0.03576</cx>
-          <cy>-0.01736</cy>
-          <cz>-0.00095</cz>
-          <xyz>0.82991 ${0.188*reflect-0.031} 0.790675</xyz>
-          <rpy>0 -0 0</rpy>
-          <turnGravityOff>true</turnGravityOff>
-          <selfCollide>false</selfCollide>
-      </body:box>
+      <link name="${prefix}_l_parallel_link">
+          <inertial>
+            <mass>0.17126</mass>
+            <inertia>
+              <ixx>7.7562e-05</ixx>
+              <ixy>1.49095e-06</ixy>
+              <ixz>-9.83385e-06</ixz>
+              <iyy>0.000197083</iyy>
+              <iyz>-3.06125e-06</iyz>
+              <izz>0.000181054</izz>
+            </inertia>
+            <pose>0.03598 0.0173 -0.00164 0 0 0</pose>
+          </inertial>
+          <pose>0.82991 ${0.188*reflect+0.031} 0.790675 0 -0 0</pose>
+          <gravity>false</gravity>
+      </link>
+      <link name="${prefix}_r_parallel_link">
+          <inertial>
+            <mass>0.17389</mass>
+            <inertia>
+              <ixx>7.73841e-05</ixx>
+              <ixy>-2.09309e-06</ixy>
+              <ixz>-8.36228e-06</ixz>
+              <iyy>0.000198474</iyy>
+              <iyz>2.4611e-06</iyz>
+              <izz>0.00018107</izz>
+            </inertia>
+            <pose>0.03576 -0.01736 -0.00095 0 0 0</pose>
+          </inertial>
+          <pose>0.82991 ${0.188*reflect-0.031} 0.790675 0 0 0</pose>
+          <gravity>false</gravity>
+      </link>
     </gazebo>
     <gazebo>
-      <joint:screw name="${prefix}_r_screw_screw_joint">
-          <body1>${prefix}_motor_screw_link</body1>
-          <body2>${prefix}_r_finger_tip_link</body2>
-          <anchor>${prefix}_motor_screw_link</anchor>
-          <anchorOffset>0 0 0</anchorOffset>
-          <axis>0 1 0</axis>
-          <threadPitch>-3141.6</threadPitch>
-      </joint:screw>
-      <joint:screw name="${prefix}_l_screw_screw_joint">
-          <body1>${prefix}_motor_screw_link</body1>
-          <body2>${prefix}_l_finger_tip_link</body2>
-          <anchor>${prefix}_motor_screw_link</anchor>
-          <anchorOffset>0 0 0</anchorOffset>
-          <axis>0 1 0</axis>
-          <threadPitch>3141.6</threadPitch>
-      </joint:screw>
+      <joint type="screw" name="${prefix}_r_screw_screw_joint">
+          <child>${prefix}_motor_screw_link</child>
+          <parent>${prefix}_r_finger_tip_link</parent>
+          <thread_pitch>-3141.6</thread_pitch>
+          <axis>
+            <xyz>0 1 0</xyz>
+          </axis>
+      </joint>
+      <joint type="screw" name="${prefix}_l_screw_screw_joint">
+          <parent>${prefix}_l_finger_tip_link</parent>
+          <child>${prefix}_motor_screw_link</child>
+          <thread_pitch>3141.6</thread_pitch>
+          <axis>
+            <xyz>0 1 0</xyz>
+          </axis>
+      </joint>
     </gazebo>
 
 
     <gazebo>
-      <joint:hinge name="${prefix}_r_parallel_root_joint">
-          <body1>${prefix}_r_parallel_link</body1>
-          <body2>${prefix}_palm_link</body2>
-          <anchor>${prefix}_palm_link</anchor>
-          <axis>0 0 -1</axis>
-          <damping>0.2</damping>
-          <anchorOffset>${0.07691+parallel_link_x_offset} ${-0.01-parallel_link_y_offset} 0</anchorOffset>
-      </joint:hinge>
-      <joint:hinge name="${prefix}_l_parallel_root_joint">
-          <body1>${prefix}_l_parallel_link</body1>
-          <body2>${prefix}_palm_link</body2>
-          <anchor>${prefix}_palm_link</anchor>
-          <axis>0 0 1</axis>
-          <damping>0.2</damping>
-          <anchorOffset>${0.07691+parallel_link_x_offset} ${0.01+parallel_link_y_offset} 0</anchorOffset>
-      </joint:hinge>
-      <joint:hinge name="${prefix}_r_parallel_tip_joint">
-          <body1>${prefix}_r_parallel_link</body1>
-          <body2>${prefix}_r_finger_tip_link</body2>
-          <anchor>${prefix}_r_finger_tip_link</anchor>
-          <axis>0 0 1</axis>
-          <anchorOffset>${parallel_link_x_offset} ${-parallel_link_y_offset} 0</anchorOffset>
-      </joint:hinge>
-      <joint:hinge name="${prefix}_l_parallel_tip_joint">
-          <body1>${prefix}_l_parallel_link</body1>
-          <body2>${prefix}_l_finger_tip_link</body2>
-          <anchor>${prefix}_l_finger_tip_link</anchor>
-          <axis>0 0 1</axis>
-          <anchorOffset>${parallel_link_x_offset} ${parallel_link_y_offset} 0</anchorOffset>
-      </joint:hinge>
-      <joint:slider name="${prefix}_joint">
-          <body1>${prefix}_l_finger_tip_link</body1>
-          <body2>${prefix}_r_finger_tip_link</body2>
-          <anchor>${prefix}_l_finger_tip_link</anchor>
-          <axis>0 1 0</axis>
-      </joint:slider>
+      <joint type="revolute" name="${prefix}_r_parallel_root_joint">
+          <parent>${prefix}_r_parallel_link</parent>
+          <child>${prefix}_palm_link</child>
+          <axis>
+            <xyz>0 0 -1</xyz>
+            <dynamics>
+              <damping>0.2</damping>
+            </dynamics>
+          </axis>
+          <pose>${0.07691+parallel_link_x_offset} ${-0.01-parallel_link_y_offset} 0 0 0 0</pose>
+      </joint>
+      <joint type="revolute" name="${prefix}_l_parallel_root_joint">
+          <parent>${prefix}_l_parallel_link</parent>
+          <child>${prefix}_palm_link</child>
+          <axis>
+            <xyz>0 0 1</xyz>
+            <dynamics>
+              <damping>0.2</damping>
+            </dynamics>
+          </axis>
+          <pose>${0.07691+parallel_link_x_offset} ${0.01+parallel_link_y_offset} 0 0 0 0</pose>
+      </joint>
+      <joint type="revolute" name="${prefix}_r_parallel_tip_joint">
+          <parent>${prefix}_r_parallel_link</parent>
+          <child>${prefix}_r_finger_tip_link</child>
+          <axis>
+            <xyz>0 0 1</xyz>
+          </axis>
+          <pose>${parallel_link_x_offset} ${-parallel_link_y_offset} 0 0 0 0</pose>
+      </joint>
+      <joint type="revolute" name="${prefix}_l_parallel_tip_joint">
+          <parent>${prefix}_l_parallel_link</parent>
+          <child>${prefix}_l_finger_tip_link</child>
+          <axis>
+            <xyz>0 0 1</xyz>
+          </axis>
+          <pose>${parallel_link_x_offset} ${parallel_link_y_offset} 0 0 0 0</pose>
+      </joint>
+      <joint type="prismatic" name="${prefix}_joint">
+          <parent>${prefix}_r_finger_tip_link</parent>
+          <child>${prefix}_l_finger_tip_link</child>
+          <axis>
+            <xyz>0 1 0</xyz>
+          </axis>
+      </joint>
     </gazebo>
     <gazebo reference="${prefix}_motor_slider_link">
       <turnGravityOff>true</turnGravityOff>
@@ -258,7 +259,7 @@
     </gazebo>
 
     <gazebo>
-      <controller:gazebo_ros_p3d name="p3d_${side}_gripper_palm_controller" plugin="libgazebo_ros_p3d.so">
+      <plugin name="p3d_${side}_gripper_palm_controller" filename="libgazebo_ros_p3d.so">
         <alwaysOn>true</alwaysOn>
         <updateRate>100.0</updateRate>
         <bodyName>${side}_gripper_palm_link</bodyName>
@@ -267,8 +268,7 @@
         <rpyOffsets>0 0 0</rpyOffsets>
         <gaussianNoise>0.0</gaussianNoise>
         <frameName>map</frameName>
-        <interface:position name="p3d_${side}_gripper_palm_position_iface" />
-      </controller:gazebo_ros_p3d>
+      </plugin>
 
       <!-- a formal implementation of grasp hack in gazebo with fixed joint -->
       <gripper name="${side}_grasp_hack">
