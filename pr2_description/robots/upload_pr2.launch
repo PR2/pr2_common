@@ -7,7 +7,4 @@
     <group unless="$(arg kinect)">
       <param name="robot_description" command="$(find xacro)/xacro.py '$(find pr2_description)/robots/pr2_no_kinect.urdf.xacro'" />
     </group>
-
-    <!-- the semantic description that corresponds to the URDF -->
-    <param name="robot_description_semantic" textfile="$(find pr2_description)/robots/pr2.srdf" />
 </launch>
