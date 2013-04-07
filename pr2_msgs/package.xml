@@ -1,0 +1,30 @@
+<package>
+  <name>pr2_msgs</name>
+  <version>0.2.3</version>
+
+  <description>Messages for representing PR2 state, such as battery information and the PR2 fingertip sensors.</description>
+
+  <maintainer email="ahendrix@willowgarage.com">Austin Hendrix</maintainer>
+  <maintainer email="130s@2000.jukuin.keio.ac.jp">Isaac Saito</maintainer>
+  <author>Eric Berger and many others</author>
+  <license>BSD</license>
+  <url type="website">http://www.ros.org/wiki/pr2_msgs</url>
+  <url type="repository">https://github.com/PR2/pr2_common</url>
+  <url type="bugtracker">https://github.com/PR2/pr2_common/issues</url>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>rosbag</build_depend>
+  <build_depend>geometry_msgs</build_depend>
+  <build_depend>message_generation</build_depend>
+  <build_depend>std_msgs</build_depend>
+
+  <run_depend>message_runtime</run_depend>
+  <run_depend>rosbag</run_depend>
+  <run_depend>geometry_msgs</run_depend>
+  <run_depend>std_msgs</run_depend>
+
+  <test_depend>rostest</test_depend>
+  
+</package>
+
