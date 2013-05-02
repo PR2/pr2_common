@@ -3,18 +3,10 @@ cmake_minimum_required(VERSION 2.8.3)
 project(pr2_description)
 find_package(catkin REQUIRED COMPONENTS urdfdom)
 
-# include_directories(include ${Boost_INCLUDE_DIR} ${catkin_INCLUDE_DIRS})
-
 #set the default path for built executables to the "bin" directory
-set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
+#set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 #set the default path for built libraries to the "lib" directory
-set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
-
-
-find_package(Boost REQUIRED COMPONENTS thread)
-include_directories(${Boost_INCLUDE_DIRS})
-
-#target_link_libraries(test_urdf ${Boost_LIBRARIES})
+#set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
 
 
 # mesh file generations
@@ -38,17 +30,13 @@ foreach(it ${pr2_stl_files})
     # create subdirectory convex
     add_custom_command(
       OUTPUT ${basepath}/convex
-      # CMake 2.4 doesn't offer the make_directory command.
-      #COMMAND ${CMAKE_COMMAND} -E make_directory
-      COMMAND mkdir -p
+      COMMAND ${CMAKE_COMMAND} -E make_directory
       ARGS ${basepath}/convex)
 
     # create subdirectory iv
     add_custom_command(
       OUTPUT ${basepath}/iv
-      # CMake 2.4 doesn't offer the make_directory command.
-      #COMMAND ${CMAKE_COMMAND} -E make_directory
-      COMMAND mkdir -p
+      COMMAND ${CMAKE_COMMAND} -E make_directory
       ARGS ${basepath}/iv)
 
     #create obj files for convex decomposition from stl files
@@ -93,6 +81,7 @@ foreach(it ${pr2_stl_files})
       COMMAND ivcon
       ARGS ${it} ${basepath}/iv/${basename}.iv
       DEPENDS ${basepath}/iv ${it})
+
     add_custom_command(
       OUTPUT ${basepath}/convex/${basename}_convex.iv
       COMMAND ivcon
@@ -108,15 +97,17 @@ endforeach(it)
 
 add_custom_target(media_files ALL DEPENDS ${pr2urdf} ${pr2robot_expanded} ${prfrobot_expanded} ${prgrobot_expanded} ${pr2prototype1_expanded} ${pr2larm_expanded} ${pr2rarm_expanded} ${pr2lgripper_expanded} ${pr2rgripper_expanded} ${pr2_gen_files} )
 
-# TODO: fill in what other packages will need to use this package
-## LIBRARIES: libraries you create in this project that dependent projects also need
+# TODO: determine if downstream package actually need these dependencies
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
-    DEPENDS convex_decomposition ivcon urdfdom xacro
-    CATKIN-DEPENDS # TODO
-    INCLUDE_DIRS # TODO include
-    LIBRARIES # TODO
+    DEPENDS convex_decomposition ivcon
+    CATKIN-DEPENDS xacro urdfdom
 )
 
 catkin_add_gtest(test_urdf test/test_urdf.cpp)
+
+foreach(dir meshes gazebo materials robots documents urdf)
+   install(DIRECTORY ${dir}/ 
+      DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/${dir})
+endforeach(dir)
