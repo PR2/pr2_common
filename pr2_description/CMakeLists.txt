@@ -97,15 +97,11 @@ endforeach(it)
 
 add_custom_target(media_files ALL DEPENDS ${pr2urdf} ${pr2robot_expanded} ${prfrobot_expanded} ${prgrobot_expanded} ${pr2prototype1_expanded} ${pr2larm_expanded} ${pr2rarm_expanded} ${pr2lgripper_expanded} ${pr2rgripper_expanded} ${pr2_gen_files} )
 
-# TODO: determine if downstream package actually need these dependencies
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
-catkin_package(
-    DEPENDS convex_decomposition ivcon
-    CATKIN-DEPENDS xacro urdfdom
-)
+catkin_package(CATKIN_DEPENDS xacro)
 
-catkin_add_gtest(test_urdf test/test_urdf.cpp)
+catkin_add_gtest(test_urdf test/test_urdf.cpp WORKING_DIRECTORY ${PROJECT_SOURCE_DIR})
 
 foreach(dir meshes gazebo materials robots documents urdf)
    install(DIRECTORY ${dir}/ 
