@@ -1,0 +1,30 @@
+<package>
+  <name>pr2_description</name>
+  <version>1.11.0</version>
+  <description>This package contains the description (mechanical, kinematic, visual,
+  etc.) of the PR2 robot.  The files in this package are parsed and used by
+  a variety of other components.  Most users will not interact directly
+  with this package.</description>
+  <maintainer email="ahendrix@willowgarage.com">Austin Hendrix</maintainer>
+
+  <license>BSD</license>
+
+  <url type="website">http://ros.org/wiki/pr2_description</url>
+  <url type="bugtracker">https://github.com/PR2/pr2_common/issues</url>
+
+  <author>John Hsu</author>
+  <author>Eric Berger</author>
+  <author>Austin Hendrix</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>convex_decomposition</build_depend>
+  <build_depend>ivcon</build_depend>
+  <build_depend>urdfdom</build_depend>
+  <!-- <build_depend>xacro</build_depend> -->
+
+  <run_depend>convex_decomposition</run_depend>
+  <run_depend>ivcon</run_depend>
+  <run_depend>urdfdom</run_depend>
+  <run_depend>xacro</run_depend>
+</package>
