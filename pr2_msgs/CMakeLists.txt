@@ -28,9 +28,4 @@ add_service_files(
 
 generate_messages(DEPENDENCIES geometry_msgs std_msgs)
 
-catkin_package(
-    DEPENDS std_msgs geometry_msgs rostest rosbag
-    CATKIN-DEPENDS # TODO
-    INCLUDE_DIRS # TODO include
-    LIBRARIES # TODO
-)
+catkin_package(CATKIN_DEPENDS std_msgs geometry_msgs)

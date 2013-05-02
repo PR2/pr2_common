@@ -22,8 +22,4 @@
   <run_depend>std_msgs</run_depend>
   <run_depend>geometry_msgs</run_depend>
 
-  <test_depend>rospy</test_depend>
-  <test_depend>rosbag</test_depend>
-  <test_depend>rostest</test_depend>
-
 </package>
