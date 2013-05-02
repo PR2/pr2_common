@@ -52,7 +52,7 @@ int runExternalProcess(const std::string &executable, const std::string &args)
     return system((executable + " " + args).c_str());
 }
 
-int walker( char *result, int& test_result)
+int walker( std::string & result, int& test_result)
 {
   DIR           *d;
   struct dirent *dir;
@@ -75,29 +75,32 @@ int walker( char *result, int& test_result)
       {
         char pwd[MAXPATHLEN];
         getcwd( pwd, MAXPATHLEN );
-        printf("\n\ntesting: %s\n",(std::string(pwd)+"/robots/"+dir_name).c_str());
-        runExternalProcess("python `rospack find xacro`/xacro.py", std::string(pwd)+"/robots/"+dir_name+" > `rospack find pr2_description`/test/tmp.urdf" );
+        std::string name = std::string(pwd)+"/robots/"+dir_name;
+        printf("\n\ntesting: %s\n",name.c_str());
+        result += name;
+        result += " ";
+        runExternalProcess("python `rospack find xacro`/xacro.py", name+" > `rospack find pr2_description`/test/tmp.urdf" );
         test_result = test_result || runExternalProcess("`rospack find urdfdom`/check_urdf", "`rospack find pr2_description`/test/tmp.urdf");
-        //break;
       }
     }
   }
   closedir( d );
-  return *result == 0;
+  return test_result;
 }
 
 TEST(URDF, CorrectFormat)
 {
   int test_result = 0;
 
-  char buf[MAXPATHLEN] = { 0 };
-  if( walker( buf, test_result ) == 0 )
+  std::string result;
+  if( walker( result, test_result ) == 0 )
   {
-    printf( "Found: %s\n", buf );
+    printf( "Found: %s\n", result.c_str() );
   }
   else
   {
     puts( "Not found" );
+    test_result = -1;
   }
 
   EXPECT_TRUE(test_result == 0);
