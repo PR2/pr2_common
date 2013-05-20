@@ -23,23 +23,17 @@ foreach(it ${pr2_stl_files})
   ELSE ( ${basename} MATCHES "_convex" )
 
     # create subdirectory convex
-    add_custom_command(
-      OUTPUT ${basepath}/convex
-      COMMAND ${CMAKE_COMMAND} -E make_directory
-      ARGS ${basepath}/convex)
+    file(MAKE_DIRECTORY ${basepath}/convex)
 
     # create subdirectory iv
-    add_custom_command(
-      OUTPUT ${basepath}/iv
-      COMMAND ${CMAKE_COMMAND} -E make_directory
-      ARGS ${basepath}/iv)
+    file(MAKE_DIRECTORY ${basepath}/iv)
 
     #create obj files for convex decomposition from stl files
     add_custom_command(
       OUTPUT ${basepath}/convex/${basename}.obj
       COMMAND ivcon
       ARGS ${it} ${basepath}/convex/${basename}.obj
-      DEPENDS ${it} ${basepath}/convex)
+      DEPENDS ${it})
 
     set(pr2_gen_files ${pr2_gen_files} ${basepath}/convex/${basename}.obj)
 
@@ -48,7 +42,7 @@ foreach(it ${pr2_stl_files})
       OUTPUT ${basepath}/convex/${basename}_convex.obj
       COMMAND convex_decomposition
       ARGS ${basepath}/convex/${basename}.obj -v12 -p10
-      DEPENDS ${basepath}/convex/${basename}.obj ${basepath}/convex)
+      DEPENDS ${basepath}/convex/${basename}.obj)
 
     set(pr2_gen_files ${pr2_gen_files} ${basepath}/convex/${basename}_convex.obj)
 
@@ -57,7 +51,7 @@ foreach(it ${pr2_stl_files})
       OUTPUT ${basepath}/convex/${basename}_convex.stlb
       COMMAND ivcon
       ARGS ${basepath}/convex/${basename}_convex.obj ${basepath}/convex/${basename}_convex.stlb
-      DEPENDS ${it} ${basepath}/convex ${basepath}/convex/${basename}_convex.obj)
+      DEPENDS ${basepath}/convex/${basename}_convex.obj)
 
     set(pr2_gen_files ${pr2_gen_files} ${basepath}/convex/${basename}_convex.stlb)
 
@@ -66,7 +60,7 @@ foreach(it ${pr2_stl_files})
       OUTPUT ${basepath}/convex/${basename}_convex.stla
       COMMAND ivcon
       ARGS ${basepath}/convex/${basename}_convex.obj ${basepath}/convex/${basename}_convex.stla
-      DEPENDS ${it} ${basepath}/convex ${basepath}/convex/${basename}_convex.obj)
+      DEPENDS ${basepath}/convex/${basename}_convex.obj)
 
     set(pr2_gen_files ${pr2_gen_files} ${basepath}/convex/${basename}_convex.stla)
 
@@ -75,13 +69,13 @@ foreach(it ${pr2_stl_files})
       OUTPUT ${basepath}/iv/${basename}.iv
       COMMAND ivcon
       ARGS ${it} ${basepath}/iv/${basename}.iv
-      DEPENDS ${basepath}/iv ${it})
+      DEPENDS ${it})
 
     add_custom_command(
       OUTPUT ${basepath}/convex/${basename}_convex.iv
       COMMAND ivcon
       ARGS ${basepath}/convex/${basename}_convex.obj ${basepath}/convex/${basename}_convex.iv
-      DEPENDS ${it} ${basepath}/convex ${basepath}/convex/${basename}_convex.obj)
+      DEPENDS ${basepath}/convex/${basename}_convex.obj)
      
     set(pr2_gen_files ${pr2_gen_files} ${basepath}/iv/${basename}.iv ${basepath}/convex/${basename}_convex.iv)
 
