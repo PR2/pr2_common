@@ -272,7 +272,11 @@
 
       <!-- a formal implementation of grasp hack in gazebo with fixed joint -->
       <gripper name="${side}_grasp_hack">
-        <grasp_check attach_steps="20" detach_steps="40" min_contact_count="2" />
+        <grasp_check>
+          <attach_steps>20</attach_steps>
+          <detach_steps>40</detach_steps>
+          <min_contact_count>2</min_contact_count>
+        </grasp_check>
         <gripper_link>${side}_gripper_r_finger_tip_link</gripper_link>
         <gripper_link>${side}_gripper_l_finger_tip_link</gripper_link>
         <palm_link>${side}_gripper_palm_link</palm_link>
