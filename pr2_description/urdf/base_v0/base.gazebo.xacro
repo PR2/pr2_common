@@ -31,6 +31,7 @@
           <alwaysOn>true</alwaysOn>
           <updateRate>100.0</updateRate>
           <bumperTopicName>${name}_bumper</bumperTopicName>
+          <frameName>world</frameName>
         </plugin>
       </sensor>
     </gazebo>

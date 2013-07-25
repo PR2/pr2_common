@@ -25,7 +25,7 @@
         <imageTopicName>${name}/ir/image_raw</imageTopicName>
         <cameraInfoTopicName>${name}/ir/camera_info</cameraInfoTopicName>
         <depthImageTopicName>${name}/depth/image_raw</depthImageTopicName>
-        <depthImageInfoTopicName>${name}/depth/camera_info</depthImageInfoTopicName>
+        <depthImageCameraInfoTopicName>${name}/depth/camera_info</depthImageCameraInfoTopicName>
         <pointCloudTopicName>${name}/depth/points</pointCloudTopicName>
         <frameName>${name}_optical_frame</frameName>
         <pointCloudCutoff>0.5</pointCloudCutoff>
@@ -34,6 +34,11 @@
         <distortionK3>0.00000001</distortionK3>
         <distortionT1>0.00000001</distortionT1>
         <distortionT2>0.00000001</distortionT2>
+        <CxPrime>0</CxPrime>
+        <Cx>0</Cx>
+        <Cy>0</Cy>
+        <focalLength>0</focalLength>
+        <hackBaseline>0</hackBaseline>
       </plugin>
     </sensor>
     <sensor type="depth" name="${name}_frame_sensor">
@@ -56,8 +61,10 @@
         <updateRate>20.0</updateRate>
         <cameraName>${name}</cameraName>
         <imageTopicName>${name}/rgb/image_raw</imageTopicName>
-        <pointCloudTopicName>${name}/rgb/points</pointCloudTopicName>
         <cameraInfoTopicName>${name}/rgb/camera_info</cameraInfoTopicName>
+        <depthImageTopicName>${name}/depth/image_raw</depthImageTopicName>
+        <depthImageCameraInfoTopicName>${name}/depth/camera_info</depthImageCameraInfoTopicName>
+        <pointCloudTopicName>${name}/rgb/points</pointCloudTopicName>
         <frameName>${name}_optical_frame</frameName>
         <pointCloudCutoff>0.5</pointCloudCutoff>
         <distortionK1>0.00000001</distortionK1>
@@ -65,6 +72,11 @@
         <distortionK3>0.00000001</distortionK3>
         <distortionT1>0.00000001</distortionT1>
         <distortionT2>0.00000001</distortionT2>
+        <CxPrime>0</CxPrime>
+        <Cx>0</Cx>
+        <Cy>0</Cy>
+        <focalLength>0</focalLength>
+        <hackBaseline>0</hackBaseline>
       </plugin>
     </sensor>
   </gazebo>
