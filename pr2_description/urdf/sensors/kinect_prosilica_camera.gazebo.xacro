@@ -26,7 +26,7 @@
         <imageTopicName>/${camera_name}/depth/image_raw</imageTopicName>
         <cameraInfoTopicName>/${camera_name}/depth/camera_info</cameraInfoTopicName>
         <depthImageTopicName>/${camera_name}/depth/image_raw</depthImageTopicName>
-        <depthImageInfoTopicName>/${camera_name}/depth/camera_info</depthImageInfoTopicName>
+        <depthImageCameraInfoTopicName>/${camera_name}/depth/camera_info</depthImageCameraInfoTopicName>
         <pointCloudTopicName>/${camera_name}/depth/points</pointCloudTopicName>
         <frameName>${frame_name}</frameName>
         <pointCloudCutoff>0.5</pointCloudCutoff>
@@ -35,6 +35,11 @@
         <distortionK3>0.00000001</distortionK3>
         <distortionT1>0.00000001</distortionT1>
         <distortionT2>0.00000001</distortionT2>
+        <CxPrime>0</CxPrime>
+        <Cx>0</Cx>
+        <Cy>0</Cy>
+        <focalLength>0</focalLength>
+        <hackBaseline>0</hackBaseline>
       </plugin>
     </sensor>
     <material value="Gazebo/Red" />
@@ -64,6 +69,8 @@
         <cameraName>${camera_name}_rgb</cameraName>
         <imageTopicName>/${camera_name}/rgb/image_raw</imageTopicName>
         <cameraInfoTopicName>/${camera_name}/rgb/camera_info</cameraInfoTopicName>
+        <depthImageTopicName>/${camera_name}/depth/image_raw</depthImageTopicName>
+        <depthImageCameraInfoTopicName>/${camera_name}/depth/camera_info</depthImageCameraInfoTopicName>
         <pointCloudTopicName>/${camera_name}/depth_registered/points</pointCloudTopicName>
         <frameName>${frame_name}</frameName>
         <pointCloudCutoff>0.5</pointCloudCutoff>
@@ -72,6 +79,11 @@
         <distortionK3>0.00000001</distortionK3>
         <distortionT1>0.00000001</distortionT1>
         <distortionT2>0.00000001</distortionT2>
+        <CxPrime>0</CxPrime>
+        <Cx>0</Cx>
+        <Cy>0</Cy>
+        <focalLength>0</focalLength>
+        <hackBaseline>0</hackBaseline>
       </plugin>
     </sensor>
     <material value="Gazebo/Red" />
@@ -117,13 +129,22 @@
         <cameraName>${camera_name}_1mb</cameraName>
         <imageTopicName>image_raw</imageTopicName>
         <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+        <depthImageTopicName>depth/image_raw</depthImageTopicName>
+        <depthImageCameraInfoTopicName>depth/camera_info</depthImageCameraInfoTopicName>
         <pollServiceName>request_image</pollServiceName>
+        <pointCloudTopicName>points</pointCloudTopicName>
         <frameName>${frame_name}</frameName>
+        <pointCloudCutoff>0.4</pointCloudCutoff>
         <distortionK1>0.0</distortionK1>
         <distortionK2>0.0</distortionK2>
         <distortionK3>0.0</distortionK3>
         <distortionT1>0.0</distortionT1>
         <distortionT2>0.0</distortionT2>
+        <CxPrime>0</CxPrime>
+        <Cx>0</Cx>
+        <Cy>0</Cy>
+        <focalLength>0</focalLength>
+        <hackBaseline>0</hackBaseline>
       </plugin>
     </sensor>
     <sensor type="depth" name="${link_name}_sim_pcd_sensor">
@@ -146,8 +167,22 @@
         <updateRate>1.0</updateRate>
         <cameraName>${camera_name}_1mb_sim_pcd</cameraName>
         <imageTopicName>image_raw</imageTopicName>
+        <depthImageTopicName>depth/image_raw</depthImageTopicName>
+        <depthImageCameraInfoTopicName>depth/camera_info</depthImageCameraInfoTopicName>
         <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+        <pointCloudTopicName>points</pointCloudTopicName>
         <frameName>${frame_name}</frameName>
+        <pointCloudCutoff>0.4</pointCloudCutoff>
+        <distortionK1>0.00000001</distortionK1>
+        <distortionK2>0.00000001</distortionK2>
+        <distortionK3>0.00000001</distortionK3>
+        <distortionT1>0.00000001</distortionT1>
+        <distortionT2>0.00000001</distortionT2>
+        <CxPrime>0</CxPrime>
+        <Cx>0</Cx>
+        <Cy>0</Cy>
+        <focalLength>0</focalLength>
+        <hackBaseline>0</hackBaseline>
       </plugin>
     </sensor>
     <material value="Gazebo/Red" />

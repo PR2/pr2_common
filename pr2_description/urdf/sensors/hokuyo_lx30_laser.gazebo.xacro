@@ -30,6 +30,7 @@
           <updateRate>${update_rate}</updateRate>
           <topicName>${ros_topic}</topicName>
           <frameName>${name}_link</frameName>
+          <hokuyoMinIntensity>101</hokuyoMinIntensity>
         </plugin>
       </sensor>
     </gazebo>
