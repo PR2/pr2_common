@@ -23,7 +23,11 @@
           <cameraName>${camera_name}</cameraName>
           <imageTopicName>${image_topic_name}</imageTopicName>
           <cameraInfoTopicName>${camera_info_topic_name}</cameraInfoTopicName>
+          <depthImageTopicName>${camera_name}/depth/image_raw</depthImageTopicName>
+          <depthImageCameraInfoTopicName>${camera_name}/depth/camera_info</depthImageCameraInfoTopicName>
+          <pointCloudTopicName>${camera_name}/depth/points</pointCloudTopicName>
           <frameName>${frame_id}</frameName>
+          <pointCloudCutoff>0.5</pointCloudCutoff>
           <hackBaseline>${hack_baseline}</hackBaseline>
           <CxPrime>${(image_width+1)/2}</CxPrime>
           <Cx>${(image_width+1)/2}</Cx>
@@ -36,6 +40,7 @@
           <distortionK3>0.0</distortionK3>
           <distortionT1>0.0</distortionT1>
           <distortionT2>0.0</distortionT2>
+          <hackBaseline>0</hackBaseline>
         </plugin>
       </sensor>
       <turnGravityOff>true</turnGravityOff>
