@@ -3,7 +3,7 @@
   
 <xacro:macro name="prosilica_cam_gazebo_v0" params="camera_name frame_name">
   <gazebo reference="${frame_name}_frame">
-    <sensor type="depth" name="${frame_name}_sensor">
+    <sensor type="camera" name="${frame_name}_sensor">
       <always_on>true</always_on>
       <update_rate>20.0</update_rate>
       <camera>
