@@ -12,6 +12,7 @@
         <gaussianNoise>${stdev*stdev}</gaussianNoise>
         <xyzOffset>0 0 0</xyzOffset> 
         <rpyOffset>0 -180.0 0</rpyOffset>
+        <serviceName>/default_imu</serviceName>
       </plugin>
     </gazebo>
   </xacro:macro>

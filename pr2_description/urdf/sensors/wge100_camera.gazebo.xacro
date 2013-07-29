@@ -2,7 +2,7 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
   <xacro:macro name="wge100_camera_gazebo_v0" params="name camera_name image_format image_topic_name camera_info_topic_name hfov focal_length frame_id hack_baseline image_width image_height">
     <gazebo reference="${name}_frame">
-      <sensor type="depth" name="${name}_sensor">
+      <sensor type="camera" name="${name}_sensor">
         <always_on>true</always_on>
         <update_rate>25.0</update_rate>
         <camera>
@@ -17,7 +17,7 @@
             <far>100</far>
           </clip>
         </camera>
-        <plugin name="${name}_controller" filename="libgazebo_ros_depth_camera.so">
+        <plugin name="${name}_controller" filename="libgazebo_ros_camera.so">
           <alwaysOn>true</alwaysOn>
           <updateRate>25.0</updateRate>
           <cameraName>${camera_name}</cameraName>
