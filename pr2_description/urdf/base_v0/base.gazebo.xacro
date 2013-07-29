@@ -31,6 +31,7 @@
           <alwaysOn>true</alwaysOn>
           <updateRate>100.0</updateRate>
           <bumperTopicName>${name}_bumper</bumperTopicName>
+          <frameName>world</frameName>
         </plugin>
       </sensor>
     </gazebo>
@@ -48,7 +49,6 @@
         <xyzOffsets>0 0 0</xyzOffsets>
         <rpyOffsets>0 0 0</rpyOffsets>
       </plugin>
-      <canonicalBody>${name}_footprint</canonicalBody>
     </gazebo>
   </xacro:macro>
 
