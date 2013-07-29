@@ -2,7 +2,7 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
   <xacro:macro name="wge100_camera_gazebo_v0" params="name camera_name image_format image_topic_name camera_info_topic_name hfov focal_length frame_id hack_baseline image_width image_height">
     <gazebo reference="${name}_frame">
-      <sensor type="depth" name="${name}_sensor">
+      <sensor type="camera" name="${name}_sensor">
         <always_on>true</always_on>
         <update_rate>25.0</update_rate>
         <camera>
@@ -17,17 +17,13 @@
             <far>100</far>
           </clip>
         </camera>
-        <plugin name="${name}_controller" filename="libgazebo_ros_depth_camera.so">
+        <plugin name="${name}_controller" filename="libgazebo_ros_camera.so">
           <alwaysOn>true</alwaysOn>
           <updateRate>25.0</updateRate>
           <cameraName>${camera_name}</cameraName>
           <imageTopicName>${image_topic_name}</imageTopicName>
           <cameraInfoTopicName>${camera_info_topic_name}</cameraInfoTopicName>
-          <depthImageTopicName>${camera_name}/depth/image_raw</depthImageTopicName>
-          <depthImageCameraInfoTopicName>${camera_name}/depth/camera_info</depthImageCameraInfoTopicName>
-          <pointCloudTopicName>${camera_name}/depth/points</pointCloudTopicName>
           <frameName>${frame_id}</frameName>
-          <pointCloudCutoff>0.5</pointCloudCutoff>
           <hackBaseline>${hack_baseline}</hackBaseline>
           <CxPrime>${(image_width+1)/2}</CxPrime>
           <Cx>${(image_width+1)/2}</Cx>
@@ -40,7 +36,6 @@
           <distortionK3>0.0</distortionK3>
           <distortionT1>0.0</distortionT1>
           <distortionT2>0.0</distortionT2>
-          <hackBaseline>0</hackBaseline>
         </plugin>
       </sensor>
       <turnGravityOff>true</turnGravityOff>
