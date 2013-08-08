@@ -8,9 +8,9 @@
 
   <!-- Things that are needed only for Gazebo (not the physical robot).  These include
        sensor and controller plugin specifications -->
-  <include filename="$(find pr2_description)/urdf/shoulder_v0/shoulder.gazebo.xacro" />
-  <include filename="$(find pr2_description)/urdf/shoulder_v0/shoulder.transmission.xacro" />
-  <include filename="$(find pr2_description)/urdf/common.xacro" />
+  <xacro:include filename="$(find pr2_description)/urdf/shoulder_v0/shoulder.gazebo.xacro" />
+  <xacro:include filename="$(find pr2_description)/urdf/shoulder_v0/shoulder.transmission.xacro" />
+  <xacro:include filename="$(find pr2_description)/urdf/common.xacro" />
 
   <property name="shoulder_lift_length" value="0.10" />  <!--TODO Define and give source-->
   <property name="shoulder_lift_radius" value="0.12" />  <!--TODO Define and give source-->

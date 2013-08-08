@@ -8,9 +8,9 @@
 
   <!-- Things that are needed only for Gazebo (not the physical robot).  These include
        sensor and controller plugin specifications -->
-  <include filename="$(find pr2_description)/urdf/forearm_v0/forearm.gazebo.xacro" />
-  <include filename="$(find pr2_description)/urdf/forearm_v0/forearm.transmission.xacro" />
-  <include filename="$(find pr2_description)/urdf/common.xacro" />
+  <xacro:include filename="$(find pr2_description)/urdf/forearm_v0/forearm.gazebo.xacro" />
+  <xacro:include filename="$(find pr2_description)/urdf/forearm_v0/forearm.transmission.xacro" />
+  <xacro:include filename="$(find pr2_description)/urdf/common.xacro" />
 
   <!-- ============================   Forearm   ============================ -->
 
