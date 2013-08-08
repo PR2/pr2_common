@@ -5,8 +5,8 @@
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
        xmlns:xacro="http://ros.org/wiki/xacro">
 
-  <include filename="$(find pr2_description)/urdf/sensors/double_stereo_camera.gazebo.xacro" />
-  <include filename="$(find pr2_description)/urdf/sensors/stereo_camera.urdf.xacro" />
+  <xacro:include filename="$(find pr2_description)/urdf/sensors/double_stereo_camera.gazebo.xacro" />
+  <xacro:include filename="$(find pr2_description)/urdf/sensors/stereo_camera.urdf.xacro" />
 
   <property name="stereo_size_x" value="0.02" />
   <property name="stereo_size_y" value="0.12" />
