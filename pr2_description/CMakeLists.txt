@@ -18,7 +18,7 @@ foreach(it ${pr2_stl_files})
 
   IF ( ${basename} MATCHES "_convex" )
 
-    message("ignoring stale .._convex.stl file:",${basename})
+    message("ignoring stale .._convex.stl file:" ,${basename})
 
   ELSE ( ${basename} MATCHES "_convex" )
 
