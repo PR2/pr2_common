@@ -3,6 +3,7 @@ cmake_minimum_required(VERSION 2.8.3)
 project(pr2_description)
 find_package(catkin REQUIRED)
 
+SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread")
 
 # mesh file generations
 # iterate through all the stl files to:
@@ -91,6 +92,7 @@ add_custom_target(media_files ALL DEPENDS ${pr2urdf} ${pr2robot_expanded} ${prfr
 catkin_package(CATKIN_DEPENDS xacro)
 
 catkin_add_gtest(test_urdf test/test_urdf.cpp WORKING_DIRECTORY ${PROJECT_SOURCE_DIR})
+target_link_libraries(test_urdf urdfdom_model)
 
 foreach(dir meshes gazebo materials robots documents urdf)
    install(DIRECTORY ${dir}/ 
