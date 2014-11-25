@@ -46,6 +46,11 @@
 #include <string.h> 
 
 #include <iostream>
+#include <fstream>
+
+#include <urdf_parser/urdf_parser.h>
+#include <boost/function.hpp>
+#include <urdf_model/model.h>
 
 int runExternalProcess(const std::string &executable, const std::string &args)
 {
@@ -79,8 +84,25 @@ int walker( std::string & result, int& test_result)
         printf("\n\ntesting: %s\n",name.c_str());
         result += name;
         result += " ";
+
         runExternalProcess("python `rospack find xacro`/xacro.py", name+" > `rospack find pr2_description`/test/tmp.urdf" );
-        test_result = test_result || runExternalProcess("`rospack find urdfdom`/check_urdf", "`rospack find pr2_description`/test/tmp.urdf");
+
+        std::string path = std::string(pwd)+"/test/tmp.urdf";
+
+
+        std::string xml_string;
+        std::fstream xml_file(path.c_str(), std::fstream::in);
+        while ( xml_file.good() )
+        {
+            std::string line;
+            std::getline( xml_file, line);
+            xml_string += (line + "\n");
+        }
+        xml_file.close();
+
+        boost::shared_ptr<urdf::ModelInterface> robot = urdf::parseURDF(xml_string);
+        if (!robot) test_result = test_result || 1;
+
       }
     }
   }
