@@ -1,6 +1,6 @@
 <package>
   <name>pr2_msgs</name>
-  <version>1.11.4</version>
+  <version>1.11.5</version>
   <description>Messages for representing PR2 state, such as battery information and the PR2 fingertip sensors.</description>
   <maintainer email="ahendrix@willowgarage.com">Austin Hendrix</maintainer> 
 
