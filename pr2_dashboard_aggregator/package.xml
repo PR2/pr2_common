@@ -2,7 +2,7 @@
   <name>pr2_dashboard_aggregator</name>
   <version>1.11.5</version>
   <description>A simple script that aggregates all of the topics that a "pr2_dashboard" app might be interested in.</description>
-  <maintainer email="ahendrix@willowgarage.com">Austin Hendrix</maintainer>
+  <maintainer email="dash@clearpathrobotics.com">Devon Ash</maintainer>
 
   <license>BSD</license>
 
