@@ -2,8 +2,8 @@
 Changelog for package pr2_common
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.11.7 (2015-01-12)
+-------------------
 * Fixed changelogs manually
 * changelog bugs
 * Merge conflicts
