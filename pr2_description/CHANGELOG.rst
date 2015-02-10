@@ -2,6 +2,11 @@
 Changelog for package pr2_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Updated maintainership
+* Contributors: TheDash
+
 1.11.8 (2015-01-13)
 -------------------
 * liburdfdom-dev dep

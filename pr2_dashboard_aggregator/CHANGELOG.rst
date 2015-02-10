@@ -2,6 +2,9 @@
 Changelog for package pr2_dashboard_aggregator
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 1.11.8 (2015-01-13)
 -------------------
 
