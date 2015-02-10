@@ -2,8 +2,8 @@
 Changelog for package pr2_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.11.9 (2015-02-10)
+-------------------
 * Updated maintainership
 * Contributors: TheDash
 
