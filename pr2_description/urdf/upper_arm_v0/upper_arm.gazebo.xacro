@@ -12,10 +12,11 @@
 
   <!-- Elbow flex -->
   <xacro:macro name="pr2_elbow_flex_gazebo_v0" params="side">
-    <!-- testing initial joint position, to be parsed at urdf2gazebo parse time -->
+    <!-- testing initial joint position, to be parsed at urdf2gazebo parse time ->
     <gazebo reference="${side}_elbow_flex_joint">
       <initial_joint_position>-1.0</initial_joint_position>
     </gazebo>
+    -->
 
     <gazebo reference="${side}_elbow_flex_link">
       <turnGravityOff>true</turnGravityOff>
