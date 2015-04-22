@@ -91,8 +91,10 @@ add_custom_target(media_files ALL DEPENDS ${pr2urdf} ${pr2robot_expanded} ${prfr
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(CATKIN_DEPENDS xacro)
 
-catkin_add_gtest(test_urdf test/test_urdf.cpp WORKING_DIRECTORY ${PROJECT_SOURCE_DIR})
-target_link_libraries(test_urdf urdfdom_model)
+if(CATKIN_ENABLE_TESTING)
+	catkin_add_gtest(test_urdf test/test_urdf.cpp WORKING_DIRECTORY ${PROJECT_SOURCE_DIR})
+	target_link_libraries(test_urdf urdfdom_model)
+endif()
 
 foreach(dir meshes gazebo materials robots documents urdf)
    install(DIRECTORY ${dir}/ 
