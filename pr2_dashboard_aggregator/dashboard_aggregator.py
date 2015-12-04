@@ -42,7 +42,7 @@ class DashboardAggregator:
     self.msg = DashboardState()
 
     # Create publisher
-    self.pub = rospy.Publisher("dashboard_agg", DashboardState)
+    self.pub = rospy.Publisher("dashboard_agg", DashboardState, queue_size=10)
 
     # Create subscribers
     # Circuit Breaker
