@@ -11,7 +11,7 @@
     <joint name="${name}_joint" type="fixed">
       <!-- <limit lower="0.1" upper="0.1" effort="10000" velocity="100.0"/> -->
       <!-- <insert_block name="origin" /> -->
-      <origin xyz="-0.228 -0.148 0.091" rpy="${M_PI/2} 0 ${M_PI/2}"/> <!-- 0.0905 -->
+      <origin xyz="-0.228 -0.148 0.091" rpy="${M_PI/2} 0 ${M_PI/2}"/>
       <parent link="${parent}"/>
       <child link="${name}_link"/>
     </joint>
@@ -65,7 +65,7 @@
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
-          <box size="0.15 0.08 0.06" />
+          <sphere radius="0.0005"/>
         </geometry>
       </collision>
 
@@ -187,7 +187,7 @@
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
-          <box size="0.25 0.043 0.067"/>
+          <sphere radius="0.0005"/>
         </geometry>
       </collision>
 
