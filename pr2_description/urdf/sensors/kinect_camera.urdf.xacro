@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<root xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
       xmlns:xacro="http://ros.org/wiki/xacro">
@@ -51,5 +51,4 @@
     <xacro:kinect_camera_gazebo_v0 name="${name}" />
   </xacro:macro>
 
-</root>
-
+</robot>

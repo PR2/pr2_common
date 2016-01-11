@@ -1,9 +1,5 @@
 <?xml version="1.0"?>
-<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
-       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
-       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
-       xmlns:xacro="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
-       name="pr2" >
+<robot name="pr2" xmlns:xacro="http://ros.org/wiki/xacro">
   
   <!-- The following included files set up definitions of parts of the robot body -->
   <!-- misc common stuff? -->
@@ -87,6 +83,10 @@
           Just need to roscd and svn up. 
     -->
   </xacro:kinect_prosilica_camera_swept_back_v0>
+
+  <xacro:kinect_mount_v0 name="kinect2_mount" parent="head_mount_link" >
+    <origin xyz="-0.137376 0 0.091746" rpy="0 0 0" />
+  </xacro:kinect_mount_v0>
 
   <xacro:pr2_tilting_laser_v0 name="laser_tilt" parent="torso_lift_link" laser_calib_ref="0.0">
     <origin xyz="0.09893 0 0.227" rpy="0 0 0" />
