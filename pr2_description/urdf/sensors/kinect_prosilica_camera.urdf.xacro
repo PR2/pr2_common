@@ -10,21 +10,21 @@
     <!-- stl contains structure + kinect2 bracket + kinect2 combo -->
     <joint name="${name}_joint" type="fixed">
       <!-- <limit lower="0.1" upper="0.1" effort="10000" velocity="100.0"/> -->
-      <!-- <insert_block name="origin" /> -->
-      <origin xyz="-0.228 -0.148 0.091" rpy="${M_PI/2} 0 ${M_PI/2}"/>
+      <insert_block name="origin" />
+      <!-- <origin xyz="-0.228 -0.148 0.091" rpy="${M_PI/2} 0 ${M_PI/2}"/> -->
       <parent link="${parent}"/>
       <child link="${name}_link"/>
     </joint>
     <link name="${name}_link">
       <inertial>
-        <mass value="0.1" />
+        <mass value="0.1"/>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <inertia ixx="0.01"  ixy="0.0"  ixz="0.0"
                  iyy="0.01"  iyz="0.0"
                  izz="0.01" />
       </inertial>
       <visual>
-        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <origin xyz="0 -0.138 0" rpy="${M_PI/2} 0 ${M_PI/2}"/>
         <geometry>
           <mesh filename="package://pr2_description/meshes/sensors/kinect_prosilica_v0/kinect2_mount.STL" scale="0.001 0.001 0.001" />
         </geometry>
@@ -48,7 +48,7 @@
     <link name="${name}_bracket_link">
 
       <inertial>
-        <mass value="0.1" />
+        <mass value="0.1"/>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <inertia ixx="0.01"  ixy="0.0"  ixz="0.0"
                  iyy="0.01"  iyz="0.0"
@@ -167,11 +167,11 @@
     <link name="${name}_kinect2_link">
 
       <inertial>
-        <mass value="0.1" />
+        <mass value="0.1"/>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <inertia ixx="0.01"  ixy="0.0"  ixz="0.0"
                  iyy="0.01"  iyz="0.0"
-                 izz="0.01" />
+                 izz="0.01"/>
       </inertial>
 
       <visual>
@@ -207,6 +207,4 @@
 
   </xacro:macro>
 
-
 </robot>
-
