@@ -2,7 +2,6 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
   <!-- Instead of making a xacro for each individual component, create one .STL for the frame, mount and the Kinect2 -->
   <!-- Multiple components is also likely the cause of the tf linking problem -->
-  <!-- Jeff is making the CAD file for the assembly -->
   <!-- Depending on where origin is for the mesh, a joint and link may be needed for the camera/ir sensor -->
   <xacro:include filename="$(find pr2_description)/urdf/sensors/kinect2.gazebo.xacro" />
 
@@ -28,7 +27,7 @@
       <visual>
         <origin xyz="0 -0.138 0" rpy="${M_PI/2} 0 ${M_PI/2}"/>
         <geometry>
-          <mesh filename="package://pr2_description/meshes/sensors/kinect2_v0/kinect2_mount.STL" scale="0.001 0.001 0.001" />
+          <mesh filename="package://pr2_description/meshes/sensors/kinect2_v0/KinectAssembly.stl" scale="0.001 0.001 0.001" />
         </geometry>
         <material name="gray">
           <color rgba="0.5 0.5 0.5 1"/>
@@ -100,7 +99,7 @@
           <material name="black">
             <color rgba="0.05 0.05 0.05 1"/>
           </material>
-        </geometry>
+        </geometry>  if [ $V \< 13.10 ]; then
       </visual>
 
       <collision>
