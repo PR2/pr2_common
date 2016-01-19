@@ -10,9 +10,7 @@
   <!-- frame + Kinect2 mount + Kinect2 combo -->
   <xacro:macro name="kinect2_v0" params="name parent *origin">
     <joint name="${name}_joint" type="fixed">
-      <!-- <limit lower="0.1" upper="0.1" effort="10000" velocity="100.0"/> -->
       <insert_block name="origin" />
-      <!-- <origin xyz="-0.228 -0.148 0.091" rpy="${M_PI/2} 0 ${M_PI/2}"/> -->
       <parent link="${parent}"/>
       <child link="${name}_link"/>
     </joint>
@@ -25,9 +23,9 @@
                  izz="0.01" />
       </inertial>
       <visual>
-        <origin xyz="0 -0.138 0" rpy="${M_PI/2} 0 ${M_PI/2}"/>
+        <origin xyz="-0.102 -0.148 0" rpy="0 0 0"/>
         <geometry>
-          <mesh filename="package://pr2_description/meshes/sensors/kinect2_v0/KinectAssembly.stl" scale="0.001 0.001 0.001" />
+          <mesh filename="package://pr2_description/meshes/sensors/kinect2_v0/kinect2_assembly.STL" scale="0.001 0.001 0.001" />
         </geometry>
         <material name="gray">
           <color rgba="0.5 0.5 0.5 1"/>
@@ -41,80 +39,10 @@
       </collision>
     </link>
 
-    <joint name="${name}_bracket_joint" type="fixed">
-      <origin xyz="0.148 0.128 0.0321" rpy="${M_PI} ${M_PI} ${M_PI}"/>
-      <parent link="${name}_link"/>
-      <child link="${name}_bracket_link"/>
-    </joint>
-    <link name="${name}_bracket_link">
-
-      <inertial>
-        <mass value="0.1"/>
-        <origin xyz="0 0 0" rpy="0 0 0"/>
-        <inertia ixx="0.01"  ixy="0.0"  ixz="0.0"
-                 iyy="0.01"  iyz="0.0"
-                 izz="0.01" />
-      </inertial>
-
-      <visual>
-        <origin xyz="0 0 0" rpy="0 0 0"/>
-        <geometry>
-          <mesh filename="package://pr2_description/meshes/sensors/kinect2_v0/kinect2_bracket.STL" />
-        </geometry>
-      </visual>
-
-      <collision>
-        <origin xyz="0 0 0" rpy="0 0 0"/>
-        <geometry>
-          <sphere radius="0.0005"/>
-        </geometry>
-      </collision>
-
-    </link>
-
-    <!-- plugin for updating structure pose \
-    <xacro:kinect_prosilica_gazebo joint_name="${name}_kinect_prosilica_joint"
-                                   link_name="${name}_kinect_prosilica_link" />
-    -->
-
-    <joint name="${name}_kinect2_joint" type="fixed">
-      <origin xyz="0 0.0255 0.01" rpy="0 0 0"/>
-      <parent link="${name}_bracket_link"/>
-      <child link="${name}_kinect2_link"/>
-    </joint>
-    <link name="${name}_kinect2_link">
-
-      <inertial>
-        <mass value="0.1"/>
-        <origin xyz="0 0 0" rpy="0 0 0"/>
-        <inertia ixx="0.01"  ixy="0.0"  ixz="0.0"
-                 iyy="0.01"  iyz="0.0"
-                 izz="0.01"/>
-      </inertial>
-
-      <visual>
-        <origin xyz="0 0 0" rpy="0 0 0"/>
-        <geometry>
-          <box size="0.25 0.043 0.067"/>
-          <material name="black">
-            <color rgba="0.05 0.05 0.05 1"/>
-          </material>
-        </geometry>  if [ $V \< 13.10 ]; then
-      </visual>
-
-      <collision>
-        <origin xyz="0 0 0" rpy="0 0 0"/>
-        <geometry>
-          <sphere radius="0.0005"/>
-        </geometry>
-      </collision>
-
-    </link>
-
 
     <!-- kinect2 ir sensor physical attachment -->
     <joint name="${name}_kinect2_ir_joint" type="fixed">
-      <origin xyz="-0.032267 0.0125 0.136453" rpy="0 0 0"/>
+      <origin xyz="-0.032267 -0.0475 0.155" rpy="0 0 0"/>
       <parent link="${name}_link"/>
       <child link="${name}_kinect2_ir_link"/>
     </joint>
@@ -140,23 +68,23 @@
       </collision>
     </link>
     <!-- kinect2 ir sensor frame -->
-    <joint name="${name}_kinect2_ir_optical_frame_joint" type="fixed">
+<!--     <joint name="${name}_kinect2_ir_optical_frame_joint" type="fixed">
       <origin xyz="${cal_kinect_x}            ${cal_kinect_y + ir_depth_rgb_offset_y}         ${cal_kinect_z}"
                 rpy="${-M_PI/2+cal_kinect_roll} ${0.0+cal_kinect_pitch} ${-M_PI/2+cal_kinect_yaw}" />
       <parent link="${name}_kinect2_ir_link"/>
       <child link="${name}_kinect2_ir_optical_frame"/>
     </joint>
 
-    <link name="${name}_kinect2_ir_optical_frame"/>
+    <link name="${name}_kinect2_ir_optical_frame"/> -->
     <!-- gazebo extensions -->
-    <xacro:kinect2_ir_gazebo_v0 link_name="${name}_kinect2_ir_link" frame_name="${name}_kinect2_ir_optical_frame" camera_name="head_mount_kinect2" />
+<!--     <xacro:kinect2_ir_gazebo_v0 link_name="${name}_kinect2_ir_link" frame_name="${name}_kinect2_ir_optical_frame" camera_name="head_mount_kinect2" /> -->
 
 
 
 
     <!-- kinect2 rgb sensor physical attachment -->
     <joint name="${name}_kinect2_rgb_joint" type="fixed">
-      <origin xyz="0 -0.03 0" rpy="0 0 0"/>
+      <origin xyz="0 -0.052 0" rpy="0 0 0"/>
       <parent link="${name}_kinect2_ir_link"/>
       <child link="${name}_kinect2_rgb_link"/>
     </joint>
@@ -184,16 +112,16 @@
     </link>
 
     <!-- kinect2 rgb sensor frame -->
-    <joint name="${name}_kinect2_rgb_optical_frame_joint" type="fixed">
+<!--     <joint name="${name}_kinect2_rgb_optical_frame_joint" type="fixed">
       <origin xyz="${cal_kinect_x}            ${cal_kinect_y}         ${cal_kinect_z}"
                 rpy="${-M_PI/2+cal_kinect_roll} ${0.0+cal_kinect_pitch} ${-M_PI/2+cal_kinect_yaw}" />
       <parent link="${name}_kinect2_rgb_link"/>
       <child link="${name}_kinect2_rgb_optical_frame"/>
     </joint>
 
-    <link name="${name}_kinect2_rgb_optical_frame"/>
+    <link name="${name}_kinect2_rgb_optical_frame"/> -->
     <!-- gazebo extensions -->
-    <xacro:kinect2_rgb_gazebo_v0 link_name="${name}_kinect2_rgb_link" frame_name="${name}_kinect2_rgb_optical_frame" camera_name="head_mount_kinect2" />
+<!--     <xacro:kinect2_rgb_gazebo_v0 link_name="${name}_kinect2_rgb_link" frame_name="${name}_kinect2_rgb_optical_frame" camera_name="head_mount_kinect2" /> -->
 
   </xacro:macro>
 

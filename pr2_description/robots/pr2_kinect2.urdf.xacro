@@ -20,7 +20,7 @@
   <xacro:include filename="$(find pr2_description)/urdf/base_v0/base.urdf.xacro" />
   <!-- Head sensors -->
   <xacro:include filename="$(find pr2_description)/urdf/sensors/head_sensor_package.urdf.xacro" />
-  <xacro:include filename="$(find pr2_description)/urdf/sensors/kinect2_v0/kinect2.urdf.xacro" />
+  <xacro:include filename="$(find pr2_description)/urdf/sensors/kinect2.urdf.xacro" />
   <!-- Camera sensors -->
   <xacro:include filename="$(find pr2_description)/urdf/sensors/wge100_camera.urdf.xacro" />
   <!-- Texture projector -->
