@@ -90,20 +90,4 @@
   </gazebo>
 </xacro:macro>
 
-<xacro:macro name="kinect2_prosilica_gazebo" params="joint_name link_name">
-  <gazebo>
-    <plugin name="${link_name}_srp_controller" filename="libgazebo_ros_srp.so">
-      <bodyName>${link_name}</bodyName>
-      <jointName>${joint_name}</jointName>
-      <topicName>${link_name}</topicName>
-    </plugin>
-  </gazebo>
-  <!-- also add transmission for this sliding joint -->
-  <transmission type="pr2_mechanism_model/SimpleTransmission" name="${joint_name}_trans">
-    <actuator name="${joint_name}_motor" />
-    <joint name="${joint_name}" />
-    <mechanicalReduction>1</mechanicalReduction>
-  </transmission>
-</xacro:macro>
-
 </robot>
