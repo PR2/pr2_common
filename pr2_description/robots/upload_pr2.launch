@@ -1,15 +1,13 @@
 <launch>
-  <arg name="kinect1" default="false"/>
-  <arg name="kinect2" default="false"/>
   <!-- send pr2 urdf to param server -->
-  <group if="$(arg kinect2)">
+  <group if="$(optenv KINECT2)">
     <param name="robot_description" command="$(find xacro)/xacro.py '$(find pr2_description)/robots/pr2.urdf.xacro' kinect2:=true" />
   </group>
-  <group unless="$(arg kinect2)">
+  <group unless="$(optenv KINECT2)">
     <group if="$(arg kinect1)">
       <param name="robot_description" command="$(find xacro)/xacro.py '$(find pr2_description)/robots/pr2.urdf.xacro' kinect2:=false" />
     </group>
-    <group unless="$(arg kinect1)">
+    <group unless="$(optenv KINECT1)">
       <param name="robot_description" command="$(find xacro)/xacro.py '$(find pr2_description)/robots/pr2_no_kinect.urdf.xacro'" />
     </group>
   </group>
