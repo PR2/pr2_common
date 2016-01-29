@@ -4,7 +4,7 @@
     <param name="robot_description" command="$(find xacro)/xacro.py '$(find pr2_description)/robots/pr2.urdf.xacro' kinect2:=true" />
   </group>
   <group unless="$(optenv KINECT2)">
-    <group if="$(arg kinect1)">
+    <group if="$(optenv KINECT1)">
       <param name="robot_description" command="$(find xacro)/xacro.py '$(find pr2_description)/robots/pr2.urdf.xacro' kinect2:=false" />
     </group>
     <group unless="$(optenv KINECT1)">
