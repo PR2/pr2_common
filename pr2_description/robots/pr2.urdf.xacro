@@ -145,7 +145,7 @@
   </xacro:if>
 
   <!-- Kinect1 xacro -->
-  <xacro:unless value="$(optenv KINECT2 false">
+  <xacro:unless value="$(optenv KINECT2 false)">
     <xacro:if value="$(optenv KINECT1 false)">
       <xacro:include filename="$(find pr2_description)/urdf/sensors/kinect_prosilica_camera.urdf.xacro" />
       <!-- Base of Kinect/Prosilica Mount -->
