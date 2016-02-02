@@ -1,14 +1,6 @@
 <launch>
   <!-- send pr2 urdf to param server -->
-  <group if="$(optenv KINECT2)">
+  <group>
     <param name="robot_description" command="$(find xacro)/xacro.py '$(find pr2_description)/robots/pr2.urdf.xacro'" />
-  </group>
-  <group unless="$(optenv KINECT2)">
-    <group if="$(optenv KINECT1)">
-      <param name="robot_description" command="$(find xacro)/xacro.py '$(find pr2_description)/robots/pr2.urdf.xacro'" />
-    </group>
-    <group unless="$(optenv KINECT1)">
-      <param name="robot_description" command="$(find xacro)/xacro.py '$(find pr2_description)/robots/pr2_no_kinect.urdf.xacro'" />
-    </group>
   </group>
 </launch>
