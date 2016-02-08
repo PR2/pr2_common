@@ -6,12 +6,12 @@
 
   <!-- Kinect2 and mount assembly -->
   <xacro:macro name="kinect2_v0" params="name parent *origin">
-    <joint name="${name}_joint" type="fixed">
+    <joint name="${name}_kinect2_joint" type="fixed">
       <insert_block name="origin" />
       <parent link="${parent}"/>
-      <child link="${name}_link"/>
+      <child link="${name}_kinect2_link"/>
     </joint>
-    <link name="${name}_link">
+    <link name="${name}_kinect2_link">
       <inertial>
         <mass value="0.1"/>
         <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -39,7 +39,7 @@
     <!-- kinect2 ir sensor physical attachment -->
     <joint name="${name}_kinect2_ir_joint" type="fixed">
       <origin xyz="-0.032267 -0.0475 0.155" rpy="0 0 0"/>
-      <parent link="${name}_link"/>
+      <parent link="${name}_kinect2_link"/>
       <child link="${name}_kinect2_ir_link"/>
     </joint>
     <link name="${name}_kinect2_ir_link">
