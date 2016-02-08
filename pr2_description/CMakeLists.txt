@@ -77,7 +77,7 @@ foreach(it ${pr2_stl_files})
       COMMAND ivcon
       ARGS ${basepath}/convex/${basename}_convex.obj ${basepath}/convex/${basename}_convex.iv
       DEPENDS ${basepath}/convex/${basename}_convex.obj)
-      
+     
     set(pr2_gen_files ${pr2_gen_files} ${basepath}/iv/${basename}.iv ${basepath}/convex/${basename}_convex.iv)
 
 
