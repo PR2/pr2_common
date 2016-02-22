@@ -3,4 +3,5 @@
        on env-loader attribute -->
   <machine name="c1" address="localhost" default="true" />   
   <machine name="c2" address="localhost" />   
+  <machine name="pr2-head" address="localhost" />
 </launch>
