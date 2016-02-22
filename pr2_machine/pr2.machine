@@ -1,4 +1,5 @@
 <launch>
   <machine name="c1" address="c1" default="true"/>
   <machine name="c2" address="c2" env-loader="$(env ROS_ENV_LOADER)"/>
+  <machine name="pr2-head" address="pr2-head" user="pr2-head" password="clearpath" env-loader="/home/pr2-head/kinect_ws/devel/env.sh"/>
 </launch>
