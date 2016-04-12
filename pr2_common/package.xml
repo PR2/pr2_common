@@ -1,6 +1,6 @@
 <package>
   <name>pr2_common</name>
-  <version>1.11.14</version>
+  <version>1.12.0</version>
   <description>URDF description of the robot kinematics and dynamics, 3D models of robot components, information required for gazebo to simulate the PR2, and messages specific to the PR2 such as detailed information about its power board and fingertip pressure sensors.</description>
   <maintainer email="dash@clearpathrobotics.com">Devon Ash</maintainer>
 
