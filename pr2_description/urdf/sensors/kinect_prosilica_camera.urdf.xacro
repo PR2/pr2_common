@@ -6,14 +6,14 @@
 
   <xacro:include filename="$(find pr2_description)/urdf/sensors/kinect_prosilica_camera.gazebo.xacro" />
 
-  <property name="ir_depth_rgb_offset_y" value="0.01"/> <!-- FIXME: what is this offset? -->
+  <xacro:property name="ir_depth_rgb_offset_y" value="0.01"/> <!-- FIXME: what is this offset? -->
 
   <!-- kinect and prosilica combo -->
   <xacro:macro name="kinect_prosilica_camera_swept_back_v0" params="name parent *origin">
     <!-- stl contains structure + kinect + prosilica combo -->
     <joint name="${name}_joint" type="fixed">
       <!-- <limit lower="0.1" upper="0.1" effort="10000" velocity="100.0"/> -->
-      <!-- <insert_block name="origin" /> -->
+      <!-- <xacro:insert_block name="origin" /> -->
       <origin xyz="-0.138 0 0.091" rpy="0 0 0"/>
       <parent link="${parent}"/>
       <child link="${name}_link"/>
