@@ -62,7 +62,7 @@
       <sensor type="contact" name="${prefix}_l_finger_tip_contact_sensor">
         <update_rate>100.0</update_rate>
         <contact>
-          <collision>${prefix}_l_finger_tip_link_geom</collision>
+          <collision>${prefix}_l_finger_tip_link_collision</collision>
         </contact>
         <plugin name="${prefix}_l_finger_tip_gazebo_ros_bumper_controller" filename="libgazebo_ros_bumper.so">
           <alwaysOn>true</alwaysOn>
@@ -91,7 +91,7 @@
       <sensor type="contact" name="${prefix}_r_finger_tip_contact_sensor">
         <update_rate>100.0</update_rate>
         <contact>
-          <collision>${prefix}_r_finger_tip_link_geom</collision>
+          <collision>${prefix}_r_finger_tip_link_collision</collision>
         </contact>
         <plugin name="${prefix}_r_finger_tip_gazebo_ros_bumper_controller" filename="libgazebo_ros_bumper.so">
           <alwaysOn>true</alwaysOn>
