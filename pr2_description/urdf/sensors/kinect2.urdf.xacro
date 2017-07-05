@@ -2,12 +2,12 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
   <xacro:include filename="$(find pr2_description)/urdf/sensors/kinect2.gazebo.xacro" />
 
-  <property name="ir_depth_rgb_offset_y" value="0.01"/> <!-- FIXME: what is this offset? -->
+  <xacro:property name="ir_depth_rgb_offset_y" value="0.01"/> <!-- FIXME: what is this offset? -->
 
   <!-- Kinect2 and mount assembly -->
   <xacro:macro name="kinect2_v0" params="name parent *origin">
     <joint name="${name}_kinect2_joint" type="fixed">
-      <insert_block name="origin" />
+      <xacro:insert_block name="origin" />
       <parent link="${parent}"/>
       <child link="${name}_kinect2_link"/>
     </joint>
