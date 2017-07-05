@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <root xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
-      xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+      xmlns:interface="http://ros.org/wiki/xacro"
       xmlns:xacro="http://ros.org/wiki/xacro">
   
   <xacro:include filename="$(find pr2_description)/urdf/sensors/projector_wg6802418.gazebo.xacro" />
