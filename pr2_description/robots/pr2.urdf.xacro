@@ -136,8 +136,10 @@
   </xacro:wge100_camera_v0>
 
   <!-- Kinect models -->
+  <xacro:arg name="KINECT1" default="false" />
+  <xacro:arg name="KINECT2" default="false" />
   <!-- Kinect2 xacro -->
-  <xacro:if value="$(optenv KINECT2 false)">
+  <xacro:if value="$(arg KINECT2)">
     <xacro:include filename="$(find pr2_description)/urdf/sensors/kinect2.urdf.xacro" />
     <xacro:kinect2_v0 name="head_mount" parent="head_plate_frame" >
       <origin xyz="-0.137376 0 0.091746" rpy="0 0 0" />
@@ -145,8 +147,8 @@
   </xacro:if>
 
   <!-- Kinect1 xacro -->
-  <xacro:unless value="$(optenv KINECT2 false)">
-    <xacro:if value="$(optenv KINECT1 false)">
+  <xacro:unless value="$(arg KINECT2)">
+    <xacro:if value="$(arg KINECT1)">
       <xacro:include filename="$(find pr2_description)/urdf/sensors/kinect_prosilica_camera.urdf.xacro" />
       <!-- Base of Kinect/Prosilica Mount -->
       <xacro:kinect_prosilica_camera_swept_back_v0 name="head_mount" parent="head_plate_frame" >
