@@ -2,6 +2,27 @@
 Changelog for package pr2_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge pull request `#267 <https://github.com/pr2/pr2_common/issues/267>`_ from k-okada/maintainer
+  change maintainer to ROS orphaned package maintainer
+* change maintainer to ROS orphaned package maintainer
+* Merge pull request `#266 <https://github.com/pr2/pr2_common/issues/266>`_ from furushchev/use-arg
+  pr2.urdf.xacro: support xacro:arg
+* pr2.urdf.xacro: support xacro:arg
+* Merge pull request `#260 <https://github.com/pr2/pr2_common/issues/260>`_ from davetcoleman/inconsistent_namespace
+  Fix inconsistent namespace redefinitions for xmlns:xacro
+* Merge pull request `#259 <https://github.com/pr2/pr2_common/issues/259>`_ from davetcoleman/prepend_xacro_namespace
+  Prepend xacro tags with xacro xml namespace
+* Merge pull request `#258 <https://github.com/pr2/pr2_common/issues/258>`_ from PR2/indigo-devel
+  Sync Indigo into Kinetic
+* Prepend xacro tags with xacro xml namespace
+* Fix inconsistent namespace redefinitions for xmlns:xacro
+* Merge pull request `#255 <https://github.com/pr2/pr2_common/issues/255>`_ from furushchev/fix-gripper
+  [pr2_description] fix: gripper reduction 3141.6 -> 314.16
+* [pr2_description] fix: gripper reduction 3141.6 -> 314.16
+* Contributors: Dave Coleman, Devon Ash, Furushchev, Kei Okada
+
 1.11.9 (2015-02-10)
 -------------------
 * Updated maintainership

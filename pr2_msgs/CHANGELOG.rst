@@ -2,6 +2,13 @@
 Changelog for package pr2_msgs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge pull request `#267 <https://github.com/pr2/pr2_common/issues/267>`_ from k-okada/maintainer
+  change maintainer to ROS orphaned package maintainer
+* change maintainer to ROS orphaned package maintainer
+* Contributors: Kei Okada
+
 1.11.9 (2015-02-10)
 -------------------
 
