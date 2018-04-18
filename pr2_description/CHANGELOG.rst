@@ -2,8 +2,8 @@
 Changelog for package pr2_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.12.2 (2018-04-18)
+-------------------
 * Merge pull request `#269 <https://github.com/pr2/pr2_common/issues/269>`_ from bmagyar/kinetic-devel
   Fix pr2_description warnings
 * Remove playerstage xml schemas
