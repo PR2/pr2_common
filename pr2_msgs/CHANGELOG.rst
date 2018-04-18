@@ -2,6 +2,9 @@
 Changelog for package pr2_msgs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 1.12.1 (2018-02-13)
 -------------------
 * Merge pull request `#267 <https://github.com/pr2/pr2_common/issues/267>`_ from k-okada/maintainer

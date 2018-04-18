@@ -2,6 +2,14 @@
 Changelog for package pr2_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge pull request `#269 <https://github.com/pr2/pr2_common/issues/269>`_ from bmagyar/kinetic-devel
+  Fix pr2_description warnings
+* Remove playerstage xml schemas
+* xacro.py -> xacro
+* Contributors: Bence Magyar
+
 1.12.1 (2018-02-13)
 -------------------
 * Merge pull request `#267 <https://github.com/pr2/pr2_common/issues/267>`_ from k-okada/maintainer
