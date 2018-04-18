@@ -85,8 +85,7 @@ int walker( std::string & result, int& test_result)
         result += name;
         result += " ";
 
-        runExternalProcess("python `rospack find xacro`/xacro.py", name+" > `rospack find pr2_description`/test/tmp.urdf" );
-
+        runExternalProcess("rosrun xacro xacro", name+" --inorder > `rospack find pr2_description`/test/tmp.urdf" );
         std::string path = std::string(pwd)+"/test/tmp.urdf";
 
 
