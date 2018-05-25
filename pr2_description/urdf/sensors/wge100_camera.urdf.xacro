@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!-- XML namespaces -->
-<robot xmlns:xacro="http://ros.org/wiki/xacro">
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
   
   <xacro:include filename="$(find pr2_description)/urdf/sensors/wge100_camera.gazebo.xacro" />
 

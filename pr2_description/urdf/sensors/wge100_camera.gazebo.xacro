@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<robot xmlns:xacro="http://ros.org/wiki/xacro">
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
   <xacro:macro name="wge100_camera_gazebo_v0" params="name camera_name image_format image_topic_name camera_info_topic_name hfov focal_length frame_id hack_baseline image_width image_height">
     <gazebo reference="${name}_frame">
       <sensor type="camera" name="${name}_sensor">

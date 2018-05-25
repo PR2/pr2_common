@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 
-<robot xmlns:xacro="http://ros.org/wiki/xacro">
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
   <!-- Made by Kevin for double stereo camera for PR-2 Beta. -->
   <!-- Needs calibration verification, and CAD check. -->
