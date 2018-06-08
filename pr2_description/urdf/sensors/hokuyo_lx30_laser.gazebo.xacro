@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 
-<robot xmlns:xacro="http://ros.org/wiki/xacro">
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
   <xacro:macro name="hokuyo_lx30_laser_gazebo_v0" params="name ros_topic update_rate min_angle max_angle">
     <gazebo reference="${name}_link">

@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<robot xmlns:xacro="http://ros.org/wiki/xacro">
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
 <xacro:macro name="kinect2_ir_gazebo_v0" params="link_name frame_name camera_name">
   <gazebo reference="${link_name}">
