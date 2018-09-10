@@ -99,7 +99,11 @@ int walker( std::string & result, int& test_result)
         }
         xml_file.close();
 
+#if URDFDOM_1_0_0_API
+        urdf::ModelInterfaceSharedPtr robot = urdf::parseURDF(xml_string);
+#else
         boost::shared_ptr<urdf::ModelInterface> robot = urdf::parseURDF(xml_string);
+#endif
         if (!robot) test_result = test_result || 1;
 
       }
