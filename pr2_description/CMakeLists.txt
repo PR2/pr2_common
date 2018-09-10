@@ -100,7 +100,13 @@ add_custom_target(media_files ALL DEPENDS ${pr2urdf} ${pr2robot_expanded} ${prfr
 catkin_package(CATKIN_DEPENDS xacro)
 
 if(CATKIN_ENABLE_TESTING)
+	find_package(PkgConfig)
+	pkg_check_modules(URDFDOM REQUIRED urdfdom)
+	message(STATUS "Find URDFDOM ${URDFDOM_VERSION}")
 	catkin_add_gtest(test_urdf test/test_urdf.cpp WORKING_DIRECTORY ${PROJECT_SOURCE_DIR})
+	if ("${URDFDOM_VERSION}" VERSION_EQUAL "1.0.0" OR "${URDFDOM_VERSION}" VERSION_GREATER "1.0.0")
+		target_compile_definitions(test_urdf PRIVATE -DURDFDOM_1_0_0_API)
+    endif()
 	target_link_libraries(test_urdf urdfdom_model)
 endif()
 
