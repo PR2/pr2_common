@@ -2,8 +2,8 @@
 Changelog for package pr2_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.12.3 (2018-09-10)
+-------------------
 * Merge pull request `#272 <https://github.com/pr2/pr2_common/issues/272>`_ from k-okada/add_travis
   update travis.yml
 * ModelInterfaceSharedPtr is only available on newer urdfdom
