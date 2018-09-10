@@ -2,6 +2,23 @@
 Changelog for package pr2_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge pull request `#272 <https://github.com/pr2/pr2_common/issues/272>`_ from k-okada/add_travis
+  update travis.yml
+* ModelInterfaceSharedPtr is only available on newer urdfdom
+* fix for urdfmodel 1.0.0 (melodic)
+* test_urdf uses rosrun within the code
+* Merge pull request `#270 <https://github.com/pr2/pr2_common/issues/270>`_ from TAMS-Group/pr-kinetic-fixed-xmlns
+  xmlns should include www
+* xmlns should include www
+  According to the tutorials:
+  http://wiki.ros.org/urdf/Tutorials/Using%20Xacro%20to%20Clean%20Up%20a%20URDF%20File
+  xacro complains when some xacro components specify the URL
+  as http://www.ros.org/wiki/xacro and others
+  as http://ros.org/wiki/xacro.
+* Contributors: Kei Okada, v4hn
+
 1.12.2 (2018-04-18)
 -------------------
 * Merge pull request `#269 <https://github.com/pr2/pr2_common/issues/269>`_ from bmagyar/kinetic-devel
