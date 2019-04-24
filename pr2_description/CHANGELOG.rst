@@ -2,8 +2,8 @@
 Changelog for package pr2_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.12.4 (2019-04-24)
+-------------------
 * Merge pull request `#274 <https://github.com/PR2/pr2_common/issues/274>`_ from knorth55/fix-gripper
   Revert `#255 <https://github.com/PR2/pr2_common/issues/255>`_
 * Revert "[pr2_description] fix: gripper reduction 3141.6 -> 314.16"
