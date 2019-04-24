@@ -2,6 +2,14 @@
 Changelog for package pr2_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge pull request `#274 <https://github.com/PR2/pr2_common/issues/274>`_ from knorth55/fix-gripper
+  Revert `#255 <https://github.com/PR2/pr2_common/issues/255>`_
+* Revert "[pr2_description] fix: gripper reduction 3141.6 -> 314.16"
+  This reverts commit d5c8f476c6882b74a03bdc39eccf36823da3ad97.
+* Contributors: Kei Okada, Shingo Kitagawa
+
 1.12.3 (2018-09-10)
 -------------------
 * Merge pull request `#272 <https://github.com/pr2/pr2_common/issues/272>`_ from k-okada/add_travis
