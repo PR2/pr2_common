@@ -22,7 +22,7 @@
       <visual>
         <origin xyz="-0.102 -0.148 0" rpy="0 0 0"/>
         <geometry>
-          <mesh filename="package://pr2_description/meshes/sensors/kinect2_v0/kinect2_assembly.STL" scale="0.001 0.001 0.001" />
+          <mesh filename="package://pr2_description/meshes/sensors/kinect2_v0/kinect2_assembly.dae" scale="0.001 0.001 0.001" />
         </geometry>
         <material name="gray">
           <color rgba="0.5 0.5 0.5 1"/>
