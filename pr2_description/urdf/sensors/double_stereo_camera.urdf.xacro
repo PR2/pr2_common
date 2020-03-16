@@ -29,16 +29,6 @@
         <inertia ixx="0.001" ixy="0.0" ixz="0.0"
                  iyy="0.001" iyz="0.0" izz="0.01" />
       </inertial>
-
-      <!-- Should probably get real visuals here at some point -->
-      <visual>
-        <origin xyz="${stereo_center_box_center_offset_x} 0 ${stereo_center_box_center_offset_z}" rpy="0 0 0" />
-        <geometry>
-          <box size="${stereo_size_x} ${stereo_size_y} ${stereo_size_z}" />
-        </geometry>
-        <material name="Blue" />
-      </visual>
-
     </link>
 
     <!-- Wide camera is on robot right (hca1), narrow on left (hca2)? -->
