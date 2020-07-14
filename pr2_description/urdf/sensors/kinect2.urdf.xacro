@@ -29,9 +29,9 @@
         </material>
       </visual>
       <collision>
-        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <origin xyz="-0.042 0 0.1" rpy="0 0 0"/>
         <geometry>
-          <sphere radius="0.0005"/>
+          <box size="0.12 0.3 0.2"/>
         </geometry>
       </collision>
     </link>
@@ -50,18 +50,6 @@
                  iyy="0.01"  iyz="0.0"
                  izz="0.01" />
       </inertial>
-      <visual>
-        <origin xyz="0.0 0.0 0" rpy="0 0 0"/>
-        <geometry>
-          <sphere radius="0.0005"/>
-        </geometry>
-      </visual>
-      <collision>
-        <origin xyz="0.0 0.0 0" rpy="0 0 0"/>
-        <geometry>
-          <sphere radius="0.0005"/>
-        </geometry>
-      </collision>
     </link>
     <!-- kinect2 ir sensor frame -->
     <joint name="${name}_kinect2_ir_optical_frame_joint" type="fixed">
@@ -90,19 +78,6 @@
                  iyy="0.01"  iyz="0.0"
                  izz="0.01" />
       </inertial>
-      <visual>
-        <origin xyz="${cal_kinect_x}            ${cal_kinect_y}                 ${cal_kinect_z}"
-                rpy="${-M_PI/2+cal_kinect_roll} ${0.0+cal_kinect_pitch}         ${-M_PI/2+cal_kinect_yaw}" />
-        <geometry>
-          <sphere radius="0.0005"/>
-        </geometry>
-      </visual>
-      <collision>
-        <origin xyz="0.0 0.0 0" rpy="0 0 0"/>
-        <geometry>
-          <sphere radius="0.0005"/>
-        </geometry>
-      </collision>
     </link>
 
     <!-- kinect2 rgb sensor frame -->
