@@ -1,6 +1,6 @@
 <package>
   <name>pr2_common</name>
-  <version>1.12.4</version>
+  <version>1.13.0</version>
   <description>URDF description of the robot kinematics and dynamics, 3D models of robot components, information required for gazebo to simulate the PR2, and messages specific to the PR2 such as detailed information about its power board and fingertip pressure sensors.</description>
   <maintainer email="ros-orphaned-packages@googlegroups.com">ROS Orphaned Package Maintainers</maintainer>
 

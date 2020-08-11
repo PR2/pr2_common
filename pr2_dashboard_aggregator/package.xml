@@ -1,6 +1,6 @@
 <package>
   <name>pr2_dashboard_aggregator</name>
-  <version>1.12.4</version>
+  <version>1.13.0</version>
   <description>A simple script that aggregates all of the topics that a "pr2_dashboard" app might be interested in.</description>
   <maintainer email="ros-orphaned-packages@googlegroups.com">ROS Orphaned Package Maintainers</maintainer>
 

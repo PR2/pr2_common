@@ -2,8 +2,8 @@
 Changelog for package pr2_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.13.0 (2020-08-11)
+-------------------
 * Cleanup collision/auxiliary shapes in urdf (`#280 <https://github.com/pr2/pr2_common/issues/280>`_)
 
   * remove auxiliary shapes from kinect2 links
