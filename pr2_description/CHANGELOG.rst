@@ -2,6 +2,42 @@
 Changelog for package pr2_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Cleanup collision/auxiliary shapes in urdf (`#280 <https://github.com/pr2/pr2_common/issues/280>`_)
+
+  * remove auxiliary shapes from kinect2 links
+    If one wants to see the frames, just enable the frame in RViz.
+    There is no need whatsoever to keep these in the description.
+  * provide bounding box for kinect2 spoiler
+    to enable *some* collision checking.
+    It was not enabled at all before and it's barely in the workspace of the arms at all (without tool use).
+    So a rough bounding box is fine.
+  * remove useless visual geometry
+    MoveIt master recently changed its policy w.r.t. empty collision geometries.
+    The current version complains:
+    ros.moveit_core.robot_model.empty_collision_geometry: Link sensor_mount_link has visual geometry but no collision geometry. Collision geometry will be left empty. Fix your URDF file by explicitly specifying collision geometry.
+    ros.moveit_core.robot_model.empty_collision_geometry: Link double_stereo_link has visual geometry but no collision geometry. Collision geometry will be left empty. Fix your URDF file by explicitly specifying collision geometry.
+    As these visuals are not helpful and do not add anything to the description, I just remove them.
+  * remove guessed inertia on base_footprint
+    These values are obviously fictitious (the whole link is...)
+    Additionally, KDL datastructures have been complaining about this for ages
+    because KDL does not support inertials for the model root
+    (whatever that means).
+
+* cleanup rviz errors (`#278 <https://github.com/pr2/pr2_common/issues/278>`_)
+
+  * use collada to store kinect mesh
+    The STL produced the following warning with RViz:
+    [ WARN]: The STL file 'package://pr2_description/meshes/sensors/kinect2_v0/kinect2_assembly.STL' is malformed. It starts with the word 'solid', indicating that it's an ASCII STL file, but it does not contain the word 'endsolid' so it is either a malformed ASCII STL file or it is actually a binary STL file. Trying to interpret it as a binary STL file instead.
+  * fix TIFFFieldWithTag errors by converting to png files
+    The error seems to stem from a problem in libtiff, so a reasonable
+    way to resolve it was to change to a different file format.
+    The texture files should not be used in isolation from the corresponding
+    dae file, so removing the old tiff files retains API.
+
+* Contributors: Kei Okada, v4hn
+
 1.12.4 (2019-04-24)
 -------------------
 * Merge pull request `#274 <https://github.com/PR2/pr2_common/issues/274>`_ from knorth55/fix-gripper
