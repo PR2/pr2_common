@@ -6,13 +6,13 @@
   <xacro:include filename="$(find pr2_description)/urdf/tilting_laser_v0/tilting_laser.transmission.xacro" />
   <xacro:include filename="$(find pr2_description)/urdf/sensors/hokuyo_lx30_laser.urdf.xacro" />
 
-  <xacro:macro name="pr2_tilting_laser_v0" params="name parent laser_calib_ref *origin">
+  <xacro:macro name="pr2_tilting_laser_v0" params="name parent laser_calib *origin">
 
     <joint name="${name}_mount_joint" type="revolute">
       <axis xyz="0 1 0" />
       <limit lower="-0.7854" upper="1.48353" effort="0.65" velocity="10.0" /> <!-- alpha tested velocity and effort limits -->
       <safety_controller k_position="100" k_velocity="0.05" soft_lower_limit="${-0.7854+0.05}" soft_upper_limit="${1.48353-0.05}" />
-      <calibration falling="${laser_calib_ref}" />
+      <calibration falling="${laser_calib}" />
       <dynamics damping="0.008" />
       <xacro:insert_block name="origin" />
       <parent link="${parent}"/>
