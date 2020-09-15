@@ -85,7 +85,7 @@
   </xacro:macro>
 
   <xacro:macro name="pr2_elbow_flex_v0" params="side parent reflect
-   elbow_flex_calib_ref">
+   elbow_flex_calib_ref:=0.0">
     <!-- Elbow flex -->
     <joint name="${side}_elbow_flex_joint" type="revolute">
       <axis xyz="0 1 0" />
@@ -137,7 +137,7 @@
   
   <!-- FA roll joint only -->
   <xacro:macro name="pr2_forearm_roll_v0" params="side parent reflect
-   forearm_roll_calib_ref">
+   forearm_roll_calib_ref:=0.0">
     <!-- forearm_roll_link is a fictitious link internal to elbow_flex_link, provides an attachment point for the actual forearm -->
     <joint name="${side}_forearm_roll_joint" type="continuous">
       <axis xyz="1 0 0" />

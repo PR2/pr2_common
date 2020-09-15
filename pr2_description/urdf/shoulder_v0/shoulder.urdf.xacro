@@ -131,7 +131,7 @@
 
   <!-- Upperarm roll: internal fixed attchment point for upper arm -->
   <xacro:macro name="pr2_upper_arm_roll_v0" params="side parent reflect *origin
-    upper_arm_roll_calib_ref">
+    upper_arm_roll_calib_ref:=0.0">
     <joint name="${side}_upper_arm_roll_joint" type="revolute" >
       <axis xyz="1 0 0" />
       <xacro:insert_block name="origin" />

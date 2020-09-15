@@ -7,7 +7,7 @@
 
   <xacro:property name="M_PI" value="3.1415926535897931" />
 
-  <xacro:macro name="pr2_head_pan_v0" params="name parent *origin head_pan_calib_ref">
+  <xacro:macro name="pr2_head_pan_v0" params="name parent *origin head_pan_calib_ref:=0.0">
     <joint name="${name}_joint" type="revolute">
       <axis xyz="0 0 1" />
       <limit lower="-3.007" upper="3.007" effort="2.645" velocity="6" /> <!-- alpha tested velocity and effort limits -->
@@ -49,7 +49,7 @@
 
 
 
-  <xacro:macro name="pr2_head_tilt_v0" params="name parent *origin head_tilt_calib_ref">
+  <xacro:macro name="pr2_head_tilt_v0" params="name parent *origin head_tilt_calib_ref:=0.0">
 
     <joint name="${name}_joint" type="revolute">
       <axis xyz="0 1 0" />
