@@ -7,12 +7,12 @@
 
   <xacro:property name="M_PI" value="3.1415926535897931" />
 
-  <xacro:macro name="pr2_head_pan_v0" params="name parent *origin">
+  <xacro:macro name="pr2_head_pan_v0" params="name parent *origin head_pan_calib_ref:=0.0">
     <joint name="${name}_joint" type="revolute">
       <axis xyz="0 0 1" />
       <limit lower="-3.007" upper="3.007" effort="2.645" velocity="6" /> <!-- alpha tested velocity and effort limits -->
       <safety_controller k_velocity="1.5" soft_lower_limit="${-3.007+0.15}" soft_upper_limit="${3.007-0.15}" k_position="100" />
-      <calibration rising="0.0" />
+      <calibration rising="${head_pan_calib_ref}" />
       <dynamics damping="0.5" />
       <xacro:insert_block name="origin" />
       <parent link="${parent}"/>
@@ -49,13 +49,20 @@
 
 
 
-  <xacro:macro name="pr2_head_tilt_v0" params="name parent *origin">
+  <xacro:macro name="pr2_head_tilt_v0" params="name parent *origin head_tilt_calib_ref:=0.0">
 
     <joint name="${name}_joint" type="revolute">
       <axis xyz="0 1 0" />
       <limit lower="-0.471238" upper="1.39626" effort="18" velocity="5" /> <!-- alpha tested velocity and effort limits -->
       <safety_controller k_velocity="3.0" soft_lower_limit="${-0.4712 + 0.1}" soft_upper_limit="${1.39626 - 0.1}" k_position="100" />
-      <calibration falling="${0.0+cal_head_tilt_flag}" />
+
+      <xacro:unless value="${head_tilt_calib_ref}">
+        <calibration  falling="${0.0+cal_head_tilt_flag}" />
+      </xacro:unless>
+      <xacro:if value="${head_tilt_calib_ref}">
+        <calibration  falling="${head_tilt_calib_ref}" />
+      </xacro:if>
+
       <dynamics damping="10.0" />
       <xacro:insert_block name="origin" />
       <parent link="${parent}"/>
@@ -93,12 +100,14 @@
 
 
 
-  <xacro:macro name="pr2_head_v0" params="name parent *origin">
-    <xacro:pr2_head_pan_v0 name="${name}_pan" parent="${parent}">
+  <xacro:macro name="pr2_head_v0" params="name parent *origin
+  head_pan_calib_ref:=0.0
+  head_tilt_calib_ref:=0.0 ">
+    <xacro:pr2_head_pan_v0 name="${name}_pan" parent="${parent}" head_pan_calib_ref="${head_pan_calib_ref}">
       <xacro:insert_block name="origin" />
     </xacro:pr2_head_pan_v0>
 
-    <xacro:pr2_head_tilt_v0 name="${name}_tilt" parent="${name}_pan_link">
+    <xacro:pr2_head_tilt_v0 name="${name}_tilt" parent="${name}_pan_link" head_tilt_calib_ref="${head_tilt_calib_ref}">
       <origin xyz="0.068 0 0" rpy="0 0 0" />
     </xacro:pr2_head_tilt_v0>
 

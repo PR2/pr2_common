@@ -33,7 +33,9 @@
 
   <!-- ============================   Upper Arm   ============================ -->
   <!-- Includes elbow flex, FA roll joints in macros below -->
-  <xacro:macro name="pr2_upper_arm_v0" params="side parent reflect">
+  <xacro:macro name="pr2_upper_arm_v0" params="side parent reflect
+   forearm_roll_calib_ref:=0.0
+   elbow_flex_calib_ref:=0.0 ">
     <joint name="${side}_upper_arm_joint" type="fixed">
       <origin xyz="0 0 0" rpy="0 0 0" />
       <parent link="${parent}"/>
@@ -76,18 +78,28 @@
     <!-- No transmission, since this a fixed joint w/o actuator -->
 
     <!-- Elbow flex, FA roll macros -->
-    <xacro:pr2_forearm_roll_v0 side="${side}" parent="${side}_elbow_flex_link" reflect="${reflect}" />
-    <xacro:pr2_elbow_flex_v0 side="${side}" parent="${side}_upper_arm_link" reflect="${reflect}" />
+    <xacro:pr2_forearm_roll_v0 side="${side}" parent="${side}_elbow_flex_link" reflect="${reflect}"
+                               forearm_roll_calib_ref="${forearm_roll_calib_ref}"/>
+    <xacro:pr2_elbow_flex_v0 side="${side}" parent="${side}_upper_arm_link" reflect="${reflect}"
+                             elbow_flex_calib_ref="${elbow_flex_calib_ref}"/>
   </xacro:macro>
 
-  <xacro:macro name="pr2_elbow_flex_v0" params="side parent reflect">
+  <xacro:macro name="pr2_elbow_flex_v0" params="side parent reflect
+   elbow_flex_calib_ref:=0.0">
     <!-- Elbow flex -->
     <joint name="${side}_elbow_flex_joint" type="revolute">
       <axis xyz="0 1 0" />
       <!-- Note: Overtravel limits are 140, -7 degrees instead of 133, 0 -->
       <limit lower="-2.3213" upper="0.00" effort="30" velocity="${VELOCITY_LIMIT_SCALE*5.5}" /> <!-- alpha tested velocity and effort limits -->
       <safety_controller k_position="100" k_velocity="3" soft_lower_limit="${-2.3213+0.2}" soft_upper_limit="${0.00-0.15}" />
-      <calibration falling="${-1.1606 + cal_r_elbow_flex_flag}"/>
+
+      <xacro:unless value="${elbow_flex_calib_ref}">
+        <calibration falling="${-1.1606+cal_r_elbow_flex_flag}"/>
+      </xacro:unless>
+      <xacro:if value="${elbow_flex_calib_ref}">
+        <calibration falling="${elbow_flex_calib_ref}"/>
+      </xacro:if>
+
       <dynamics damping="1.0" />
       <origin xyz="0.4 0 0" rpy="0 0 0" />
       <parent link="${parent}"/>
@@ -124,13 +136,21 @@
   </xacro:macro>
   
   <!-- FA roll joint only -->
-  <xacro:macro name="pr2_forearm_roll_v0" params="side parent reflect">
+  <xacro:macro name="pr2_forearm_roll_v0" params="side parent reflect
+   forearm_roll_calib_ref:=0.0">
     <!-- forearm_roll_link is a fictitious link internal to elbow_flex_link, provides an attachment point for the actual forearm -->
     <joint name="${side}_forearm_roll_joint" type="continuous">
       <axis xyz="1 0 0" />
       <limit effort="30" velocity="${VELOCITY_LIMIT_SCALE*6}" /> <!-- alpha tested velocity and effort limits -->
       <safety_controller k_velocity="1" />
-      <calibration rising="${0.0 + cal_r_forearm_roll_flag}" />
+
+      <xacro:unless value="${forearm_roll_calib_ref}">
+      <calibration rising="${0.0+cal_r_forearm_roll_flag}" />
+      </xacro:unless>
+      <xacro:if value="${forearm_roll_calib_ref}">
+      <calibration rising="${forearm_roll_calib_ref}" />
+      </xacro:if>
+
       <dynamics damping="0.1" />
       <origin xyz="0 0 0" rpy="0 0 0" />
       <parent link="${parent}"/>

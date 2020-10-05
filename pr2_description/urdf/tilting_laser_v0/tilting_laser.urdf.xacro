@@ -6,7 +6,7 @@
   <xacro:include filename="$(find pr2_description)/urdf/tilting_laser_v0/tilting_laser.transmission.xacro" />
   <xacro:include filename="$(find pr2_description)/urdf/sensors/hokuyo_lx30_laser.urdf.xacro" />
 
-  <xacro:macro name="pr2_tilting_laser_v0" params="name parent laser_calib_ref *origin">
+  <xacro:macro name="pr2_tilting_laser_v0" params="name parent laser_calib_ref:=0.0 *origin">
 
     <joint name="${name}_mount_joint" type="revolute">
       <axis xyz="0 1 0" />

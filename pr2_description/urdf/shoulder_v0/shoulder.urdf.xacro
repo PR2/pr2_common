@@ -14,7 +14,10 @@
 
  <!-- ============================   Shoulder   ============================ -->
 
-  <xacro:macro name="pr2_shoulder_v0" params="side parent reflect *origin">
+  <xacro:macro name="pr2_shoulder_v0" params="side parent reflect *origin
+   shoulder_pan_calib_ref:=0.0
+   shoulder_lift_calib_ref:=0.0
+   upper_arm_roll_calib_ref:=0.0">
 
     <!-- Shoulder pan -->
     <joint name="${side}_shoulder_pan_joint" type="revolute">
@@ -32,8 +35,12 @@
                          soft_upper_limit="${reflect*M_PI/4+1.5-0.15}" />
 
       <!-- joint angle when the rising or the falling flag is activated on PR2 -->
-      <calibration  rising="${(reflect*M_PI/4)*cal_r_shoulder_pan_gearing+cal_r_shoulder_pan_flag}" />
-
+      <xacro:unless value="${shoulder_pan_calib_ref}">
+        <calibration  rising="${(reflect*M_PI/4)*cal_r_shoulder_pan_gearing+cal_r_shoulder_pan_flag}" />
+      </xacro:unless>
+      <xacro:if value="${shoulder_pan_calib_ref}">
+        <calibration  rising="${shoulder_pan_calib_ref}" />
+      </xacro:if>
     </joint>
     <link name="${side}_shoulder_pan_link">
 
@@ -72,7 +79,13 @@
 
       <safety_controller k_position="100" k_velocity="10"
                          soft_lower_limit="${-0.5236+0.17}" soft_upper_limit="${1.3963-0.10}" />
-      <calibration falling="${cal_r_shoulder_lift_flag}" />
+      <xacro:unless value="${shoulder_lift_calib_ref}">
+        <calibration falling="${cal_r_shoulder_lift_flag}" />
+      </xacro:unless>
+      <xacro:if value="${shoulder_lift_calib_ref}">
+        <calibration falling="${shoulder_lift_calib_ref}" />
+      </xacro:if>
+
       <dynamics damping="10.0" />
       <origin xyz="0.1 0 0" rpy="0 0 0" />
       <parent link="${side}_shoulder_pan_link"/>
@@ -105,7 +118,8 @@
     </link>
 
     <!-- Upper arm roll is separate macro -->
-    <xacro:pr2_upper_arm_roll_v0 side="${side}" parent="${side}_shoulder_lift_link" reflect="${reflect}" >
+    <xacro:pr2_upper_arm_roll_v0 side="${side}" parent="${side}_shoulder_lift_link" reflect="${reflect}"
+                                 upper_arm_roll_calib_ref="${upper_arm_roll_calib_ref}">
       <origin xyz="0 0 0" rpy="0 0 0" />
     </xacro:pr2_upper_arm_roll_v0>
 
@@ -116,15 +130,23 @@
   </xacro:macro>
 
   <!-- Upperarm roll: internal fixed attchment point for upper arm -->
-  <xacro:macro name="pr2_upper_arm_roll_v0" params="side parent reflect *origin">
-    <joint name="${side}_upper_arm_roll_joint" type="revolute">
+  <xacro:macro name="pr2_upper_arm_roll_v0" params="side parent reflect *origin
+    upper_arm_roll_calib_ref:=0.0">
+    <joint name="${side}_upper_arm_roll_joint" type="revolute" >
       <axis xyz="1 0 0" />
       <xacro:insert_block name="origin" />
       <parent link="${parent}" />
       <child link="${side}_upper_arm_roll_link"/>
       <limit lower="${reflect*1.55-2.35}" upper="${reflect*1.55+2.35}" effort="30" velocity="${VELOCITY_LIMIT_SCALE*5.45}" /> <!-- alpha tested velocity and effort limits -->
       <safety_controller k_position="100" k_velocity="2" soft_lower_limit="${reflect*1.55-2.35+0.15}" soft_upper_limit="${reflect*1.55+2.35-0.15}" />
-      <calibration rising="${(reflect*M_PI/2)*cal_r_upper_arm_roll_gearing + cal_r_upper_arm_roll_flag}" />
+
+      <xacro:unless value="${upper_arm_roll_calib_ref}">
+        <calibration  rising="${(reflect*M_PI/2)*cal_r_upper_arm_roll_gearing+cal_r_upper_arm_roll_flag}" />
+      </xacro:unless>
+      <xacro:if value="${upper_arm_roll_calib_ref}">
+        <calibration  rising="${upper_arm_roll_calib_ref}" />
+      </xacro:if>
+
       <dynamics damping="0.1" />
     </joint>
     <link name="${side}_upper_arm_roll_link">

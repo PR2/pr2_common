@@ -5,12 +5,19 @@
   <xacro:include filename="$(find pr2_description)/urdf/torso_v0/torso.transmission.xacro" />
   <xacro:include filename="$(find pr2_description)/urdf/sensors/microstrain_3dmgx2_imu.urdf.xacro" />
 
-  <xacro:macro name="pr2_torso_v0" params="name parent *origin">
+  <xacro:macro name="pr2_torso_v0" params="name parent *origin torso_calib_ref:=0.0">
     <joint name="${name}_joint" type="prismatic">
       <axis xyz="0 0 1" />
       <limit lower="0.0" upper="0.33" effort="10000" velocity="0.013"/> <!-- alpha tested velocity and effort limits -->
       <safety_controller  k_velocity="2000000" soft_lower_limit="${0.0+0.0115}" soft_upper_limit="${0.33-0.005}" k_position="100" />
-      <calibration falling="0.00475" />
+
+      <xacro:unless value="${torso_calib_ref}">
+        <calibration  falling="0.00475" />
+      </xacro:unless>
+      <xacro:if value="${torso_calib_ref}">
+        <calibration  falling="${torso_calib_ref}" />
+      </xacro:if>
+
       <dynamics damping="20000.0" />
       <xacro:insert_block name="origin" />
       <parent link="${parent}"/>
