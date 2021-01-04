@@ -55,7 +55,7 @@ class DashboardAggregator:
     rospy.Subscriber("ddwrt/accesspoint", AccessPoint, self.accessPointCB)
     self.last_access_point = 0
     # Motor State
-    rospy.Subscriber("pr2_etherCAT/motors_halted", Bool, self.motorsHaltedCB)
+    rospy.Subscriber("pr2_ethercat/motors_halted", Bool, self.motorsHaltedCB)
     self.last_motors_halted = 0
 
   def motorsHaltedCB(self, msg):
