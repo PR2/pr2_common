@@ -2,6 +2,14 @@
 Changelog for package pr2_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* allow pr2.urdf.xacro to accept customized calibration values (`#285 <https://github.com/PR2/pr2_common/issues/285>`_)
+  If 0.0, use the default values. (This retains backward compatibility)
+  If not 0.0, use the passed values. (Enable custom calibration values for all macro instantiations
+  Using 0.0 to trigger the old defaults is necessary because some default values need to be computed from other parameters.
+* Contributors: Shuang Li
+
 1.13.0 (2020-08-11)
 -------------------
 * Cleanup collision/auxiliary shapes in urdf (`#280 <https://github.com/pr2/pr2_common/issues/280>`_)

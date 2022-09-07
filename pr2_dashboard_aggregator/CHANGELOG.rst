@@ -2,6 +2,11 @@
 Changelog for package pr2_dashboard_aggregator
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* fix typo pr2_etherCAT -> pr2_ethercat (`#288 <https://github.com/PR2/pr2_common/issues/288>`_)
+* Contributors: Shingo Kitagawa
+
 1.13.0 (2020-08-11)
 -------------------
 
