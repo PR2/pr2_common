@@ -2,8 +2,8 @@
 Changelog for package pr2_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.13.1 (2022-09-07)
+-------------------
 * allow pr2.urdf.xacro to accept customized calibration values (`#285 <https://github.com/PR2/pr2_common/issues/285>`_)
   If 0.0, use the default values. (This retains backward compatibility)
   If not 0.0, use the passed values. (Enable custom calibration values for all macro instantiations
