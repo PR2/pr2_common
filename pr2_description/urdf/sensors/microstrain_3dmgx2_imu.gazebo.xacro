@@ -11,7 +11,7 @@
         <topicName>${imu_topic}</topicName>
         <gaussianNoise>${stdev*stdev}</gaussianNoise>
         <xyzOffset>0 0 0</xyzOffset> 
-        <rpyOffset>0 -180.0 0</rpyOffset>
+        <rpyOffset>0 ${-180.0*M_PI/180.0} 0</rpyOffset>
         <serviceName>/default_imu</serviceName>
       </plugin>
     </gazebo>
